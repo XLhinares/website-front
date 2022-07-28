@@ -1,0 +1,26 @@
+// Project dependencies
+import "package:website_front/classes/services/settings.dart";
+import "package:website_front/classes/services/single_page_service.dart";
+
+// SERVICES ====================================================================
+
+/// A service that manages the different elements of the app.
+SinglePageService sps = SinglePageService();
+
+/// A service that manages the preferences of the user.
+Settings settings = Settings();
+
+// VARIABLES ===================================================================
+
+/// The default ratio of horizontal extent over the vertical.
+const double frameRatio = 1.5;
+
+// ANIMATIONS ==================================================================
+
+/// The default duration of animations in the app.
+const Duration animationDuration = Duration(milliseconds: 200);
+
+// UTILS -----------------------------------------------------------------------
+
+/// The list of the different supported localizations.
+List<String> supportedLocales = ["fr", "en"];

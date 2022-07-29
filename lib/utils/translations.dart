@@ -26,7 +26,7 @@ class CustomTranslations extends Translations {
     // FRENCH ==================================================================
     "fr": {
       // HOME ------------------------------------------------------------------
-      "Home description 1": "%bc [Xequiche]% est une entreprise consacrée à la création de site et d'application liant des %bc esthétique% unique et une %bc efficacité% maximale.",
+      "Home description 1": "%bc [Xequiche]% est une entreprise consacrée à la création de site et d'application liant des %bc esthétiques% uniques et une %bc efficacité% maximale.",
       // PROJECTS --------------------------------------------------------------
 
       // CONTACT ---------------------------------------------------------------

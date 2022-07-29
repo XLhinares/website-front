@@ -18,8 +18,7 @@ class BodyMenu extends StatelessWidget {
 
   // VARIABLES =================================================================
 
-  final MenuSelectionAnimationController _animationController =
-  MenuSelectionAnimationController();
+  late final MenuSelectionAnimationController _animationController;
 
   final GlobalKey _keyHome = GlobalKey();
   final GlobalKey _keyProjects = GlobalKey();
@@ -30,6 +29,8 @@ class BodyMenu extends StatelessWidget {
 
   /// Returns an instance of [BodyMenu] matching the given parameters.
   BodyMenu({Key? key}) : super(key: key) {
+
+    _animationController = Get.put(MenuSelectionAnimationController());
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _animationController.addTileHeight(_keyHome.currentContext?.size?.height ?? 0);
       _animationController.addTileHeight(_keyProjects.currentContext?.size?.height ?? 0);
@@ -42,6 +43,8 @@ class BodyMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.end,
@@ -54,6 +57,7 @@ class BodyMenu extends StatelessWidget {
         XLayout.verticalM,
 
         Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
 
             // LINKS -----------------------------------------------------------
@@ -64,27 +68,34 @@ class BodyMenu extends StatelessWidget {
 
                   // ANIMATED BOX ----------------------------------------------
                   GetBuilder(
+                    // Gets rebuilt every time the animation controller is
+                    // updated.
                     init: _animationController,
                     builder: (_) => Column(
                       children: [
+
+                        // An invisible box that pushes the grey box down to
+                        // match the start of the selected tile.
                         AnimatedSize(
                           duration: animDurationLong,
                           child: SizedBox(
                             height: _animationController.offset,
+                            // width: 0,
                           ),
                         ),
 
+                        // A grey box that goes behind the selected tile to
+                        // highlight it.
                         AnimatedSize(
                           duration: animDurationLong,
                           child: XContainer(
                             color: Colors.grey.withAlpha(100),
                             enableShadow: false,
                             height: _animationController.height,
-                            // width: double.infinity,
+                            width: double.infinity,
                           ),
                         ),
                       ],
-
                     ),
                   ),
 

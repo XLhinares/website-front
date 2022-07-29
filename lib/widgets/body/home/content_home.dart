@@ -28,7 +28,7 @@ class BodyContentsHome extends StatelessWidget {
 
         // FIRST BLOCK ---------------------------------------------------------
         Expanded(
-          child: ShadowContainer(
+          child: XContainer(
             padding: EdgeInsets.all(3 * XLayout.paddingL),
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -46,7 +46,7 @@ class BodyContentsHome extends StatelessWidget {
         // SECOND BLOCK --------------------------------------------------------
         // todo: occuper l'espace en haut à droite avec qqch.
         Expanded(
-          child: ShadowContainer(
+          child: XContainer(
             margin: EdgeInsets.only(top: Get.height * 0.3),
             padding: EdgeInsets.all(XLayout.paddingL),
             child: Column(

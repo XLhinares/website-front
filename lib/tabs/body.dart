@@ -37,7 +37,7 @@ class Body extends StatelessWidget {
         children: [
 
           // TITLE -----------------------------------------------------------
-          const Flexible(
+          Flexible(
             flex: 3,
             child: BodyMenu(),
           ),

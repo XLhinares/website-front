@@ -32,7 +32,7 @@ class ProjectPreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkContainer(
+    return XInkContainer(
       height: Get.height * 0.25,
       padding: EdgeInsets.zero,
       onTap: onTap,

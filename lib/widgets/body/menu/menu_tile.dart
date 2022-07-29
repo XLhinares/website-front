@@ -17,12 +17,16 @@ class MenuTile extends StatelessWidget {
   /// The mode this [MenuTile] is about.
   final AppMode mode;
 
+  /// The behavior when this box is tapped.
+  final void Function()? onTap;
+
   // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [MenuTile] matching the given parameters.
   const MenuTile({
     super.key,
     required this.mode,
+    this.onTap,
   });
 
   // BUILD =====================================================================
@@ -35,7 +39,10 @@ class MenuTile extends StatelessWidget {
         title: Text(mode.name.capitalizeFirst!.tr),
         subtitle: Text(mode.description.tr),
         leading: mode.icon,
-        onTap: () => sps.goTo(mode),
+        onTap: () {
+          sps.goTo(mode);
+          onTap?.call();
+        },
       ),
     );
   }

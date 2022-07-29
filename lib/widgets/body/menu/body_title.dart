@@ -32,9 +32,9 @@ class BodyTitle extends StatelessWidget {
         GetBuilder(
           init: sps,
           builder: (_) => AnimatedSize(
-            duration: animationDuration,
+            duration: animDurationShort,
             child: AnimatedSwitcher(
-              duration: animationDuration,
+              duration: animDurationShort,
               child: sps.atHome
                   ? const SizedBox()
                   : Padding(

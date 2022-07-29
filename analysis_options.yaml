@@ -33,7 +33,7 @@ linter:
     prefer_const_declarations: true
     always_declare_return_types: true
     always_use_package_imports: true
-    lines_longer_than_80_chars: true
+    lines_longer_than_80_chars: false
     slash_for_doc_comments: true
     public_member_api_docs: true
 

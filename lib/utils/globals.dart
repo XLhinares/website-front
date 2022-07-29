@@ -18,7 +18,12 @@ const double frameRatio = 1.5;
 // ANIMATIONS ==================================================================
 
 /// The default duration of animations in the app.
-const Duration animationDuration = Duration(milliseconds: 200);
+const Duration animDurationShort = Duration(milliseconds: 200);
+
+/// The default duration for long animations.
+///
+/// It is typically used by the sps mode switching animations.
+const Duration animDurationLong = Duration(milliseconds: 1000);
 
 // UTILS -----------------------------------------------------------------------
 

@@ -68,7 +68,7 @@ class CircularButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkContainer(
+    return XInkContainer(
       width: size,
       height: size,
       borderRadius: XLayout.brcX,

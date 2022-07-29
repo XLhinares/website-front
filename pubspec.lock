@@ -341,7 +341,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "566357bcb83d42836cef4a71f9d24ba2de0254f6"
+      resolved-ref: "96cd8cd99cf0990b72bf3e458ea42e7997520c2f"
       url: "https://github.com/XLhinares/x_containers"
     source: git
     version: "0.2.0"

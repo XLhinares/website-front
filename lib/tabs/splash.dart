@@ -21,7 +21,7 @@ class Splash extends StatelessWidget {
   final RxDouble opacity = RxDouble(1);
 
   /// The time it takes for the contents to disappear at the end of the loading.
-  final Duration fadeOutTime = animationDuration;
+  final Duration fadeOutTime = animDurationShort;
 
 // CONSTRUCTOR ===============================================================
 
@@ -41,7 +41,7 @@ class Splash extends StatelessWidget {
             AnimatedOpacity(
               opacity: opacity.value,
               duration: fadeOutTime,
-              child: ShadowContainer(
+              child: XContainer(
                 margin: EdgeInsets.all(XLayout.paddingM),
                 height: Get.height * 0.2,
                 child: Column(

@@ -1,15 +1,32 @@
+// Flutter dependencies
+import "dart:async";
+import "package:flutter/animation.dart";
+
 // Package dependencies
 import "package:get/get.dart";
-import "package:website_front/classes/services/app_mode.dart";
 
+// Project dependencies
+import "package:website_front/classes/services/app_mode.dart";
+import "package:website_front/utils/globals.dart";
 
 /// A service managing the state of the app.
-class SinglePageService extends GetxController {
+class SinglePageService extends GetxController with GetTickerProviderStateMixin {
 
   // VARIABLES =================================================================
 
   /// The current mode of the app.
   late AppMode _mode;
+
+  // ANIMATION =================================================================
+
+  late final AnimationController _controller = AnimationController(
+    duration: animDurationLong,
+    reverseDuration: const Duration(seconds: 0),
+    vsync: this,
+  );
+
+  /// An animation controlled by [_controller] that goes from 0 to 1.
+  late final Animation<double> animation = CurvedAnimation(parent: _controller, curve: Curves.linear);
 
   // GETTERS ===================================================================
 
@@ -37,14 +54,19 @@ class SinglePageService extends GetxController {
     // INITIAL VALUES ----------------------------------------------------------
 
     _mode = AppMode.home;
+
   }
 
   // METHODS ===================================================================
 
   /// Goes to the given mode and reloads the controller.
   void goTo (AppMode mode) {
-    _mode = mode;
-    update();
+    _controller.forward().then((value) => _controller.reset());
+
+    Timer(Duration(milliseconds: animDurationLong.inMilliseconds ~/ 2), () {
+      _mode = mode;
+      update();
+    });
   }
 
 }

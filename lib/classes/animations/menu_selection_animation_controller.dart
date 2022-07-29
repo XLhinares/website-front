@@ -13,7 +13,7 @@ class MenuSelectionAnimationController extends GetxController {
   double _padding = 0;
 
   /// The index of the selected tile.
-  late int _selectedTile = -1;
+  int _selectedTile = -1;
 
   // GETTERS ===================================================================
 
@@ -58,9 +58,9 @@ class MenuSelectionAnimationController extends GetxController {
   /// Selects a new tile and updates the controller.
   void selectTile (int index) {
 
-    // printInfo(info: "Going to tile: $index.\n"
-    //     "Offset: $offset ; height: $height");
     _selectedTile = index;
+    printInfo(info: "Going to tile: $index.\n"
+        "Offset: $offset ; height: $height");
     update();
   }
 }

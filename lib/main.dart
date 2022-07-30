@@ -3,6 +3,7 @@ import "package:flutter/material.dart";
 
 // Package dependencies
 import "package:get/get.dart";
+import 'package:get_storage/get_storage.dart';
 import "package:x_containers/x_containers.dart";
 
 // Project dependencies
@@ -12,10 +13,11 @@ import "package:website_front/utils/globals.dart";
 import "package:website_front/utils/theme.dart";
 import "package:website_front/utils/translations.dart";
 
-void main() {
+void main() async {
 
   // Utils ---------------------------------------------------------------------
 
+  await GetStorage.init();
   WidgetsFlutterBinding.ensureInitialized();
 
   // Memory --------------------------------------------------------------------

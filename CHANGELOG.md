@@ -1,3 +1,7 @@
+### 1.1.1 
+
+- Changed: Migrated from [SharedPreferences] to [GetStorage]
+
 ## 1.1.0 
 
 - Added: A menu tile animation

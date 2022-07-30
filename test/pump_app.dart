@@ -8,7 +8,7 @@ import "package:get/get.dart";
 // Project dependencies
 import "package:website_front/tabs/home.dart";
 import "package:website_front/tabs/splash.dart";
-import 'package:website_front/utils/globals.dart';
+import "package:website_front/utils/globals.dart";
 import "package:website_front/utils/theme.dart";
 import "package:website_front/utils/translations.dart";
 
@@ -43,6 +43,4 @@ Future<void> pumpApp (WidgetTester tester) async {
       ],
     ),
   );
-
-  print("Pumped the app.");
 }

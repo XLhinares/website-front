@@ -1,3 +1,7 @@
+### 1.1.2 
+
+- Added: The base structure for API requests.
+
 ### 1.1.1 
 
 - Changed: Migrated from [SharedPreferences] to [GetStorage]

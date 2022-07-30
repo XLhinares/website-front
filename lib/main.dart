@@ -3,7 +3,7 @@ import "package:flutter/material.dart";
 
 // Package dependencies
 import "package:get/get.dart";
-import 'package:get_storage/get_storage.dart';
+import "package:get_storage/get_storage.dart";
 import "package:x_containers/x_containers.dart";
 
 // Project dependencies

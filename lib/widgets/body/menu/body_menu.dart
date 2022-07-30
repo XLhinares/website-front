@@ -3,6 +3,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:website_front/classes/animations/menu_selection_animation_controller.dart";
 import "package:website_front/utils/globals.dart";
+import "package:website_front/widgets/body/menu/test_card.dart";
 
 // Package dependencies
 import "package:x_containers/x_containers.dart";
@@ -129,6 +130,10 @@ class BodyMenu extends StatelessWidget {
 
 
             const CookiesCard(),
+
+            XLayout.verticalM,
+
+            const TestCard(),
           ],
         ),
 

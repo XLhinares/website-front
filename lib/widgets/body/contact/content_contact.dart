@@ -38,7 +38,7 @@ class BodyContentsContact extends StatelessWidget {
       children: [
 
         // PRESENTATION --------------------------------------------------------
-        ShadowContainer(
+        XContainer(
           child: Text(
               "Contact form explanation".tr
           ),
@@ -48,7 +48,7 @@ class BodyContentsContact extends StatelessWidget {
 
         // FORM ----------------------------------------------------------------
         Expanded(
-          child: ShadowContainer(
+          child: XContainer(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -77,6 +77,7 @@ class BodyContentsContact extends StatelessWidget {
                 Expanded(
                   child: ContactField(
                     title: "Details",
+                    maxLines: 10,
                     controller: controllerContents,
                   ),
                 ),

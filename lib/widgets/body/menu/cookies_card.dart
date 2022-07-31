@@ -23,7 +23,7 @@ class CookiesCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() => AnimatedSwitcher(
-      duration: animationDuration,
+      duration: animDurationShort,
       child: settings.cookies.value
         ? const SizedBox()
         : XCard(

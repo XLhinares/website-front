@@ -36,7 +36,7 @@ class ProjectFocus extends StatelessWidget {
       children: [
 
         // TITLE ---------------------------------------------------------------
-        ShadowContainer(
+        XContainer(
           child: Row(
             children: [
               IconButton(
@@ -58,7 +58,7 @@ class ProjectFocus extends StatelessWidget {
 
         // IMAGE ---------------------------------------------------------------
 
-        ShadowContainer(
+        XContainer(
           padding: EdgeInsets.zero,
           child: ClipRRect(
             borderRadius: XLayout.brcXS,
@@ -93,7 +93,7 @@ class ProjectFocus extends StatelessWidget {
 
               Flexible(
                 flex: 3,
-                child: ShadowContainer(
+                child: XContainer(
                   padding: EdgeInsets.all(XLayout.paddingL),
                   child: Text(project.description,),
                 ),

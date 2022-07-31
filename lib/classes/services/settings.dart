@@ -4,7 +4,7 @@ import "package:flutter/material.dart";
 
 // Package dependencies
 import "package:get/get.dart";
-import "package:shared_preferences/shared_preferences.dart";
+import "package:get_storage/get_storage.dart";
 
 // Project dependencies
 import "package:website_front/utils/globals.dart";
@@ -21,8 +21,8 @@ class Settings extends GetxController {
   /// Whether the database was loaded.
   late final RxBool loaded;
 
-  /// The [SharedPreferences] object that keeps track of everything.
-  late final SharedPreferences _prefs;
+  /// The [GetStorage] object that keeps track of everything.
+  late final GetStorage _storage;
 
   // ACTUAL --------------------------------------------------------------------
 
@@ -53,20 +53,21 @@ class Settings extends GetxController {
   }
 
   Future<void> _init () async {
+
     // Instantiating variables. ------------------------------------------------
     loaded = false.obs;
-    _prefs = await SharedPreferences.getInstance();
+    _storage = GetStorage();
 
     // LOCALE
-    locale = RxString(_prefs.getString("locale") ?? "en");
+    locale = RxString(_storage.read<String>("locale") ?? "en");
     _saveLocale(locale.value);
 
     // DARK THEME
-    darkTheme = RxBool(_prefs.getBool("darkTheme") ?? true);
+    darkTheme = RxBool(_storage.read<bool>("darkTheme") ?? true);
     _saveTheme(darkTheme.value);
 
     // COOKIES
-    cookies = RxBool(_prefs.getBool("cookies") ?? false);
+    cookies = RxBool(_storage.read<bool>("cookies") ?? false);
     _saveCookies(cookies.value);
 
 
@@ -86,7 +87,7 @@ class Settings extends GetxController {
   /// Performs a check on the value of the [locale] then save it to memory.
   Future<void> _saveLocale (String value) async {
     printInfo(info: "Changing locale to: $value");
-    await _prefs.setString("locale", value);
+    await _storage.write("locale", value);
     Get.updateLocale(Locale(value));
   }
 
@@ -102,7 +103,7 @@ class Settings extends GetxController {
   /// Performs a check on the value of [darkTheme] then save it to memory.
   Future<void> _saveTheme (bool value) async {
     printInfo(info: "Changing theme to: ${value ? "dark" : "light"} mode");
-    await _prefs.setBool("darkTheme", value);
+    await _storage.write("darkTheme", value);
     Get.changeThemeMode(darkTheme.value ? ThemeMode.dark : ThemeMode.light);
   }
 
@@ -112,6 +113,6 @@ class Settings extends GetxController {
   /// Performs a check on the value of [cookies] then save it to memory.
   Future<void> _saveCookies (bool value) async {
     printInfo(info: "Changing cookies to: $value");
-    await _prefs.setBool("cookies", value);
+    await _storage.write("cookies", value);
   }
 }

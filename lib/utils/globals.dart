@@ -1,4 +1,5 @@
 // Project dependencies
+import "package:website_front/classes/services/api_service.dart";
 import "package:website_front/classes/services/settings.dart";
 import "package:website_front/classes/services/single_page_service.dart";
 
@@ -6,6 +7,9 @@ import "package:website_front/classes/services/single_page_service.dart";
 
 /// A service that manages the different elements of the app.
 SinglePageService sps = SinglePageService();
+
+/// A service that manages all the backend stuff.
+APIService api = APIService();
 
 /// A service that manages the preferences of the user.
 Settings settings = Settings();
@@ -18,7 +22,12 @@ const double frameRatio = 1.5;
 // ANIMATIONS ==================================================================
 
 /// The default duration of animations in the app.
-const Duration animationDuration = Duration(milliseconds: 200);
+const Duration animDurationShort = Duration(milliseconds: 200);
+
+/// The default duration for long animations.
+///
+/// It is typically used by the sps mode switching animations.
+const Duration animDurationLong = Duration(milliseconds: 1000);
 
 // UTILS -----------------------------------------------------------------------
 

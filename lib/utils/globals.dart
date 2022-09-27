@@ -27,7 +27,7 @@ const Duration animDurationShort = Duration(milliseconds: 200);
 /// The default duration for long animations.
 ///
 /// It is typically used by the sps mode switching animations.
-const Duration animDurationLong = Duration(milliseconds: 1000);
+const Duration animDurationLong = Duration(milliseconds: 750);
 
 // UTILS -----------------------------------------------------------------------
 

@@ -51,7 +51,7 @@ class BodyTitle extends StatelessWidget {
         Expanded(
           child: FittedBox(
             fit: BoxFit.fitWidth,
-            child: Text("Xequiche",
+            child: Text("Xeppelin",
               style: context.theme.appBarTheme.titleTextStyle
             ),
           ),

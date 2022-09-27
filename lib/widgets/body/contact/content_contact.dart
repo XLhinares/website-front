@@ -3,6 +3,7 @@ import "package:flutter/material.dart";
 
 // Package dependencies
 import "package:get/get.dart";
+import 'package:website_front/widgets/text/auto_color_text.dart';
 import "package:x_containers/x_containers.dart";
 
 // Project dependencies
@@ -34,57 +35,80 @@ class BodyContentsContact extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Row(
       children: [
+        Expanded(
+          child: Column(
+            children: [
 
-        // PRESENTATION --------------------------------------------------------
-        XContainer(
-          child: Text(
-              "Contact form explanation".tr
+              // PRESENTATION --------------------------------------------------------
+              XContainer(
+                padding: EdgeInsets.all(XLayout.paddingM),
+                child: AutoColorText(
+                  "Contact form explanation".tr,
+                  defaultStyle: context.textTheme.titleMedium,
+                ),
+              ),
+
+              XLayout.verticalM,
+
+              // FORM ----------------------------------------------------------------
+              XContainer(
+                padding: EdgeInsets.all(XLayout.paddingM),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+
+                    ContactField(
+                      title: "Name",
+                      controller: controllerName,
+                    ),
+
+                    XLayout.verticalM,
+
+                    ContactField(
+                      title: "E-Mail address",
+                      controller: controllerEmail,
+                      validator: (value) => GetUtils.isEmail(value ?? "")
+                          ? null
+                          : "Please enter a valid e-mail.",
+                    ),
+
+                    XLayout.verticalM,
+
+                    ContactField(
+                      title: "Subject",
+                      controller: controllerSubject,
+                    ),
+
+                    XLayout.verticalM,
+
+                    ContactField(
+                      title: "Details",
+                      maxLines: 10,
+                      controller: controllerContents,
+                    ),
+
+                    XLayout.verticalM,
+
+                    XInkContainer(
+                      onTap: () {},
+                      color: context.theme.colorScheme.secondary,
+                      child: const Text("Send"),
+                    ),
+
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
 
-        XLayout.verticalM,
+        XLayout.horizontalM,
 
-        // FORM ----------------------------------------------------------------
-        Expanded(
-          child: XContainer(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-
-                ContactField(
-                  title: "Name",
-                  controller: controllerName,
-                ),
-
-                XLayout.verticalM,
-
-                ContactField(
-                  title: "E-Mail address",
-                  controller: controllerEmail,
-                ),
-
-                XLayout.verticalM,
-
-                ContactField(
-                  title: "Subject",
-                  controller: controllerSubject,
-                ),
-
-                XLayout.verticalM,
-
-                Expanded(
-                  child: ContactField(
-                    title: "Details",
-                    maxLines: 10,
-                    controller: controllerContents,
-                  ),
-                ),
-
-              ],
-            ),
-          ),
+        const Expanded(
+          child: SizedBox(),
         ),
       ],
     );

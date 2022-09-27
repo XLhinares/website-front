@@ -3,6 +3,7 @@ import "package:flutter/material.dart";
 
 // Package dependencies
 import "package:get/get.dart";
+import 'package:x_containers/settings/x_layout.dart';
 
 /// A single field for the contact form.
 class ContactField extends StatelessWidget {
@@ -41,10 +42,12 @@ class ContactField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       validator: validator,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       maxLines: maxLines,
       style: context.textTheme.bodyMedium,
       decoration: const InputDecoration().copyWith(
         hintText: title,
+        contentPadding: EdgeInsets.all(XLayout.paddingM),
       ),
     );
   }

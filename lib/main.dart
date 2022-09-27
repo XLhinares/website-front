@@ -36,7 +36,7 @@ void main() async {
   runApp(GetMaterialApp(
 
     // Meta
-    title: "Xequiche",
+    title: "Xeppelin",
 
     // Localization
     translations: CustomTranslations(),

@@ -26,7 +26,7 @@ class TestCard extends StatelessWidget {
     return XCard(
       padding: EdgeInsets.all(XLayout.paddingM),
       title: const Text("Click to run the test."),
-      onTap: () => api.test(),
+      onTap: () => api.test(context),
     );
   }
 

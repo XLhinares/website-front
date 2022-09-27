@@ -11,11 +11,12 @@ class CustomTranslations extends Translations {
     // ENGLISH =================================================================
     "en": {
       // HOME ------------------------------------------------------------------
-      "Home description 1": "%bc [Xequiche]% is a company dedicated to making websites and apps mixing unique %bc aesthetics% and high %bc productivity%.",
+      "Home description 1": "%bc [Xeppelin]% lifts your projects ;) \nThe website is under construction but don't hesitate to reach out to me via the contact form.",
+      // "Home description 1": "%bc [Xeppelin]% is a company dedicated to making websites and apps mixing unique %bc aesthetics% and high %bc productivity%.",
       // PROJECTS --------------------------------------------------------------
 
       // CONTACT ---------------------------------------------------------------
-      "Contact form explanation": "If you have a project or an idea, you can contact me via the form below and we can plan",
+      "Contact form explanation": "If you have a project or an idea, an inquiry, or just want my resume, feel free to contact me via the form below !",
 
       // OTHER -----------------------------------------------------------------
       "Cookies title": "This site uses functional cookies.",
@@ -26,7 +27,7 @@ class CustomTranslations extends Translations {
     // FRENCH ==================================================================
     "fr": {
       // HOME ------------------------------------------------------------------
-      "Home description 1": "%bc [Xequiche]% est une entreprise consacrée à la création de site et d'application liant des %bc esthétiques% uniques et une %bc efficacité% maximale.",
+      "Home description 1": "%bc [Xeppelin]% est une entreprise consacrée à la création de site et d'application liant des %bc esthétiques% uniques et une %bc efficacité% maximale.",
       // PROJECTS --------------------------------------------------------------
 
       // CONTACT ---------------------------------------------------------------

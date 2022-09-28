@@ -6,8 +6,9 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 // Project dependencies
-import "package:website_front/utils/globals.dart";
-import "package:website_front/widgets/images/xequiche_logo.dart";
+import "../../../utils/globals.dart";
+import "../../images/xequiche_logo.dart";
+import "../../text/preset_text.dart";
 
 /// An animated title for the body.
 class BodyTitle extends StatelessWidget {
@@ -51,9 +52,7 @@ class BodyTitle extends StatelessWidget {
         Expanded(
           child: FittedBox(
             fit: BoxFit.fitWidth,
-            child: Text("Xeppelin",
-              style: context.theme.appBarTheme.titleTextStyle
-            ),
+            child: PresetText.xeppelin(),
           ),
         ),
       ],

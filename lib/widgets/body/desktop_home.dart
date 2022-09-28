@@ -6,8 +6,8 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 // Project dependencies
-import "package:website_front/widgets/images/xequiche_logo.dart";
-import "package:website_front/widgets/text/auto_color_text.dart";
+import "../images/xequiche_logo.dart";
+import "../text/text.dart";
 
 /// The content of the body in the "Home" mode.
 class BodyContentsHome extends StatelessWidget {
@@ -53,7 +53,7 @@ class BodyContentsHome extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 AutoColorText("Home description 1".tr,
-                  defaultStyle: context.textTheme.titleMedium,
+                  defaultStyle: PresetStyle.headline.getStyle(context),
                 ),
                 // XLayout.verticalM,
                 // AutoColorText("I also make %bc art%.".tr,

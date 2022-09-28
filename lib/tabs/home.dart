@@ -1,9 +1,10 @@
-// Flutter dependencies
+// Framework dependencies
 import "package:flutter/material.dart";
+import "package:responsive_framework/responsive_framework.dart";
 
 // Package dependencies
-import "package:website_front/tabs/body.dart";
-import "package:website_front/widgets/interactables/buttons.dart";
+import "home_desktop.dart";
+import "home_mobile.dart";
 
 // Project dependencies
 
@@ -21,13 +22,17 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          const Positioned.fill(child: Body()),
-          Positioned.fill(bottom: 0, left: 0, child: Buttons(),),
-        ],
-      ),
+
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if (ResponsiveWrapper.of(context).isLargerThan(TABLET)) {
+          return const HomeDesktop();
+        }
+        // } else if (ResponsiveWrapper.of(context).isLargerThan(MOBILE)) {
+        //   return ;
+        // }
+        return const HomeMobile();
+      },
     );
   }
 

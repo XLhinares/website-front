@@ -2,7 +2,7 @@
 import "package:flutter/material.dart";
 
 // Project dependencies
-import "package:website_front/widgets/layout/frame_fit.dart";
+import "frame_fit.dart";
 
 /// A Scaffold that fits its body within a central column if needed.
 class ScaffoldFit extends StatelessWidget {

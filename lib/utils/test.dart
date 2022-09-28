@@ -2,7 +2,7 @@
 import "package:get/get.dart";
 
 // Project dependencies
-import "package:website_front/classes/dataclass/project.dart";
+import "../classes/dataclass/project.dart";
 
 /// A list of projects that's meant to be fetched online in the future.
 List<Project> projects = [

@@ -6,8 +6,9 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 // Project dependencies
-import "package:website_front/utils/globals.dart";
-import "package:website_front/widgets/interactables/circular_button.dart";
+import "../../utils/globals.dart";
+import "../text/preset_text.dart";
+import "circular_button.dart";
 
 /// The different buttons that allow the using to change some settings.
 class Buttons extends StatelessWidget {
@@ -49,10 +50,7 @@ class Buttons extends StatelessWidget {
               CircularButton(
                 size: buttonSize,
                 onTap: settings.rotateLocale,
-                child: Obx(() => Text(
-                  settings.locale.value.capitalize!,
-                  style: context.textTheme.titleMedium,
-                ),),
+                child: Obx(() => PresetText.title(settings.locale.value.capitalize!,),),
               ),
             ],
           ),

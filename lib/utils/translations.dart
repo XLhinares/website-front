@@ -19,8 +19,8 @@ class CustomTranslations extends Translations {
       "Contact form explanation": "If you have a project or an idea, an inquiry, or just want my resume, feel free to contact me via the form below !",
 
       // OTHER -----------------------------------------------------------------
-      "Cookies title": "This site uses functional cookies.",
-      "Cookies description": "They are used to display this site in your preferred language and theme.",
+      "Cookies title": "About cookies",
+      "Cookies description": "This site only uses functional cookies. They are used to remember your preferred language and theme.",
       "lorem ipsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 
     },
@@ -34,8 +34,8 @@ class CustomTranslations extends Translations {
       "Contact form explanation": "If you have a project or an idea, you can contact me via the form below and we can plan",
 
       // OTHER -----------------------------------------------------------------
-      "Cookies title": "Ce site utilise des cookies fonctionels.",
-      "Cookies description": "Ils sont utilisés pour afficher ce site dans vos langages et thèmes préférés.",
+      "Cookies title": "À propos des cookies.",
+      "Cookies description": "Ce site utilise uniquement des cookies fonctionnels. Ils sont utilisés pour retenir vos langages et thèmes préférés.",
       "lorem ipsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     }
   };

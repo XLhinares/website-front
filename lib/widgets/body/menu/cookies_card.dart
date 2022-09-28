@@ -1,12 +1,14 @@
 // Flutter dependencies
 import "package:flutter/material.dart";
+import "package:get/get.dart";
 
 // Package dependencies
-import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
+import "package:auto_size_text/auto_size_text.dart";
 
 // Project dependencies
-import "package:website_front/utils/globals.dart";
+import "../../../utils/globals.dart";
+import "../../text/text.dart";
 
 /// A card explaining what how this site uses cookies.
 class CookiesCard extends StatelessWidget {
@@ -32,14 +34,17 @@ class CookiesCard extends StatelessWidget {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Cookies title".tr),
+              PresetText.headline("Cookies title".tr),
               IconButton(
                   onPressed: () => settings.cookies.value = true,
                   icon: const Icon(Icons.close),
               )
             ],
           ),
-          subtitle: Text("Cookies description".tr),
+          subtitle: AutoSizeText(
+              "Cookies description".tr,
+            style: PresetStyle.body.getStyle(context),
+          ),
         ),
     ),
     );

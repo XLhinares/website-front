@@ -55,7 +55,7 @@ class AutoColorText extends StatelessWidget {
   /// The color of colored text.
   ///
   /// By default it takes the theme's secondary color.
-  final Color? specialColor;
+  final Color? highlightColor;
 
   // GETTERS ===================================================================
 
@@ -136,7 +136,7 @@ class AutoColorText extends StatelessWidget {
   const AutoColorText(this.text, {
     Key? key,
     this.defaultStyle,
-    this.specialColor,
+    this.highlightColor,
   }) : super(key: key);
 
   // BUILD =====================================================================

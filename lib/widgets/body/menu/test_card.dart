@@ -5,7 +5,7 @@ import "package:flutter/material.dart";
 import "package:x_containers/x_containers.dart";
 
 // Project dependencies
-import "package:website_front/utils/globals.dart";
+import "../../../utils/globals.dart";
 
 /// A card that can be configured to test different behaviors.
 ///

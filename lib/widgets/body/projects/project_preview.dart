@@ -6,7 +6,8 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 // Project dependencies
-import "package:website_front/classes/dataclass/project.dart";
+import "../../../classes/dataclass/project.dart";
+import "../../text/text.dart";
 
 /// A preview of a project.
 class ProjectPreview extends StatelessWidget {
@@ -61,9 +62,7 @@ class ProjectPreview extends StatelessWidget {
                 children: [
 
                   // NAME ------------------------------------------------------
-                  Text(project.name,
-                    style: context.textTheme.titleMedium,
-                  ),
+                  PresetText.title(project.name,),
 
                   XLayout.verticalS,
                   const Divider(),
@@ -71,9 +70,7 @@ class ProjectPreview extends StatelessWidget {
 
                   // SUMMARY ---------------------------------------------------
                   Expanded(
-                    child: Text(project.summary,
-                      style: context.textTheme.bodyMedium,
-                    ),
+                    child: PresetText.body(project.summary,),
                   ),
                 ],
               ),

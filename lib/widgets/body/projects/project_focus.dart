@@ -2,11 +2,11 @@
 import "package:flutter/material.dart";
 
 // Package dependencies
-import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 // Project dependencies
-import "package:website_front/classes/dataclass/project.dart";
+import "../../../classes/dataclass/project.dart";
+import "../../text/text.dart";
 
 /// A detailed view of a project.
 class ProjectFocus extends StatelessWidget {
@@ -45,9 +45,7 @@ class ProjectFocus extends StatelessWidget {
               ),
               Expanded(
                 child: Center(
-                  child: Text(project.name,
-                    style: context.textTheme.titleMedium,
-                  ),
+                  child: PresetText.headline(project.name,),
                 ),
               ),
             ],

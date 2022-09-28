@@ -2,7 +2,7 @@
 import "package:flutter/material.dart";
 
 // Project dependencies
-import "package:website_front/widgets/background/animated_waves.dart";
+import "animated_waves.dart";
 
 /// The main background of the Swallo app.
 class AnimatedBackground extends StatelessWidget {

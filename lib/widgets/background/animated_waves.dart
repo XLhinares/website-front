@@ -5,7 +5,7 @@ import "package:flutter/material.dart";
 import "package:simple_animations/simple_animations.dart";
 
 // Project dependencies
-import "package:website_front/widgets/background/curve_painter.dart";
+import "curve_painter.dart";
 
 /// A custom wave widget.
 class AnimatedWave extends StatelessWidget {

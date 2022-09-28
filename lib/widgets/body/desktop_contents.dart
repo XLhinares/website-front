@@ -5,12 +5,12 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 
 // Project dependencies
-import "package:website_front/classes/services/app_mode.dart";
-import "package:website_front/utils/globals.dart";
-import "package:website_front/widgets/animations/animated_cover.dart";
-import "package:website_front/widgets/body/contact/content_contact.dart";
-import "package:website_front/widgets/body/home/content_home.dart";
-import "package:website_front/widgets/body/projects/content_projects.dart";
+import "../../classes/dataclass/app_mode.dart";
+import "../../utils/globals.dart";
+import "../animations/animated_cover.dart";
+import "contact/content_contact.dart";
+import "desktop_home.dart";
+import "desktop_projects.dart";
 
 /// What's inside the body. It depends on the current mode.
 class BodyContents extends StatelessWidget{
@@ -25,7 +25,7 @@ class BodyContents extends StatelessWidget{
       case AppMode.home:
         return const BodyContentsHome();
       case AppMode.projects:
-        return BodyContentsProjects();
+        return DesktopProjects();
       case AppMode.contact:
         return BodyContentsContact();
       default:

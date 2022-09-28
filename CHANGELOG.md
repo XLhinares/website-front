@@ -1,3 +1,9 @@
+## 1.2.0 
+
+- Reworked: The way text styles were handled.
+- Reworked: The responsivity of the app.
+- Added: A display strategy for mobile devices.
+
 ### 1.1.2 
 
 - Added: The base structure for API requests.

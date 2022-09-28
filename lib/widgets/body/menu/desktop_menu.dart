@@ -1,0 +1,67 @@
+// Flutter dependencies
+import "package:flutter/material.dart";
+
+// Package dependencies
+import "package:x_containers/x_containers.dart";
+
+// Project dependencies
+import "desktop_title.dart";
+import "cookies_card.dart";
+import "menu_list.dart";
+import "test_card.dart";
+
+/// The half of the body containing the title and the menu.
+class BodyMenu extends StatelessWidget {
+
+  // VARIABLES =================================================================
+
+  // CONSTRUCTOR ===============================================================
+
+  /// Returns an instance of [BodyMenu] matching the given parameters.
+  const BodyMenu({Key? key}) : super(key: key);
+
+  // BUILD =====================================================================
+
+  @override
+  Widget build(BuildContext context) {
+
+
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+
+        // TITLE ---------------------------------------------------------------
+        const BodyTitle(),
+
+        // SEPARATOR
+        XLayout.verticalM,
+
+        Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+
+            // LINKS -----------------------------------------------------------
+            XContainer(
+              padding: EdgeInsets.all(XLayout.paddingM),
+              child: MenuList(),
+            ),
+
+
+            const CookiesCard(),
+
+            XLayout.verticalM,
+
+            const TestCard(),
+          ],
+        ),
+
+      ],
+    );
+  }
+
+// METHODS ===================================================================
+
+
+
+}

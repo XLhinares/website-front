@@ -7,7 +7,7 @@ import "package:get/get.dart";
 import "package:get_storage/get_storage.dart";
 
 // Project dependencies
-import "package:website_front/utils/globals.dart";
+import "../../utils/globals.dart";
 
 // Project dependencies
 

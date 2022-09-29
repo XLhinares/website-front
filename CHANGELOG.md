@@ -1,3 +1,9 @@
+### 1.2.1 
+
+- Updated: the contact form behaves better on user input.
+- Updated: the localisation to cover the existing content.
+- Reworked: the linting used for imports.
+
 ## 1.2.0 
 
 - Reworked: The way text styles were handled.

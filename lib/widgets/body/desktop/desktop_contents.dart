@@ -24,7 +24,7 @@ class BodyContents extends StatelessWidget {
       case AppMode.projects:
         return DesktopProjects();
       case AppMode.contact:
-        return BodyContentsContact();
+        return BodyContact();
       default:
         return Center(
           child: Text("How did we get there?".tr),

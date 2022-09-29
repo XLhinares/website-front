@@ -22,6 +22,13 @@ class ContactField extends StatelessWidget {
   /// It impacts the height of the box.
   final int maxLines;
 
+  /// The focus node matching this field.
+  final FocusNode focusNode;
+
+  /// What to do when the user presses the input button.
+  final TextInputAction? textInputAction;
+
+
   // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [ContactField] matching the given parameters.
@@ -29,8 +36,10 @@ class ContactField extends StatelessWidget {
     super.key,
     required this.title,
     required this.controller,
+    required this.focusNode,
     this.validator,
     this.maxLines = 1,
+    this.textInputAction = TextInputAction.next,
   });
 
   // BUILD =====================================================================
@@ -42,6 +51,8 @@ class ContactField extends StatelessWidget {
       validator: validator,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       maxLines: maxLines,
+      focusNode: focusNode,
+      textInputAction: textInputAction,
       style: PresetStyle.body.getStyle(context),
       decoration: const InputDecoration().copyWith(
         hintText: title,

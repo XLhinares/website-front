@@ -25,9 +25,10 @@ class CustomTranslations extends Translations {
 
       // CONTACT ---------------------------------------------------------------
       "Contact form": "Contact form",
-      "Contact form explanation": "If you have a project or an idea, an inquiry, or just want my resume, \nfeel free to contact me via the form below !",
+      "Contact form explanation": "If you have a project or an idea, an inquiry, or just want my resume, feel free to contact me via the form below!",
       "Name": "Name",
-      "EMail": "E-mail address",
+      "Email": "E-mail address",
+      "Email validation": "Please enter a valid e-mail.",
       "Subject": "Subject",
       "Details": "Details",
 
@@ -54,9 +55,10 @@ class CustomTranslations extends Translations {
 
       // CONTACT ---------------------------------------------------------------
       "Contact form": "Formulaire de contact",
-      "Contact form explanation": "Si vous avez un projet ou une idée, une question, ou que vous voulez simplement voir mon CV, \nn'hésitez pas à prendre contact avec moi via le formulaire ci-dessous.",
+      "Contact form explanation": "Si vous avez un projet ou une idée, une question, ou que vous voulez simplement voir mon CV, n'hésitez pas à prendre contact avec moi via le formulaire ci-dessous.",
       "Name": "Nom",
-      "EMail": "Adresse mail",
+      "Email": "Adresse mail",
+      "Email validation": "Veuillez entrer une adresse mail valide.",
       "Subject": "Objet",
       "Details": "Détails",
 

@@ -29,7 +29,7 @@ extension DefaultColors on Colors {
 
 /// The preset for the text theme
 TextTheme textTheme = const TextTheme(
-  displayLarge: TextStyle(fontSize: 30,
+  displayMedium: TextStyle(fontSize: 30,
     height: 1.6,
     fontFeatures: [FontFeature.enable("smcp")],
   ),

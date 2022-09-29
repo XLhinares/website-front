@@ -30,7 +30,7 @@ class HomeMobile extends StatelessWidget {
             shrinkWrap: true,
             children: [
               const MobileProjects(),
-              BodyContentsContact(),
+              BodyContact(),
             ],
           ),
         ],

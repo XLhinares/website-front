@@ -1,12 +1,8 @@
-// Package dependencies
 import "dart:async";
 import "package:flutter/material.dart";
-
-// Package dependencies
 import "package:get/get.dart";
 import "package:get_storage/get_storage.dart";
 
-// Project dependencies
 import "../../utils/globals.dart";
 
 // Project dependencies

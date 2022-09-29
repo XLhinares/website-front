@@ -1,15 +1,7 @@
-// Flutter dependencies
 import "package:flutter/material.dart";
-
-// Package dependencies
 import "package:x_containers/x_containers.dart";
 
-// Project dependencies
-import "../widgets/background/animated_background.dart";
-import "../widgets/body/desktop_contents.dart";
-import "../widgets/body/menu/desktop_menu.dart";
-import "../widgets/layout/frame_fit.dart";
-import "../widgets/interactables/buttons.dart";
+import "../widgets/widgets.dart";
 
 /// The
 class HomeDesktop extends StatelessWidget {

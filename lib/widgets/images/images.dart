@@ -1,0 +1,1 @@
+export "xequiche_logo.dart";

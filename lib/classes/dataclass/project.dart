@@ -1,4 +1,3 @@
-// Flutter dependencies
 import "package:flutter/material.dart";
 
 /// A dataclass

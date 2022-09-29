@@ -1,19 +1,16 @@
-// Flutter dependencies
 import "package:flutter/material.dart";
-
-// Package dependencies
 import "package:get/get.dart";
 
 // Project dependencies
-import "../../classes/dataclass/app_mode.dart";
-import "../../utils/globals.dart";
-import "../animations/animated_cover.dart";
-import "contact/content_contact.dart";
+import "../../../classes/dataclass/app_mode.dart";
+import "../../../utils/globals.dart";
+import "../../animations/animated_cover.dart";
+import "../contact/content_contact.dart";
 import "desktop_home.dart";
 import "desktop_projects.dart";
 
 /// What's inside the body. It depends on the current mode.
-class BodyContents extends StatelessWidget{
+class BodyContents extends StatelessWidget {
 
   // VARIABLES =================================================================
 

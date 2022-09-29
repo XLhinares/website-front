@@ -1,7 +1,5 @@
-// Flutter dependencies
 import "package:flutter/material.dart";
 
-// Project dependencies
 import "frame_fit.dart";
 
 /// A Scaffold that fits its body within a central column if needed.

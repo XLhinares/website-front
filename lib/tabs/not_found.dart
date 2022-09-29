@@ -1,7 +1,5 @@
-// Framework dependencies
 import "package:flutter/material.dart";
 
-// Project dependencies
 import "../widgets/body/body.dart";
 
 /// The go-to tab to display when content was not found.

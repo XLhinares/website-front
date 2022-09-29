@@ -1,6 +1,5 @@
 // ignore_for_file: lines_longer_than_80_chars
 
-// Flutter dependencies
 import "package:get/get.dart";
 
 /// An extension of the [Translations] class, for our custom needs.

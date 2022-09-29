@@ -1,11 +1,7 @@
-// Flutter dependencies
 import "package:flutter/material.dart";
-
-// Package dependencies
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-// Project dependencies
 import "../../../classes/dataclass/app_mode.dart";
 import "../../../utils/globals.dart";
 

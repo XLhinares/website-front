@@ -1,12 +1,8 @@
-// Flutter dependencies
 import "dart:async";
 import "package:flutter/material.dart";
-
-// Package dependencies
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-// Project dependencies
 import "../widgets/text/preset_text.dart";
 import "../utils/globals.dart";
 

@@ -31,7 +31,7 @@ dependencies:
     sdk: flutter
   # Framework
   get: ^4.6.3
-  simple_animations: ^4.2.0
+  simple_animations: ^5.0.0+2
 
   # Memory
   get_storage: ^2.0.3

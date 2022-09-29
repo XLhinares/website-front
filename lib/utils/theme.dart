@@ -1,8 +1,5 @@
-// Flutter dependencies
 import "dart:ui";
 import "package:flutter/material.dart";
-
-// Package dependencies
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 

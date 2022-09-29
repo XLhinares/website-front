@@ -1,10 +1,6 @@
-// Flutter dependencies
 import "package:flutter/material.dart";
-
-// Package dependencies
 import "package:x_containers/x_containers.dart";
 
-// Project dependencies
 import "../../../utils/globals.dart";
 
 /// A card that can be configured to test different behaviors.

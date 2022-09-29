@@ -1,7 +1,5 @@
-// Framework dependencies
 import "package:flutter/material.dart";
 
-// Project dependencies
 import "preset_styles.dart";
 
 

@@ -1,7 +1,4 @@
-// Flutter dependencies
 import "package:flutter/material.dart";
-
-// Package dependencies
 import "package:x_containers/x_containers.dart";
 
 /// Representation of a "mode" (pretty much the top-level state of the app).

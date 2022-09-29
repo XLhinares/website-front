@@ -1,10 +1,6 @@
-// Flutter dependencies
 import "package:flutter/material.dart";
-
-// Package dependencies
 import "package:get/get.dart";
 
-// Project dependencies
 import "../../utils/globals.dart";
 
 /// A widget to that fit all its child within a central column if needed.

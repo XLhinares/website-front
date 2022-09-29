@@ -1,13 +1,8 @@
-// Flutter dependencies
 import "package:flutter/material.dart";
-
-// Package dependencies
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-// Project dependencies
-import "../images/xequiche_logo.dart";
-import "../text/text.dart";
+import "../../widgets.dart";
 
 /// The content of the body in the "Home" mode.
 class BodyContentsHome extends StatelessWidget {

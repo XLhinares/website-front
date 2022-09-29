@@ -1,10 +1,6 @@
-// Flutter dependencies
 import "package:flutter/material.dart";
-
-// Package dependencies
 import "package:simple_animations/simple_animations.dart";
 
-// Project dependencies
 import "curve_painter.dart";
 
 /// A custom wave widget.
@@ -31,10 +27,10 @@ class AnimatedWave extends StatelessWidget {
       return SizedBox(
         height: constraints.biggest.height,
         width: constraints.biggest.width,
-        child: LoopAnimation<double>(
+        child: LoopAnimationBuilder<double>(
           duration: const Duration(seconds: 60),
           tween: Tween<double>(begin: 0, end: 1),
-          builder: (context, child, progress) =>  CustomPaint(
+          builder: (context, progress, child) =>  CustomPaint(
             painter: CurvePainter(scale: scale, progress: progress),
           ),
         ),

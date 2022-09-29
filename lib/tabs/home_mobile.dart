@@ -1,8 +1,6 @@
-// Framework dependencies
 import "package:flutter/material.dart";
 
-// Project dependencies
-import "../widgets/body/body.dart";
+import "../widgets/widgets.dart";
 
 /// The app body as it should
 class HomeMobile extends StatelessWidget {
@@ -22,11 +20,19 @@ class HomeMobile extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Xeppelin"),
       ),
-      body: ListView(
-        shrinkWrap: true,
+      body: Stack(
         children: [
-          MobileProjects(),
-          BodyContentsContact(),
+          // BACKGROUND --------------------------------------------------------
+          const AnimatedBackground(scale: 0.3,),
+
+          // FOREGROUND --------------------------------------------------------
+          ListView(
+            shrinkWrap: true,
+            children: [
+              const MobileProjects(),
+              BodyContentsContact(),
+            ],
+          ),
         ],
       ),
     );

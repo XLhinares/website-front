@@ -1,10 +1,6 @@
-// Flutter dependencies
 import "package:flutter/material.dart";
-
-// Package dependencies
 import "package:x_containers/x_containers.dart";
 
-// Project dependencies
 import "../../../classes/dataclass/project.dart";
 import "../../text/text.dart";
 

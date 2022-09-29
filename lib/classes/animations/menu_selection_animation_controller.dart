@@ -1,4 +1,3 @@
-// Flutter dependencies
 import "package:get/get.dart";
 
 /// A controller for the menu animation.

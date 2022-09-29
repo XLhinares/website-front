@@ -1,7 +1,4 @@
-// Project dependencies
-import "../classes/services/api_service.dart";
-import "../classes/services/settings.dart";
-import "../classes/services/single_page_service.dart";
+import "../classes/services/services.dart";
 
 // SERVICES ====================================================================
 

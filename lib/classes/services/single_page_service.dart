@@ -1,10 +1,8 @@
-// Framework dependencies
 import "dart:async";
 import "package:flutter/animation.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
-// Project dependencies
 import "../dataclass/app_mode.dart";
 import "../../utils/globals.dart";
 

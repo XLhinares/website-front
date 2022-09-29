@@ -1,7 +1,4 @@
-// Flutter dependencies
 import "package:flutter/material.dart";
-
-// Package dependencies
 import "package:x_containers/x_containers.dart";
 
 /// A go-to widget to display when some content was not found.

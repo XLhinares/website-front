@@ -1,12 +1,8 @@
-// Framework dependencies
 import "package:flutter/material.dart";
 import "package:responsive_framework/responsive_framework.dart";
 
-// Package dependencies
 import "home_desktop.dart";
 import "home_mobile.dart";
-
-// Project dependencies
 
 /// The one-page style website that the user navigates on.
 class Home extends StatelessWidget {

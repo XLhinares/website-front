@@ -1,8 +1,5 @@
-// Flutter dependencies
 import "dart:ui";
 import "package:flutter/material.dart";
-
-// Package dependencies
 import "package:get/get.dart";
 
 /// A custom String class carrying style codes that can be used for display.

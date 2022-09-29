@@ -1,10 +1,6 @@
-// Flutter dependencies
 import "package:flutter/material.dart";
-
-// Package dependencies
 import "package:x_containers/x_containers.dart";
 
-// Project dependencies
 import "desktop_title.dart";
 import "cookies_card.dart";
 import "menu_list.dart";

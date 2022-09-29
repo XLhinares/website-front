@@ -1,7 +1,4 @@
-// Framework dependencies
 import "package:flutter/material.dart";
-
-// Package dependencies
 import "package:x_containers/settings/x_layout.dart";
 
 import "../../text/text.dart";

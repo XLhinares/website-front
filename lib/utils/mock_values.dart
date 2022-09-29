@@ -1,7 +1,5 @@
-// Package dependencies
 import "package:get/get.dart";
 
-// Project dependencies
 import "../classes/dataclass/project.dart";
 
 /// A list of projects that's meant to be fetched online in the future.

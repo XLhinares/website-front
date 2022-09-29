@@ -1,16 +1,11 @@
-// Flutter dependencies
 import "package:flutter/material.dart";
-
-// Package dependencies
 import "package:get/get.dart";
 import "package:responsive_framework/responsive_framework.dart";
 import "package:x_containers/x_containers.dart";
 
-// Project dependencies
-import "../../classes/dataclass/project.dart";
-import "../../utils/test.dart";
-import "projects/project_focus.dart";
-import "projects/project_preview.dart";
+import "../../../classes/dataclass/project.dart";
+import "../../../utils/mock_values.dart";
+import "../projects/projects.dart";
 
 /// The content of the body in the "Projects" mode.
 class DesktopProjects extends StatelessWidget {

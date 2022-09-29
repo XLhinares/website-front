@@ -1,7 +1,5 @@
-// Flutter dependencies
 import "package:flutter/material.dart";
 
-// Project dependencies
 import "animated_waves.dart";
 
 /// The main background of the Swallo app.

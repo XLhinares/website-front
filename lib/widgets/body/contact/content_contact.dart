@@ -1,11 +1,7 @@
-// Flutter dependencies
 import "package:flutter/material.dart";
-
-// Package dependencies
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-// Project dependencies
 import "../../text/preset_text.dart";
 import "contact_field.dart";
 
@@ -91,7 +87,12 @@ class BodyContentsContact extends StatelessWidget {
                 XLayout.verticalM,
 
                 XInkContainer(
-                  onTap: () {},
+                  onTap: () {
+                    XSnackbar.text(
+                      title: "Sorry, it doesn't work just yet.",
+                      message: "This should be working by Oct. 1st, so be sure to come back :)"
+                    ).show();
+                  },
                   color: context.theme.colorScheme.secondary,
                   child: const Text("Send"),
                 ),

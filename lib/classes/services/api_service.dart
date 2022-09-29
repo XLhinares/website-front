@@ -1,8 +1,5 @@
-// Framework dependencies
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-
-// Package dependencies
 import "package:x_containers/x_containers.dart";
 
 /// A service that handles all the API requests.

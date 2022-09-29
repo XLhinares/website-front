@@ -12,18 +12,7 @@ class AppMode {
   // GETTERS ===================================================================
 
   /// A short description of the mode.
-  String get description {
-    switch (this) {
-      case (AppMode.home):
-        return "What I am about.";
-      case (AppMode.projects):
-        return "What I have done.";
-      case (AppMode.contact):
-        return "How to contact me.";
-      default:
-        return "NO DESCRIPTION PROVIDED.";
-    }
-  }
+  String get description => "About $name";
 
   /// An icon matching the mode.
   Widget get icon {

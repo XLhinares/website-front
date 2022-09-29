@@ -12,10 +12,24 @@ class CustomTranslations extends Translations {
       // HOME ------------------------------------------------------------------
       "Home description 1": "%bc [Xeppelin]% lifts your projects ;) \nThe website is under construction but don't hesitate to reach out to me via the contact form.",
       // "Home description 1": "%bc [Xeppelin]% is a company dedicated to making websites and apps mixing unique %bc aesthetics% and high %bc productivity%.",
+
+      // MENU ------------------------------------------------------------------
+      "Home": "Home",
+      "About home": "What I am about.",
+      "Projects": "Projects",
+      "About projects": "What I have done.",
+      "Contact": "Contact",
+      "About contact": "How to contact me.",
+
       // PROJECTS --------------------------------------------------------------
 
       // CONTACT ---------------------------------------------------------------
-      "Contact form explanation": "If you have a project or an idea, an inquiry, or just want my resume, feel free to contact me via the form below !",
+      "Contact form": "Contact form",
+      "Contact form explanation": "If you have a project or an idea, an inquiry, or just want my resume, \nfeel free to contact me via the form below !",
+      "Name": "Name",
+      "EMail": "E-mail address",
+      "Subject": "Subject",
+      "Details": "Details",
 
       // OTHER -----------------------------------------------------------------
       "Cookies title": "About cookies",
@@ -26,11 +40,25 @@ class CustomTranslations extends Translations {
     // FRENCH ==================================================================
     "fr": {
       // HOME ------------------------------------------------------------------
-      "Home description 1": "%bc [Xeppelin]% est une entreprise consacrée à la création de site et d'application liant des %bc esthétiques% uniques et une %bc efficacité% maximale.",
+      "Home description 1": "%bc [Xeppelin]% fait décoler vos projets ;) \n\nLe site est en construction mais n'hésitez pas à prendre contact via le formulaire de contact.",
+
+      // MENU ------------------------------------------------------------------
+      "Home": "Accueil",
+      "About home": "Qui je suis.",
+      "Projects": "Projets",
+      "About projects": "Ce que j'ai fait.",
+      "Contact": "Contact",
+      "About contact": "Comment me contacter.",
+
       // PROJECTS --------------------------------------------------------------
 
       // CONTACT ---------------------------------------------------------------
-      "Contact form explanation": "If you have a project or an idea, you can contact me via the form below and we can plan",
+      "Contact form": "Formulaire de contact",
+      "Contact form explanation": "Si vous avez un projet ou une idée, une question, ou que vous voulez simplement voir mon CV, \nn'hésitez pas à prendre contact avec moi via le formulaire ci-dessous.",
+      "Name": "Nom",
+      "EMail": "Adresse mail",
+      "Subject": "Objet",
+      "Details": "Détails",
 
       // OTHER -----------------------------------------------------------------
       "Cookies title": "À propos des cookies.",

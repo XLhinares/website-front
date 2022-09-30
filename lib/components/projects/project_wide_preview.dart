@@ -3,7 +3,7 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../../classes/dataclass/project.dart";
-import "../../text/text.dart";
+import "../../widgets/widgets.dart";
 
 /// A preview of a project.
 class ProjectWidePreview extends StatelessWidget {

@@ -4,7 +4,7 @@ import "package:x_containers/x_containers.dart";
 import "package:auto_size_text/auto_size_text.dart";
 
 import "../../../utils/globals.dart";
-import "../../text/text.dart";
+import "../../widgets/widgets.dart";
 
 /// A card explaining what how this site uses cookies.
 class CookiesCard extends StatelessWidget {

@@ -4,10 +4,8 @@ import "package:get/get.dart";
 // Project dependencies
 import "../../../classes/dataclass/app_mode.dart";
 import "../../../utils/globals.dart";
-import "../../animations/animated_cover.dart";
-import "../contact/content_contact.dart";
-import "desktop_home.dart";
-import "desktop_projects.dart";
+import "../../widgets/widgets.dart";
+import "desktop.dart";
 
 /// What's inside the body. It depends on the current mode.
 class BodyContents extends StatelessWidget {
@@ -24,7 +22,7 @@ class BodyContents extends StatelessWidget {
       case AppMode.projects:
         return DesktopProjects();
       case AppMode.contact:
-        return BodyContact();
+        return const DesktopContact();
       default:
         return Center(
           child: Text("How did we get there?".tr),
@@ -42,7 +40,7 @@ class BodyContents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      children: [
+    children: [
         // CONTENTS ----------------------------------------------------------
         Positioned.fill(
           child: GetBuilder(

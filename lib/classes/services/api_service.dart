@@ -2,6 +2,8 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
+import "../../widgets/widgets.dart";
+
 /// A service that handles all the API requests.
 class APIService extends GetConnect {
 
@@ -18,6 +20,11 @@ class APIService extends GetConnect {
 
   /// A request to test the connection to the API.
   Future<void> test (BuildContext? context) async {
+
+    TextStyle? titleStyle = context == null ? null : PresetStyle.headline.getStyle(context);
+    TextStyle? messageStyle = context == null ? null : PresetStyle.body.getStyle(context);
+    Color color = context?.theme.colorScheme.background ?? Colors.black12;
+
     try {
 
       String uri = "https://catfact.ninja/fact";
@@ -26,9 +33,11 @@ class APIService extends GetConnect {
       printInfo(info: r.body);
 
       XSnackbar.text(
-        title: "It worked!",
-        message: "Have a cat fact:\n\n${r.body}",
-        color: context?.theme.colorScheme.background ?? Colors.black12,
+        title: "Test success".tr,
+        message: "${"Test success message".tr}\n\n${r.body}",
+        titleStyle: titleStyle,
+        messageStyle: messageStyle,
+        color: color,
       ).show();
 
     } catch (e) {
@@ -36,9 +45,11 @@ class APIService extends GetConnect {
 
 
       XSnackbar.text(
-        title: "It failed :/",
-        message: "Mucho triste...",
-        color: context?.theme.colorScheme.background ?? Colors.black12,
+        title: "Test failure".tr,
+        message: "Test failure message".tr,
+        titleStyle: titleStyle,
+        messageStyle: messageStyle,
+        color: color,
       ).show();
       rethrow;
     }

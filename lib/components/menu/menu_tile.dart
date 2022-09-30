@@ -4,7 +4,7 @@ import "package:x_containers/x_containers.dart";
 
 import "../../../classes/dataclass/app_mode.dart";
 import "../../../utils/globals.dart";
-import "../../widgets.dart";
+import "../../widgets/widgets.dart";
 
 /// A tile displaying one menu element.
 class MenuTile extends StatelessWidget {

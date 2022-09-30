@@ -3,7 +3,8 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../../utils/mock_values.dart";
-import "../../widgets.dart";
+import "../../widgets/widgets.dart";
+import "../components.dart";
 
 /// The "project" tab adapted for mobile.
 class MobileProjects extends StatelessWidget {

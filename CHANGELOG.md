@@ -1,8 +1,13 @@
+### 1.2.2 
+
+- Refactored: Split widgets and components folders.
+- Updated: the mobile handling of the contact section.
+
 ### 1.2.1 
 
 - Updated: the contact form behaves better on user input.
 - Updated: the localisation to cover the existing content.
-- Reworked: the linting used for imports.
+- Refactored: the linting used for imports.
 
 ## 1.2.0 
 

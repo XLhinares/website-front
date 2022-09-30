@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 
 import "../widgets/widgets.dart";
+import "../components/components.dart";
 
 /// The app body as it should
 class HomeMobile extends StatelessWidget {
@@ -28,9 +29,9 @@ class HomeMobile extends StatelessWidget {
           // FOREGROUND --------------------------------------------------------
           ListView(
             shrinkWrap: true,
-            children: [
-              const MobileProjects(),
-              BodyContact(),
+            children: const [
+              MobileProjects(),
+              MobileContact(),
             ],
           ),
         ],

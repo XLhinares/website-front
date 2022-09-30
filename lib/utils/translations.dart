@@ -35,6 +35,11 @@ class CustomTranslations extends Translations {
       // OTHER -----------------------------------------------------------------
       "Cookies title": "About cookies",
       "Cookies description": "This site only uses functional cookies. They are used to remember your preferred language and theme.",
+      "Test success": "It worked!",
+      "Test success message": "Have a cat fact:",
+      "Test failure": "It failed :/",
+      "Test failure message": "Mucho triste...",
+
       "lorem ipsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 
     },
@@ -65,6 +70,10 @@ class CustomTranslations extends Translations {
       // OTHER -----------------------------------------------------------------
       "Cookies title": "À propos des cookies.",
       "Cookies description": "Ce site utilise uniquement des cookies fonctionnels. Ils sont utilisés pour retenir vos langages et thèmes préférés.",
+      "Test success": "Ça marche!",
+      "Test success message": "Vous gagnez une fact sur les chats (en anglais):",
+      "Test failure": "Le test a échoué :/",
+      "Test failure message": "Mucho triste...",
       "lorem ipsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     }
   };

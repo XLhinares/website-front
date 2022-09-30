@@ -3,7 +3,7 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../../utils/globals.dart";
-import "../../widgets.dart";
+import "../../widgets/widgets.dart";
 
 /// An animated title for the body.
 class BodyTitle extends StatelessWidget {

@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:x_containers/settings/x_layout.dart";
 
-import "../../text/text.dart";
+import "../../widgets/widgets.dart";
 
 /// A single field for the contact form.
 class ContactField extends StatelessWidget {
@@ -22,9 +22,6 @@ class ContactField extends StatelessWidget {
   /// It impacts the height of the box.
   final int maxLines;
 
-  /// The focus node matching this field.
-  final FocusNode focusNode;
-
   /// What to do when the user presses the input button.
   final TextInputAction? textInputAction;
 
@@ -36,7 +33,6 @@ class ContactField extends StatelessWidget {
     super.key,
     required this.title,
     required this.controller,
-    required this.focusNode,
     this.validator,
     this.maxLines = 1,
     this.textInputAction = TextInputAction.next,
@@ -51,7 +47,6 @@ class ContactField extends StatelessWidget {
       validator: validator,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       maxLines: maxLines,
-      focusNode: focusNode,
       textInputAction: textInputAction,
       style: PresetStyle.body.getStyle(context),
       decoration: const InputDecoration().copyWith(

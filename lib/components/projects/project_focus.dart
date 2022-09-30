@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../../classes/dataclass/project.dart";
-import "../../text/text.dart";
+import "../../widgets/widgets.dart";
 
 /// A detailed view of a project.
 class ProjectFocus extends StatelessWidget {

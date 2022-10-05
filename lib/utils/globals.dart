@@ -1,7 +1,4 @@
-// Project dependencies
-import "package:website_front/classes/services/api_service.dart";
-import "package:website_front/classes/services/settings.dart";
-import "package:website_front/classes/services/single_page_service.dart";
+import "../classes/services/services.dart";
 
 // SERVICES ====================================================================
 
@@ -27,7 +24,7 @@ const Duration animDurationShort = Duration(milliseconds: 200);
 /// The default duration for long animations.
 ///
 /// It is typically used by the sps mode switching animations.
-const Duration animDurationLong = Duration(milliseconds: 1000);
+const Duration animDurationLong = Duration(milliseconds: 750);
 
 // UTILS -----------------------------------------------------------------------
 

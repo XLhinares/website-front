@@ -1,11 +1,10 @@
-// Flutter dependencies
 import "dart:async";
 import "package:flutter/material.dart";
-
-// Package dependencies
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
-import "package:website_front/utils/globals.dart";
+
+import "../widgets/text/preset_text.dart";
+import "../utils/globals.dart";
 
 // Project dependencies
 
@@ -47,9 +46,8 @@ class Splash extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      "Préparation de l'appli.",
-                      style: context.textTheme.bodyMedium,
+                    PresetText.body(
+                      "Loading the app...".tr,
                     ),
                     XLayout.verticalM,
                     CircularProgressIndicator(

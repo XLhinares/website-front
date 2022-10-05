@@ -1,8 +1,5 @@
-// Flutter dependencies
 import "dart:ui";
 import "package:flutter/material.dart";
-
-// Package dependencies
 import "package:get/get.dart";
 
 /// A custom String class carrying style codes that can be used for display.
@@ -55,7 +52,7 @@ class AutoColorText extends StatelessWidget {
   /// The color of colored text.
   ///
   /// By default it takes the theme's secondary color.
-  final Color? specialColor;
+  final Color? highlightColor;
 
   // GETTERS ===================================================================
 
@@ -136,7 +133,7 @@ class AutoColorText extends StatelessWidget {
   const AutoColorText(this.text, {
     Key? key,
     this.defaultStyle,
-    this.specialColor,
+    this.highlightColor,
   }) : super(key: key);
 
   // BUILD =====================================================================

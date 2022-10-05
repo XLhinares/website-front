@@ -1,17 +1,14 @@
-// Flutter dependencies
 import "package:flutter/material.dart";
-
-// Package dependencies
 import "package:get/get.dart";
 import "package:get_storage/get_storage.dart";
+import "package:responsive_framework/responsive_framework.dart";
 import "package:x_containers/x_containers.dart";
 
-// Project dependencies
-import "package:website_front/tabs/splash.dart";
-import "package:website_front/tabs/home.dart";
-import "package:website_front/utils/globals.dart";
-import "package:website_front/utils/theme.dart";
-import "package:website_front/utils/translations.dart";
+import "classes/dataclass/app_mode.dart";
+import "tabs/tabs.dart";
+import "utils/globals.dart";
+import "utils/theme.dart";
+import "utils/translations.dart";
 
 void main() async {
 
@@ -29,14 +26,14 @@ void main() async {
 
   xTheme.set(
     // paddingValue: XLayout.paddingM,
-    padding: EdgeInsets.all(XLayout.paddingS)
+      padding: EdgeInsets.all(XLayout.paddingS)
   );
 
   // Run -----------------------------------------------------------------------
   runApp(GetMaterialApp(
 
     // Meta
-    title: "Xequiche",
+    title: "Xeppelin",
 
     // Localization
     translations: CustomTranslations(),
@@ -51,7 +48,56 @@ void main() async {
     getPages: [
       GetPage<Splash>(name: "/", page: () => Splash()),
       GetPage<Home>(name: "/home", page: () => const Home()),
+      GetPage<Home>(name: "/projects", page: () {
+        sps.goTo(AppMode.projects);
+        return const Home();
+      }),
+      GetPage<Home>(name: "/contact", page: () {
+        sps.goTo(AppMode.contact);
+        return const Home();
+      }),
     ],
+
+    onGenerateRoute: (RouteSettings routeSettings) {
+      // HOME
+      if (routeSettings.name == AppMode.home.name) {
+        sps.goTo(AppMode.home);
+        return MaterialPageRoute(
+          settings: routeSettings,
+          builder: (context) => const Home(),
+        );
+      }
+      // PROJECT
+      if (routeSettings.name == AppMode.projects.name) {
+        sps.goTo(AppMode.projects);
+        return MaterialPageRoute(
+          settings: routeSettings,
+          builder: (context) => const Home(),
+        );
+      }
+      // CONTACT
+      if (routeSettings.name == AppMode.contact.name) {
+        sps.goTo(AppMode.contact);
+        return MaterialPageRoute(
+          settings: routeSettings,
+          builder: (context) => const Home(),
+        );
+      }
+      return null;
+    },
+
+    // Responsive
+    builder: (context, child) => ResponsiveWrapper.builder(
+      child,
+      minWidth: 480,
+      defaultScale: true,
+      breakpoints: const [
+        ResponsiveBreakpoint.resize(480, name: MOBILE),
+        ResponsiveBreakpoint.autoScale(800, name: TABLET),
+        ResponsiveBreakpoint.resize(1000, name: DESKTOP),
+      ],
+    ),
+
 
   ));
 }

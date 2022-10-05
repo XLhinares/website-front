@@ -1,7 +1,4 @@
-// Flutter dependencies
 import "package:flutter/material.dart";
-
-// Package dependencies
 import "package:x_containers/x_containers.dart";
 import "package:flutter_svg/flutter_svg.dart";
 

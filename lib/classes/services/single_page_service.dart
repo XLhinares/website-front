@@ -1,13 +1,10 @@
-// Flutter dependencies
 import "dart:async";
 import "package:flutter/animation.dart";
-
-// Package dependencies
+import "package:flutter/material.dart";
 import "package:get/get.dart";
 
-// Project dependencies
-import "package:website_front/classes/services/app_mode.dart";
-import "package:website_front/utils/globals.dart";
+import "../dataclass/app_mode.dart";
+import "../../utils/globals.dart";
 
 /// A service managing the state of the app.
 class SinglePageService extends GetxController with GetTickerProviderStateMixin {
@@ -50,11 +47,8 @@ class SinglePageService extends GetxController with GetTickerProviderStateMixin 
   ///
   /// It is called exactly once and contains the instantiation logic.
   SinglePageService._internal() {
-
     // INITIAL VALUES ----------------------------------------------------------
-
     _mode = AppMode.home;
-
   }
 
   // METHODS ===================================================================

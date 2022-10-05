@@ -1,3 +1,25 @@
+## 1.3.0
+- Updated: Link to API.
+- Updated: Better handling of mobile resolutions.
+- Updated: Publishing scripts.
+
+### 1.2.2 
+
+- Refactored: Split widgets and components folders.
+- Updated: the mobile handling of the contact section.
+
+### 1.2.1 
+
+- Updated: the contact form behaves better on user input.
+- Updated: the localisation to cover the existing content.
+- Refactored: the linting used for imports.
+
+## 1.2.0 
+
+- Reworked: The way text styles were handled.
+- Reworked: The responsivity of the app.
+- Added: A display strategy for mobile devices.
+
 ### 1.1.2 
 
 - Added: The base structure for API requests.

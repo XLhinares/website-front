@@ -1,13 +1,10 @@
-// Flutter dependencies
 import "package:flutter/material.dart";
-
-// Package dependencies
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-// Project dependencies
-import "package:website_front/utils/globals.dart";
-import "package:website_front/widgets/interactables/circular_button.dart";
+import "../../utils/globals.dart";
+import "../text/preset_text.dart";
+import "circular_button.dart";
 
 /// The different buttons that allow the using to change some settings.
 class Buttons extends StatelessWidget {
@@ -26,38 +23,27 @@ class Buttons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(XLayout.paddingM),
-      child: Column(
-        children: [
-          const Expanded(child: SizedBox(),),
-          Row(
-            children: [
+    return Row(
+      children: [
 
-              // DARK THEME ----------------------------------------------------
-              Obx(() => CircularButton(
-                size: buttonSize,
-                onTap: () => settings.toggleTheme(),
-                icon: settings.darkTheme.value
-                    ? Icons.light_mode_outlined
-                    : Icons.mode_night,
-              ),),
+        // DARK THEME ----------------------------------------------------
+        Obx(() => CircularButton(
+          size: buttonSize,
+          onTap: () => settings.toggleTheme(),
+          icon: settings.darkTheme.value
+              ? Icons.light_mode_outlined
+              : Icons.mode_night,
+        ),),
 
-              XLayout.horizontalM,
+        XLayout.horizontalM,
 
-              // LOCALE --------------------------------------------------------
-              CircularButton(
-                size: buttonSize,
-                onTap: settings.rotateLocale,
-                child: Obx(() => Text(
-                  settings.locale.value.capitalize!,
-                  style: context.textTheme.titleMedium,
-                ),),
-              ),
-            ],
-          ),
-        ],
-      ),
+        // LOCALE --------------------------------------------------------
+        CircularButton(
+          size: buttonSize,
+          onTap: settings.rotateLocale,
+          child: Obx(() => PresetText.title(settings.locale.value.capitalize!,),),
+        ),
+      ],
     );
   }
 

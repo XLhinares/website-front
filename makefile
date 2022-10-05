@@ -22,8 +22,17 @@ help:
 	{ lastLine = $$0 }' $(MAKEFILE_LIST)
 
 ## Initializes build/web/ as a clone of the [website-build] repository.
+init-build:
+	@ ./scripts/init_build.sh
+
+## Reconfigures the production remote.
+init-remote:
+	@ ./scripts/init_remote.sh
+
+## Re-initializes the repository and connects it to the remote.
 init:
-	@ ./scripts/init_publish.sh
+	@ make init-build
+	@ make init-remote
 
 ## Pushes the latest build to the [website-build] repository.
 publish:
@@ -37,3 +46,5 @@ build-web:
 build-and-publish:
 	@ make build-web
 	@ make publish
+
+

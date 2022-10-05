@@ -18,7 +18,7 @@ class BodyContents extends StatelessWidget {
   Widget get _contents {
     switch (sps.mode) {
       case AppMode.home:
-        return const BodyContentsHome();
+        return const DesktopHome();
       case AppMode.projects:
         return DesktopProjects();
       case AppMode.contact:

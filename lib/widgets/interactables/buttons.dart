@@ -23,35 +23,27 @@ class Buttons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(XLayout.paddingM),
-      child: Column(
-        children: [
-          const Expanded(child: SizedBox(),),
-          Row(
-            children: [
+    return Row(
+      children: [
 
-              // DARK THEME ----------------------------------------------------
-              Obx(() => CircularButton(
-                size: buttonSize,
-                onTap: () => settings.toggleTheme(),
-                icon: settings.darkTheme.value
-                    ? Icons.light_mode_outlined
-                    : Icons.mode_night,
-              ),),
+        // DARK THEME ----------------------------------------------------
+        Obx(() => CircularButton(
+          size: buttonSize,
+          onTap: () => settings.toggleTheme(),
+          icon: settings.darkTheme.value
+              ? Icons.light_mode_outlined
+              : Icons.mode_night,
+        ),),
 
-              XLayout.horizontalM,
+        XLayout.horizontalM,
 
-              // LOCALE --------------------------------------------------------
-              CircularButton(
-                size: buttonSize,
-                onTap: settings.rotateLocale,
-                child: Obx(() => PresetText.title(settings.locale.value.capitalize!,),),
-              ),
-            ],
-          ),
-        ],
-      ),
+        // LOCALE --------------------------------------------------------
+        CircularButton(
+          size: buttonSize,
+          onTap: settings.rotateLocale,
+          child: Obx(() => PresetText.title(settings.locale.value.capitalize!,),),
+        ),
+      ],
     );
   }
 

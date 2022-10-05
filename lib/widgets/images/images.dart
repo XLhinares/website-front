@@ -1,1 +1,1 @@
-export "xequiche_logo.dart";
+export "xeppelin_logo.dart";

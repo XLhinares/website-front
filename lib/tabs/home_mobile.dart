@@ -28,8 +28,10 @@ class HomeMobile extends StatelessWidget {
 
           // FOREGROUND --------------------------------------------------------
           ListView(
+            physics: const BouncingScrollPhysics(),
             shrinkWrap: true,
             children: const [
+              MobileHome(),
               MobileProjects(),
               MobileContact(),
             ],

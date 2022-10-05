@@ -1,3 +1,8 @@
+## 1.3.0
+- Updated: Link to API.
+- Updated: Better handling of mobile resolutions.
+- Updated: Publishing scripts.
+
 ### 1.2.2 
 
 - Refactored: Split widgets and components folders.

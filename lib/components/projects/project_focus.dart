@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../../classes/dataclass/project.dart";
+import "../../../classes/dataclass/project_preview.dart";
 import "../../widgets/widgets.dart";
 
 /// A detailed view of a project.
@@ -10,7 +10,7 @@ class ProjectFocus extends StatelessWidget {
   // VARIABLES =================================================================
 
   /// The project in question.
-  final Project project;
+  final ProjectPreview project;
 
   /// The behavior when the "back" button is tapped.
   final void Function()? onBack;
@@ -58,7 +58,7 @@ class ProjectFocus extends StatelessWidget {
             borderRadius: XLayout.brcXS,
             child: AspectRatio(
               aspectRatio: 4,
-              child: project.image,
+              child: project.preview,
             ),
           ),
         ),
@@ -78,7 +78,7 @@ class ProjectFocus extends StatelessWidget {
                   height: double.infinity,
                   child: ClipRRect(
                     borderRadius: XLayout.brcXS,
-                    child: project.image,
+                    child: project.preview,
                   ),
                 ),
               ),
@@ -89,7 +89,7 @@ class ProjectFocus extends StatelessWidget {
                 flex: 3,
                 child: XContainer(
                   padding: EdgeInsets.all(XLayout.paddingL),
-                  child: Text(project.description,),
+                  child: Text(project.summary,),
                 ),
               ),
             ],

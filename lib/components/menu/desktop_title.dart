@@ -35,7 +35,7 @@ class BodyTitle extends StatelessWidget {
                   ? const SizedBox()
                   : Padding(
                 padding: EdgeInsets.only(right: XLayout.paddingXS),
-                child: XequicheLogo(
+                child: XeppelinLogo(
                   size: 2 * XLayout.paddingL,
                 )
               ),

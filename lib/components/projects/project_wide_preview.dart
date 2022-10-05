@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../../classes/dataclass/project.dart";
+import "../../../classes/dataclass/project_preview.dart";
 import "../../widgets/widgets.dart";
 
 /// A preview of a project.
@@ -11,7 +11,7 @@ class ProjectWidePreview extends StatelessWidget {
   // VARIABLES =================================================================
 
   /// The project being previewed.
-  final Project project;
+  final ProjectPreview project;
 
   /// The behavior when the box is tapped.
   final void Function()? onTap;
@@ -41,13 +41,7 @@ class ProjectWidePreview extends StatelessWidget {
 
               // IMAGE -------------------------------------------------------------
               Positioned(
-                child: ColorFiltered(
-                    colorFilter: const ColorFilter.mode(
-                      Colors.black26,
-                      BlendMode.darken,
-                    ),
-                    child: project.preview
-                ),
+                child: project.preview,
               ),
 
               Positioned.fill(

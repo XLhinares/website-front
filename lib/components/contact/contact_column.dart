@@ -3,13 +3,16 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../widgets/widgets.dart";
+import "../../utils/globals.dart";
+import "../../utils/tools.dart";
 import "contact_field.dart";
 
 /// The traversable column which contains all the contact fields.
 class ContactColumn extends StatelessWidget {
 
   // VARIABLES =================================================================
+
+  final GlobalKey<FormState> _formKey = GlobalKey();
 
   /// The controller managing the "name" field.
   final TextEditingController _controllerName = TextEditingController();
@@ -31,62 +34,106 @@ class ContactColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     return FocusTraversalGroup(
       policy: OrderedTraversalPolicy(),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
+      child: Form(
+        key: _formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
 
-          ContactField(
-            title: "Name".tr,
-            controller: _controllerName,
-          ),
+            ContactField(
+              title: "Name".tr,
+              controller: _controllerName,
+            ),
 
-          XLayout.verticalM,
+            XLayout.verticalM,
 
-          ContactField(
-            title: "Email".tr,
-            controller: _controllerEmail,
-            validator: (value) => GetUtils.isEmail(value ?? "")
-                ? null
-                : "Email validation".tr,
-          ),
+            ContactField(
+              title: "Email".tr,
+              controller: _controllerEmail,
+              validator: (value) => GetUtils.isEmail(value ?? "")
+                  ? null
+                  : "Email validation".tr,
+            ),
 
-          XLayout.verticalM,
+            XLayout.verticalM,
 
-          ContactField(
-            title: "Subject".tr,
-            controller: _controllerSubject,
-          ),
+            ContactField(
+              title: "Subject".tr,
+              controller: _controllerSubject,
+            ),
 
-          XLayout.verticalM,
+            XLayout.verticalM,
 
-          ContactField(
-            title: "Details".tr,
-            maxLines: 10,
-            controller: _controllerDetails,
-            textInputAction: null,
-          ),
+            ContactField(
+              title: "Details".tr,
+              maxLines: 10,
+              controller: _controllerDetails,
+              textInputAction: null,
+            ),
 
-          XLayout.verticalM,
+            XLayout.verticalM,
 
-          XInkContainer(
-            onTap: () {
-              XSnackbar.text(
-                title: "Sorry, it doesn't work just yet.",
-                message: "This should be working by Oct. 1st, so be sure to come back :)",
-                titleStyle: PresetStyle.headline.getStyle(context),
-                messageStyle: PresetStyle.body.getStyle(context),
-              ).show();
-            },
-            color: context.theme.colorScheme.secondary,
-            child: const Text("Send"),
-          ),
+            XInkContainer(
+              onTap: sendEmail,
+              // onTap: sendEmail,
+              color: context.theme.colorScheme.secondary,
+              child: const Text("Send"),
+            ),
 
-        ],
+          ],
+        ),
       ),
     );
   }
 
   // METHODS ===================================================================
+
+  /// Send an email with the given info to the support.
+  Future<void> sendEmail () async => tryWrapper(() async {
+
+    // Aborts if all the fields are not valid.
+    if (!(_formKey.currentState?.validate() ?? false)) return;
+
+    bool success = await api.sendSupportMail(
+      name: _controllerName.text,
+      email: _controllerEmail.text,
+      subject: _controllerSubject.text,
+      details: _controllerDetails.text,
+    );
+
+    if (success) {
+      XSnackbar.text(
+        title: "Email sent.".tr,
+        message: "I'll get back to you as soon as possible :)".tr,
+        titleStyle: Get.context?.textTheme.headlineMedium,
+        messageStyle: Get.context?.textTheme.bodyMedium,
+        maxWidth: 1024,
+      ).show();
+    } else {
+      XSnackbar.text(
+        title: "There was an error.".tr,
+        message: "Please try again later.".tr,
+        titleStyle: Get.context?.textTheme.headlineMedium,
+        messageStyle: Get.context?.textTheme.bodyMedium,
+        maxWidth: 1024,
+      ).show();
+    }
+
+  },
+    errorMessage: "There was an error while sending the mail.",
+    then: (success) {
+
+      if (success) return;
+
+      XSnackbar.text(
+        title: "Could not send the email.".tr,
+        message: "There was an error, please try again later.".tr,
+        titleStyle: Get.context?.textTheme.headlineMedium,
+        messageStyle: Get.context?.textTheme.bodyMedium,
+        maxWidth: 1024,
+      ).show();
+    },
+  );
 
 }

@@ -21,38 +21,53 @@ class HomeDesktop extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
+          // BACKGROUND --------------------------------------------------------
+          const Positioned.fill(
+            child: AnimatedBackground(scale: 0.2,),
+          ),
+
+          // MAIN --------------------------------------------------------------
           Positioned.fill(
             child: FrameFit(
-            // BACKGROUND ------------------------------------------------------------
-            // background: Image.asset("background/skyrider.png",
-            //   height: Get.height,
-            //   fit: BoxFit.cover,
-            // ),
-            background: const AnimatedBackground(scale: 0.2,),
-            padding: EdgeInsets.all(XLayout.paddingM),
-            child: Flex(
-              direction: Axis.horizontal,
+              padding: EdgeInsets.all(XLayout.paddingM),
+              child: Flex(
+                direction: Axis.horizontal,
+                children: [
+
+                  // TITLE -----------------------------------------------------
+                  const Flexible(
+                    flex: 3,
+                    child: BodyMenu(),
+                  ),
+
+                  XLayout.horizontalM,
+
+                  // CONTENTS --------------------------------------------------
+                  const Flexible(
+                    flex: 8,
+                    child: BodyContents(),
+                  ),
+
+                ],
+              ),
+            ),
+          ),
+
+          // FLOATING ----------------------------------------------------------
+          Positioned.fill(
+            bottom: XLayout.paddingM,
+            left: XLayout.paddingM,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
-                // TITLE -----------------------------------------------------------
-                const Flexible(
-                  flex: 3,
-                  child: BodyMenu(),
-                ),
-
-                XLayout.horizontalM,
-
-                // CONTENTS --------------------------------------------------------
-                const Flexible(
-                  flex: 8,
-                  child: BodyContents(),
-                ),
-
+                const Expanded(child: SizedBox(),),
+                Buttons(),
+                XLayout.verticalS,
+                const VersionNumber(),
               ],
             ),
           ),
-          ),
-          Positioned.fill(bottom: 0, left: 0, child: Buttons(),),
         ],
       ),
     );

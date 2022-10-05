@@ -2,24 +2,24 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../../classes/dataclass/project.dart";
+import "../../../classes/dataclass/project_preview.dart";
 import "../../widgets/widgets.dart";
 
 /// A preview of a project.
-class ProjectPreview extends StatelessWidget {
+class ProjectPreviewer extends StatelessWidget {
 
   // VARIABLES =================================================================
 
   /// The project being previewed.
-  final Project project;
+  final ProjectPreview project;
 
   /// The behavior when the box is tapped.
   final void Function()? onTap;
 
   // CONSTRUCTOR ===============================================================
 
-  /// Returns an instance of [ProjectPreview] matching the given parameters.
-  const ProjectPreview({
+  /// Returns an instance of [ProjectPreviewer] matching the given parameters.
+  const ProjectPreviewer({
     super.key,
     required this.project,
     this.onTap

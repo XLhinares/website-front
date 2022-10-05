@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
 import "package:flutter_svg/flutter_svg.dart";
 
-/// The [Xequiche] logo.
-class XequicheLogo extends StatelessWidget {
+/// The [Xeppelin] logo.
+class XeppelinLogo extends StatelessWidget {
 
   // VARIABLES =================================================================
 
@@ -18,8 +18,8 @@ class XequicheLogo extends StatelessWidget {
 
   // CONSTRUCTOR ===============================================================
 
-  /// Returns an instance of [XequicheLogo] matching the given parameters.
-  const XequicheLogo({
+  /// Returns an instance of [XeppelinLogo] matching the given parameters.
+  const XeppelinLogo({
     super.key,
     this.size,
     this.fit = BoxFit.contain,

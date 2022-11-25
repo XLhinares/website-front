@@ -1,8 +1,11 @@
+import "dart:convert";
+
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
+import "../../utils/globals.dart";
 import "../../utils/tools.dart";
 import "../../widgets/widgets.dart";
 import "../dataclass/project_preview.dart";
@@ -33,6 +36,8 @@ class APIService extends GetConnect {
     } else {
       _baseUrl = "https://www.xeppelin.org";
     }
+
+    printInfo(info: "API Service initialized with base url: $_baseUrl");
   }
 
   // @override
@@ -58,7 +63,7 @@ class APIService extends GetConnect {
       final Response response = await get(uri);
 
       XSnackbar.text(
-        title: "Test success".tr,
+        title: "$versionNumber - ${"Test success".tr}",
         message: "${"Test success message".tr}\n\n${response.body}",
         titleStyle: titleStyle,
         messageStyle: messageStyle,
@@ -84,16 +89,16 @@ class APIService extends GetConnect {
   Future<List<ProjectPreview>> getProjects ({int limit = -1}) async
   => tryWrapper<List<ProjectPreview>>(() async {
 
-    final response = await get("http://localhost:3000/api/projects/all?limit=$limit");
-    printInfo(info: "CODE: ${response.statusCode}");
-    printInfo(info: "BODY: ${response.body as List}");
+        final response = await get("$api/projects/all?limit=$limit");
+        printInfo(info: "CODE: ${response.statusCode}");
+        printInfo(info: "BODY: ${response.body as List}");
 
-    List<Map<String, dynamic>> parsedResponse = List<Map<String, dynamic>>.from(response.body);
+        List<Map<String, dynamic>> parsedResponse = List<Map<String, dynamic>>.from(response.body);
 
-    printInfo(info: parsedResponse[0].toString());
+        printInfo(info: parsedResponse[0].toString());
 
-    return parsedResponse.map((e) => ProjectPreview.fromJson(e)).toList();
-  });
+        return parsedResponse.map((e) => ProjectPreview.fromJson(e)).toList();
+      });
 
 
   /// Sends a mail to the support.
@@ -104,14 +109,17 @@ class APIService extends GetConnect {
     required String details,
   }) => tryWrapper(() async {
 
-    Map<String, String> body = {
+    String body = json.encode({
       "name": name,
       "email": email,
       "subject": subject,
       "details": details,
-    };
+    });
 
-    Response response = await post("$api/mail/support", body);
+    Response response = await post("$api/mail/support",
+      body,
+      headers: {},
+    );
     printInfo(info: "$api/mail/support");
     printInfo(info: response.statusCode.toString());
     return response.statusCode == 200;

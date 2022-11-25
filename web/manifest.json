@@ -1,11 +1,11 @@
 {
-    "name": "website_front",
-    "short_name": "website_front",
+    "name": "Xeppelin",
+    "short_name": "Xeppelin",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Xeppelin lifts your projects. Our goal is to create unique and interesting projects with you. Contact us so we may work together to bring your website or mobile app ideas into fruition.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

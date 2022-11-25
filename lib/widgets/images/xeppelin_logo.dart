@@ -1,6 +1,8 @@
 import "package:flutter/material.dart";
 import "package:flutter_svg/flutter_svg.dart";
 
+import "../../utils/globals.dart";
+
 /// The [Xeppelin] logo.
 class XeppelinLogo extends StatelessWidget {
 
@@ -29,7 +31,7 @@ class XeppelinLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.asset("logo.svg",
+    return SvgPicture.network("${api.assets}/logo.svg",
       width: size,
       height: size,
       fit: fit,

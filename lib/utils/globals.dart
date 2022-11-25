@@ -11,12 +11,15 @@ APIService api = APIService();
 /// A service that manages the preferences of the user.
 Settings settings = Settings();
 
-// VARIABLES ===================================================================
+// CONSTANTS ===================================================================
+
+/// The version of the app.
+const String versionNumber = "v1.2.3";
 
 /// The default ratio of horizontal extent over the vertical.
 const double frameRatio = 1.5;
 
-// ANIMATIONS ==================================================================
+// ANIMATIONS ------------------------------------------------------------------
 
 /// The default duration of animations in the app.
 const Duration animDurationShort = Duration(milliseconds: 200);

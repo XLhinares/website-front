@@ -1,4 +1,11 @@
+### 1.3.1
+
+- Added: Website name and description.
+- Added: Hardcoded version number for debugging.
+- Added: favicon.png
+
 ## 1.3.0
+
 - Updated: Link to API.
 - Updated: Better handling of mobile resolutions.
 - Updated: Publishing scripts.

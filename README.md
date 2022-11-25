@@ -1,6 +1,8 @@
-# website_front
+# Xeppelin
 
-A new Flutter project.
+Xeppelin lifts your projects. 
+Our goal is to create unique and interesting projects with you. 
+Contact us so we may work together to bring your website or mobile app ideas into fruition.
 
 ## Getting Started
 

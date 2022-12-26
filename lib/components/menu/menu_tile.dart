@@ -8,7 +8,6 @@ import "../../widgets/widgets.dart";
 
 /// A tile displaying one menu element.
 class MenuTile extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   /// The mode this [MenuTile] is about.

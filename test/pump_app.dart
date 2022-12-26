@@ -13,8 +13,7 @@ import "package:website_front/utils/theme.dart";
 import "package:website_front/utils/translations.dart";
 
 /// A utility to pump the full app without having to rewrite it every time.
-Future<void> pumpApp (WidgetTester tester) async {
-
+Future<void> pumpApp(WidgetTester tester) async {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   // Memory --------------------------------------------------------------------

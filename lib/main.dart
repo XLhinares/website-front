@@ -11,7 +11,6 @@ import "utils/theme.dart";
 import "utils/translations.dart";
 
 void main() async {
-
   // Utils ---------------------------------------------------------------------
 
   await GetStorage.init();
@@ -25,13 +24,11 @@ void main() async {
   // Theme ---------------------------------------------------------------------
 
   xTheme.set(
-    // paddingValue: XLayout.paddingM,
-      padding: EdgeInsets.all(XLayout.paddingS)
-  );
+      // paddingValue: XLayout.paddingM,
+      padding: EdgeInsets.all(XLayout.paddingS));
 
   // Run -----------------------------------------------------------------------
   runApp(GetMaterialApp(
-
     // Meta
     title: "Xeppelin",
 
@@ -48,14 +45,18 @@ void main() async {
     getPages: [
       GetPage<Splash>(name: "/", page: () => Splash()),
       GetPage<Home>(name: "/home", page: () => const Home()),
-      GetPage<Home>(name: "/projects", page: () {
-        sps.goTo(AppMode.projects);
-        return const Home();
-      }),
-      GetPage<Home>(name: "/contact", page: () {
-        sps.goTo(AppMode.contact);
-        return const Home();
-      }),
+      GetPage<Home>(
+          name: "/projects",
+          page: () {
+            sps.goTo(AppMode.projects);
+            return const Home();
+          }),
+      GetPage<Home>(
+          name: "/contact",
+          page: () {
+            sps.goTo(AppMode.contact);
+            return const Home();
+          }),
     ],
 
     onGenerateRoute: (RouteSettings routeSettings) {
@@ -97,7 +98,5 @@ void main() async {
         ResponsiveBreakpoint.resize(1000, name: DESKTOP),
       ],
     ),
-
-
   ));
 }

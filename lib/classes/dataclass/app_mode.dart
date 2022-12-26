@@ -3,7 +3,6 @@ import "package:x_containers/x_containers.dart";
 
 /// Representation of a "mode" (pretty much the top-level state of the app).
 class AppMode {
-
   // VARIABLES =================================================================
 
   /// The name of the mode.
@@ -16,14 +15,14 @@ class AppMode {
 
   /// An icon matching the mode.
   Widget get icon {
-
     late final IconData icon;
 
     if (this == AppMode.home) icon = Icons.home;
     if (this == AppMode.projects) icon = Icons.gesture;
     if (this == AppMode.contact) icon = Icons.contact_mail;
 
-    return Icon(icon,
+    return Icon(
+      icon,
       size: XLayout.paddingL,
     );
   }
@@ -54,5 +53,4 @@ class AppMode {
         throw Exception("App mode '$name' doesn't exist.");
     }
   }
-
 }

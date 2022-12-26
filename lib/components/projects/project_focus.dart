@@ -6,7 +6,6 @@ import "../../widgets/widgets.dart";
 
 /// A detailed view of a project.
 class ProjectFocus extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   /// The project in question.
@@ -18,11 +17,7 @@ class ProjectFocus extends StatelessWidget {
   // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [ProjectFocus] matching the given parameters.
-  const ProjectFocus({
-    super.key,
-    required this.project,
-    this.onBack
-  });
+  const ProjectFocus({super.key, required this.project, this.onBack});
 
   // BUILD =====================================================================
 
@@ -30,7 +25,6 @@ class ProjectFocus extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-
         // TITLE ---------------------------------------------------------------
         XContainer(
           child: Row(
@@ -41,7 +35,9 @@ class ProjectFocus extends StatelessWidget {
               ),
               Expanded(
                 child: Center(
-                  child: PresetText.headline(project.name,),
+                  child: PresetText.headline(
+                    project.name,
+                  ),
                 ),
               ),
             ],
@@ -82,20 +78,19 @@ class ProjectFocus extends StatelessWidget {
                   ),
                 ),
               ),
-
               XLayout.horizontalM,
-
               Flexible(
                 flex: 3,
                 child: XContainer(
                   padding: EdgeInsets.all(XLayout.paddingL),
-                  child: Text(project.summary,),
+                  child: Text(
+                    project.summary,
+                  ),
                 ),
               ),
             ],
           ),
         ),
-
       ],
     );
   }

@@ -7,7 +7,6 @@ import "../../widgets/widgets.dart";
 
 /// A preview of a project.
 class ProjectWidePreview extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   /// The project being previewed.
@@ -19,11 +18,7 @@ class ProjectWidePreview extends StatelessWidget {
   // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [ProjectWidePreview] matching the given parameters.
-  const ProjectWidePreview({
-    super.key,
-    required this.project,
-    this.onTap
-  });
+  const ProjectWidePreview({super.key, required this.project, this.onTap});
 
   // BUILD =====================================================================
 
@@ -38,7 +33,6 @@ class ProjectWidePreview extends StatelessWidget {
           height: Get.height * 0.2,
           child: Stack(
             children: [
-
               // IMAGE -------------------------------------------------------------
               Positioned(
                 child: project.preview,
@@ -50,16 +44,19 @@ class ProjectWidePreview extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-
                       // NAME ------------------------------------------------------
-                      PresetText.title(project.name,),
+                      PresetText.title(
+                        project.name,
+                      ),
 
                       XLayout.verticalS,
                       const Divider(),
                       XLayout.verticalS,
 
                       // SUMMARY ---------------------------------------------------
-                      PresetText.body(project.summary,),
+                      PresetText.body(
+                        project.summary,
+                      ),
                     ],
                   ),
                 ),

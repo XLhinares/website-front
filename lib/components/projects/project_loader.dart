@@ -6,7 +6,6 @@ import "../../widgets/widgets.dart";
 
 /// A widget that loads the projects and display them according to the rendering strategy.
 class ProjectLoader extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   /// The limit on the number of projects to load.
@@ -31,7 +30,8 @@ class ProjectLoader extends StatelessWidget {
     return PresetFutureBuilder<List<ProjectPreview>>(
       future: api.getProjects(limit: limit),
       builder: (_, data) => renderingStrategy(data!),
-      errorWidget: const Center(child: Text("An error occurred while fetching the data.")),
+      errorWidget: const Center(
+          child: Text("An error occurred while fetching the data.")),
     );
   }
 }

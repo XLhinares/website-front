@@ -7,8 +7,8 @@ import "../dataclass/app_mode.dart";
 import "../../utils/globals.dart";
 
 /// A service managing the state of the app.
-class SinglePageService extends GetxController with GetTickerProviderStateMixin {
-
+class SinglePageService extends GetxController
+    with GetTickerProviderStateMixin {
   // VARIABLES =================================================================
 
   /// The current mode of the app.
@@ -23,7 +23,8 @@ class SinglePageService extends GetxController with GetTickerProviderStateMixin 
   );
 
   /// An animation controlled by [_controller] that goes from 0 to 1.
-  late final Animation<double> animation = CurvedAnimation(parent: _controller, curve: Curves.linear);
+  late final Animation<double> animation =
+      CurvedAnimation(parent: _controller, curve: Curves.linear);
 
   // GETTERS ===================================================================
 
@@ -54,7 +55,7 @@ class SinglePageService extends GetxController with GetTickerProviderStateMixin 
   // METHODS ===================================================================
 
   /// Goes to the given mode and reloads the controller.
-  void goTo (AppMode mode) {
+  void goTo(AppMode mode) {
     _controller.forward().then((value) => _controller.reset());
 
     Timer(Duration(milliseconds: animDurationLong.inMilliseconds ~/ 2), () {
@@ -62,5 +63,4 @@ class SinglePageService extends GetxController with GetTickerProviderStateMixin 
       update();
     });
   }
-
 }

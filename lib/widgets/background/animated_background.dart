@@ -4,7 +4,6 @@ import "animated_waves.dart";
 
 /// The main background of the Swallo app.
 class AnimatedBackground extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   /// The fraction of the screen taken by the wave in the background.
@@ -28,6 +27,5 @@ class AnimatedBackground extends StatelessWidget {
       tween: Tween<double>(begin: scale, end: scale),
       builder: (context, value, child) => AnimatedWave(scale: value),
     );
-
   }
 }

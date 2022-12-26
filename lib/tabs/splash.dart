@@ -13,7 +13,6 @@ import "../utils/globals.dart";
 /// At the end of the splash screen, all the critical initialization tasks can
 /// be assumed to be completed.
 class Splash extends StatelessWidget {
-
 // VARIABLES =================================================================
 
   /// The opacity of the contents.
@@ -36,27 +35,27 @@ class Splash extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Obx(() =>
-            AnimatedOpacity(
-              opacity: opacity.value,
-              duration: fadeOutTime,
-              child: XContainer(
-                margin: EdgeInsets.all(XLayout.paddingM),
-                height: Get.height * 0.2,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    PresetText.body(
-                      "Loading the app...".tr,
-                    ),
-                    XLayout.verticalM,
-                    CircularProgressIndicator(
-                      color: context.theme.colorScheme.secondary,
-                    ),
-                  ],
-                ),
+        child: Obx(
+          () => AnimatedOpacity(
+            opacity: opacity.value,
+            duration: fadeOutTime,
+            child: XContainer(
+              margin: EdgeInsets.all(XLayout.paddingM),
+              height: Get.height * 0.2,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  PresetText.body(
+                    "Loading the app...".tr,
+                  ),
+                  XLayout.verticalM,
+                  CircularProgressIndicator(
+                    color: context.theme.colorScheme.secondary,
+                  ),
+                ],
               ),
             ),
+          ),
         ),
       ),
     );
@@ -67,10 +66,9 @@ class Splash extends StatelessWidget {
   /// Check whether the requirements to go to the next screen are loaded.
   ///
   /// If they are not, a new check is scheduled after 50ms.
-  void checkIfLoaded () {
+  void checkIfLoaded() {
     // Guard clause if not loaded.
-    if (!settings.loaded.value
-    ) {
+    if (!settings.loaded.value) {
       Timer(const Duration(milliseconds: 50), checkIfLoaded);
       return;
     }
@@ -78,6 +76,5 @@ class Splash extends StatelessWidget {
     // Go to next screen
     opacity.value = 0;
     Timer(fadeOutTime, () => Get.offNamed("/home"));
-
   }
 }

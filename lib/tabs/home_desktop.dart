@@ -6,7 +6,6 @@ import "../widgets/widgets.dart";
 
 /// The
 class HomeDesktop extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   // CONSTRUCTOR ===============================================================
@@ -23,7 +22,9 @@ class HomeDesktop extends StatelessWidget {
         children: [
           // BACKGROUND --------------------------------------------------------
           const Positioned.fill(
-            child: AnimatedBackground(scale: 0.2,),
+            child: AnimatedBackground(
+              scale: 0.2,
+            ),
           ),
 
           // MAIN --------------------------------------------------------------
@@ -33,7 +34,6 @@ class HomeDesktop extends StatelessWidget {
               child: Flex(
                 direction: Axis.horizontal,
                 children: [
-
                   // TITLE -----------------------------------------------------
                   const Flexible(
                     flex: 3,
@@ -47,7 +47,6 @@ class HomeDesktop extends StatelessWidget {
                     flex: 8,
                     child: BodyContents(),
                   ),
-
                 ],
               ),
             ),
@@ -61,7 +60,9 @@ class HomeDesktop extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Expanded(child: SizedBox(),),
+                const Expanded(
+                  child: SizedBox(),
+                ),
                 Buttons(),
                 XLayout.verticalS,
                 const VersionNumber(),

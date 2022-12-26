@@ -7,23 +7,28 @@ import "../../widgets/widgets.dart";
 
 /// The title widget for the contact form.
 class ContactTitle extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [ContactTitle] matching the given parameters.
-  const ContactTitle({super.key,});
+  const ContactTitle({
+    super.key,
+  });
 
   // BUILD =====================================================================
 
   @override
   Widget build(BuildContext context) {
     return XCard(
-        padding: EdgeInsets.all(XLayout.paddingM),
-        title: PresetText.headline("Contact form".tr,),
-        content: PresetText.body("Contact form explanation".tr,),
-      );
+      padding: EdgeInsets.all(XLayout.paddingM),
+      title: PresetText.headline(
+        "Contact form".tr,
+      ),
+      content: PresetText.body(
+        "Contact form explanation".tr,
+      ),
+    );
   }
 
   // METHODS ===================================================================

@@ -5,7 +5,6 @@ import "../../utils/globals.dart";
 
 /// The [Xeppelin] logo.
 class XeppelinLogo extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   /// If specified, the size (width and height) to use for the SVG.
@@ -31,7 +30,8 @@ class XeppelinLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.network("${api.assets}logo/logo.webp",
+    return Image.network(
+      "${api.assets}logo/logo.webp",
       width: size,
       height: size,
       fit: fit,
@@ -42,7 +42,7 @@ class XeppelinLogo extends StatelessWidget {
             color: context.theme.colorScheme.secondary,
             value: loadingProgress.expectedTotalBytes != null
                 ? loadingProgress.cumulativeBytesLoaded /
-                loadingProgress.expectedTotalBytes!
+                    loadingProgress.expectedTotalBytes!
                 : null,
           ),
         );

@@ -2,8 +2,6 @@
 import "settings.dart";
 
 /// The main unit test function.
-void runAllUnitTest () {
-
+void runAllUnitTest() {
   settingsTest();
-
 }

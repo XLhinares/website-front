@@ -7,13 +7,14 @@ import "../../../utils/globals.dart";
 ///
 /// It is not meant to stay in the final app.
 class TestCard extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [TestCard] matching the given parameters.
-  const TestCard({super.key,});
+  const TestCard({
+    super.key,
+  });
 
   // BUILD =====================================================================
 

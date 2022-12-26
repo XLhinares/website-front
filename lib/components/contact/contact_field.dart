@@ -5,7 +5,6 @@ import "../../widgets/widgets.dart";
 
 /// A single field for the contact form.
 class ContactField extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   /// The title of the field.
@@ -24,7 +23,6 @@ class ContactField extends StatelessWidget {
 
   /// What to do when the user presses the input button.
   final TextInputAction? textInputAction;
-
 
   // CONSTRUCTOR ===============================================================
 

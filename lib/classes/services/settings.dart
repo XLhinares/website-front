@@ -9,7 +9,6 @@ import "../../utils/globals.dart";
 
 /// A singleton handling the shared preferences and the memory of the app.
 class Settings extends GetxController {
-
   // VARIABLES =================================================================
 
   // META ----------------------------------------------------------------------
@@ -48,8 +47,7 @@ class Settings extends GetxController {
     _init();
   }
 
-  Future<void> _init () async {
-
+  Future<void> _init() async {
     // Instantiating variables. ------------------------------------------------
     loaded = false.obs;
     _storage = GetStorage();
@@ -66,7 +64,6 @@ class Settings extends GetxController {
     cookies = RxBool(_storage.read<bool>("cookies") ?? false);
     _saveCookies(cookies.value);
 
-
     // Setting up workers.
     ever<String>(locale, _saveLocale);
     ever<bool>(darkTheme, _saveTheme);
@@ -81,33 +78,32 @@ class Settings extends GetxController {
   // METHODS ===================================================================
 
   /// Performs a check on the value of the [locale] then save it to memory.
-  Future<void> _saveLocale (String value) async {
+  Future<void> _saveLocale(String value) async {
     printInfo(info: "Changing locale to: $value");
     await _storage.write("locale", value);
     Get.updateLocale(Locale(value));
   }
 
   /// Rotates between the different supported locales.
-  Future<void> rotateLocale () async {
+  Future<void> rotateLocale() async {
     final int index = supportedLocales.indexOf(locale.value);
-    final String newLocale = supportedLocales[
-      (index + 1) % supportedLocales.length
-    ];
+    final String newLocale =
+        supportedLocales[(index + 1) % supportedLocales.length];
     locale.value = newLocale;
   }
 
   /// Performs a check on the value of [darkTheme] then save it to memory.
-  Future<void> _saveTheme (bool value) async {
+  Future<void> _saveTheme(bool value) async {
     printInfo(info: "Changing theme to: ${value ? "dark" : "light"} mode");
     await _storage.write("darkTheme", value);
     Get.changeThemeMode(darkTheme.value ? ThemeMode.dark : ThemeMode.light);
   }
 
   /// Toggles the app between light and dark theme.
-  Future<void> toggleTheme () async => darkTheme.value = !darkTheme.value;
+  Future<void> toggleTheme() async => darkTheme.value = !darkTheme.value;
 
   /// Performs a check on the value of [cookies] then save it to memory.
-  Future<void> _saveCookies (bool value) async {
+  Future<void> _saveCookies(bool value) async {
     printInfo(info: "Changing cookies to: $value");
     await _storage.write("cookies", value);
   }

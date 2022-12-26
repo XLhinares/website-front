@@ -12,7 +12,6 @@ import "../dataclass/project_preview.dart";
 
 /// A service that handles all the API requests.
 class APIService extends GetConnect {
-
   // VARIABLES =================================================================
 
   /// The URI prefix to reach the the API.
@@ -24,7 +23,7 @@ class APIService extends GetConnect {
   // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [APIService].
-  APIService () {
+  APIService() {
     printInfo(info: "API Service initialized.");
   }
 
@@ -38,14 +37,14 @@ class APIService extends GetConnect {
   // METHODS ===================================================================
 
   /// A request to test the connection to the API.
-  Future<void> test (BuildContext? context) async {
-
-    TextStyle? titleStyle = context == null ? null : PresetStyle.headline.getStyle(context);
-    TextStyle? contentStyle = context == null ? null : PresetStyle.body.getStyle(context);
+  Future<void> test(BuildContext? context) async {
+    TextStyle? titleStyle =
+        context == null ? null : PresetStyle.headline.getStyle(context);
+    TextStyle? contentStyle =
+        context == null ? null : PresetStyle.body.getStyle(context);
     Color color = context?.theme.colorScheme.background ?? Colors.black12;
 
     try {
-
       const String uri = "https://catfact.ninja/fact";
       final Response response = await get(uri);
 
@@ -56,10 +55,8 @@ class APIService extends GetConnect {
         contentStyle: contentStyle,
         color: color,
       ).show(context!);
-
     } catch (e) {
       printError(info: "\n$e");
-
 
       XSnackbar.text(
         title: "Test failure".tr,
@@ -73,13 +70,12 @@ class APIService extends GetConnect {
   }
 
   /// Retrieves a list of projects from the api.
-  Future<List<ProjectPreview>> getProjects ({int limit = -1}) async
-  => tryWrapper<List<ProjectPreview>>(() async {
-
+  Future<List<ProjectPreview>> getProjects({int limit = -1}) async =>
+      tryWrapper<List<ProjectPreview>>(() async {
         final response = await fetchJson((CustomURL(initialText: api)
-          ..addPath("projects")
-          ..addFile("all")
-          ..addCustomParameter(name: "limit", value: limit))
+              ..addPath("projects")
+              ..addFile("all")
+              ..addCustomParameter(name: "limit", value: limit))
             .clean);
 
         printInfo(info: response[0].toString());
@@ -87,30 +83,30 @@ class APIService extends GetConnect {
         return response.map((e) => ProjectPreview.fromJson(e)).toList();
       });
 
-
   /// Sends a mail to the support.
-  Future<bool> sendSupportMail ({
+  Future<bool> sendSupportMail({
     required String name,
     required String email,
     required String subject,
     required String details,
-  }) => tryWrapper(() async {
+  }) =>
+      tryWrapper(() async {
+        String body = json.encode({
+          "name": name,
+          "email": email,
+          "subject": subject,
+          "details": details,
+        });
 
-    String body = json.encode({
-      "name": name,
-      "email": email,
-      "subject": subject,
-      "details": details,
-    });
-
-    Response response = await post("$api/mail/support",
-      body,
-      headers: {},
-    );
-    printInfo(info: "$api/mail/support");
-    printInfo(info: response.statusCode.toString());
-    return response.statusCode == 200;
-  });
+        Response response = await post(
+          "$api/mail/support",
+          body,
+          headers: {},
+        );
+        printInfo(info: "$api/mail/support");
+        printInfo(info: response.statusCode.toString());
+        return response.statusCode == 200;
+      });
 
 // EXAMPLES ==================================================================
 
@@ -128,4 +124,3 @@ class APIService extends GetConnect {
 // }
 
 }
-

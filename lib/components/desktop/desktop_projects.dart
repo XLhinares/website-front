@@ -9,7 +9,6 @@ import "../projects/projects.dart";
 
 /// The content of the body in the "ProjectPreviews" mode.
 class DesktopProjects extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   final Rx<ProjectPreview?> _selectedProjectPreview = Rx<ProjectPreview?>(null);
@@ -17,35 +16,34 @@ class DesktopProjects extends StatelessWidget {
   // CONSTRUCTOR ===============================================================
 
   /// Returns a [DesktopProjects] matching the given parameters.
-  DesktopProjects({super.key,});
+  DesktopProjects({
+    super.key,
+  });
 
   // BUILD =====================================================================
 
   @override
   Widget build(BuildContext context) {
     return Obx(() => _selectedProjectPreview.value == null
-        ?  ProjectLoader(
-          renderingStrategy: (list) => ResponsiveGridView.builder(
-            gridDelegate: ResponsiveGridDelegate(
-              mainAxisSpacing: XLayout.paddingL,
-              crossAxisSpacing: XLayout.paddingL,
-              crossAxisExtent: Get.height * 0.3,
-              childAspectRatio: 3/4
+        ? ProjectLoader(
+            renderingStrategy: (list) => ResponsiveGridView.builder(
+              gridDelegate: ResponsiveGridDelegate(
+                  mainAxisSpacing: XLayout.paddingL,
+                  crossAxisSpacing: XLayout.paddingL,
+                  crossAxisExtent: Get.height * 0.3,
+                  childAspectRatio: 3 / 4),
+              alignment: Alignment.center,
+              padding: EdgeInsets.all(XLayout.paddingM),
+              itemCount: list.length,
+              itemBuilder: (context, index) => ProjectPreviewer(
+                  project: list[index],
+                  onTap: () => _selectedProjectPreview.value = list[index]),
             ),
-            alignment: Alignment.center,
-            padding: EdgeInsets.all(XLayout.paddingM),
-            itemCount: list.length,
-            itemBuilder: (context, index) => ProjectPreviewer(
-                project: list[index],
-                onTap: () => _selectedProjectPreview.value = list[index]
-            ),
-          ),
-        )
+          )
         : ProjectFocus(
-        project: _selectedProjectPreview.value!,
-      onBack: () => _selectedProjectPreview.value = null,
-    )
-    );
+            project: _selectedProjectPreview.value!,
+            onBack: () => _selectedProjectPreview.value = null,
+          ));
   }
 
 // METHODS ===================================================================

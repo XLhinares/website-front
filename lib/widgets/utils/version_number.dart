@@ -6,13 +6,14 @@ import "../../utils/globals.dart";
 
 /// Display the version number of the app for versioning purposes.
 class VersionNumber extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [VersionNumber] matching the given parameters.
-  const VersionNumber({super.key,});
+  const VersionNumber({
+    super.key,
+  });
 
   // BUILD =====================================================================
 

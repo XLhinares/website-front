@@ -8,7 +8,6 @@ import "circular_button.dart";
 
 /// The different buttons that allow the using to change some settings.
 class Buttons extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   /// The size of a button.
@@ -25,15 +24,16 @@ class Buttons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-
         // DARK THEME ----------------------------------------------------
-        Obx(() => CircularButton(
-          size: buttonSize,
-          onTap: () => settings.toggleTheme(),
-          icon: settings.darkTheme.value
-              ? Icons.light_mode_outlined
-              : Icons.mode_night,
-        ),),
+        Obx(
+          () => CircularButton(
+            size: buttonSize,
+            onTap: () => settings.toggleTheme(),
+            icon: settings.darkTheme.value
+                ? Icons.light_mode_outlined
+                : Icons.mode_night,
+          ),
+        ),
 
         XLayout.horizontalM,
 
@@ -41,7 +41,11 @@ class Buttons extends StatelessWidget {
         CircularButton(
           size: buttonSize,
           onTap: settings.rotateLocale,
-          child: Obx(() => PresetText.title(settings.locale.value.capitalize!,),),
+          child: Obx(
+            () => PresetText.title(
+              settings.locale.value.capitalize!,
+            ),
+          ),
         ),
       ],
     );

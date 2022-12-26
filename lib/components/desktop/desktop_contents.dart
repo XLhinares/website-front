@@ -9,7 +9,6 @@ import "desktop.dart";
 
 /// What's inside the body. It depends on the current mode.
 class BodyContents extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   // GETTERS ===================================================================
@@ -40,7 +39,7 @@ class BodyContents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-    children: [
+      children: [
         // CONTENTS ----------------------------------------------------------
         Positioned.fill(
           child: GetBuilder(
@@ -63,6 +62,5 @@ class BodyContents extends StatelessWidget {
 
   // todo: a way to handle scroll
   /// How to behave when the contents are scrolled.
-  void onScroll () {}
-
+  void onScroll() {}
 }

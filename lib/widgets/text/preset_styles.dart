@@ -5,7 +5,6 @@ import "package:get/get.dart";
 ///
 /// It is important that the styles are defined in the [TextTheme.of(context)].
 class PresetStyle {
-
   // VARIABLES =================================================================
 
   /// A unique name identifying the preset.
@@ -41,7 +40,6 @@ class PresetStyle {
   /// it to work as expected.
   static const label = PresetStyle._internal("label");
 
-
   // CONSTRUCTOR ===============================================================
 
   const PresetStyle._internal(this.name);
@@ -49,7 +47,7 @@ class PresetStyle {
   // METHODS ===================================================================
 
   /// Gets the contextualized style.
-  TextStyle? getStyle (BuildContext context) {
+  TextStyle? getStyle(BuildContext context) {
     switch (this) {
       case PresetStyle.display:
         return context.textTheme.displayMedium;
@@ -65,5 +63,4 @@ class PresetStyle {
         return null;
     }
   }
-
 }

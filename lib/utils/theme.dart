@@ -4,14 +4,13 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 /// Changes the app theme in one function.
-void changeThemeMode ({bool darkMode = true}) {
+void changeThemeMode({bool darkMode = true}) {
   ThemeMode mode = darkMode ? ThemeMode.dark : ThemeMode.light;
   Get.changeThemeMode(mode);
 }
 
 /// An extension on the [Colors] class to add the colors of this theme.
 extension DefaultColors on Colors {
-
   /// The color used for black text.
   static Color textBlack = Colors.black.withOpacity(0.7);
 
@@ -19,9 +18,8 @@ extension DefaultColors on Colors {
   static Color textWhite = Colors.white.withOpacity(0.7);
 
   /// The color used for black text.
-  static Color get text => Get.context?.isDarkMode ?? true
-      ? textWhite
-      : textBlack;
+  static Color get text =>
+      Get.context?.isDarkMode ?? true ? textWhite : textBlack;
 
   /// The color used for black text.
   static Color boxWhite = Colors.white.withOpacity(0.7);
@@ -29,14 +27,26 @@ extension DefaultColors on Colors {
 
 /// The preset for the text theme
 TextTheme textTheme = const TextTheme(
-  displayMedium: TextStyle(fontSize: 30,
+  displayMedium: TextStyle(
+    fontSize: 30,
     height: 1.6,
     fontFeatures: [FontFeature.enable("smcp")],
   ),
-  titleMedium: TextStyle(fontSize: 24, height: 1.6,),
-  headlineMedium: TextStyle(fontSize: 20, height: 1.5,),
-  bodyMedium: TextStyle(fontSize: 16, height: 1.5,),
-  labelMedium: TextStyle(fontSize: 12,),
+  titleMedium: TextStyle(
+    fontSize: 24,
+    height: 1.6,
+  ),
+  headlineMedium: TextStyle(
+    fontSize: 20,
+    height: 1.5,
+  ),
+  bodyMedium: TextStyle(
+    fontSize: 16,
+    height: 1.5,
+  ),
+  labelMedium: TextStyle(
+    fontSize: 12,
+  ),
 );
 
 /// A preset theme for light mode.

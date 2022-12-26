@@ -4,7 +4,6 @@ import "package:flutter_svg/flutter_svg.dart";
 
 /// An icon within a circular [InkContainer].
 class CircularButton extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   /// The spatial extent of the button.
@@ -29,13 +28,15 @@ class CircularButton extends StatelessWidget {
   /// The image displayed inside the button.
   Widget get image {
     if (icon != null) {
-      return Icon(icon,
+      return Icon(
+        icon,
         size: size == null ? null : size! * 0.8,
       );
     }
 
     if (svg != null) {
-      return SvgPicture.asset(svg!,
+      return SvgPicture.asset(
+        svg!,
         width: size == null ? null : size! * 0.8,
         height: size == null ? null : size! * 0.8,
       );
@@ -58,8 +59,8 @@ class CircularButton extends StatelessWidget {
     this.child,
     this.size,
     this.onTap,
-  }) : assert ((icon != null) ^ (svg != null) ^ (child != null),
-  "You should specify either 'icon' or 'svg' or 'child'");
+  }) : assert((icon != null) ^ (svg != null) ^ (child != null),
+            "You should specify either 'icon' or 'svg' or 'child'");
 
   // BUILD =====================================================================
 

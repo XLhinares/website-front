@@ -7,13 +7,14 @@ import "../../widgets/widgets.dart";
 
 /// A widget describing what the site is about.
 class HomeDescription extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [HomeDescription] matching the given parameters.
-  const HomeDescription({super.key,});
+  const HomeDescription({
+    super.key,
+  });
 
   // BUILD =====================================================================
 
@@ -24,7 +25,8 @@ class HomeDescription extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          AutoColorText("Home description 1".tr,
+          AutoColorText(
+            "Home description 1".tr,
             defaultStyle: PresetStyle.headline.getStyle(context),
           ),
           // XLayout.verticalM,

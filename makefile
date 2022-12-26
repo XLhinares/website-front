@@ -20,6 +20,28 @@ help:
 		} \
 	} \
 	{ lastLine = $$0 }' $(MAKEFILE_LIST)
+## Checks whether the version number and the last changelog-ed version match.
+check-version:
+	@echo "\n>>> CHECKING VERSION:"
+	@echo "To implement"
+
+## Analyzes the contents of the lib folder.
+analyze:
+	@echo "\n>>> ANALYZING LIB/ CODE:"
+	@flutter pub get
+	@flutter analyze lib/
+
+## Formats the code to match flutter's conventions
+format:
+	@echo "\n>>> FORMATTING PROJECT CODE:"
+	@flutter format .
+
+## Analyzes and format the code to make sure of the quality.
+pre-commit:
+	@echo "\n>>> RUNNING PRE-COMMIT CHECKS:"
+	@make format
+	@make analyze
+	@make check-version
 
 ## Initializes build/web/ as a clone of the [website-build] repository.
 init-build:

@@ -4,7 +4,6 @@ import "package:flutter/material.dart";
 ///
 /// It provides the builder directly with the data (and not the snapshot).
 class PresetFutureBuilder<T> extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   /// The asynchronous computation to which this builder is currently connected, possibly null.
@@ -30,19 +29,23 @@ class PresetFutureBuilder<T> extends StatelessWidget {
   // GETTERS ===================================================================
 
   /// The actual widget displayed on loading.
-  Widget get _loadingWidget => loadingWidget ?? const Center(
-    child: CircularProgressIndicator(),
-  );
+  Widget get _loadingWidget =>
+      loadingWidget ??
+      const Center(
+        child: CircularProgressIndicator(),
+      );
 
   /// The actual widget displayed on error.
-  Widget get _errorWidget => errorWidget ?? const Center(
-    child: Text("An error occurred."),
-  );
+  Widget get _errorWidget =>
+      errorWidget ??
+      const Center(
+        child: Text("An error occurred."),
+      );
 
   // CONSTRUCTOR ===============================================================
 
   /// Returns a [PresetFutureBuilder] matching the given parameters.
-  const PresetFutureBuilder ({
+  const PresetFutureBuilder({
     super.key,
     this.future,
     required this.builder,
@@ -57,9 +60,12 @@ class PresetFutureBuilder<T> extends StatelessWidget {
     return FutureBuilder<T>(
       future: future,
       builder: (_, snapshot) {
-
-        if (snapshot.connectionState == ConnectionState.waiting) return _loadingWidget;
-        if (snapshot.connectionState == ConnectionState.active) return _loadingWidget;
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return _loadingWidget;
+        }
+        if (snapshot.connectionState == ConnectionState.active) {
+          return _loadingWidget;
+        }
         if (snapshot.hasError) return _errorWidget;
         if (!snapshot.hasData) return _errorWidget;
 

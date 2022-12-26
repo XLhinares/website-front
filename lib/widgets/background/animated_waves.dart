@@ -5,7 +5,6 @@ import "curve_painter.dart";
 
 /// A custom wave widget.
 class AnimatedWave extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   /// A scale factor that allows to modulate the size of everything.
@@ -23,19 +22,20 @@ class AnimatedWave extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      return SizedBox(
-        height: constraints.biggest.height,
-        width: constraints.biggest.width,
-        child: LoopAnimationBuilder<double>(
-          duration: const Duration(seconds: 60),
-          tween: Tween<double>(begin: 0, end: 1),
-          builder: (context, progress, child) =>  CustomPaint(
-            painter: CurvePainter(scale: scale, progress: progress),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return SizedBox(
+          height: constraints.biggest.height,
+          width: constraints.biggest.width,
+          child: LoopAnimationBuilder<double>(
+            duration: const Duration(seconds: 60),
+            tween: Tween<double>(begin: 0, end: 1),
+            builder: (context, progress, child) => CustomPaint(
+              painter: CurvePainter(scale: scale, progress: progress),
+            ),
           ),
-        ),
-      );
-    },
+        );
+      },
     );
   }
 }

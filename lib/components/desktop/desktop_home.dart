@@ -7,13 +7,14 @@ import "../home/home.dart";
 
 /// The content of the body in the "Home" mode.
 class DesktopHome extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [DesktopHome] matching the given parameters.
-  const DesktopHome({super.key,});
+  const DesktopHome({
+    super.key,
+  });
 
   // BUILD =====================================================================
 
@@ -21,7 +22,6 @@ class DesktopHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-
         // FIRST BLOCK ---------------------------------------------------------
         Expanded(
           child: XContainer(
@@ -47,7 +47,6 @@ class DesktopHome extends StatelessWidget {
             child: const HomeDescription(),
           ),
         ),
-
       ],
     );
   }

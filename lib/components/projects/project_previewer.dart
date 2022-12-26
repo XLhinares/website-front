@@ -7,7 +7,6 @@ import "../../widgets/widgets.dart";
 
 /// A preview of a project.
 class ProjectPreviewer extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   /// The project being previewed.
@@ -19,11 +18,7 @@ class ProjectPreviewer extends StatelessWidget {
   // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [ProjectPreviewer] matching the given parameters.
-  const ProjectPreviewer({
-    super.key,
-    required this.project,
-    this.onTap
-  });
+  const ProjectPreviewer({super.key, required this.project, this.onTap});
 
   // BUILD =====================================================================
 
@@ -35,14 +30,13 @@ class ProjectPreviewer extends StatelessWidget {
       onTap: onTap,
       child: Column(
         children: [
-
           // IMAGE -------------------------------------------------------------
           ColoredBox(
             color: context.theme.shadowColor,
             child: ClipRect(
               clipBehavior: Clip.hardEdge,
               child: AspectRatio(
-                aspectRatio: 16/9,
+                aspectRatio: 16 / 9,
                 child: SizedBox(
                   width: double.infinity,
                   child: project.preview,
@@ -56,9 +50,10 @@ class ProjectPreviewer extends StatelessWidget {
               padding: EdgeInsets.all(XLayout.paddingM),
               child: Column(
                 children: [
-
                   // NAME ------------------------------------------------------
-                  PresetText.title(project.name,),
+                  PresetText.title(
+                    project.name,
+                  ),
 
                   XLayout.verticalS,
                   const Divider(),
@@ -66,7 +61,9 @@ class ProjectPreviewer extends StatelessWidget {
 
                   // SUMMARY ---------------------------------------------------
                   Expanded(
-                    child: PresetText.body(project.summary,),
+                    child: PresetText.body(
+                      project.summary,
+                    ),
                   ),
                 ],
               ),

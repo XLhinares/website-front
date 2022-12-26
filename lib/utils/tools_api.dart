@@ -14,11 +14,11 @@ extension GetConnectWithJson on GetConnect {
   /// * dataSubset: a function taking the raw data and returning a subset known
   /// to match the [List<Map<String, dynamic>>] type.
   Future<List<Map<String, dynamic>>> fetchJson(
-      String? url, {
-        dynamic Function(dynamic)? subsetPicker,
-      }) async =>
+    String? url, {
+    dynamic Function(dynamic)? subsetPicker,
+  }) async =>
       tryWrapper<List<Map<String, dynamic>>>(
-            () async {
+        () async {
           assert(url != null, "URL cannot be [null].");
 
           printInfo(info: "Fetching JSON resource from: '$url'");
@@ -34,7 +34,7 @@ extension GetConnectWithJson on GetConnect {
 
           final data = await json.decode(response.bodyString ?? "");
           final List<Map<String, dynamic>> parsedResponse =
-          List<Map<String, dynamic>>.from(subsetPicker?.call(data) ?? data);
+              List<Map<String, dynamic>>.from(subsetPicker?.call(data) ?? data);
 
           return parsedResponse;
         },
@@ -84,8 +84,8 @@ class CustomURL {
   ///
   /// If the path is [null], a lone "/" is added.
   void addPath(
-      Object? path,
-      ) {
+    Object? path,
+  ) {
     if (path != null) _buffer.write(path.toString());
     _buffer.write("/");
   }
@@ -94,8 +94,8 @@ class CustomURL {
   ///
   /// If the path is [null], does nothing.
   void addFile(
-      Object? file,
-      ) {
+    Object? file,
+  ) {
     if (file == null) return;
     _buffer.write("${file.toString()}?");
   }
@@ -104,16 +104,17 @@ class CustomURL {
   ///
   /// If either is null, then nothing is added to the URL.
   void addCustomParameter({
-  String? name,
+    String? name,
     Object? value,
-}) {
+  }) {
     if (name == null || value == null) return;
     _buffer.write("&$name=");
     _buffer.write(value.toString());
-
   }
 
   /// Auto-completes the URL with the given query.
-  void addQueryParameter(String? text,)
-  => addCustomParameter(name: "query", value: text);
+  void addQueryParameter(
+    String? text,
+  ) =>
+      addCustomParameter(name: "query", value: text);
 }

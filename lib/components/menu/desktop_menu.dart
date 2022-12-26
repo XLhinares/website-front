@@ -5,7 +5,6 @@ import "menu.dart";
 
 /// The half of the body containing the title and the menu.
 class BodyMenu extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   // CONSTRUCTOR ===============================================================
@@ -17,13 +16,10 @@ class BodyMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-
         // TITLE ---------------------------------------------------------------
         const BodyTitle(),
 
@@ -33,13 +29,11 @@ class BodyMenu extends StatelessWidget {
         Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-
             // LINKS -----------------------------------------------------------
             XContainer(
               padding: EdgeInsets.all(XLayout.paddingM),
               child: MenuList(),
             ),
-
 
             const CookiesCard(),
 
@@ -48,13 +42,10 @@ class BodyMenu extends StatelessWidget {
             const TestCard(),
           ],
         ),
-
       ],
     );
   }
 
 // METHODS ===================================================================
-
-
 
 }

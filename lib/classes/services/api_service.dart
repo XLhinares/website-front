@@ -1,3 +1,4 @@
+import "dart:collection";
 import "dart:convert";
 
 import "package:flutter/material.dart";
@@ -7,7 +8,6 @@ import "package:x_containers/x_containers.dart";
 import "../../utils/globals.dart";
 import "../../utils/tools.dart";
 import "../../utils/tools_api.dart";
-import "../../widgets/widgets.dart";
 import "../dataclass/project_preview.dart";
 
 /// A service that handles all the API requests.
@@ -15,45 +15,55 @@ class APIService extends GetConnect {
   // VARIABLES =================================================================
 
   /// The URI prefix to reach the the API.
-  final String api = "https://api.xeppelin.org/";
+  late final String api;
 
   /// The URI prefix to reach the the assets.
-  final String assets = "https://assets.xeppelin.org/";
+  late final String assets;
+
+  late final List<ProjectPreview> _projects;
+
+  // GETTERS ===================================================================
+
+  /// A list of the registered trackable metadata.
+  UnmodifiableListView<ProjectPreview> get lastTracked =>
+      UnmodifiableListView(_projects);
 
   // CONSTRUCTOR ===============================================================
 
-  /// Returns an instance of [APIService].
-  APIService() {
+  /// The instantiation logic of [APIService].
+  APIService._internal() {
+    api = "https://api.xeppelin.org/";
+    assets = "https://assets.xeppelin.org/";
+    _projects = [];
+
     printInfo(info: "API Service initialized.");
   }
 
-  // @override
-  // void onInit() {
-  //   // httpClient.defaultDecoder = Item.itemsFromJson;
-  //   // httpClient.baseUrl = "https://www.xeppelin.org/api/";
-  //   // httpClient.timeout = const Duration(seconds: 5);
-  // }
+  /// The actual instance of [APIService].
+  static final APIService _instance = APIService._internal();
+
+  /// Returns the [APIService] singleton.
+  factory APIService() => _instance;
 
   // METHODS ===================================================================
 
   /// A request to test the connection to the API.
   Future<void> test(BuildContext? context) async {
-    TextStyle? titleStyle =
-        context == null ? null : PresetStyle.headline.getStyle(context);
-    TextStyle? contentStyle =
-        context == null ? null : PresetStyle.body.getStyle(context);
+    TextStyle? titleStyle = context?.textTheme.titleMedium;
+    TextStyle? contentStyle = context?.textTheme.bodyMedium;
     Color color = context?.theme.colorScheme.background ?? Colors.black12;
 
     try {
       const String uri = "https://catfact.ninja/fact";
-      final Response response = await get(uri);
+      final response = await fetchJson(uri, subsetPicker: (e) => [e]);
 
       XSnackbar.text(
         title: "$versionNumber - ${"Test success".tr}",
-        content: "${"Test success message".tr}\n\n${response.body}",
+        content: "${"Test success message".tr}\n\n${response[0]["fact"]}",
         titleStyle: titleStyle,
         contentStyle: contentStyle,
         color: color,
+        duration: const Duration(seconds: 7),
       ).show(context!);
     } catch (e) {
       printError(info: "\n$e");
@@ -70,12 +80,13 @@ class APIService extends GetConnect {
   }
 
   /// Retrieves a list of projects from the api.
-  Future<List<ProjectPreview>> getProjects({int limit = -1}) async =>
+  Future<List<ProjectPreview>> getProjects({int page = 0}) async =>
       tryWrapper<List<ProjectPreview>>(() async {
         final response = await fetchJson((CustomURL(initialText: api)
               ..addPath("projects")
               ..addFile("all")
-              ..addCustomParameter(name: "limit", value: limit))
+              ..addCustomParameter(name: "page", value: page)
+              ..addCustomParameter(name: "sorter", value: page))
             .clean);
 
         printInfo(info: response[0].toString());

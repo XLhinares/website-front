@@ -35,7 +35,10 @@ class ProjectWidePreview extends StatelessWidget {
             children: [
               // IMAGE -------------------------------------------------------------
               Positioned(
-                child: project.preview,
+                child: CoveringNetworkImage(
+                  project.preview,
+                  fit: BoxFit.fitWidth,
+                ),
               ),
 
               Positioned.fill(
@@ -45,8 +48,9 @@ class ProjectWidePreview extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       // NAME ------------------------------------------------------
-                      PresetText.title(
+                      Text(
                         project.name,
+                        style: context.textTheme.titleMedium,
                       ),
 
                       XLayout.verticalS,
@@ -54,8 +58,9 @@ class ProjectWidePreview extends StatelessWidget {
                       XLayout.verticalS,
 
                       // SUMMARY ---------------------------------------------------
-                      PresetText.body(
+                      Text(
                         project.summary,
+                        style: context.textTheme.bodyMedium,
                       ),
                     ],
                   ),

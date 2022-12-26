@@ -18,7 +18,11 @@ class ProjectPreviewer extends StatelessWidget {
   // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [ProjectPreviewer] matching the given parameters.
-  const ProjectPreviewer({super.key, required this.project, this.onTap});
+  const ProjectPreviewer({
+    super.key,
+    required this.project,
+    this.onTap,
+  });
 
   // BUILD =====================================================================
 
@@ -28,52 +32,54 @@ class ProjectPreviewer extends StatelessWidget {
       height: Get.height * 0.25,
       padding: EdgeInsets.zero,
       onTap: onTap,
-      child: Column(
+      child: Stack(
         children: [
           // IMAGE -------------------------------------------------------------
-          ColoredBox(
-            color: context.theme.shadowColor,
-            child: ClipRect(
+          Positioned.fill(
+            child: ClipRRect(
               clipBehavior: Clip.hardEdge,
-              child: AspectRatio(
-                aspectRatio: 16 / 9,
-                child: SizedBox(
-                  width: double.infinity,
-                  child: project.preview,
-                ),
+              borderRadius: XLayout.brcXS,
+              child: CoveringNetworkImage(
+                project.preview,
               ),
             ),
           ),
 
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.all(XLayout.paddingM),
-              child: Column(
-                children: [
-                  // NAME ------------------------------------------------------
-                  PresetText.title(
-                    project.name,
-                  ),
+          Positioned.fill(
+            child: Column(
+              children: [
+                const Expanded(flex: 3, child: SizedBox()),
+                XContainer(
+                  borderRadius: BorderRadius.zero,
+                  color: context.theme.colorScheme.background.withOpacity(0.9),
+                  padding: EdgeInsets.all(XLayout.paddingM),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      // NAME ------------------------------------------------------
+                      Text(
+                        project.name,
+                        style: context.textTheme.titleMedium,
+                      ),
 
-                  XLayout.verticalS,
-                  const Divider(),
-                  XLayout.verticalS,
+                      XLayout.verticalXS,
+                      const Divider(),
+                      XLayout.verticalXS,
 
-                  // SUMMARY ---------------------------------------------------
-                  Expanded(
-                    child: PresetText.body(
-                      project.summary,
-                    ),
+                      // SUMMARY ---------------------------------------------------
+                      Text(
+                        project.summary,
+                        style: context.textTheme.bodyMedium,
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],
       ),
     );
   }
-
-// METHODS ===================================================================
-
 }

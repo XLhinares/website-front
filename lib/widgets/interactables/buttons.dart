@@ -3,7 +3,7 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../utils/globals.dart";
-import "../text/preset_text.dart";
+import "../animations/rotating_icon.dart";
 import "circular_button.dart";
 
 /// The different buttons that allow the using to change some settings.
@@ -25,13 +25,14 @@ class Buttons extends StatelessWidget {
     return Row(
       children: [
         // DARK THEME ----------------------------------------------------
-        Obx(
-          () => CircularButton(
-            size: buttonSize,
-            onTap: () => settings.toggleTheme(),
-            icon: settings.darkTheme.value
-                ? Icons.light_mode_outlined
-                : Icons.mode_night,
+        CircularButton(
+          size: buttonSize,
+          onTap: () => settings.rotateTheme(),
+          child: RotatingIcon(
+            builder: (_) =>
+                Icon(Icons.light_mode_outlined, size: buttonSize * 0.8),
+            observed: settings.theme,
+            tag: "button_theme",
           ),
         ),
 
@@ -41,10 +42,13 @@ class Buttons extends StatelessWidget {
         CircularButton(
           size: buttonSize,
           onTap: settings.rotateLocale,
-          child: Obx(
-            () => PresetText.title(
+          child: RotatingIcon(
+            builder: (_) => Text(
               settings.locale.value.capitalize!,
+              style: context.textTheme.titleMedium,
             ),
+            observed: settings.locale,
+            tag: "button_locale",
           ),
         ),
       ],

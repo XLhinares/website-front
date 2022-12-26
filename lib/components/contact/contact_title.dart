@@ -1,9 +1,6 @@
-// Framework dependencies
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
-
-import "../../widgets/widgets.dart";
 
 /// The title widget for the contact form.
 class ContactTitle extends StatelessWidget {
@@ -22,11 +19,13 @@ class ContactTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return XCard(
       padding: EdgeInsets.all(XLayout.paddingM),
-      title: PresetText.headline(
+      title: Text(
         "Contact form".tr,
+        style: context.textTheme.titleMedium,
       ),
-      content: PresetText.body(
+      content: Text(
         "Contact form explanation".tr,
+        style: context.textTheme.bodyMedium,
       ),
     );
   }

@@ -1,5 +1,3 @@
-import "package:flutter/material.dart";
-
 import "../../utils/globals.dart";
 
 /// A dataclass
@@ -20,10 +18,7 @@ class ProjectPreview {
   // GETTERS ===================================================================
 
   /// A preview image of the project.
-  Widget get preview => Image.network(
-        "${api.assets}/$_preview",
-        fit: BoxFit.fitHeight,
-      );
+  String get preview => "${api.assets}$_preview";
 
   // CONSTRUCTOR ===============================================================
 

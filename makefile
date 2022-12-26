@@ -60,6 +60,10 @@ init:
 publish:
 	@ ./scripts/publish.sh
 
+## Pushes the latest build to the [website-build] repository without acknowledging any change.
+publish-without-changes:
+	@ ./scripts/publish_without_changes.sh
+
 ## Builds the project for the web platform.
 build-web:
 	@ flutter build web

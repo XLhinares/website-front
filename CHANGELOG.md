@@ -1,3 +1,12 @@
+## 1.5.0
+
+- :sparkles: Created an [user] object to store local data.
+- :sparkles: Reworked [ProjectPreview] to change UI and the way it communicates with the API.
+- :lipstick: Created a [ThemeService] to handle theme-related stuff.
+- :lipstick: Changed the default family font to [JosefinSans].
+- :dizzy: Added rotating icons
+- :construction_worker: Modified publishing scripts.
+
 ## 1.4.0
 
 - :alien: Switched to subdomain API.

@@ -27,7 +27,7 @@ class HomeDescription extends StatelessWidget {
         children: [
           AutoColorText(
             "Home description 1".tr,
-            defaultStyle: PresetStyle.headline.getStyle(context),
+            defaultStyle: context.textTheme.titleMedium,
           ),
           // XLayout.verticalM,
           // AutoColorText("I also make %bc art%.".tr,

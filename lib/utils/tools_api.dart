@@ -42,6 +42,19 @@ extension GetConnectWithJson on GetConnect {
       );
 }
 
+/// An enumeration of the different sorting option on
+enum APISorter {
+  /// Sorting by order of relevance.
+  ///
+  /// Relevance is computer server-side; but we can overall assume that it's
+  /// directly correlated with how much I believe the project showcases my
+  /// skills.
+  relevance,
+
+  /// Sorting by chronological order of last worked on.
+  date,
+}
+
 /// A set of utilities simplifying the building of customs URLs.
 class CustomURL {
   // VARIABLES =================================================================
@@ -117,4 +130,10 @@ class CustomURL {
     String? text,
   ) =>
       addCustomParameter(name: "query", value: text);
+
+  /// Auto-completes the URL with the given sorter.
+  void addSorterParameter(
+    APISorter? sorter,
+  ) =>
+      addCustomParameter(name: "sorter", value: sorter.toString());
 }

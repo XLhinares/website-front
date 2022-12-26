@@ -64,8 +64,6 @@ class HomeDesktop extends StatelessWidget {
                   child: SizedBox(),
                 ),
                 Buttons(),
-                XLayout.verticalS,
-                const VersionNumber(),
               ],
             ),
           ),

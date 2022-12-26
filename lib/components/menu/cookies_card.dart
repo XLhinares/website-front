@@ -4,7 +4,6 @@ import "package:x_containers/x_containers.dart";
 import "package:auto_size_text/auto_size_text.dart";
 
 import "../../../utils/globals.dart";
-import "../../widgets/widgets.dart";
 
 /// A card explaining what how this site uses cookies.
 class CookiesCard extends StatelessWidget {
@@ -32,7 +31,8 @@ class CookiesCard extends StatelessWidget {
                 title: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    PresetText.headline("Cookies title".tr),
+                    Text("Cookies title".tr,
+                        style: context.textTheme.titleMedium),
                     IconButton(
                       onPressed: () => settings.cookies.value = true,
                       icon: const Icon(Icons.close),
@@ -41,7 +41,7 @@ class CookiesCard extends StatelessWidget {
                 ),
                 content: AutoSizeText(
                   "Cookies description".tr,
-                  style: PresetStyle.body.getStyle(context),
+                  style: context.textTheme.bodyMedium,
                 ),
               ),
       ),

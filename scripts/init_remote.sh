@@ -1,5 +1,4 @@
 #!/bin/sh
-
 # Author : Xavier Lhinares
 
 cd build/web/ || exit

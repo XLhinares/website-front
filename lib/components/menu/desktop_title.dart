@@ -43,7 +43,10 @@ class BodyTitle extends StatelessWidget {
         Expanded(
           child: FittedBox(
             fit: BoxFit.fitWidth,
-            child: PresetText.xeppelin(),
+            child: Text(
+              "Xeppelin",
+              style: context.textTheme.displayLarge,
+            ),
           ),
         ),
       ],

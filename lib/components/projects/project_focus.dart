@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../../classes/dataclass/project_preview.dart";
@@ -35,8 +36,9 @@ class ProjectFocus extends StatelessWidget {
               ),
               Expanded(
                 child: Center(
-                  child: PresetText.headline(
+                  child: Text(
                     project.name,
+                    style: context.textTheme.titleMedium,
                   ),
                 ),
               ),
@@ -50,11 +52,11 @@ class ProjectFocus extends StatelessWidget {
 
         XContainer(
           padding: EdgeInsets.zero,
-          child: ClipRRect(
-            borderRadius: XLayout.brcXS,
-            child: AspectRatio(
-              aspectRatio: 4,
-              child: project.preview,
+          child: AspectRatio(
+            aspectRatio: 4,
+            child: CoveringNetworkImage(
+              project.preview,
+              fit: BoxFit.fitHeight,
             ),
           ),
         ),
@@ -72,9 +74,9 @@ class ProjectFocus extends StatelessWidget {
                 flex: 1,
                 child: SizedBox(
                   height: double.infinity,
-                  child: ClipRRect(
-                    borderRadius: XLayout.brcXS,
-                    child: project.preview,
+                  child: CoveringNetworkImage(
+                    project.preview,
+                    fit: BoxFit.fitWidth,
                   ),
                 ),
               ),

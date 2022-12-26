@@ -2,13 +2,13 @@
 import "package:flutter_test/flutter_test.dart";
 
 // Project dependencies
-import "package:website_front/classes/services/settings.dart";
+import "package:website_front/classes/services/cookie_service.dart";
 
 void settingsTest() => test("[Settings] loads in less than 1s.", () async {
       // Build our app and trigger a frame.
       // await pumpApp(tester);
 
-      Settings settings = Settings();
+      CookieService settings = CookieService();
 
       expect(settings.loaded.value, false);
       // Wait 2 seconds

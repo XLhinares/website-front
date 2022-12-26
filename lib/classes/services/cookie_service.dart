@@ -8,7 +8,7 @@ import "../../utils/globals.dart";
 // Project dependencies
 
 /// A singleton handling the shared preferences and the memory of the app.
-class Settings extends GetxController {
+class CookieService extends GetxController {
   // VARIABLES =================================================================
 
   // META ----------------------------------------------------------------------
@@ -25,25 +25,25 @@ class Settings extends GetxController {
   late final RxString locale;
 
   /// Whether the app should display in dark mode.
-  late final RxBool darkTheme;
+  late final RxString theme;
 
   /// The maximal value displayed on graphs.
   late final RxBool cookies;
 
   // CONSTRUCTOR ===============================================================
 
-  /// The private instance of [Settings].
+  /// The private instance of [CookieService].
   ///
   /// It insures that the class is instantiated only once at the beginning.
-  static final Settings _instance = Settings._internal();
+  static final CookieService _instance = CookieService._internal();
 
-  /// Returns the unique [Settings] instance.
-  factory Settings() => _instance;
+  /// Returns the unique [CookieService] instance.
+  factory CookieService() => _instance;
 
   /// The real constructor of the class.
   ///
   /// It is called exactly once and contains the instantiation logic.
-  Settings._internal() {
+  CookieService._internal() {
     _init();
   }
 
@@ -57,8 +57,8 @@ class Settings extends GetxController {
     _saveLocale(locale.value);
 
     // DARK THEME
-    darkTheme = RxBool(_storage.read<bool>("darkTheme") ?? true);
-    _saveTheme(darkTheme.value);
+    theme = RxString(_storage.read<String>("theme") ?? "dark");
+    _saveTheme(theme.value);
 
     // COOKIES
     cookies = RxBool(_storage.read<bool>("cookies") ?? false);
@@ -66,12 +66,12 @@ class Settings extends GetxController {
 
     // Setting up workers.
     ever<String>(locale, _saveLocale);
-    ever<bool>(darkTheme, _saveTheme);
+    ever<String>(theme, _saveTheme);
     ever<bool>(cookies, _saveCookies);
 
     // All done.
     loaded.value = true;
-    printInfo(info: "Settings loaded");
+    printInfo(info: "CookieService loaded");
     update();
   }
 
@@ -93,14 +93,18 @@ class Settings extends GetxController {
   }
 
   /// Performs a check on the value of [darkTheme] then save it to memory.
-  Future<void> _saveTheme(bool value) async {
-    printInfo(info: "Changing theme to: ${value ? "dark" : "light"} mode");
-    await _storage.write("darkTheme", value);
-    Get.changeThemeMode(darkTheme.value ? ThemeMode.dark : ThemeMode.light);
+  Future<void> _saveTheme(String value) async {
+    printInfo(info: "Changing theme to: $theme");
+    await _storage.write("theme", value);
+    themes.changeTheme(theme.value);
   }
 
   /// Toggles the app between light and dark theme.
-  Future<void> toggleTheme() async => darkTheme.value = !darkTheme.value;
+  Future<void> rotateTheme() async {
+    final int index = themes.handledThemes.indexOf(theme.value);
+    final int length = themes.handledThemes.length;
+    theme.value = themes.handledThemes[(index + 1) % length];
+  }
 
   /// Performs a check on the value of [cookies] then save it to memory.
   Future<void> _saveCookies(bool value) async {

@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
+import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
-
-import "../../widgets/widgets.dart";
 
 /// A single field for the contact form.
 class ContactField extends StatelessWidget {
@@ -46,7 +45,7 @@ class ContactField extends StatelessWidget {
       autovalidateMode: AutovalidateMode.onUserInteraction,
       maxLines: maxLines,
       textInputAction: textInputAction,
-      style: PresetStyle.body.getStyle(context),
+      style: context.textTheme.bodyMedium,
       decoration: const InputDecoration().copyWith(
         hintText: title,
         contentPadding: EdgeInsets.all(XLayout.paddingM),

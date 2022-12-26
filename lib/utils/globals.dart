@@ -1,15 +1,22 @@
 import "../classes/services/services.dart";
+import "../classes/user/user.dart";
 
 // SERVICES ====================================================================
 
+/// A special service which handle the local data and let the user interact with it.
+final User user = User();
+
 /// A service that manages the different elements of the app.
-SinglePageService sps = SinglePageService();
+final SinglePageService sps = SinglePageService();
 
 /// A service that manages all the backend stuff.
-APIService api = APIService();
+final APIService api = APIService();
 
 /// A service that manages the preferences of the user.
-Settings settings = Settings();
+final CookieService settings = CookieService();
+
+/// A service that handles the themes of the app.
+final ThemeService themes = ThemeService();
 
 // CONSTANTS ===================================================================
 

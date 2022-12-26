@@ -1,11 +1,9 @@
 import "package:flutter/material.dart";
-import "package:x_containers/settings/x_layout.dart";
-
-import "../../widgets/widgets.dart";
+import "package:get/get.dart";
+import "package:x_containers/x_containers.dart";
 
 /// A single field for the contact form.
 class ContactField extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   /// The title of the field.
@@ -24,7 +22,6 @@ class ContactField extends StatelessWidget {
 
   /// What to do when the user presses the input button.
   final TextInputAction? textInputAction;
-
 
   // CONSTRUCTOR ===============================================================
 
@@ -48,7 +45,7 @@ class ContactField extends StatelessWidget {
       autovalidateMode: AutovalidateMode.onUserInteraction,
       maxLines: maxLines,
       textInputAction: textInputAction,
-      style: PresetStyle.body.getStyle(context),
+      style: context.textTheme.bodyMedium,
       decoration: const InputDecoration().copyWith(
         hintText: title,
         contentPadding: EdgeInsets.all(XLayout.paddingM),

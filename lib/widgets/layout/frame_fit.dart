@@ -5,7 +5,6 @@ import "../../utils/globals.dart";
 
 /// A widget to that fit all its child within a central column if needed.
 class FrameFit extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   /// An optional widget to display in the background.
@@ -35,7 +34,6 @@ class FrameFit extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final Widget front = Center(
       child: Padding(
         padding: padding ?? EdgeInsets.zero,
@@ -52,12 +50,11 @@ class FrameFit extends StatelessWidget {
       return front;
     } else {
       return Stack(
-      children: [
-        Positioned.fill(child: background!),
-        Positioned.fill(child: front),
-      ],
-    );
+        children: [
+          Positioned.fill(child: background!),
+          Positioned.fill(child: front),
+        ],
+      );
     }
   }
-
 }

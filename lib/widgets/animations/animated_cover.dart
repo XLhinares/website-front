@@ -4,7 +4,6 @@ import "package:x_containers/x_containers.dart";
 
 /// An animated cover widget which slides across the screen in a snail fashion.
 class AnimatedCover extends AnimatedWidget {
-
   // VARIABLES =================================================================
 
   /// The animation controlling the widget.
@@ -40,12 +39,11 @@ class AnimatedCover extends AnimatedWidget {
   ///
   /// It is used to push the [Flex] since it ignores empty regular containers.
   Widget get _emptyBlock => const XContainer(
-    padding: EdgeInsets.zero,
-    enableShadow: false,
-    color: Colors.transparent,
-    height: 0,
-  );
-
+        padding: EdgeInsets.zero,
+        enableShadow: false,
+        color: Colors.transparent,
+        height: 0,
+      );
 
   // CONSTRUCTOR ===============================================================
 
@@ -61,7 +59,6 @@ class AnimatedCover extends AnimatedWidget {
 
   @override
   Widget build(BuildContext context) {
-
     // print("L: ${_leftMargin.toString().padLeft(4)} "
     //     "| M: ${_middleSize.toString().padLeft(4)} "
     //     "| R: ${_rightMargin.toString().padLeft(4)}");
@@ -70,7 +67,6 @@ class AnimatedCover extends AnimatedWidget {
       direction: Axis.horizontal,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-
         // The first sized box tries to reach max width while it's playing
         // then goes back to no width.
         Flexible(

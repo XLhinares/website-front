@@ -4,11 +4,9 @@ import "package:x_containers/x_containers.dart";
 
 import "../../../classes/dataclass/app_mode.dart";
 import "../../../utils/globals.dart";
-import "../../widgets/widgets.dart";
 
 /// A tile displaying one menu element.
 class MenuTile extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   /// The mode this [MenuTile] is about.
@@ -33,8 +31,10 @@ class MenuTile extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: XLayout.paddingM),
       child: ListTile(
-        title: PresetText.headline(mode.name.capitalizeFirst!.tr),
-        subtitle: PresetText.body(mode.description.tr),
+        title: Text(mode.name.capitalizeFirst!.tr,
+            style: context.textTheme.titleMedium),
+        subtitle:
+            Text(mode.description.tr, style: context.textTheme.bodyMedium),
         leading: mode.icon,
         onTap: () {
           sps.goTo(mode);

@@ -1,22 +1,32 @@
 import "../classes/services/services.dart";
+import "../classes/user/user.dart";
 
 // SERVICES ====================================================================
 
+/// A special service which handle the local data and let the user interact with it.
+final User user = User();
+
 /// A service that manages the different elements of the app.
-SinglePageService sps = SinglePageService();
+final SinglePageService sps = SinglePageService();
 
 /// A service that manages all the backend stuff.
-APIService api = APIService();
+final APIService api = APIService();
 
 /// A service that manages the preferences of the user.
-Settings settings = Settings();
+final CookieService settings = CookieService();
 
-// VARIABLES ===================================================================
+/// A service that handles the themes of the app.
+final ThemeService themes = ThemeService();
+
+// CONSTANTS ===================================================================
+
+/// The version of the app.
+const String versionNumber = "v1.2.3";
 
 /// The default ratio of horizontal extent over the vertical.
 const double frameRatio = 1.5;
 
-// ANIMATIONS ==================================================================
+// ANIMATIONS ------------------------------------------------------------------
 
 /// The default duration of animations in the app.
 const Duration animDurationShort = Duration(milliseconds: 200);

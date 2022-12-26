@@ -1,4 +1,1 @@
-void runAllWidgetTests () {
-
-
-}
+void runAllWidgetTests() {}

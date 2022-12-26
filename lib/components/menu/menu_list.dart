@@ -9,7 +9,6 @@ import "menu.dart";
 
 /// The list view containing the menu items.
 class MenuList extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   late final MenuSelectionAnimationController _animationController;
@@ -23,13 +22,16 @@ class MenuList extends StatelessWidget {
 
   /// Returns a [MenuList] matching the given parameters.
   MenuList({super.key}) {
-
     _animationController = Get.put(MenuSelectionAnimationController());
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _animationController.addTileHeight(_keyHome.currentContext?.size?.height ?? 0);
-      _animationController.addTileHeight(_keyProjects.currentContext?.size?.height ?? 0);
-      _animationController.addTileHeight(_keyContacts.currentContext?.size?.height ?? 0);
-      _animationController.setPadding(_keyDivider.currentContext?.size?.height ?? 0);
+      _animationController
+          .addTileHeight(_keyHome.currentContext?.size?.height ?? 0);
+      _animationController
+          .addTileHeight(_keyProjects.currentContext?.size?.height ?? 0);
+      _animationController
+          .addTileHeight(_keyContacts.currentContext?.size?.height ?? 0);
+      _animationController
+          .setPadding(_keyDivider.currentContext?.size?.height ?? 0);
     });
   }
 
@@ -39,7 +41,6 @@ class MenuList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-
         // ANIMATED BOX ----------------------------------------------
         GetBuilder(
           // Gets rebuilt every time the animation controller is
@@ -47,7 +48,6 @@ class MenuList extends StatelessWidget {
           init: _animationController,
           builder: (_) => Column(
             children: [
-
               // An invisible box that pushes the grey box down to
               // match the start of the selected tile.
               AnimatedSize(
@@ -73,7 +73,6 @@ class MenuList extends StatelessWidget {
           ),
         ),
 
-
         // MENU ITEMS ------------------------------------------------
         ListView(
           shrinkWrap: true,
@@ -83,7 +82,9 @@ class MenuList extends StatelessWidget {
               mode: AppMode.home,
               onTap: () => _animationController.selectTile(0),
             ),
-            Divider(key: _keyDivider,),
+            Divider(
+              key: _keyDivider,
+            ),
             MenuTile(
               key: _keyProjects,
               mode: AppMode.projects,

@@ -8,13 +8,14 @@ import "../home/home.dart";
 
 /// The home tab
 class MobileHome extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [MobileHome] matching the given parameters.
-  const MobileHome({super.key,});
+  const MobileHome({
+    super.key,
+  });
 
   // BUILD =====================================================================
 
@@ -30,7 +31,6 @@ class MobileHome extends StatelessWidget {
           ),
           XLayout.verticalM,
           const HomeDescription(),
-
         ],
       ),
     );

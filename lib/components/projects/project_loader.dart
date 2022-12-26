@@ -1,12 +1,11 @@
 import "package:flutter/material.dart";
+import "package:get/get.dart";
 
 import "../../classes/dataclass/project_preview.dart";
 import "../../utils/globals.dart";
-import "../../widgets/widgets.dart";
 
 /// A widget that loads the projects and display them according to the rendering strategy.
 class ProjectLoader extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   /// The limit on the number of projects to load.
@@ -28,10 +27,24 @@ class ProjectLoader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PresetFutureBuilder<List<ProjectPreview>>(
-      future: api.getProjects(limit: limit),
-      builder: (_, data) => renderingStrategy(data!),
-      errorWidget: const Center(child: Text("An error occurred while fetching the data.")),
+    return GetBuilder(
+      init: user,
+      builder: (_) => user.projects.isEmpty
+          ? _loadingWidget(context)
+          : renderingStrategy(user.projects),
+    );
+  }
+
+  // WIDGETS ===================================================================
+
+  Widget _loadingWidget(BuildContext context) {
+    user.loadProjects();
+    return SizedBox(
+      height: Get.height * 0.2,
+      width: Get.height * 0.2,
+      child: CircularProgressIndicator(
+        color: context.theme.colorScheme.secondary,
+      ),
     );
   }
 }

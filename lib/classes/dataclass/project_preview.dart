@@ -1,10 +1,7 @@
-import "package:flutter/material.dart";
-
 import "../../utils/globals.dart";
 
 /// A dataclass
 class ProjectPreview {
-
   // VARIABLES =================================================================
 
   /// The name of the project.
@@ -21,9 +18,7 @@ class ProjectPreview {
   // GETTERS ===================================================================
 
   /// A preview image of the project.
-  Widget get preview => Image.network("${api.assets}/$_preview",
-    fit: BoxFit.fitHeight,
-  );
+  String get preview => "${api.assets}$_preview";
 
   // CONSTRUCTOR ===============================================================
 
@@ -36,9 +31,8 @@ class ProjectPreview {
 
   /// Returns a [ProjectPreview] matching the given json element.
   factory ProjectPreview.fromJson(Map<String, dynamic> json) => ProjectPreview(
-    name: json["name"],
-    previewPath: json["preview"],
-    summary: json["summary"],
-  );
-
+        name: json["name"],
+        previewPath: json["preview"],
+        summary: json["summary"],
+      );
 }

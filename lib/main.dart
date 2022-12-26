@@ -7,11 +7,9 @@ import "package:x_containers/x_containers.dart";
 import "classes/dataclass/app_mode.dart";
 import "tabs/tabs.dart";
 import "utils/globals.dart";
-import "utils/theme.dart";
 import "utils/translations.dart";
 
 void main() async {
-
   // Utils ---------------------------------------------------------------------
 
   await GetStorage.init();
@@ -25,37 +23,40 @@ void main() async {
   // Theme ---------------------------------------------------------------------
 
   xTheme.set(
-    // paddingValue: XLayout.paddingM,
-      padding: EdgeInsets.all(XLayout.paddingS)
-  );
+      // paddingValue: XLayout.paddingM,
+      padding: EdgeInsets.all(XLayout.paddingS));
 
   // Run -----------------------------------------------------------------------
   runApp(GetMaterialApp(
-
     // Meta
     title: "Xeppelin",
 
     // Localization
     translations: CustomTranslations(),
     locale: Get.deviceLocale,
+    fallbackLocale: const Locale("en"),
 
     // Theme
-    themeMode: ThemeMode.dark,
-    theme: themeLight,
-    darkTheme: themeDark,
+    // THEME =================================================================
+    theme: themes.dark,
+    themeMode: ThemeMode.light,
 
     // Run
     getPages: [
       GetPage<Splash>(name: "/", page: () => Splash()),
       GetPage<Home>(name: "/home", page: () => const Home()),
-      GetPage<Home>(name: "/projects", page: () {
-        sps.goTo(AppMode.projects);
-        return const Home();
-      }),
-      GetPage<Home>(name: "/contact", page: () {
-        sps.goTo(AppMode.contact);
-        return const Home();
-      }),
+      GetPage<Home>(
+          name: "/projects",
+          page: () {
+            sps.goTo(AppMode.projects);
+            return const Home();
+          }),
+      GetPage<Home>(
+          name: "/contact",
+          page: () {
+            sps.goTo(AppMode.contact);
+            return const Home();
+          }),
     ],
 
     onGenerateRoute: (RouteSettings routeSettings) {
@@ -92,12 +93,10 @@ void main() async {
       minWidth: 480,
       defaultScale: true,
       breakpoints: const [
-        ResponsiveBreakpoint.resize(480, name: MOBILE),
+        ResponsiveBreakpoint.autoScale(480, name: MOBILE),
         ResponsiveBreakpoint.autoScale(800, name: TABLET),
         ResponsiveBreakpoint.resize(1000, name: DESKTOP),
       ],
     ),
-
-
   ));
 }

@@ -4,7 +4,6 @@ import "package:get/get.dart";
 
 /// A custom String class carrying style codes that can be used for display.
 class CodeText {
-
   // VARIABLES =================================================================
 
   /// A chain of identifiers for the special fonts.
@@ -33,14 +32,14 @@ class CodeText {
   // CONSTRUCTOR ===============================================================
 
   /// Returns a [CodeText] matching the given parameters.
-  CodeText(this.text, {
+  CodeText(
+    this.text, {
     this.code = "n",
   });
 }
 
 /// A widget that parses tags in a string and displays it customized.
 class AutoColorText extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   /// The text that needs auto-coloring.
@@ -72,7 +71,7 @@ class AutoColorText extends StatelessWidget {
 
     List<String> splitText = text.split("%");
 
-    for (int i = 0 ; i < splitText.length ; i++) {
+    for (int i = 0; i < splitText.length; i++) {
       late String part;
       late String code;
       if (i.isEven) {
@@ -95,8 +94,7 @@ class AutoColorText extends StatelessWidget {
   List<TextSpan> get _coloredText {
     final List<TextSpan> tmp = [];
 
-    for (int i = 0 ; i < _parsedText.length ; i++) {
-
+    for (int i = 0; i < _parsedText.length; i++) {
       final part = _parsedText[i];
 
       // print("part: ${part.text}; code: ${part.code}");
@@ -112,16 +110,18 @@ class AutoColorText extends StatelessWidget {
       if (part.isItalics) fStyle = FontStyle.italic;
       if (part.isSmallCaps) fFeatures.add(const FontFeature.enable("smcp"));
 
-      tmp.add(TextSpan(
-        text: part.text,
-        style: (defaultStyle ?? Get.textTheme.bodyMedium ?? const TextStyle())
-            .copyWith(
-          color: color,
-          fontWeight: fWeight,
-          fontStyle: fStyle,
-          fontFeatures: fFeatures,
+      tmp.add(
+        TextSpan(
+          text: part.text,
+          style: (defaultStyle ?? Get.textTheme.bodyMedium ?? const TextStyle())
+              .copyWith(
+            color: color,
+            fontWeight: fWeight,
+            fontStyle: fStyle,
+            fontFeatures: fFeatures,
+          ),
         ),
-      ),);
+      );
     }
 
     return tmp;
@@ -130,7 +130,8 @@ class AutoColorText extends StatelessWidget {
   // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [AutoColorText] matching the given parameters.
-  const AutoColorText(this.text, {
+  const AutoColorText(
+    this.text, {
     Key? key,
     this.defaultStyle,
     this.highlightColor,
@@ -141,9 +142,7 @@ class AutoColorText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RichText(
-      text: TextSpan(
-          children: _coloredText
-      ),
+      text: TextSpan(children: _coloredText),
     );
   }
 

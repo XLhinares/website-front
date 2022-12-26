@@ -1,121 +1,123 @@
-import "package:flutter/foundation.dart";
+import "dart:collection";
+import "dart:convert";
+
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
+import "../../utils/globals.dart";
 import "../../utils/tools.dart";
-import "../../widgets/widgets.dart";
+import "../../utils/tools_api.dart";
 import "../dataclass/project_preview.dart";
 
 /// A service that handles all the API requests.
 class APIService extends GetConnect {
-
   // VARIABLES =================================================================
 
-  /// The URI prefix to reach the the host.
-  late final String _baseUrl;
+  /// The URI prefix to reach the the API.
+  late final String api;
+
+  /// The URI prefix to reach the the assets.
+  late final String assets;
+
+  late final List<ProjectPreview> _projects;
 
   // GETTERS ===================================================================
 
-
-  /// The URI prefix to reach the the API.
-  String get api => "$_baseUrl/api";
-
-  /// The URI prefix to reach the the assets.
-  String get assets => "https://www.xeppelin.org/assets";
+  /// A list of the registered trackable metadata.
+  UnmodifiableListView<ProjectPreview> get lastTracked =>
+      UnmodifiableListView(_projects);
 
   // CONSTRUCTOR ===============================================================
 
-  /// Returns an instance of [APIService].
-  APIService () {
-    if (kDebugMode) {
-      _baseUrl = "http://localhost:3000";
-    } else {
-      _baseUrl = "https://www.xeppelin.org";
-    }
+  /// The instantiation logic of [APIService].
+  APIService._internal() {
+    api = "https://api.xeppelin.org/";
+    assets = "https://assets.xeppelin.org/";
+    _projects = [];
+
+    printInfo(info: "API Service initialized.");
   }
 
-  // @override
-  // void onInit() {
-  //   // httpClient.defaultDecoder = Item.itemsFromJson;
-  //   // httpClient.baseUrl = "https://www.xeppelin.org/api/";
-  //   // httpClient.timeout = const Duration(seconds: 5);
-  // }
+  /// The actual instance of [APIService].
+  static final APIService _instance = APIService._internal();
+
+  /// Returns the [APIService] singleton.
+  factory APIService() => _instance;
 
   // METHODS ===================================================================
 
   /// A request to test the connection to the API.
-  Future<void> test (BuildContext? context) async {
-
-    TextStyle? titleStyle = context == null ? null : PresetStyle.headline.getStyle(context);
-    TextStyle? messageStyle = context == null ? null : PresetStyle.body.getStyle(context);
+  Future<void> test(BuildContext? context) async {
+    TextStyle? titleStyle = context?.textTheme.titleMedium;
+    TextStyle? contentStyle = context?.textTheme.bodyMedium;
     Color color = context?.theme.colorScheme.background ?? Colors.black12;
 
-
     try {
-
       const String uri = "https://catfact.ninja/fact";
-      final Response response = await get(uri);
+      final response = await fetchJson(uri, subsetPicker: (e) => [e]);
 
       XSnackbar.text(
-        title: "Test success".tr,
-        message: "${"Test success message".tr}\n\n${response.body}",
+        title: "$versionNumber - ${"Test success".tr}",
+        content: "${"Test success message".tr}\n\n${response[0]["fact"]}",
         titleStyle: titleStyle,
-        messageStyle: messageStyle,
+        contentStyle: contentStyle,
         color: color,
-      ).show();
-
+        duration: const Duration(seconds: 7),
+      ).show(context!);
     } catch (e) {
       printError(info: "\n$e");
 
-
       XSnackbar.text(
         title: "Test failure".tr,
-        message: "Test failure message".tr,
+        content: "Test failure message".tr,
         titleStyle: titleStyle,
-        messageStyle: messageStyle,
+        contentStyle: contentStyle,
         color: color,
-      ).show();
+      ).show(context!);
       rethrow;
     }
   }
 
   /// Retrieves a list of projects from the api.
-  Future<List<ProjectPreview>> getProjects ({int limit = -1}) async
-  => tryWrapper<List<ProjectPreview>>(() async {
+  Future<List<ProjectPreview>> getProjects({int page = 0}) async =>
+      tryWrapper<List<ProjectPreview>>(() async {
+        final response = await fetchJson((CustomURL(initialText: api)
+              ..addPath("projects")
+              ..addFile("all")
+              ..addCustomParameter(name: "page", value: page)
+              ..addCustomParameter(name: "sorter", value: page))
+            .clean);
 
-    final response = await get("http://localhost:3000/api/projects/all?limit=$limit");
-    printInfo(info: "CODE: ${response.statusCode}");
-    printInfo(info: "BODY: ${response.body as List}");
+        printInfo(info: response[0].toString());
 
-    List<Map<String, dynamic>> parsedResponse = List<Map<String, dynamic>>.from(response.body);
-
-    printInfo(info: parsedResponse[0].toString());
-
-    return parsedResponse.map((e) => ProjectPreview.fromJson(e)).toList();
-  });
-
+        return response.map((e) => ProjectPreview.fromJson(e)).toList();
+      });
 
   /// Sends a mail to the support.
-  Future<bool> sendSupportMail ({
+  Future<bool> sendSupportMail({
     required String name,
     required String email,
     required String subject,
     required String details,
-  }) => tryWrapper(() async {
+  }) =>
+      tryWrapper(() async {
+        String body = json.encode({
+          "name": name,
+          "email": email,
+          "subject": subject,
+          "details": details,
+        });
 
-    Map<String, String> body = {
-      "name": name,
-      "email": email,
-      "subject": subject,
-      "details": details,
-    };
-
-    Response response = await post("$api/mail/support", body);
-    printInfo(info: "$api/mail/support");
-    printInfo(info: response.statusCode.toString());
-    return response.statusCode == 200;
-  });
+        Response response = await post(
+          "$api/mail/support",
+          body,
+          headers: {},
+        );
+        printInfo(info: "$api/mail/support");
+        printInfo(info: response.statusCode.toString());
+        return response.statusCode == 200;
+      });
 
 // EXAMPLES ==================================================================
 
@@ -133,4 +135,3 @@ class APIService extends GetConnect {
 // }
 
 }
-

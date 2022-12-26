@@ -7,7 +7,6 @@ import "../../widgets/widgets.dart";
 
 /// An animated title for the body.
 class BodyTitle extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   // CONSTRUCTOR ===============================================================
@@ -19,11 +18,9 @@ class BodyTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Row(
       mainAxisSize: MainAxisSize.max,
       children: [
-
         // ANIMATED ICON -------------------------------------------------------
         GetBuilder(
           init: sps,
@@ -34,11 +31,10 @@ class BodyTitle extends StatelessWidget {
               child: sps.atHome
                   ? const SizedBox()
                   : Padding(
-                padding: EdgeInsets.only(right: XLayout.paddingXS),
-                child: XeppelinLogo(
-                  size: 2 * XLayout.paddingL,
-                )
-              ),
+                      padding: EdgeInsets.only(right: XLayout.paddingXS),
+                      child: XeppelinLogo(
+                        size: 2 * XLayout.paddingL,
+                      )),
             ),
           ),
         ),
@@ -47,11 +43,13 @@ class BodyTitle extends StatelessWidget {
         Expanded(
           child: FittedBox(
             fit: BoxFit.fitWidth,
-            child: PresetText.xeppelin(),
+            child: Text(
+              "Xeppelin",
+              style: context.textTheme.displayLarge,
+            ),
           ),
         ),
       ],
     );
   }
-
 }

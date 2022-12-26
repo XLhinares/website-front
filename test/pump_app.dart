@@ -8,13 +8,10 @@ import "package:get/get.dart";
 // Project dependencies
 import "package:website_front/tabs/home.dart";
 import "package:website_front/tabs/splash.dart";
-import "package:website_front/utils/globals.dart";
-import "package:website_front/utils/theme.dart";
-import "package:website_front/utils/translations.dart";
+import "package:website_front/utils/utils.dart";
 
 /// A utility to pump the full app without having to rewrite it every time.
-Future<void> pumpApp (WidgetTester tester) async {
-
+Future<void> pumpApp(WidgetTester tester) async {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   // Memory --------------------------------------------------------------------
@@ -33,8 +30,7 @@ Future<void> pumpApp (WidgetTester tester) async {
 
       // Theme
       themeMode: ThemeMode.dark,
-      theme: themeLight,
-      darkTheme: themeDark,
+      theme: themes.dark,
 
       // Run
       getPages: [

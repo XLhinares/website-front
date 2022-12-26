@@ -2,9 +2,4 @@
 
 // Project dependencies
 
-void runAllIntegrationTests () {
-
-
-}
-
-
+void runAllIntegrationTests() {}

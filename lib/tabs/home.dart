@@ -6,7 +6,6 @@ import "home_mobile.dart";
 
 /// The one-page style website that the user navigates on.
 class Home extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   // CONSTRUCTOR ===============================================================
@@ -18,7 +17,6 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return LayoutBuilder(
       builder: (context, constraints) {
         if (ResponsiveWrapper.of(context).isLargerThan(TABLET)) {
@@ -33,7 +31,5 @@ class Home extends StatelessWidget {
   }
 
 // METHODS ===================================================================
-
-
 
 }

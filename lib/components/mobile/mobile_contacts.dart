@@ -6,13 +6,14 @@ import "../contact/contact_title.dart";
 
 /// The content of the body in the "Contact" mode.
 class MobileContact extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   // CONSTRUCTOR ===============================================================
 
   /// Returns a [MobileContact] matching the given parameters.
-  const MobileContact({super.key,});
+  const MobileContact({
+    super.key,
+  });
 
   // BUILD =====================================================================
 

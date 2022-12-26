@@ -4,7 +4,6 @@ import "frame_fit.dart";
 
 /// A Scaffold that fits its body within a central column if needed.
 class ScaffoldFit extends StatelessWidget {
-
 // VARIABLES =================================================================
 
   /// An optional appbar to display at the top of the scaffold

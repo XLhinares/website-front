@@ -6,13 +6,14 @@ import "../contact/contact_title.dart";
 
 /// The content of the body in the "Projects" mode.
 class DesktopContact extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   // CONSTRUCTOR ===============================================================
 
   /// Returns a [DesktopContact] matching the given parameters.
-  const DesktopContact({super.key,});
+  const DesktopContact({
+    super.key,
+  });
 
   // BUILD =====================================================================
 
@@ -23,7 +24,6 @@ class DesktopContact extends StatelessWidget {
         padding: EdgeInsets.all(XLayout.paddingM),
         shrinkWrap: true,
         children: [
-
           // PRESENTATION --------------------------------------------------------
 
           const ContactTitle(),

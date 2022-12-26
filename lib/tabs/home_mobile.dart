@@ -5,7 +5,6 @@ import "../components/components.dart";
 
 /// The app body as it should
 class HomeMobile extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   // CONSTRUCTOR ===============================================================
@@ -24,7 +23,9 @@ class HomeMobile extends StatelessWidget {
       body: Stack(
         children: [
           // BACKGROUND --------------------------------------------------------
-          const AnimatedBackground(scale: 0.3,),
+          const AnimatedBackground(
+            scale: 0.3,
+          ),
 
           // FOREGROUND --------------------------------------------------------
           ListView(

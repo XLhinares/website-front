@@ -8,7 +8,6 @@ import "../projects/project_loader.dart";
 
 /// The "project" tab adapted for mobile.
 class MobileProjects extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   // CONSTRUCTOR ===============================================================
@@ -23,19 +22,21 @@ class MobileProjects extends StatelessWidget {
     return ProjectLoader(
       limit: 4,
       renderingStrategy: (list) => Column(
-        children: list.map<Widget>((p) => Padding(
-          padding: EdgeInsets.only(bottom: XLayout.paddingM),
-          child: ProjectWidePreview(
-              project: p,
-              onTap: () => Get.to(() => ScaffoldFit(
-                body: ProjectFocus(
-                  project: p,
-                  onBack: () => Get.back(),
-                ),
-              ))
-          ),
-        ),
-        ).toList(),
+        children: list
+            .map<Widget>(
+              (p) => Padding(
+                padding: EdgeInsets.only(bottom: XLayout.paddingM),
+                child: ProjectWidePreview(
+                    project: p,
+                    onTap: () => Get.to(() => ScaffoldFit(
+                          body: ProjectFocus(
+                            project: p,
+                            onBack: () => Get.back(),
+                          ),
+                        ))),
+              ),
+            )
+            .toList(),
       ),
     );
   }

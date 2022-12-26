@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../../classes/dataclass/project_preview.dart";
@@ -6,7 +7,6 @@ import "../../widgets/widgets.dart";
 
 /// A detailed view of a project.
 class ProjectFocus extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   /// The project in question.
@@ -18,11 +18,7 @@ class ProjectFocus extends StatelessWidget {
   // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [ProjectFocus] matching the given parameters.
-  const ProjectFocus({
-    super.key,
-    required this.project,
-    this.onBack
-  });
+  const ProjectFocus({super.key, required this.project, this.onBack});
 
   // BUILD =====================================================================
 
@@ -30,7 +26,6 @@ class ProjectFocus extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-
         // TITLE ---------------------------------------------------------------
         XContainer(
           child: Row(
@@ -41,7 +36,10 @@ class ProjectFocus extends StatelessWidget {
               ),
               Expanded(
                 child: Center(
-                  child: PresetText.headline(project.name,),
+                  child: Text(
+                    project.name,
+                    style: context.textTheme.titleMedium,
+                  ),
                 ),
               ),
             ],
@@ -54,11 +52,11 @@ class ProjectFocus extends StatelessWidget {
 
         XContainer(
           padding: EdgeInsets.zero,
-          child: ClipRRect(
-            borderRadius: XLayout.brcXS,
-            child: AspectRatio(
-              aspectRatio: 4,
-              child: project.preview,
+          child: AspectRatio(
+            aspectRatio: 4,
+            child: CoveringNetworkImage(
+              project.preview,
+              fit: BoxFit.fitHeight,
             ),
           ),
         ),
@@ -76,26 +74,25 @@ class ProjectFocus extends StatelessWidget {
                 flex: 1,
                 child: SizedBox(
                   height: double.infinity,
-                  child: ClipRRect(
-                    borderRadius: XLayout.brcXS,
-                    child: project.preview,
+                  child: CoveringNetworkImage(
+                    project.preview,
+                    fit: BoxFit.fitWidth,
                   ),
                 ),
               ),
-
               XLayout.horizontalM,
-
               Flexible(
                 flex: 3,
                 child: XContainer(
                   padding: EdgeInsets.all(XLayout.paddingL),
-                  child: Text(project.summary,),
+                  child: Text(
+                    project.summary,
+                  ),
                 ),
               ),
             ],
           ),
         ),
-
       ],
     );
   }

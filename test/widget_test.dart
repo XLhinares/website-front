@@ -11,9 +11,7 @@ import "unit_tests/main.dart";
 import "widget_tests/main.dart";
 
 void main() {
-
   runAllUnitTest();
   runAllWidgetTests();
   runAllIntegrationTests();
-
 }

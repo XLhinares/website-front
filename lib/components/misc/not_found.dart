@@ -3,7 +3,6 @@ import "package:x_containers/x_containers.dart";
 
 /// A go-to widget to display when some content was not found.
 class NotFound extends StatelessWidget {
-
   // VARIABLES =================================================================
 
   // CONSTRUCTOR ===============================================================

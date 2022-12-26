@@ -22,7 +22,7 @@ class ContactTitle extends StatelessWidget {
     return XCard(
         padding: EdgeInsets.all(XLayout.paddingM),
         title: PresetText.headline("Contact form".tr,),
-        subtitle: PresetText.body("Contact form explanation".tr,),
+        content: PresetText.body("Contact form explanation".tr,),
       );
   }
 

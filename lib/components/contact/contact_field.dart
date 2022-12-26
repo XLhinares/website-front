@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:x_containers/settings/x_layout.dart";
+import "package:x_containers/x_containers.dart";
 
 import "../../widgets/widgets.dart";
 

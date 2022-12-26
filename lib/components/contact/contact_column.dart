@@ -1,4 +1,3 @@
-// Framework dependencies
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
@@ -75,7 +74,7 @@ class ContactColumn extends StatelessWidget {
             XLayout.verticalM,
 
             XInkContainer(
-              onTap: sendEmail,
+              onTap: () => sendEmail(context),
               // onTap: sendEmail,
               color: context.theme.colorScheme.secondary,
               child: const Text("Send"),
@@ -90,7 +89,7 @@ class ContactColumn extends StatelessWidget {
   // METHODS ===================================================================
 
   /// Send an email with the given info to the support.
-  Future<void> sendEmail () async => tryWrapper(() async {
+  Future<void> sendEmail (BuildContext context) async => tryWrapper(() async {
 
     // Aborts if all the fields are not valid.
     if (!(_formKey.currentState?.validate() ?? false)) return;
@@ -102,22 +101,25 @@ class ContactColumn extends StatelessWidget {
       details: _controllerDetails.text,
     );
 
+    // if (!context.mounted) return;
     if (success) {
+      //ignore: use_build_context_synchronously
       XSnackbar.text(
         title: "Email sent.".tr,
-        message: "I'll get back to you as soon as possible :)".tr,
+        content: "I'll get back to you as soon as possible :)".tr,
         titleStyle: Get.context?.textTheme.headlineMedium,
-        messageStyle: Get.context?.textTheme.bodyMedium,
+        contentStyle: Get.context?.textTheme.bodyMedium,
         maxWidth: 1024,
-      ).show();
+      ).show(context);
     } else {
+      //ignore: use_build_context_synchronously
       XSnackbar.text(
         title: "There was an error.".tr,
-        message: "Please try again later.".tr,
+        content: "Please try again later.".tr,
         titleStyle: Get.context?.textTheme.headlineMedium,
-        messageStyle: Get.context?.textTheme.bodyMedium,
+        contentStyle: Get.context?.textTheme.bodyMedium,
         maxWidth: 1024,
-      ).show();
+      ).show(context);
     }
 
   },
@@ -128,11 +130,11 @@ class ContactColumn extends StatelessWidget {
 
       XSnackbar.text(
         title: "Could not send the email.".tr,
-        message: "There was an error, please try again later.".tr,
+        content: "There was an error, please try again later.".tr,
         titleStyle: Get.context?.textTheme.headlineMedium,
-        messageStyle: Get.context?.textTheme.bodyMedium,
+        contentStyle: Get.context?.textTheme.bodyMedium,
         maxWidth: 1024,
-      ).show();
+      ).show(context);
     },
   );
 

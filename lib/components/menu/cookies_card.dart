@@ -37,7 +37,7 @@ class CookiesCard extends StatelessWidget {
               )
             ],
           ),
-          subtitle: AutoSizeText(
+          content: AutoSizeText(
               "Cookies description".tr,
             style: PresetStyle.body.getStyle(context),
           ),

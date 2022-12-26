@@ -1,12 +1,12 @@
 import "dart:convert";
 
-import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../utils/globals.dart";
 import "../../utils/tools.dart";
+import "../../utils/tools_api.dart";
 import "../../widgets/widgets.dart";
 import "../dataclass/project_preview.dart";
 
@@ -15,29 +15,17 @@ class APIService extends GetConnect {
 
   // VARIABLES =================================================================
 
-  /// The URI prefix to reach the the host.
-  late final String _baseUrl;
-
-  // GETTERS ===================================================================
-
-
   /// The URI prefix to reach the the API.
-  String get api => "$_baseUrl/api";
+  final String api = "https://api.xeppelin.org/";
 
   /// The URI prefix to reach the the assets.
-  String get assets => "https://www.xeppelin.org/assets";
+  final String assets = "https://assets.xeppelin.org/";
 
   // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [APIService].
   APIService () {
-    if (kDebugMode) {
-      _baseUrl = "http://localhost:3000";
-    } else {
-      _baseUrl = "https://www.xeppelin.org";
-    }
-
-    printInfo(info: "API Service initialized with base url: $_baseUrl");
+    printInfo(info: "API Service initialized.");
   }
 
   // @override
@@ -53,9 +41,8 @@ class APIService extends GetConnect {
   Future<void> test (BuildContext? context) async {
 
     TextStyle? titleStyle = context == null ? null : PresetStyle.headline.getStyle(context);
-    TextStyle? messageStyle = context == null ? null : PresetStyle.body.getStyle(context);
+    TextStyle? contentStyle = context == null ? null : PresetStyle.body.getStyle(context);
     Color color = context?.theme.colorScheme.background ?? Colors.black12;
-
 
     try {
 
@@ -64,11 +51,11 @@ class APIService extends GetConnect {
 
       XSnackbar.text(
         title: "$versionNumber - ${"Test success".tr}",
-        message: "${"Test success message".tr}\n\n${response.body}",
+        content: "${"Test success message".tr}\n\n${response.body}",
         titleStyle: titleStyle,
-        messageStyle: messageStyle,
+        contentStyle: contentStyle,
         color: color,
-      ).show();
+      ).show(context!);
 
     } catch (e) {
       printError(info: "\n$e");
@@ -76,11 +63,11 @@ class APIService extends GetConnect {
 
       XSnackbar.text(
         title: "Test failure".tr,
-        message: "Test failure message".tr,
+        content: "Test failure message".tr,
         titleStyle: titleStyle,
-        messageStyle: messageStyle,
+        contentStyle: contentStyle,
         color: color,
-      ).show();
+      ).show(context!);
       rethrow;
     }
   }
@@ -89,15 +76,15 @@ class APIService extends GetConnect {
   Future<List<ProjectPreview>> getProjects ({int limit = -1}) async
   => tryWrapper<List<ProjectPreview>>(() async {
 
-        final response = await get("$api/projects/all?limit=$limit");
-        printInfo(info: "CODE: ${response.statusCode}");
-        printInfo(info: "BODY: ${response.body as List}");
+        final response = await fetchJson((CustomURL(initialText: api)
+          ..addPath("projects")
+          ..addFile("all")
+          ..addCustomParameter(name: "limit", value: limit))
+            .clean);
 
-        List<Map<String, dynamic>> parsedResponse = List<Map<String, dynamic>>.from(response.body);
+        printInfo(info: response[0].toString());
 
-        printInfo(info: parsedResponse[0].toString());
-
-        return parsedResponse.map((e) => ProjectPreview.fromJson(e)).toList();
+        return response.map((e) => ProjectPreview.fromJson(e)).toList();
       });
 
 

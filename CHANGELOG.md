@@ -1,3 +1,7 @@
+## 1.5.2
+
+- :bug: Fixed the URL to send mail through API.
+
 ## 1.5.1
 
 - :construction_worker: Build is published without going through Github.

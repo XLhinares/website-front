@@ -39,11 +39,13 @@ class ProjectLoader extends StatelessWidget {
 
   Widget _loadingWidget(BuildContext context) {
     user.loadProjects();
-    return SizedBox(
-      height: Get.height * 0.2,
-      width: Get.height * 0.2,
-      child: CircularProgressIndicator(
-        color: context.theme.colorScheme.secondary,
+    return Center(
+      child: SizedBox(
+        height: Get.height * 0.2,
+        width: Get.height * 0.2,
+        child: CircularProgressIndicator(
+          color: context.theme.colorScheme.secondary,
+        ),
       ),
     );
   }

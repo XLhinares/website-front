@@ -43,34 +43,18 @@ pre-commit:
 	@make analyze
 	@make check-version
 
-## Initializes build/web/ as a clone of the [website-build] repository.
-init-build:
-	@ ./scripts/init_build.sh
-
-## Reconfigures the production remote.
-init-remote:
-	@ ./scripts/init_remote.sh
-
-## Re-initializes the repository and connects it to the remote.
-init:
-	@ make init-build
-	@ make init-remote
+## Re-initializes git in the build repository, connects it to the remote and publishes the current build.
+connect:
+	@ ./scripts/build_connect.sh
 
 ## Pushes the latest build to the [website-build] repository.
 publish:
-	@ ./scripts/publish.sh
+	@ ./scripts/build_publish.sh
 
-## Pushes the latest build to the [website-build] repository without acknowledging any change.
-publish-without-changes:
-	@ ./scripts/publish_without_changes.sh
 
 ## Builds the project for the web platform.
-build-web:
+build:
 	@ flutter build web
 
-## Builds the project and pushes it to the [website-build] repository.
-build-and-publish:
-	@ make build-web
-	@ make publish
 
 

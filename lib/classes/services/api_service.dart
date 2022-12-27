@@ -109,12 +109,17 @@ class APIService extends GetConnect {
           "details": details,
         });
 
+        final url = (CustomURL(initialText: api)
+        ..addPath("mail")
+        ..addFile("support"))
+        .clean;
+
         Response response = await post(
-          "$api/mail/support",
+          url,
           body,
           headers: {},
         );
-        printInfo(info: "$api/mail/support");
+        printInfo(info: "Sending mail to support at: $url");
         printInfo(info: response.statusCode.toString());
         return response.statusCode == 200;
       });

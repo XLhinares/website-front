@@ -117,7 +117,6 @@ class APIService extends GetConnect {
         Response response = await post(
           url,
           body,
-          headers: {},
         );
         printInfo(info: "Sending mail to support at: $url");
         printInfo(info: response.statusCode.toString());

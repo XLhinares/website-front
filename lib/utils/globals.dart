@@ -21,7 +21,7 @@ final ThemeService themes = ThemeService();
 // CONSTANTS ===================================================================
 
 /// The version of the app.
-const String versionNumber = "v1.5.2";
+const String versionNumber = "v1.5.3";
 
 /// The default ratio of horizontal extent over the vertical.
 const double frameRatio = 1.5;

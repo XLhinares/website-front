@@ -54,7 +54,9 @@ publish:
 
 ## Builds the project for the web platform.
 build:
-	@ flutter build web
+	@flutter clean
+	@flutter pub get
+	@flutter build web
 
 
 

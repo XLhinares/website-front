@@ -1,3 +1,8 @@
+## 1.5.3
+
+- :bug: Removed the set headers from the POST request in [api.sendSupportMail].
+- :construction_worker: Changed `make build` to clean the build folder beforehand.
+
 ## 1.5.2
 
 - :bug: Fixed the URL to send mail through API.

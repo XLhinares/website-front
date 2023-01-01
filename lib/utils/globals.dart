@@ -1,3 +1,5 @@
+import "package:x_containers/x_containers.dart";
+
 import "../classes/services/services.dart";
 import "../classes/user/user.dart";
 
@@ -7,7 +9,7 @@ import "../classes/user/user.dart";
 final User user = User();
 
 /// A service that manages the different elements of the app.
-final SinglePageService sps = SinglePageService();
+final CustomRouter router = CustomRouter();
 
 /// A service that manages all the backend stuff.
 final APIService api = APIService();
@@ -21,10 +23,13 @@ final ThemeService themes = ThemeService();
 // CONSTANTS ===================================================================
 
 /// The version of the app.
-const String versionNumber = "v1.5.2";
+const String versionNumber = "v1.6.0";
 
 /// The default ratio of horizontal extent over the vertical.
 const double frameRatio = 1.5;
+
+/// The vertical extent of the [BottomNavigationBar] used on the mobile display.
+double get navigationBarHeight => XLayout.paddingS * 6;
 
 // ANIMATIONS ------------------------------------------------------------------
 

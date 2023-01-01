@@ -2,7 +2,7 @@
 
 # Author : Xavier Lhinares
 
-echo "Publishing the latest web build to git."
+echo "Publishing the latest web build to the remote repository."
 cd build/web/ || exit
 git add .
 echo "Enter a commit message."

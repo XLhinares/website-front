@@ -6,6 +6,12 @@ import "frame_fit.dart";
 class ScaffoldFit extends StatelessWidget {
 // VARIABLES =================================================================
 
+  /// An optional widget to display in the background.
+  final Widget? background;
+
+  /// An optional bottom navigation bar.
+  final Widget? bottomNavigationBar;
+
   /// An optional appbar to display at the top of the scaffold
   final AppBar? appBar;
 
@@ -22,6 +28,8 @@ class ScaffoldFit extends StatelessWidget {
     Key? key,
     this.appBar,
     required this.body,
+    this.background,
+    this.bottomNavigationBar,
     this.padding,
   }) : super(key: key);
 
@@ -33,8 +41,10 @@ class ScaffoldFit extends StatelessWidget {
       appBar: appBar,
       body: FrameFit(
         padding: padding,
+        background: background,
         child: body,
       ),
+      bottomNavigationBar: bottomNavigationBar,
     );
   }
 

@@ -32,6 +32,7 @@ class MenuList extends StatelessWidget {
           .addTileHeight(_keyContacts.currentContext?.size?.height ?? 0);
       _animationController
           .setPadding(_keyDivider.currentContext?.size?.height ?? 0);
+      _animationController.selectTile(router.modeIndex);
     });
   }
 

@@ -6,7 +6,7 @@ import "package:flutter_test/flutter_test.dart";
 import "package:get/get.dart";
 
 // Project dependencies
-import "package:website_front/tabs/home.dart";
+import "package:website_front/tabs/responsive_home.dart";
 import "package:website_front/tabs/splash.dart";
 import "package:website_front/utils/utils.dart";
 
@@ -16,7 +16,7 @@ Future<void> pumpApp(WidgetTester tester) async {
 
   // Memory --------------------------------------------------------------------
 
-  Get.put(sps);
+  Get.put(router);
   Get.put(settings);
 
   await tester.pumpWidget(
@@ -35,7 +35,8 @@ Future<void> pumpApp(WidgetTester tester) async {
       // Run
       getPages: [
         GetPage<Splash>(name: "/", page: () => Splash()),
-        GetPage<Home>(name: "/home", page: () => const Home()),
+        GetPage<ResponsiveHome>(
+            name: "/home", page: () => const ResponsiveHome()),
       ],
     ),
   );

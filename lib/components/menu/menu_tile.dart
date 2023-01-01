@@ -37,7 +37,7 @@ class MenuTile extends StatelessWidget {
             Text(mode.description.tr, style: context.textTheme.bodyMedium),
         leading: mode.icon,
         onTap: () {
-          sps.goTo(mode);
+          router.goTo(mode: mode);
           onTap?.call();
         },
       ),

@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
-// Project dependencies
 import "../../../classes/dataclass/app_mode.dart";
 import "../../../utils/globals.dart";
 import "../../widgets/widgets.dart";
@@ -15,11 +14,11 @@ class BodyContents extends StatelessWidget {
 
   /// The main content widget inside the body.
   Widget get _contents {
-    switch (sps.mode) {
+    switch (router.mode) {
       case AppMode.home:
         return const DesktopHome();
       case AppMode.projects:
-        return DesktopProjects();
+        return const DesktopProjects();
       case AppMode.contact:
         return const DesktopContact();
       default:
@@ -43,7 +42,7 @@ class BodyContents extends StatelessWidget {
         // CONTENTS ----------------------------------------------------------
         Positioned.fill(
           child: GetBuilder(
-            init: sps,
+            init: router,
             builder: (_) => _contents,
           ),
         ),
@@ -51,7 +50,7 @@ class BodyContents extends StatelessWidget {
         // ANIMATION ---------------------------------------------------------
         Positioned.fill(
           child: AnimatedCover(
-            animation: sps.animation,
+            animation: router.animation,
           ),
         ),
       ],

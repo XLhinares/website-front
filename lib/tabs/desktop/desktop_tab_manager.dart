@@ -1,17 +1,18 @@
 import "package:flutter/material.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../components/components.dart";
-import "../widgets/widgets.dart";
+import "../../components/components.dart";
+import "../../widgets/widgets.dart";
+import "desktop.dart";
 
 /// The
-class HomeDesktop extends StatelessWidget {
+class DesktopTabManager extends StatelessWidget {
   // VARIABLES =================================================================
 
   // CONSTRUCTOR ===============================================================
 
-  /// Returns an instance of [HomeDesktop] matching the given parameters.
-  const HomeDesktop({super.key});
+  /// Returns an instance of [DesktopTabManager] matching the given parameters.
+  const DesktopTabManager({super.key});
 
   // BUILD =====================================================================
 

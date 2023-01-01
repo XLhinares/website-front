@@ -23,12 +23,12 @@ class BodyTitle extends StatelessWidget {
       children: [
         // ANIMATED ICON -------------------------------------------------------
         GetBuilder(
-          init: sps,
+          init: router,
           builder: (_) => AnimatedSize(
             duration: animDurationShort,
             child: AnimatedSwitcher(
               duration: animDurationShort,
-              child: sps.atHome
+              child: router.atHome
                   ? const SizedBox()
                   : Padding(
                       padding: EdgeInsets.only(right: XLayout.paddingXS),

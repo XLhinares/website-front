@@ -26,6 +26,20 @@ class CoveringNetworkImage extends StatelessWidget {
   /// See the discussion at [paintImage].
   final BoxFit fit;
 
+  /// A builder function that is called if an error occurs during image loading.
+  ///
+  /// If this builder is not provided, any exceptions will be reported to [FlutterError.onError].
+  /// If it is provided, the caller should either handle the exception by providing a replacement widget, or rethrow the exception.
+  final Widget Function(BuildContext, Object, StackTrace?)? errorBuilder;
+
+  /// A builder that specifies the widget to display to the user while an image is still loading.
+  ///
+  /// If this is null, and the image is loaded incrementally (e.g. over a network),
+  /// the user will receive no indication of the progress as the bytes of the image are loaded.
+  /// For more information on how to interpret the arguments that are passed to this builder,
+  /// see the documentation on [ImageLoadingBuilder].
+  final Widget Function(BuildContext, Widget, ImageChunkEvent?)? loadingBuilder;
+
   // CONSTRUCTOR ===============================================================
 
   /// Returns a [CoveringNetworkImage] matching the given parameters.
@@ -35,6 +49,8 @@ class CoveringNetworkImage extends StatelessWidget {
     this.clipBehavior = Clip.hardEdge,
     this.borderRadius = BorderRadius.zero,
     this.fit = BoxFit.cover,
+    this.errorBuilder,
+    this.loadingBuilder,
   });
 
   // BUILD =====================================================================
@@ -47,6 +63,8 @@ class CoveringNetworkImage extends StatelessWidget {
       child: Image.network(
         path,
         fit: fit,
+        errorBuilder: errorBuilder,
+        loadingBuilder: loadingBuilder,
       ),
     );
   }

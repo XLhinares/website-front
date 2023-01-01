@@ -1,17 +1,19 @@
 import "dart:collection";
 import "dart:convert";
+import "dart:io";
 
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:http/http.dart" as http;
 import "package:x_containers/x_containers.dart";
 
 import "../../utils/globals.dart";
 import "../../utils/tools.dart";
 import "../../utils/tools_api.dart";
-import "../dataclass/project_preview.dart";
+import "../dataclass/project_metadata.dart";
 
 /// A service that handles all the API requests.
-class APIService extends GetConnect {
+class APIService {
   // VARIABLES =================================================================
 
   /// The URI prefix to reach the the API.
@@ -20,12 +22,12 @@ class APIService extends GetConnect {
   /// The URI prefix to reach the the assets.
   late final String assets;
 
-  late final List<ProjectPreview> _projects;
+  late final List<ProjectMetadata> _projects;
 
   // GETTERS ===================================================================
 
   /// A list of the registered trackable metadata.
-  UnmodifiableListView<ProjectPreview> get lastTracked =>
+  UnmodifiableListView<ProjectMetadata> get lastTracked =>
       UnmodifiableListView(_projects);
 
   // CONSTRUCTOR ===============================================================
@@ -46,6 +48,36 @@ class APIService extends GetConnect {
   factory APIService() => _instance;
 
   // METHODS ===================================================================
+  /// Fetches a JSON object from the given URL.
+  ///
+  /// Parameters:
+  /// * url: The path to the resource; cannot be null.
+  /// * dataSubset: a function taking the raw data and returning a subset known
+  /// to match the [List<Map<String, dynamic>>] type.
+  Future<List<Map<String, dynamic>>> fetchJson(
+    Uri? url, {
+    dynamic Function(dynamic)? subsetPicker,
+  }) async =>
+      tryWrapper<List<Map<String, dynamic>>>(
+        () async {
+          assert(url != null, "URL cannot be [null].");
+
+          printInfo(info: "Fetching JSON resource from: '$url'");
+          final http.Response response = await http.get(url!);
+
+          if (response.statusCode < 200 || response.statusCode >= 400) {
+            throw HttpException(
+                "Response status code is ${response.statusCode}");
+          }
+
+          final data = await json.decode(response.body);
+          final List<Map<String, dynamic>> parsedResponse =
+              List<Map<String, dynamic>>.from(subsetPicker?.call(data) ?? data);
+
+          return parsedResponse;
+        },
+        errorMessage: "Fetching the JSON object from [$url] failed.",
+      );
 
   /// A request to test the connection to the API.
   Future<void> test(BuildContext? context) async {
@@ -54,7 +86,7 @@ class APIService extends GetConnect {
     Color color = context?.theme.colorScheme.background ?? Colors.black12;
 
     try {
-      const String uri = "https://catfact.ninja/fact";
+      final uri = Uri.parse("https://catfact.ninja/fact");
       final response = await fetchJson(uri, subsetPicker: (e) => [e]);
 
       XSnackbar.text(
@@ -80,19 +112,33 @@ class APIService extends GetConnect {
   }
 
   /// Retrieves a list of projects from the api.
-  Future<List<ProjectPreview>> getProjects({int page = 0}) async =>
-      tryWrapper<List<ProjectPreview>>(() async {
+  Future<List<ProjectMetadata>> getProjects(
+          {int page = 0, APISorter sorter = APISorter.relevance}) async =>
+      tryWrapper<List<ProjectMetadata>>(() async {
         final response = await fetchJson((CustomURL(initialText: api)
               ..addPath("projects")
               ..addFile("all")
               ..addCustomParameter(name: "page", value: page)
-              ..addCustomParameter(name: "sorter", value: page))
-            .clean);
+              ..addCustomParameter(name: "sorter", value: sorter.name))
+            .cleanUri);
 
         printInfo(info: response[0].toString());
 
-        return response.map((e) => ProjectPreview.fromJson(e)).toList();
+        return response.map((e) => ProjectMetadata.fromJson(e)).toList();
       });
+
+  /// Retrieves the full information on the project matching the given name.
+  Future<ProjectMetadata?> getProject(String name) async => tryWrapper(
+        () async {
+          final response = await fetchJson((CustomURL(initialText: api)
+                ..addPath("projects")
+                ..addFile(name))
+              .cleanUri);
+
+          return ProjectMetadata.fromJson(response.first);
+        },
+        errorMessage: "The project $name could not be loaded.",
+      );
 
   /// Sends a mail to the support.
   Future<bool> sendSupportMail({
@@ -102,22 +148,21 @@ class APIService extends GetConnect {
     required String details,
   }) =>
       tryWrapper(() async {
-        String body = json.encode({
+        final body = {
           "name": name,
           "email": email,
           "subject": subject,
           "details": details,
-        });
+        };
 
         final url = (CustomURL(initialText: api)
-        ..addPath("mail")
-        ..addFile("support"))
-        .clean;
+              ..addPath("mail")
+              ..addFile("support"))
+            .cleanUri;
 
-        Response response = await post(
+        http.Response response = await http.post(
           url,
-          body,
-          headers: {},
+          body: body,
         );
         printInfo(info: "Sending mail to support at: $url");
         printInfo(info: response.statusCode.toString());

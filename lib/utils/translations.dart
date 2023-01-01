@@ -10,7 +10,7 @@ class CustomTranslations extends Translations {
         "en": {
           // HOME ------------------------------------------------------------------
           "Home description 1":
-              "%bc [Xeppelin]% lifts your projects ;) \nThe website is under construction but don't hesitate to reach out to me via the contact form.",
+              "%bc [Xeppelin]% lifts your projects ;) \nThe website is under construction but don't hesitate to check the projects I have worked on, or reach out to me via the contact form.",
           // "Home description 1": "%bc [Xeppelin]% is a company dedicated to making websites and apps mixing unique %bc aesthetics% and high %bc productivity%.",
 
           // MENU ------------------------------------------------------------------
@@ -49,7 +49,7 @@ class CustomTranslations extends Translations {
         "fr": {
           // HOME ------------------------------------------------------------------
           "Home description 1":
-              "%bc [Xeppelin]% fait décoler vos projets ;) \n\nLe site est en construction mais n'hésitez pas à prendre contact via le formulaire de contact.",
+              "%bc [Xeppelin]% fait décoler vos projets ;) \n\nLe site est en construction mais n'hésitez pas à aller regarder les projets sur lesquels j'ai travaillé, ou à prendre contact via le formulaire de contact.",
 
           // MENU ------------------------------------------------------------------
           "Home": "Accueil",

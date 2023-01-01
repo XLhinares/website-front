@@ -79,7 +79,8 @@ class AnimatedCover extends AnimatedWidget {
           child: XContainer(
             padding: EdgeInsets.zero,
             enableShadow: false,
-            color: context.theme.shadowColor,
+            color: Color.lerp(context.theme.shadowColor,
+                context.theme.colorScheme.background, 0.8),
           ),
         ),
 

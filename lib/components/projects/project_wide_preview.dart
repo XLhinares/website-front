@@ -1,8 +1,9 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:glass/glass.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../../classes/dataclass/project_preview.dart";
+import "../../../classes/dataclass/project_metadata.dart";
 import "../../widgets/widgets.dart";
 
 /// A preview of a project.
@@ -10,7 +11,7 @@ class ProjectWidePreview extends StatelessWidget {
   // VARIABLES =================================================================
 
   /// The project being previewed.
-  final ProjectPreview project;
+  final ProjectMetadata project;
 
   /// The behavior when the box is tapped.
   final void Function()? onTap;
@@ -30,39 +31,44 @@ class ProjectWidePreview extends StatelessWidget {
         color: context.theme.shadowColor,
         child: SizedBox(
           width: Get.width,
-          height: Get.height * 0.2,
+          height: XLayout.paddingS * 20,
           child: Stack(
             children: [
               // IMAGE -------------------------------------------------------------
-              Positioned(
+              Positioned.fill(
                 child: CoveringNetworkImage(
                   project.preview,
-                  fit: BoxFit.fitWidth,
                 ),
               ),
 
               Positioned.fill(
                 child: Padding(
                   padding: EdgeInsets.all(XLayout.paddingM),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      // NAME ------------------------------------------------------
-                      Text(
-                        project.name,
-                        style: context.textTheme.titleMedium,
-                      ),
+                  child: Center(
+                    child: Container(
+                      padding: EdgeInsets.all(XLayout.paddingM),
+                      color: context.theme.colorScheme.primary.withOpacity(0.5),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          // NAME ------------------------------------------------------
+                          Text(
+                            project.name,
+                            style: context.textTheme.titleMedium,
+                          ),
 
-                      XLayout.verticalS,
-                      const Divider(),
-                      XLayout.verticalS,
+                          XLayout.verticalS,
+                          const Divider(),
+                          XLayout.verticalS,
 
-                      // SUMMARY ---------------------------------------------------
-                      Text(
-                        project.summary,
-                        style: context.textTheme.bodyMedium,
+                          // SUMMARY ---------------------------------------------------
+                          Text(
+                            project.summary,
+                            style: context.textTheme.bodyMedium,
+                          ),
+                        ],
                       ),
-                    ],
+                    ).asGlass(clipBorderRadius: XLayout.brcXS),
                   ),
                 ),
               ),

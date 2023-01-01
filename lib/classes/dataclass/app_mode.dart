@@ -3,6 +3,24 @@ import "package:x_containers/x_containers.dart";
 
 /// Representation of a "mode" (pretty much the top-level state of the app).
 class AppMode {
+  // CONSTANTS =================================================================
+
+  /// The unique [AppMode.home].
+  static const AppMode home = AppMode._internal("home");
+
+  /// The unique [AppMode.projects].
+  static const AppMode projects = AppMode._internal("projects");
+
+  /// The unique [AppMode.contact].
+  static const AppMode contact = AppMode._internal("contact");
+
+  /// The different possible values of [AppMode].
+  static const values = [
+    home,
+    projects,
+    contact,
+  ];
+
   // VARIABLES =================================================================
 
   /// The name of the mode.
@@ -28,15 +46,6 @@ class AppMode {
   }
 
   // CONSTRUCTOR ===============================================================
-
-  /// The unique [AppMode.home].
-  static const AppMode home = AppMode._internal("home");
-
-  /// The unique [AppMode.projects].
-  static const AppMode projects = AppMode._internal("projects");
-
-  /// The unique [AppMode.contact].
-  static const AppMode contact = AppMode._internal("contact");
 
   const AppMode._internal(this.name);
 

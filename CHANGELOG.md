@@ -1,3 +1,22 @@
+## v1.6.0
+
+- :speech_balloon: Updated the home screen text.
+- :sparkles: Major overhaul of the mobile UI.
+- :sparkles: Mobile version now uses a [TabBarView].
+- :sparkles: All mobile tabs are now wrapped in a [ListView] to prevent overflows.
+- :lipstick: Changed the color of the [AnimatedCover] in desktop mode.
+- :alien: The API now provides more info on projects, the [ProjectFocus] pages have been updated accordingly.
+
+## 1.5.3-pre2
+
+- :construction_worker: Implemented a script to check that the version numbers match.
+- :heavy_plus_sign: Migrated from [get] to [http] for api queries.
+
+## 1.5.3-pre1
+
+- :bug: Changed by type to [FormData] in [api.sendSupportMail].
+- :bug: Specified content-type in [api.sendSupportMail].
+
 ## 1.5.3
 
 - :bug: Removed the set headers from the POST request in [api.sendSupportMail].

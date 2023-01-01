@@ -23,7 +23,7 @@ help:
 ## Checks whether the version number and the last changelog-ed version match.
 check-version:
 	@echo "\n>>> CHECKING VERSION:"
-	@echo "To implement"
+	@./scripts/check_version_number.sh
 
 ## Analyzes the contents of the lib folder.
 analyze:
@@ -43,6 +43,14 @@ pre-commit:
 	@make analyze
 	@make check-version
 
+## Builds the project for the web platform.
+compile:
+	@echo "\n>>> REBUILDING THE PROJECT:"
+	@make pre-commit
+	@flutter clean
+	@flutter pub get
+	@flutter build web
+
 ## Re-initializes git in the build repository, connects it to the remote and publishes the current build.
 connect:
 	@ ./scripts/build_connect.sh
@@ -50,13 +58,6 @@ connect:
 ## Pushes the latest build to the [website-build] repository.
 publish:
 	@ ./scripts/build_publish.sh
-
-
-## Builds the project for the web platform.
-build:
-	@flutter clean
-	@flutter pub get
-	@flutter build web
 
 
 

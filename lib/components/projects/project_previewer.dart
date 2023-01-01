@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../../classes/dataclass/project_preview.dart";
+import "../../../classes/dataclass/project_metadata.dart";
 import "../../widgets/widgets.dart";
 
 /// A preview of a project.
@@ -10,7 +10,7 @@ class ProjectPreviewer extends StatelessWidget {
   // VARIABLES =================================================================
 
   /// The project being previewed.
-  final ProjectPreview project;
+  final ProjectMetadata project;
 
   /// The behavior when the box is tapped.
   final void Function()? onTap;

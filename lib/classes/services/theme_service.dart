@@ -20,10 +20,11 @@ class ThemeService {
   /// A custom text theme to merge with the [xTheme] one.
   static TextTheme defaultTextTheme = const TextTheme(
     titleLarge: TextStyle(fontFamily: defaultFontFamily, fontSize: 30),
-    titleMedium: TextStyle(fontFamily: defaultFontFamily),
+    titleMedium: TextStyle(fontFamily: defaultFontFamily, fontSize: 26),
     titleSmall: TextStyle(fontFamily: defaultFontFamily),
     bodyLarge: TextStyle(fontFamily: defaultFontFamily, fontSize: 24),
-    bodyMedium: TextStyle(fontFamily: defaultFontFamily),
+    bodyMedium:
+        TextStyle(fontFamily: defaultFontFamily, fontSize: 18, height: 1.2),
     bodySmall: TextStyle(fontFamily: defaultFontFamily),
     labelMedium: TextStyle(
       fontSize: 14,

@@ -2,9 +2,10 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../classes/dataclass/project_metadata.dart";
+import "../../classes/dataclass/media.dart";
 import "../../components/components.dart";
 import "../../utils/utils.dart";
+import "../../widgets/medias/medias.dart";
 
 /// The "project" tab adapted for mobile.
 class MobileProjects extends StatelessWidget {
@@ -31,15 +32,20 @@ class MobileProjects extends StatelessWidget {
                     separatorBuilder: (context, index) => XLayout.verticalS,
                   ),
                 )
-              : ProjectMobileFocus(name: router.project!);
+              : ProjectFocus(
+                  project: user.getProject(router.project!),
+                  headerBuilder: (media, scrollController) =>
+                      MediaMobileHeader(media: media),
+                  partsBuilder: (parts) => MediaMobileParts(parts: parts),
+                );
         });
   }
 
   // METHODS ===================================================================
 
-  Widget _projectBuilder(BuildContext context, ProjectMetadata project) =>
+  Widget _projectBuilder(BuildContext context, Media project) =>
       ProjectWidePreview(
         project: project,
-        onTap: () => router.selectProject(project.name),
+        onTap: () => router.selectProject(project.id),
       );
 }

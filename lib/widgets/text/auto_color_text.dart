@@ -91,7 +91,7 @@ class AutoColorText extends StatelessWidget {
     return result;
   }
 
-  List<TextSpan> get _coloredText {
+  List<TextSpan> _coloredText(BuildContext context) {
     final List<TextSpan> tmp = [];
 
     for (int i = 0; i < _parsedText.length; i++) {
@@ -99,13 +99,13 @@ class AutoColorText extends StatelessWidget {
 
       // print("part: ${part.text}; code: ${part.code}");
 
-      Color color = Get.textTheme.titleMedium!.color!;
+      Color color = context.textTheme.titleMedium!.color!;
       FontWeight fWeight = FontWeight.normal;
       FontStyle fStyle = FontStyle.normal;
       List<FontFeature> fFeatures = [];
 
       // Check for special attributes.
-      if (part.isColored) color = Get.theme.colorScheme.secondary;
+      if (part.isColored) color = context.theme.colorScheme.secondary;
       if (part.isBold) fWeight = FontWeight.w800;
       if (part.isItalics) fStyle = FontStyle.italic;
       if (part.isSmallCaps) fFeatures.add(const FontFeature.enable("smcp"));
@@ -113,7 +113,9 @@ class AutoColorText extends StatelessWidget {
       tmp.add(
         TextSpan(
           text: part.text,
-          style: (defaultStyle ?? Get.textTheme.bodyMedium ?? const TextStyle())
+          style: (defaultStyle ??
+                  context.textTheme.bodyMedium ??
+                  const TextStyle())
               .copyWith(
             color: color,
             fontWeight: fWeight,
@@ -142,7 +144,7 @@ class AutoColorText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RichText(
-      text: TextSpan(children: _coloredText),
+      text: TextSpan(children: _coloredText(context)),
     );
   }
 

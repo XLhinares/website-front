@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:x_containers/x_containers.dart";
 
 /// A preset image from network.
 ///
@@ -18,7 +19,7 @@ class CoveringNetworkImage extends StatelessWidget {
   ///
   /// Values are clamped so that horizontal and vertical radii sums do not exceed width/height.
   /// This value is ignored if clipper is non-null.
-  final BorderRadius borderRadius;
+  final BorderRadius? borderRadius;
 
   /// How to inscribe the image into the space allocated during layout.
   ///
@@ -47,7 +48,7 @@ class CoveringNetworkImage extends StatelessWidget {
     this.path, {
     super.key,
     this.clipBehavior = Clip.hardEdge,
-    this.borderRadius = BorderRadius.zero,
+    this.borderRadius,
     this.fit = BoxFit.cover,
     this.errorBuilder,
     this.loadingBuilder,
@@ -59,7 +60,7 @@ class CoveringNetworkImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       clipBehavior: clipBehavior,
-      borderRadius: borderRadius,
+      borderRadius: borderRadius ?? XLayout.brcXS,
       child: Image.network(
         path,
         fit: fit,

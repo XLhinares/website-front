@@ -1,12 +1,12 @@
 import "dart:async";
 
-import "user_projects.dart";
+import "user_medias.dart";
 import "user_core.dart";
 
 /// A singleton class to represent the user.
 ///
 /// The user manages the local database and .
-class User extends UserCore with UserProjects {
+class User extends UserCore with UserMedias {
   // CONSTRUCTOR ===============================================================
 
   /// The private instance of user.
@@ -23,17 +23,17 @@ class User extends UserCore with UserProjects {
   User._internal() {
     init(
       instantiate: () {
-        instantiateProjects();
+        instantiateMedias();
       },
       initialize: () async {
-        await initializeProjects();
+        await initializeMedias();
       },
     );
   }
 
   /// All the tasks that should be run after the app was loaded.
   Future<void> postInit() async {
-    postInitProjects();
+    postInitMedias();
   }
 
   // DANGER ====================================================================
@@ -43,7 +43,7 @@ class User extends UserCore with UserProjects {
     loaded = false;
 
     // Delete the new activity
-    await initializeProjects();
+    await initializeMedias();
     loaded = true;
 
     update();

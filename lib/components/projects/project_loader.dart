@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
-import "../../classes/dataclass/project_metadata.dart";
+import "../../classes/dataclass/dataclass.dart";
 import "../../utils/globals.dart";
 
 /// A widget that loads the projects and display them according to the rendering strategy.
@@ -12,7 +12,7 @@ class ProjectLoader extends StatelessWidget {
   final int limit;
 
   /// A strategy to render the list of projects obtained from the api.
-  final Widget Function(List<ProjectMetadata>) renderingStrategy;
+  final Widget Function(List<Media>) renderingStrategy;
 
   // CONSTRUCTOR ===============================================================
 
@@ -38,7 +38,7 @@ class ProjectLoader extends StatelessWidget {
   // WIDGETS ===================================================================
 
   Widget _loadingWidget(BuildContext context) {
-    user.loadProjects();
+    user.loadMedias(MediaType.project);
     return Center(
       child: SizedBox(
         height: Get.height * 0.2,

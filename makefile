@@ -20,6 +20,7 @@ help:
 		} \
 	} \
 	{ lastLine = $$0 }' $(MAKEFILE_LIST)
+	
 ## Checks whether the version number and the last changelog-ed version match.
 check-version:
 	@echo "\n>>> CHECKING VERSION:"

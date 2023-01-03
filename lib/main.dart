@@ -1,3 +1,5 @@
+import "dart:async";
+
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
@@ -50,13 +52,13 @@ void main() async {
       GetPage<ResponsiveHome>(
           name: "/projects",
           page: () {
-            router.goTo(mode: AppMode.projects);
+            Timer.run(() => router.goTo(mode: AppMode.projects));
             return const ResponsiveHome();
           }),
       GetPage<ResponsiveHome>(
           name: "/contact",
           page: () {
-            router.goTo(mode: AppMode.contact);
+            Timer.run(() => router.goTo(mode: AppMode.contact));
             return const ResponsiveHome();
           }),
     ],
@@ -70,7 +72,7 @@ void main() async {
 
       // HOME
       if (routeSettings.name?.contains(AppMode.home.name) ?? false) {
-        router.goTo(mode: AppMode.home);
+        router.jumpTo(mode: AppMode.home);
         return MaterialPageRoute(
           settings: routeSettings,
           builder: (context) => Splash(
@@ -80,7 +82,7 @@ void main() async {
       }
       // PROJECT
       if (routeSettings.name?.contains(AppMode.projects.name) ?? false) {
-        router.goTo(mode: AppMode.projects);
+        router.jumpTo(mode: AppMode.projects);
         return MaterialPageRoute(
           settings: routeSettings,
           builder: (context) => Splash(
@@ -90,7 +92,7 @@ void main() async {
       }
       // CONTACT
       if (routeSettings.name?.contains(AppMode.contact.name) ?? false) {
-        router.goTo(mode: AppMode.contact);
+        router.jumpTo(mode: AppMode.contact);
         return MaterialPageRoute(
           settings: routeSettings,
           builder: (context) => Splash(
@@ -112,8 +114,8 @@ void main() async {
       minWidth: 480,
       defaultScale: true,
       breakpoints: const [
-        ResponsiveBreakpoint.autoScale(480, name: MOBILE),
-        ResponsiveBreakpoint.autoScale(800, name: TABLET),
+        ResponsiveBreakpoint.resize(480, name: MOBILE),
+        ResponsiveBreakpoint.resize(800, name: TABLET),
         ResponsiveBreakpoint.resize(1000, name: DESKTOP),
       ],
     ),

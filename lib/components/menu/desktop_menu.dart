@@ -5,20 +5,21 @@ import "menu.dart";
 
 /// The half of the body containing the title and the menu.
 class BodyMenu extends StatelessWidget {
-  // VARIABLES =================================================================
-
   // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [BodyMenu] matching the given parameters.
-  const BodyMenu({Key? key}) : super(key: key);
+  const BodyMenu({
+    super.key,
+  });
 
   // BUILD =====================================================================
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.end,
+    return ListView(
+      padding: EdgeInsets.symmetric(vertical: XLayout.paddingL),
+      physics: const BouncingScrollPhysics(),
+      shrinkWrap: true,
       children: [
         // TITLE ---------------------------------------------------------------
         const BodyTitle(),

@@ -10,7 +10,7 @@ class CustomTranslations extends Translations {
         "en": {
           // HOME ------------------------------------------------------------------
           "Home description 1":
-              "%bc [Xeppelin]% lifts your projects ;) \nThe website is under construction but don't hesitate to check the projects I have worked on, or reach out to me via the contact form.",
+              "%bc [Xeppelin]% lifts your projects ;) \n\nThe website is under construction but don't hesitate to check the projects I have worked on, or reach out to me via the contact form.",
           // "Home description 1": "%bc [Xeppelin]% is a company dedicated to making websites and apps mixing unique %bc aesthetics% and high %bc productivity%.",
 
           // MENU ------------------------------------------------------------------
@@ -42,6 +42,18 @@ class CustomTranslations extends Translations {
           "Test failure": "It failed :/",
           "Test failure message": "Mucho triste...",
 
+          "month-1": "January",
+          "month-2": "February",
+          "month-3": "March",
+          "month-4": "April",
+          "month-5": "May",
+          "month-6": "June",
+          "month-7": "July",
+          "month-8": "August",
+          "month-9": "September",
+          "month-10": "October",
+          "month-11": "November",
+          "month-12": "December",
           "lorem ipsum":
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         },
@@ -80,6 +92,19 @@ class CustomTranslations extends Translations {
               "Vous gagnez une fact sur les chats (en anglais):",
           "Test failure": "Le test a échoué :/",
           "Test failure message": "Mucho triste...",
+
+          "month-1": "Janvier",
+          "month-2": "Février",
+          "month-3": "Mars",
+          "month-4": "Avril",
+          "month-5": "Mai",
+          "month-6": "Juin",
+          "month-7": "Juillet",
+          "month-8": "Août",
+          "month-9": "Septembre",
+          "month-10": "Octobre",
+          "month-11": "Novembre",
+          "month-12": "Décembre",
           "lorem ipsum":
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         }

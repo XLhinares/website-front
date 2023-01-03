@@ -2,117 +2,78 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../../classes/dataclass/project_metadata.dart";
+import "../../classes/dataclass/dataclass.dart";
 import "../../utils/utils.dart";
-import "../../widgets/widgets.dart";
 
 /// A detailed view of a project.
 class ProjectFocus extends StatelessWidget {
   // VARIABLES =================================================================
 
   /// The project in question.
-  final String name;
+  final Project project;
+
+  /// The building strategy to display the header.
+  final Widget Function(Media, ScrollController) headerBuilder;
+
+  /// The building strategy to display the parts.
+  final Widget Function(MediaParts) partsBuilder;
 
   /// The behavior when the "back" button is tapped.
   final void Function()? onBack;
 
+  late final ScrollController _controller;
+
   // GETTERS ===================================================================
 
   /// The project being displayed.
-  ProjectMetadata? get project => user.getProject(name);
+  MediaParts? get parts => user.getParts(project.id);
 
   // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [ProjectFocus] matching the given parameters.
-  const ProjectFocus({super.key, required this.name, this.onBack});
+  ProjectFocus({
+    super.key,
+    required this.project,
+    required this.headerBuilder,
+    required this.partsBuilder,
+    this.onBack,
+  }) {
+    _controller = ScrollController();
+  }
 
   // BUILD =====================================================================
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder(
-        init: user,
-        builder: (_) {
-          return project == null
-              ? _loadingWidget(context)
-              : Column(
-                  children: [
-                    // TITLE ---------------------------------------------------------------
-                    XContainer(
-                      child: Row(
-                        children: [
-                          IconButton(
-                            onPressed: onBack,
-                            icon: const Icon(Icons.arrow_back),
-                          ),
-                          Expanded(
-                            child: Center(
-                              child: Text(
-                                project!.name,
-                                style: context.textTheme.titleMedium,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+    return ScrollConfiguration(
+      behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
+      child: ListView(
+        padding: EdgeInsets.symmetric(vertical: XLayout.paddingL),
+        physics: const BouncingScrollPhysics(),
+        controller: _controller,
+        children: [
+          // Header
+          headerBuilder(project, _controller),
 
-                    XLayout.verticalM,
+          XLayout.verticalL,
 
-                    // IMAGE ---------------------------------------------------------------
-
-                    XContainer(
-                      padding: EdgeInsets.zero,
-                      child: AspectRatio(
-                        aspectRatio: 4,
-                        child: CoveringNetworkImage(
-                          project!.preview,
-                          fit: BoxFit.fitHeight,
-                        ),
-                      ),
-                    ),
-
-                    XLayout.verticalM,
-
-                    // DESCRIPTION ---------------------------------------------------------
-
-                    // Section technologies
-                    Expanded(
-                      child: Flex(
-                        direction: Axis.horizontal,
-                        children: [
-                          Flexible(
-                            flex: 1,
-                            child: SizedBox(
-                              height: double.infinity,
-                              child: CoveringNetworkImage(
-                                project!.preview,
-                                fit: BoxFit.fitWidth,
-                              ),
-                            ),
-                          ),
-                          XLayout.horizontalM,
-                          Flexible(
-                            flex: 3,
-                            child: XContainer(
-                              padding: EdgeInsets.all(XLayout.paddingL),
-                              child: Text(
-                                project!.summary,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                );
-        });
+          // Parts
+          GetBuilder(
+              init: user,
+              builder: (_) {
+                return parts == null
+                    ? _loadingWidget(context)
+                    : partsBuilder(parts!);
+              }),
+        ],
+      ),
+    );
   }
 
   // METHODS ===================================================================
 
   Widget _loadingWidget(BuildContext context) {
-    user.loadProject(name);
+    user.loadMediaParts(project.id);
     return Center(
       child: SizedBox(
         height: Get.height * 0.2,

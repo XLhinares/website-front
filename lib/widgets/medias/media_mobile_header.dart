@@ -2,23 +2,23 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../classes/dataclass/project_metadata.dart";
+import "../../classes/dataclass/media.dart";
 import "../../utils/utils.dart";
 import "../widgets.dart";
 
 /// A widget displaying all the top-level info on the given project.
-class ProjectMobileHeader extends StatelessWidget {
+class MediaMobileHeader extends StatelessWidget {
   // VARIABLES =================================================================
 
   /// The metadata of the project.
-  final ProjectMetadata metadata;
+  final Media media;
 
   // CONSTRUCTOR ===============================================================
 
-  /// Returns a [ProjectMobileHeader] matching the given parameters.
-  const ProjectMobileHeader({
+  /// Returns a [MediaMobileHeader] matching the given parameters.
+  const MediaMobileHeader({
     super.key,
-    required this.metadata,
+    required this.media,
   });
 
   // BUILD =====================================================================
@@ -33,7 +33,7 @@ class ProjectMobileHeader extends StatelessWidget {
           // BACKGROUND --------------------------------------------------------
           Positioned.fill(
             child: CoveringNetworkImage(
-              metadata.preview,
+              media.preview,
               errorBuilder: (_, __, ___) => const XeppelinLogo(),
               fit: BoxFit.cover,
             ),
@@ -56,14 +56,14 @@ class ProjectMobileHeader extends StatelessWidget {
 
                   // Title bloc
                   Text(
-                    metadata.name,
+                    media.name,
                     style: context.textTheme.titleLarge,
                   ),
                   XLayout.verticalS, // Tags bloc.
                   Wrap(
                     spacing: XLayout.paddingXS,
                     runSpacing: XLayout.paddingXS,
-                    children: metadata.tags
+                    children: media.tags
                         .map((tag) => FittedBox(
                               fit: BoxFit.scaleDown,
                               child: XContainer(
@@ -79,10 +79,7 @@ class ProjectMobileHeader extends StatelessWidget {
 
                   XLayout.verticalL,
 
-                  // Description bloc
-                  ExpandableText(
-                    text: metadata.description,
-                  ),
+                  // todo: description
 
                   // Adds extra room for the background gradient to be displayed.
                   XLayout.verticalM,

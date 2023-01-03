@@ -1,25 +1,37 @@
-## v1.6.0
+## 1.7.0
+
+- :sparkles: Created the `Media` class to handle both `Project` and `Blog`
+- :sparkles: Major overhaul of the desktop project UI.
+- :sparkles: Added an option to make a `DateTime` legible with translations.
+- :lipstick: Edited some padding values to make the whole interface more coherent.
+
+## 1.6.1
+
+- :sparkles: Desktop tab changes are now handled by a `PageView`.
+
+## 1.6.0
 
 - :speech_balloon: Updated the home screen text.
 - :sparkles: Major overhaul of the mobile UI.
-- :sparkles: Mobile version now uses a [TabBarView].
-- :sparkles: All mobile tabs are now wrapped in a [ListView] to prevent overflows.
-- :lipstick: Changed the color of the [AnimatedCover] in desktop mode.
-- :alien: The API now provides more info on projects, the [ProjectFocus] pages have been updated accordingly.
+- :sparkles: Mobile version now uses a `TabBarView`.
+- :sparkles: All mobile tabs are now wrapped in a `ListView` to prevent overflows.
+- :lipstick: Changed the color of the `AnimatedCover` in desktop mode.
+- :truck: Added a pseudo-router to coordinate the navigation through the single-page.
+- :alien: The API now provides more info on projects, the `ProjectFocus` pages have been updated accordingly.
 
 ## 1.5.3-pre2
 
 - :construction_worker: Implemented a script to check that the version numbers match.
-- :heavy_plus_sign: Migrated from [get] to [http] for api queries.
+- :heavy_plus_sign: Migrated from `get` to `http` for api queries.
 
 ## 1.5.3-pre1
 
-- :bug: Changed by type to [FormData] in [api.sendSupportMail].
-- :bug: Specified content-type in [api.sendSupportMail].
+- :bug: Changed by type to `FormData` in `api.sendSupportMail`.
+- :bug: Specified content-type in `api.sendSupportMail`.
 
 ## 1.5.3
 
-- :bug: Removed the set headers from the POST request in [api.sendSupportMail].
+- :bug: Removed the set headers from the POST request in `api.sendSupportMail`.
 - :construction_worker: Changed `make build` to clean the build folder beforehand.
 
 ## 1.5.2
@@ -32,10 +44,10 @@
 
 ## 1.5.0
 
-- :sparkles: Created an [user] object to store local data.
-- :sparkles: Reworked [ProjectPreview] to change UI and the way it communicates with the API.
-- :lipstick: Created a [ThemeService] to handle theme-related stuff.
-- :lipstick: Changed the default family font to [JosefinSans].
+- :sparkles: Created an `user` object to store local data.
+- :sparkles: Reworked `ProjectPreview` to change UI and the way it communicates with the API.
+- :lipstick: Created a `ThemeService` to handle theme-related stuff.
+- :lipstick: Changed the default family font to `JosefinSans`.
 - :dizzy: Added rotating icons
 - :construction_worker: Modified publishing scripts.
 
@@ -79,13 +91,13 @@
 
 ## 1.1.1 
 
-- :heavy_plus_sign: Migrated from [SharedPreferences] to [GetStorage]
+- :heavy_plus_sign: Migrated from `SharedPreferences` to `GetStorage`.
 
 ## 1.1.0 
 
-- :sparkles: A menu tile animation
-- :sparkles: A content cover animation
-- Updated: The dependencies
+- :sparkles: A menu tile animation.
+- :sparkles: A content cover animation.
+- :heavy_plus_sign: The dependencies.
 
 ## 1.0.0
 

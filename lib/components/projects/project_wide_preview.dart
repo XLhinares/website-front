@@ -3,7 +3,7 @@ import "package:get/get.dart";
 import "package:glass/glass.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../../classes/dataclass/project_metadata.dart";
+import "../../../classes/dataclass/media.dart";
 import "../../widgets/widgets.dart";
 
 /// A preview of a project.
@@ -11,7 +11,7 @@ class ProjectWidePreview extends StatelessWidget {
   // VARIABLES =================================================================
 
   /// The project being previewed.
-  final ProjectMetadata project;
+  final Media project;
 
   /// The behavior when the box is tapped.
   final void Function()? onTap;

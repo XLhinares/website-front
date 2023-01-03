@@ -10,7 +10,7 @@ import "package:x_containers/x_containers.dart";
 import "../../utils/globals.dart";
 import "../../utils/tools.dart";
 import "../../utils/tools_api.dart";
-import "../dataclass/project_metadata.dart";
+import "../dataclass/dataclass.dart";
 
 /// A service that handles all the API requests.
 class APIService {
@@ -22,12 +22,12 @@ class APIService {
   /// The URI prefix to reach the the assets.
   late final String assets;
 
-  late final List<ProjectMetadata> _projects;
+  late final List<Media> _projects;
 
   // GETTERS ===================================================================
 
   /// A list of the registered trackable metadata.
-  UnmodifiableListView<ProjectMetadata> get lastTracked =>
+  UnmodifiableListView<Media> get lastTracked =>
       UnmodifiableListView(_projects);
 
   // CONSTRUCTOR ===============================================================
@@ -111,33 +111,37 @@ class APIService {
     }
   }
 
-  /// Retrieves a list of projects from the api.
-  Future<List<ProjectMetadata>> getProjects(
-          {int page = 0, APISorter sorter = APISorter.relevance}) async =>
-      tryWrapper<List<ProjectMetadata>>(() async {
+  /// Retrieves a list of medias from the api.
+  Future<List<Media>> getMedias({
+    MediaType? type,
+    int page = 0,
+    APISorter sorter = APISorter.relevance,
+  }) async =>
+      tryWrapper<List<Media>>(() async {
         final response = await fetchJson((CustomURL(initialText: api)
-              ..addPath("projects")
+              ..addPath("media")
               ..addFile("all")
+              ..addCustomParameter(name: "type", value: type?.name)
               ..addCustomParameter(name: "page", value: page)
               ..addCustomParameter(name: "sorter", value: sorter.name))
             .cleanUri);
 
         printInfo(info: response[0].toString());
 
-        return response.map((e) => ProjectMetadata.fromJson(e)).toList();
+        return response.map((e) => Media.fromJson(e)).toList();
       });
 
   /// Retrieves the full information on the project matching the given name.
-  Future<ProjectMetadata?> getProject(String name) async => tryWrapper(
+  Future<MediaParts?> getMediaParts(int id) async => tryWrapper(
         () async {
           final response = await fetchJson((CustomURL(initialText: api)
-                ..addPath("projects")
-                ..addFile(name))
+                ..addPath("media")
+                ..addFile(id))
               .cleanUri);
 
-          return ProjectMetadata.fromJson(response.first);
+          return MediaParts.fromJson(response);
         },
-        errorMessage: "The project $name could not be loaded.",
+        errorMessage: "The media $id could not be loaded.",
       );
 
   /// Sends a mail to the support.

@@ -7,8 +7,6 @@ import "desktop.dart";
 
 /// The
 class DesktopTabManager extends StatelessWidget {
-  // VARIABLES =================================================================
-
   // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [DesktopTabManager] matching the given parameters.
@@ -31,7 +29,7 @@ class DesktopTabManager extends StatelessWidget {
           // MAIN --------------------------------------------------------------
           Positioned.fill(
             child: FrameFit(
-              padding: EdgeInsets.all(XLayout.paddingM),
+              padding: EdgeInsets.symmetric(horizontal: XLayout.paddingL),
               child: Flex(
                 direction: Axis.horizontal,
                 children: [
@@ -41,7 +39,7 @@ class DesktopTabManager extends StatelessWidget {
                     child: BodyMenu(),
                   ),
 
-                  XLayout.horizontalM,
+                  XLayout.horizontalL,
 
                   // CONTENTS --------------------------------------------------
                   const Flexible(

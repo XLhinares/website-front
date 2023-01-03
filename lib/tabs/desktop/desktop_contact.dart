@@ -20,13 +20,13 @@ class DesktopContact extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: ListView(
-        padding: EdgeInsets.all(XLayout.paddingM),
+        padding: EdgeInsets.symmetric(vertical: XLayout.paddingL),
         shrinkWrap: true,
         children: [
           // PRESENTATION --------------------------------------------------------
 
           const ContactTitle(),
-          XLayout.verticalM,
+          XLayout.verticalL,
 
           // FORM ----------------------------------------------------------------
           XContainer(

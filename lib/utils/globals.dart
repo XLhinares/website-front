@@ -9,7 +9,7 @@ import "../classes/user/user.dart";
 final User user = User();
 
 /// A service that manages the different elements of the app.
-final CustomRouter router = CustomRouter();
+final RoutingService router = RoutingService();
 
 /// A service that manages all the backend stuff.
 final APIService api = APIService();

@@ -20,34 +20,37 @@ class DesktopHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        // FIRST BLOCK ---------------------------------------------------------
-        Expanded(
-          child: XContainer(
-            padding: EdgeInsets.all(3 * XLayout.paddingL),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                XeppelinLogo(
-                  size: 8 * XLayout.paddingL,
-                ),
-              ],
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: XLayout.paddingL),
+      child: Row(
+        children: [
+          // FIRST BLOCK ---------------------------------------------------------
+          Expanded(
+            child: XContainer(
+              padding: EdgeInsets.all(3 * XLayout.paddingL),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  XeppelinLogo(
+                    size: 8 * XLayout.paddingL,
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
 
-        XLayout.horizontalM,
+          XLayout.horizontalL,
 
-        // SECOND BLOCK --------------------------------------------------------
-        // todo: occuper l'espace en haut à droite avec qqch.
-        Expanded(
-          child: Padding(
-            padding: EdgeInsets.only(top: Get.height * 0.3),
-            child: const HomeDescription(),
+          // SECOND BLOCK --------------------------------------------------------
+          // todo: occuper l'espace en haut à droite avec qqch.
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.only(top: Get.height * 0.3),
+              child: const HomeDescription(),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

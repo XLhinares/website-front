@@ -28,19 +28,16 @@ class MenuTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: XLayout.paddingM),
-      child: ListTile(
-        title: Text(mode.name.capitalizeFirst!.tr,
-            style: context.textTheme.titleMedium),
-        subtitle:
-            Text(mode.description.tr, style: context.textTheme.bodyMedium),
-        leading: mode.icon,
-        onTap: () {
-          router.goTo(mode: mode);
-          onTap?.call();
-        },
-      ),
+    return ListTile(
+      contentPadding: EdgeInsets.all(XLayout.paddingM),
+      title: Text(mode.name.capitalizeFirst!.tr,
+          style: context.textTheme.titleMedium),
+      subtitle: Text(mode.description, style: context.textTheme.bodyMedium),
+      leading: mode.icon,
+      onTap: () {
+        router.push(mode: mode);
+        onTap?.call();
+      },
     );
   }
 

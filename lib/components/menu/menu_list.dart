@@ -42,6 +42,32 @@ class MenuList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
+        // MENU ITEMS ------------------------------------------------
+        ListView(
+          shrinkWrap: true,
+          children: [
+            MenuTile(
+              key: _keyHome,
+              mode: AppMode.home,
+              onTap: () => _animationController.selectTile(0),
+            ),
+            Divider(
+              key: _keyDivider,
+            ),
+            MenuTile(
+              key: _keyProjects,
+              mode: AppMode.projects,
+              onTap: () => _animationController.selectTile(1),
+            ),
+            const Divider(),
+            MenuTile(
+              key: _keyContacts,
+              mode: AppMode.contact,
+              onTap: () => _animationController.selectTile(2),
+            ),
+          ],
+        ),
+
         // ANIMATED BOX ----------------------------------------------
         GetBuilder(
           // Gets rebuilt every time the animation controller is
@@ -72,32 +98,6 @@ class MenuList extends StatelessWidget {
               ),
             ],
           ),
-        ),
-
-        // MENU ITEMS ------------------------------------------------
-        ListView(
-          shrinkWrap: true,
-          children: [
-            MenuTile(
-              key: _keyHome,
-              mode: AppMode.home,
-              onTap: () => _animationController.selectTile(0),
-            ),
-            Divider(
-              key: _keyDivider,
-            ),
-            MenuTile(
-              key: _keyProjects,
-              mode: AppMode.projects,
-              onTap: () => _animationController.selectTile(1),
-            ),
-            const Divider(),
-            MenuTile(
-              key: _keyContacts,
-              mode: AppMode.contact,
-              onTap: () => _animationController.selectTile(2),
-            ),
-          ],
         ),
       ],
     );

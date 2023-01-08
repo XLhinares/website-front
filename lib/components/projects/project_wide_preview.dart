@@ -62,7 +62,7 @@ class ProjectWidePreview extends StatelessWidget {
                           XLayout.verticalS,
 
                           // SUMMARY ---------------------------------------------------
-                          Text(
+                          AutoColorText(
                             project.summary,
                             style: context.textTheme.bodyMedium,
                           ),

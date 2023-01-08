@@ -1,3 +1,4 @@
+import "package:flutter/material.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../classes/services/services.dart";
@@ -23,10 +24,13 @@ final ThemeService themes = ThemeService();
 // CONSTANTS ===================================================================
 
 /// The version of the app.
-const String versionNumber = "v1.6.0";
+const String versionNumber = "v1.8.0";
+
+/// The URL address of the app.
+const String xeppelinURL = "https://xeppelin.org";
 
 /// The default ratio of horizontal extent over the vertical.
-const double frameRatio = 1.5;
+const double frameRatio = 4 / 3;
 
 /// The vertical extent of the [BottomNavigationBar] used on the mobile display.
 double get navigationBarHeight => XLayout.paddingS * 6;
@@ -45,3 +49,21 @@ const Duration animDurationLong = Duration(milliseconds: 750);
 
 /// The list of the different supported localizations.
 List<String> supportedLocales = ["fr", "en"];
+
+/// Runs some extra commands asynchronously.
+void postInit() async {
+  // Add some extra themes
+  themes.addTheme(
+    name: "pastel",
+    data: xTheme.getTheme(
+      mode: ThemeMode.light,
+      primary: const Color(0xFFE0AA3A),
+      secondary: const Color(0xFFEF596C),
+      background: const Color(0xFF689BA6),
+      // backgroundAlt: Color(0xFF282627),
+      cardColor: const Color(0xFFE0AA3A),
+      containerColor: Colors.white.withOpacity(0.7),
+      textTheme: ThemeService.defaultTextTheme,
+    ),
+  );
+}

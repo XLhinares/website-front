@@ -16,57 +16,29 @@ class DesktopTabManager extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          // BACKGROUND --------------------------------------------------------
-          const Positioned.fill(
-            child: AnimatedBackground(
-              scale: 0.2,
+    return ScaffoldFit(
+      padding: EdgeInsets.symmetric(horizontal: XLayout.paddingL),
+      background: const AnimatedBackground(
+        scale: 0.2,
+      ),
+      overlay: ButtonsOverlay(),
+      body: LayoutBuilder(
+        builder: (context, constraints) => Row(
+          children: [
+            // TITLE -----------------------------------------------------
+            SizedBox(
+              width: (constraints.maxWidth - 4 * XLayout.paddingL) / 3,
+              child: const BodyMenu(),
             ),
-          ),
 
-          // MAIN --------------------------------------------------------------
-          Positioned.fill(
-            child: FrameFit(
-              padding: EdgeInsets.symmetric(horizontal: XLayout.paddingL),
-              child: Flex(
-                direction: Axis.horizontal,
-                children: [
-                  // TITLE -----------------------------------------------------
-                  const Flexible(
-                    flex: 3,
-                    child: BodyMenu(),
-                  ),
+            XLayout.horizontalL,
 
-                  XLayout.horizontalL,
-
-                  // CONTENTS --------------------------------------------------
-                  const Flexible(
-                    flex: 8,
-                    child: BodyContents(),
-                  ),
-                ],
-              ),
+            // CONTENTS --------------------------------------------------
+            const Expanded(
+              child: BodyContents(),
             ),
-          ),
-
-          // FLOATING ----------------------------------------------------------
-          Positioned.fill(
-            bottom: XLayout.paddingM,
-            left: XLayout.paddingM,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Expanded(
-                  child: SizedBox(),
-                ),
-                Buttons(),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

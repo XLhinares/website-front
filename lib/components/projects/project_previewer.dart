@@ -72,9 +72,11 @@ class ProjectPreviewer extends StatelessWidget {
                         XLayout.verticalXS,
 
                         // SUMMARY ---------------------------------------------------
-                        Text(
+                        AutoColorText(
                           project.summary,
                           style: context.textTheme.bodyMedium,
+                          maxLines: 3,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ],
                     ),

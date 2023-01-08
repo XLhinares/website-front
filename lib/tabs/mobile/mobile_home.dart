@@ -24,10 +24,12 @@ class MobileHome extends StatelessWidget {
       padding: EdgeInsets.all(XLayout.paddingM),
       children: [
         XeppelinLogo(
-          size: Get.width * 0.3,
+          size: Get.height * 0.3,
         ),
         XLayout.verticalM,
         const HomeDescription(),
+        XLayout.verticalM,
+        const CopyrightCard(),
       ],
     );
   }

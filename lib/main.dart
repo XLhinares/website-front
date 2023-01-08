@@ -1,5 +1,3 @@
-import "dart:async";
-
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
@@ -45,22 +43,28 @@ void main() async {
     themeMode: ThemeMode.light,
 
     // Run
+    initialRoute: "/",
     getPages: [
       GetPage<Splash>(name: "/", page: () => Splash()),
       GetPage<ResponsiveHome>(
-          name: "/home", page: () => const ResponsiveHome()),
+        name: "/home",
+        page: () => const ResponsiveHome(),
+      ),
       GetPage<ResponsiveHome>(
-          name: "/projects",
-          page: () {
-            Timer.run(() => router.goTo(mode: AppMode.projects));
-            return const ResponsiveHome();
-          }),
+        name: "/projects",
+        page: () => ResponsiveHome(
+          postInit: (_) => router.push(mode: AppMode.projects),
+        ),
+      ),
       GetPage<ResponsiveHome>(
-          name: "/contact",
-          page: () {
-            Timer.run(() => router.goTo(mode: AppMode.contact));
-            return const ResponsiveHome();
-          }),
+        name: "/contact",
+        page: () => ResponsiveHome(
+          postInit: (_) => router.push(mode: AppMode.contact),
+        ),
+      ),
+      GetPage(name: "/legal/cookie_policy", page: () => const CookiePolicy()),
+      GetPage(name: "/legal/privacy_policy", page: () => const PrivacyPolicy()),
+      GetPage(name: "/legal/legal_mentions", page: () => const LegalMentions()),
     ],
 
     onGenerateRoute: (RouteSettings routeSettings) {
@@ -70,40 +74,15 @@ void main() async {
         print("Settings: $routeSettings");
       }
 
-      // HOME
-      if (routeSettings.name?.contains(AppMode.home.name) ?? false) {
-        router.jumpTo(mode: AppMode.home);
-        return MaterialPageRoute(
-          settings: routeSettings,
-          builder: (context) => Splash(
-            nextPage: () => const ResponsiveHome(),
-          ),
-        );
-      }
-      // PROJECT
-      if (routeSettings.name?.contains(AppMode.projects.name) ?? false) {
-        router.jumpTo(mode: AppMode.projects);
-        return MaterialPageRoute(
-          settings: routeSettings,
-          builder: (context) => Splash(
-            nextPage: () => const ResponsiveHome(),
-          ),
-        );
-      }
-      // CONTACT
-      if (routeSettings.name?.contains(AppMode.contact.name) ?? false) {
-        router.jumpTo(mode: AppMode.contact);
-        return MaterialPageRoute(
-          settings: routeSettings,
-          builder: (context) => Splash(
-            nextPage: () => const ResponsiveHome(),
-          ),
-        );
-      }
       return MaterialPageRoute(
         settings: routeSettings,
         builder: (context) => Splash(
-          nextPage: () => const TabNotFound(),
+          nextPage: () => ResponsiveHome(
+            postInit: (_) {
+              if (routeSettings.name == null) return;
+              router.push(route: routeSettings.name);
+            },
+          ),
         ),
       );
     },

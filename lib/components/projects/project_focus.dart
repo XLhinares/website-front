@@ -59,12 +59,13 @@ class ProjectFocus extends StatelessWidget {
 
           // Parts
           GetBuilder(
-              init: user,
-              builder: (_) {
-                return parts == null
-                    ? _loadingWidget(context)
-                    : partsBuilder(parts!);
-              }),
+            init: user,
+            builder: (_) {
+              return parts == null
+                  ? _loadingWidget(context)
+                  : partsBuilder(parts!);
+            },
+          ),
         ],
       ),
     );

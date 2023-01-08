@@ -7,15 +7,24 @@ import "tabs.dart";
 class ResponsiveHome extends StatelessWidget {
   // VARIABLES =================================================================
 
+  /// An optional behavior to run after reaching the home tab.
+  final void Function(BuildContext)? postInit;
+
   // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [ResponsiveHome] matching the given parameters.
-  const ResponsiveHome({Key? key}) : super(key: key);
+  const ResponsiveHome({
+    super.key,
+    this.postInit,
+  });
 
   // BUILD =====================================================================
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => postInit?.call(context));
+
     return LayoutBuilder(
       builder: (context, constraints) {
         if (ResponsiveWrapper.of(context).isLargerThan(TABLET)) {

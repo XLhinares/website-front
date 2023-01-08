@@ -9,6 +9,12 @@ class ScaffoldFit extends StatelessWidget {
   /// An optional widget to display in the background.
   final Widget? background;
 
+  /// An optional widget to display over the main child.
+  ///
+  /// It should be carefully be positioned.
+  /// This can be used for floating buttons.
+  final Widget? overlay;
+
   /// An optional bottom navigation bar.
   final Widget? bottomNavigationBar;
 
@@ -21,6 +27,9 @@ class ScaffoldFit extends StatelessWidget {
   /// The space that should surround the child.
   final EdgeInsets? padding;
 
+  /// How the child should be aligned in the frame.
+  final AlignmentGeometry alignment;
+
 // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [ScaffoldFit] matching the given parameters.
@@ -29,8 +38,10 @@ class ScaffoldFit extends StatelessWidget {
     this.appBar,
     required this.body,
     this.background,
+    this.overlay,
     this.bottomNavigationBar,
     this.padding,
+    this.alignment = Alignment.center,
   }) : super(key: key);
 
 // BUILD =====================================================================
@@ -42,6 +53,8 @@ class ScaffoldFit extends StatelessWidget {
       body: FrameFit(
         padding: padding,
         background: background,
+        overlay: overlay,
+        alignment: alignment,
         child: body,
       ),
       bottomNavigationBar: bottomNavigationBar,

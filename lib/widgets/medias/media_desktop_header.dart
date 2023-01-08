@@ -47,8 +47,8 @@ class MediaDesktopHeader extends StatelessWidget {
                     const Expanded(child: SizedBox()),
 
                     // Name & date
-                    AutoColorText("%bc ${media.name}",
-                        defaultStyle: context.textTheme.titleLarge),
+                    AutoColorText("\\title{${media.name}}",
+                        style: context.textTheme.titleLarge),
                     XLayout.verticalXS,
                     Text(media.date.legibleMY),
                     XLayout.verticalS,
@@ -61,7 +61,7 @@ class MediaDesktopHeader extends StatelessWidget {
                     XLayout.verticalL,
                     // Summary
 
-                    Text(media.summary),
+                    AutoColorText(media.summary),
 
                     // Spacing
                     const Expanded(child: SizedBox()),

@@ -20,6 +20,7 @@ class BodyContents extends StatelessWidget {
   Widget build(BuildContext context) {
     Timer.run(() => router.animateTo(index: router.modeIndex));
     return PageView(
+      clipBehavior: Clip.none,
       scrollDirection: Axis.vertical,
       physics: const NeverScrollableScrollPhysics(),
       allowImplicitScrolling: true,

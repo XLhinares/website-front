@@ -3,8 +3,8 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../utils/globals.dart";
-import "tabs.dart";
+import "../../utils/globals.dart";
+import "../tabs.dart";
 
 /// The screen at the beginning of the app that loads the required components.
 ///
@@ -82,6 +82,7 @@ class Splash extends StatelessWidget {
 
     // Go to next screen
     opacity.value = 0;
+    postInit();
     Timer(
         fadeOutTime,
         () => Get.off(

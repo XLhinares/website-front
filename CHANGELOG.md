@@ -1,3 +1,12 @@
+## 1.8.0
+
+- :lipstick: Changed the `frameRatio` from `1.5` to `4/3` because bigger margins look nicer.
+- :sparkles: Major update to the routing service, it should be used instead of the navigator from now on.
+- :sparkles: Upgraded the parsing of `AutoColorText` to allow adding links and routes.
+- :sparkles: Added legal mentions, cookie policy and data policy to the app.
+- :globe_with_meridians: Added all the translations for the legal stuff.
+- :heavy_plus_sign: Added `flutter_markdown` to handle massive styled blocks of text.
+
 ## 1.7.0
 
 - :sparkles: Created the `Media` class to handle both `Project` and `Blog`

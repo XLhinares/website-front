@@ -1,13 +1,8 @@
-// Flutter dependencies
 import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
-
-// Package dependencies
 import "package:get/get.dart";
 
-// Project dependencies
-import "package:website_front/tabs/responsive_home.dart";
-import "package:website_front/tabs/splash.dart";
+import "package:website_front/tabs/tabs.dart";
 import "package:website_front/utils/utils.dart";
 
 /// A utility to pump the full app without having to rewrite it every time.

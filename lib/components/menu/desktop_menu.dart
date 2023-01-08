@@ -41,6 +41,10 @@ class BodyMenu extends StatelessWidget {
             XLayout.verticalM,
 
             const TestCard(),
+
+            XLayout.verticalM,
+
+            const CopyrightCard(),
           ],
         ),
       ],

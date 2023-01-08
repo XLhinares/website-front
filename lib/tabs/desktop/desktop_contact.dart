@@ -21,6 +21,7 @@ class DesktopContact extends StatelessWidget {
     return Center(
       child: ListView(
         padding: EdgeInsets.symmetric(vertical: XLayout.paddingL),
+        clipBehavior: Clip.none,
         shrinkWrap: true,
         children: [
           // PRESENTATION --------------------------------------------------------

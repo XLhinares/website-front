@@ -9,7 +9,10 @@ class RoutingService extends GetxController with GetTickerProviderStateMixin {
   // VARIABLES =================================================================
 
   /// The current mode of the app.
-  late final Rx<AppMode> _selectedMode;
+  late final Rx<AppMode> _selectedTab;
+
+  /// The last selected main tab.
+  late final Rx<AppMode> _lastMainTab;
 
   /// The name of the project currently selected by the app.
   late final Rx<int?> _selectedProject;
@@ -26,10 +29,10 @@ class RoutingService extends GetxController with GetTickerProviderStateMixin {
   // GETTERS ===================================================================
 
   /// The current mode of the app.
-  AppMode get mode => _selectedMode.value;
+  AppMode get mode => _selectedTab.value;
 
   /// The current mode of the app.
-  int get modeIndex => AppMode.values.indexOf(mode);
+  int get modeIndex => AppMode.mainTabs.indexOf(_lastMainTab.value);
 
   /// The currently selected project if it exists.
   int? get project => _selectedProject.value;
@@ -58,26 +61,18 @@ class RoutingService extends GetxController with GetTickerProviderStateMixin {
   /// It is called exactly once and contains the instantiation logic.
   RoutingService._internal() {
     // INITIAL VALUES ----------------------------------------------------------
-    _selectedMode = AppMode.home.obs;
+    _selectedTab = AppMode.home.obs;
+    _lastMainTab = AppMode.home.obs;
     _selectedProject = Rx<int?>(null);
-    _history = [];
+    _history = ["/"];
 
     // TAB / PAGE VIEW
-    _tabController = TabController(length: AppMode.values.length, vsync: this);
+    _tabController =
+        TabController(length: AppMode.mainTabs.length, vsync: this);
     _pageController = PageController();
-
-    // WORKERS -----------------------------------------------------------------
-    ever<AppMode>(_selectedMode, (value) => _pushHistory(value.name));
-    ever<int?>(_selectedProject,
-        (value) => _pushHistory("${_selectedMode.value.name}/$value"));
   }
 
   // METHODS ===================================================================
-
-  void _pushHistory(String route) {
-    _history.add(route);
-    update();
-  }
 
   /// Jumps to the given mode without reloading the controller.
   void jumpTo({AppMode? mode, int? index}) {
@@ -90,28 +85,7 @@ class RoutingService extends GetxController with GetTickerProviderStateMixin {
 
     _tabController.animateTo(selectedIndex);
     _pageController.jumpToPage(selectedIndex);
-    _selectedMode.value = selectedMode;
-  }
-
-  /// Goes to the given mode and reloads the controller.
-  void goTo({AppMode? mode, int? index}) {
-    assert((mode != null) ^ (index != null),
-        "Either [mode] or [index] should be given.");
-
-    // Infer the missing value between the mode and the index.
-    final AppMode selectedMode = mode ?? AppMode.values[index!];
-
-    // Custom behaviors for double tap on the same index.
-    if (this.mode == selectedMode) {
-      printInfo(info: "Tapped on the current mode, applying custom behavior");
-      if (this.mode == AppMode.projects) {
-        selectProject(null);
-      }
-      return;
-    }
-
-    animateTo(mode: selectedMode);
-    _selectedMode.value = selectedMode;
+    _selectedTab.value = selectedMode;
   }
 
   /// Animates to the given mode.
@@ -122,7 +96,7 @@ class RoutingService extends GetxController with GetTickerProviderStateMixin {
         "Either [mode] or [index] should be given.");
 
     // Infer the missing value between the mode and the index.
-    final int selectedIndex = index ?? AppMode.values.indexOf(mode!);
+    final int selectedIndex = index ?? AppMode.mainTabs.indexOf(mode!);
 
     _tabController.animateTo(selectedIndex, duration: animDurationLong);
     if (_pageController.hasClients) {
@@ -137,6 +111,72 @@ class RoutingService extends GetxController with GetTickerProviderStateMixin {
       _selectedProject.value = null;
     } else {
       _selectedProject.value = name;
+    }
+
+    _history.add("${_selectedTab.value}/${_selectedProject.value}");
+  }
+
+  /// Pushes the given route to navigator and add it to the history.
+  void push({String? route, AppMode? mode}) {
+    assert((mode != null) ^ (route != null),
+        "Either [mode] or [route] should be given.");
+
+    final newRoute = route ?? "/${mode?.name}";
+    final parts = newRoute.split("/");
+    final newMode = mode ?? AppMode.parse(parts.isEmpty ? "" : parts.first);
+
+    printInfo(info: "Pushing new route: $newRoute\nParts: $parts");
+
+    void pushHome() {
+      if (_history.last == "/") return;
+      Get.toNamed("/");
+    }
+
+    void pushIdentical() {
+      printInfo(info: "Tapped on the current mode, applying custom behavior");
+      if (newMode == AppMode.projects) {
+        selectProject(null);
+        _history.add("/projects");
+      }
+    }
+
+    void pushNew() {
+      void pushMainTab() {
+        printInfo(info: "Animating to main tab.");
+        // If the route is part of the main tabs, we animate the controller there.
+        animateTo(mode: newMode);
+        if (newMode == AppMode.projects && parts.length > 1) {
+          selectProject(int.tryParse(parts[1]));
+        }
+        _lastMainTab.value = newMode;
+      }
+
+      if (newMode.isMainTab) {
+        pushMainTab();
+      } else {
+        printInfo(info: "Animating to other tab.");
+        Get.toNamed(newRoute);
+      }
+      _selectedTab.value = newMode;
+      _history.add(newRoute);
+    }
+
+    if (parts.isEmpty) return pushHome();
+    if (_history.isNotEmpty && newRoute == _history.last) {
+      return pushIdentical();
+    }
+    pushNew();
+  }
+
+  /// Pops the current route
+  void pop() {
+    if (_history.length < 2) {
+      Get.back();
+      return;
+    } else {
+      _history.removeLast();
+      final newRoute = _history.removeLast();
+      push(route: newRoute);
     }
   }
 }

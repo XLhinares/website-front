@@ -34,7 +34,7 @@ class MobileTabView extends StatelessWidget {
         height: navigationBarHeight,
         child: Obx(
           () => BottomNavigationBar(
-            onTap: (index) => router.goTo(index: index),
+            onTap: (index) => router.push(mode: AppMode.mainTabs[index]),
             currentIndex: router.modeIndex,
             items: _navigationItems,
           ),

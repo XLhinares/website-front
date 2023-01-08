@@ -19,13 +19,24 @@ class ThemeService {
 
   /// A custom text theme to merge with the [xTheme] one.
   static TextTheme defaultTextTheme = const TextTheme(
+    displayLarge: TextStyle(
+        fontFamily: defaultFontFamily,
+        fontFeatures: [FontFeature.enable("smcp")]),
+    displayMedium: TextStyle(
+        fontFamily: defaultFontFamily,
+        fontFeatures: [FontFeature.enable("smcp")],
+        fontSize: 26,
+        fontWeight: FontWeight.bold),
+    // TITLE
     titleLarge: TextStyle(fontFamily: defaultFontFamily, fontSize: 30),
     titleMedium: TextStyle(fontFamily: defaultFontFamily, fontSize: 26),
     titleSmall: TextStyle(fontFamily: defaultFontFamily),
+    // BODY
     bodyLarge: TextStyle(fontFamily: defaultFontFamily, fontSize: 24),
     bodyMedium:
         TextStyle(fontFamily: defaultFontFamily, fontSize: 18, height: 1.2),
     bodySmall: TextStyle(fontFamily: defaultFontFamily),
+    // LABEL
     labelMedium: TextStyle(
       fontSize: 14,
       fontWeight: FontWeight.w200,

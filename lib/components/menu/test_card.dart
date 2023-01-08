@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../../utils/globals.dart";
@@ -21,12 +22,17 @@ class TestCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return XCard(
-      padding: EdgeInsets.all(XLayout.paddingM),
-      title: const Text("Click to run the test."),
+      padding: EdgeInsets.only(
+        top: XLayout.paddingM,
+        bottom: XLayout.paddingM,
+        left: XLayout.paddingL,
+        right: XLayout.paddingM,
+      ),
+      title: Text("Click to run the test.".tr),
       onTap: () => api.test(context),
     );
   }
 
-  // METHODS ===================================================================
+// METHODS ===================================================================
 
 }

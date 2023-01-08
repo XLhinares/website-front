@@ -10,6 +10,12 @@ class FrameFit extends StatelessWidget {
   /// An optional widget to display in the background.
   final Widget? background;
 
+  /// An optional widget to display over the main child.
+  ///
+  /// It should be carefully be positioned.
+  /// This can be used for floating buttons.
+  final Widget? overlay;
+
   /// The widget we want to display within the frame.
   final Widget child;
 
@@ -19,6 +25,9 @@ class FrameFit extends StatelessWidget {
   /// The ratio of the horizontal extent over the vertical.
   final double aspectRatio;
 
+  /// How the child should be aligned in the frame.
+  final AlignmentGeometry alignment;
+
 // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [FrameFit] matching the given parameters.
@@ -26,15 +35,18 @@ class FrameFit extends StatelessWidget {
     Key? key,
     required this.child,
     this.background,
+    this.overlay,
     this.padding,
     this.aspectRatio = frameRatio,
+    this.alignment = Alignment.center,
   }) : super(key: key);
 
 // BUILD =====================================================================
 
   @override
   Widget build(BuildContext context) {
-    final Widget front = Center(
+    final Widget front = Align(
+      alignment: alignment,
       child: Padding(
         padding: padding ?? EdgeInsets.zero,
         child: ConstrainedBox(
@@ -46,14 +58,14 @@ class FrameFit extends StatelessWidget {
       ),
     );
 
-    if (background == null) {
+    if (background == null && overlay == null) {
       return front;
     } else {
       return Stack(
-        children: [
-          Positioned.fill(child: background!),
-          Positioned.fill(child: front),
-        ],
+        children: []
+          ..addIf(background != null, Positioned.fill(child: background!))
+          ..add(Positioned.fill(child: front))
+          ..addIf(overlay != null, overlay ?? const SizedBox()),
       );
     }
   }

@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import "package:responsive_framework/responsive_framework.dart";
 
 import "tabs.dart";
 
@@ -27,7 +26,7 @@ class ResponsiveHome extends StatelessWidget {
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        if (ResponsiveWrapper.of(context).isLargerThan(TABLET)) {
+        if (constraints.maxWidth > 1000) {
           return const DesktopTabManager();
         }
         // } else if (ResponsiveWrapper.of(context).isLargerThan(MOBILE)) {

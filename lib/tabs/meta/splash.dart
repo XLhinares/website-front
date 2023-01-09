@@ -4,7 +4,6 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../utils/globals.dart";
-import "../tabs.dart";
 
 /// The screen at the beginning of the app that loads the required components.
 ///
@@ -12,11 +11,6 @@ import "../tabs.dart";
 /// be assumed to be completed.
 class Splash extends StatelessWidget {
 // VARIABLES =================================================================
-
-  /// The page to display after the splash.
-  ///
-  /// If not specified, goes to the "Home" page.
-  final Widget Function()? nextPage;
 
   /// The opacity of the contents.
   final RxDouble opacity = RxDouble(1);
@@ -29,7 +23,6 @@ class Splash extends StatelessWidget {
   /// Returns an instance of [SplashScreen] matching the given parameters.
   Splash({
     super.key,
-    this.nextPage,
   }) {
 // Start checking if the requirement are loaded as soon as possible.
     Timer.run(checkIfLoaded);
@@ -39,30 +32,22 @@ class Splash extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Obx(
-          () => AnimatedOpacity(
-            opacity: opacity.value,
-            duration: fadeOutTime,
-            child: XContainer(
-              margin: EdgeInsets.all(XLayout.paddingM),
-              height: Get.height * 0.2,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Loading the app...".tr,
-                    style: context.textTheme.bodyMedium,
-                  ),
-                  XLayout.verticalM,
-                  CircularProgressIndicator(
-                    color: context.theme.colorScheme.secondary,
-                  ),
-                ],
-              ),
+    return Center(
+      child: XContainer(
+        margin: EdgeInsets.all(XLayout.paddingM),
+        height: Get.height * 0.2,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Loading the app...".tr,
+              style: context.textTheme.bodyMedium,
             ),
-          ),
+            XLayout.verticalM,
+            CircularProgressIndicator(
+              color: context.theme.colorScheme.secondary,
+            ),
+          ],
         ),
       ),
     );
@@ -83,10 +68,10 @@ class Splash extends StatelessWidget {
     // Go to next screen
     opacity.value = 0;
     postInit();
-    Timer(
-        fadeOutTime,
-        () => Get.off(
-              nextPage ?? () => const ResponsiveHome(),
-            ));
+    appIsReady.value = true;
+    // Timer(
+    //   fadeOutTime,
+    //       () => appIsReady.value = true,
+    // );
   }
 }

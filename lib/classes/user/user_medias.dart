@@ -24,6 +24,9 @@ mixin UserMedias on UserCore {
 
   // PSEUDO-GETTERS ============================================================
 
+  /// Whether the user has the parts of the media matching the given id.
+  bool hasParts(int id) => _mediaParts.containsKey(id);
+
   /// The parts of the media matching the given id, if it is known.
   MediaParts? getParts(int id) => _mediaParts[id];
 

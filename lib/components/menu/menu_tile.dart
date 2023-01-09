@@ -35,6 +35,7 @@ class MenuTile extends StatelessWidget {
       subtitle: Text(mode.description, style: context.textTheme.bodyMedium),
       leading: mode.icon,
       onTap: () {
+        printInfo(info: "\nEVENT: Menu tile ${mode.name} was tapped.");
         router.push(mode: mode);
         onTap?.call();
       },

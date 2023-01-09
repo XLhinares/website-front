@@ -7,24 +7,39 @@ class AppMode {
   // CONSTANTS =================================================================
 
   /// The unique [AppMode.home].
-  static const AppMode home = AppMode._internal("home", icon: Icons.home);
+  static const AppMode home = AppMode._internal(
+    "home",
+    icon: Icons.home,
+  );
 
   /// The unique [AppMode.projects].
-  static const AppMode projects =
-      AppMode._internal("projects", icon: Icons.gesture);
+  static const AppMode projects = AppMode._internal(
+    "projects",
+    icon: Icons.gesture,
+  );
 
   /// The unique [AppMode.blog].
-  static const AppMode blog = AppMode._internal("blog", icon: Icons.dashboard);
+  static const AppMode blog = AppMode._internal(
+    "blog",
+    icon: Icons.dashboard,
+  );
 
   /// The unique [AppMode.contact].
-  static const AppMode contact =
-      AppMode._internal("contact", icon: Icons.contact_mail);
+  static const AppMode contact = AppMode._internal(
+    "contact",
+    icon: Icons.contact_mail,
+  );
 
   /// The unique [AppMode.legal].
-  static const AppMode legal = AppMode._internal("legal", icon: Icons.balance);
+  static const AppMode legal = AppMode._internal(
+    "legal",
+    icon: Icons.balance,
+  );
 
   /// The unique [AppMode.other].
-  static const AppMode other = AppMode._internal("other");
+  static const AppMode other = AppMode._internal(
+    "other",
+  );
 
   /// The different possible values of [AppMode].
   static const values = [

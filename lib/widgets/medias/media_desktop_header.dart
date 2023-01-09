@@ -39,9 +39,10 @@ class MediaDesktopHeader extends StatelessWidget {
           children: [
             Expanded(
               child: XContainer(
-                padding: EdgeInsets.all(XLayout.paddingL),
+                padding: EdgeInsets.all(XLayout.paddingM),
                 child: Column(
                   children: [
+                    _goBack(context),
                     // Spacing
                     XLayout.verticalL,
                     const Expanded(child: SizedBox()),
@@ -65,21 +66,7 @@ class MediaDesktopHeader extends StatelessWidget {
 
                     // Spacing
                     const Expanded(child: SizedBox()),
-                    Text(
-                      "Scroll to see more...",
-                      style: context.textTheme.labelSmall,
-                    ),
-                    IconButton(
-                      onPressed: () => scrollController?.animateTo(
-                        Get.height,
-                        duration: animDurationShort,
-                        curve: Curves.easeIn,
-                      ),
-                      icon: Icon(
-                        Icons.keyboard_arrow_down,
-                        size: XLayout.paddingL,
-                      ),
-                    ),
+                    _seeMore(context),
                   ],
                 ),
               ),
@@ -100,4 +87,52 @@ class MediaDesktopHeader extends StatelessWidget {
 
 // WIDGETS ===================================================================
 
+  Widget _goBack(BuildContext context) => GestureDetector(
+        onTap: () => router.selectProject(null),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Icon(
+              Icons.keyboard_arrow_left,
+              size: XLayout.paddingL,
+            ),
+            Text(
+              "Go back",
+              style: context.textTheme.labelSmall,
+            ),
+          ],
+        ),
+      );
+
+  Widget _seeMore(BuildContext context) => GetBuilder(
+        init: user,
+        builder: (_) => SizedBox(
+          height: XLayout.paddingL * 2,
+          child: AnimatedSwitcher(
+            duration: animDurationShort,
+            child: user.hasParts(media.id)
+                ? GestureDetector(
+                    onTap: () => scrollController?.animateTo(
+                      Get.height,
+                      duration: animDurationShort,
+                      curve: Curves.easeIn,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          "Scroll to see more...",
+                          style: context.textTheme.labelSmall,
+                        ),
+                        Icon(
+                          Icons.keyboard_arrow_down,
+                          size: XLayout.paddingL,
+                        ),
+                      ],
+                    ),
+                  )
+                : const SizedBox(),
+          ),
+        ),
+      );
 }

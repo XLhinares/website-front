@@ -39,6 +39,8 @@ class CustomTranslations extends Translations {
           "Details": "Details",
 
           // OTHER -----------------------------------------------------------------
+          "No, thanks": "No, thanks",
+          "Okay": "Okay",
           "Cookies title": "About cookies",
           "Cookies description":
               "This site only uses functional cookies. They are used to remember your preferred language and theme.",
@@ -265,6 +267,8 @@ have an account with their website.
           "Details": "Détails",
 
           // OTHER -----------------------------------------------------------------
+          "No, thanks": "Non merci",
+          "Okay": "Okay",
           "Cookies title": "À propos des cookies.",
           "Cookies description":
               "Ce site utilise uniquement des cookies fonctionnels. Ils sont utilisés pour retenir vos langages et thèmes préférés.",

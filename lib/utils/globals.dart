@@ -28,13 +28,16 @@ final ThemeService themes = ThemeService();
 // CONSTANTS ===================================================================
 
 /// The version of the app.
-const String versionNumber = "v1.9.0";
+const String versionNumber = "v1.9.1";
 
 /// The URL address of the app.
 const String xeppelinURL = "https://xeppelin.org";
 
 /// The default ratio of horizontal extent over the vertical.
 const double frameRatio = 4 / 3;
+
+/// The maximum horizontal extent of snack-bars appearing on the screen.
+const double maxSnackbarLength = 600;
 
 /// The vertical extent of the [BottomNavigationBar] used on the mobile display.
 double get navigationBarHeight => XLayout.paddingS * 6;

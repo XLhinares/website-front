@@ -44,9 +44,14 @@ class DesktopHome extends StatelessWidget {
           // SECOND BLOCK --------------------------------------------------------
           // todo: occuper l'espace en haut à droite avec qqch.
           Expanded(
-            child: Padding(
-              padding: EdgeInsets.only(top: Get.height * 0.3),
-              child: const HomeDescription(),
+            child: Column(
+              children: [
+                const Expanded(child: SizedBox()),
+                ConstrainedBox(
+                  constraints: BoxConstraints(minHeight: Get.height * 0.7),
+                  child: const HomeDescription(),
+                ),
+              ],
             ),
           ),
         ],

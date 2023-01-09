@@ -21,14 +21,17 @@ class CookieService extends GetxController {
 
   // ACTUAL --------------------------------------------------------------------
 
-  /// The number of turns in a game.
+  /// The locale used for the language of the app.
   late final RxString locale;
 
   /// Whether the app should display in dark mode.
   late final RxString theme;
 
-  /// The maximal value displayed on graphs.
+  /// Whether the user is allowing the cookies.
   late final RxBool cookies;
+
+  /// Whether the user has dismissed the cookie banner.
+  late final RxBool cookieBannerDismissed;
 
   // CONSTRUCTOR ===============================================================
 
@@ -63,6 +66,7 @@ class CookieService extends GetxController {
     // COOKIES
     cookies = RxBool(_storage.read<bool>("cookies") ?? false);
     _saveCookies(cookies.value);
+    cookieBannerDismissed = RxBool(cookies.value);
 
     // Setting up workers.
     ever<String>(locale, _saveLocale);
@@ -80,7 +84,7 @@ class CookieService extends GetxController {
   /// Performs a check on the value of the [locale] then save it to memory.
   Future<void> _saveLocale(String value) async {
     printInfo(info: "Changing locale to: $value");
-    await _storage.write("locale", value);
+    if (cookies.isTrue) await _storage.write("locale", value);
     Get.updateLocale(Locale(value));
   }
 
@@ -95,7 +99,7 @@ class CookieService extends GetxController {
   /// Performs a check on the value of [darkTheme] then save it to memory.
   Future<void> _saveTheme(String value) async {
     printInfo(info: "Changing theme to: $theme");
-    await _storage.write("theme", value);
+    if (cookies.isTrue) await _storage.write("theme", value);
     themes.changeTheme(theme.value);
   }
 
@@ -109,6 +113,21 @@ class CookieService extends GetxController {
   /// Performs a check on the value of [cookies] then save it to memory.
   Future<void> _saveCookies(bool value) async {
     printInfo(info: "Changing cookies to: $value");
-    await _storage.write("cookies", value);
+
+    if (value) {
+      await _storage.write("cookies", value);
+      // Try to save all the data that was not save due to cookies.
+      await _saveLocale(locale.value);
+      await _saveTheme(theme.value);
+    } else {
+      _clearCookies();
+    }
+  }
+
+  /// Deletes the cookies.
+  Future<void> _clearCookies() async {
+    await _storage.remove("cookies");
+    await _storage.remove("locale");
+    await _storage.remove("theme");
   }
 }

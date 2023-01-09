@@ -40,20 +40,16 @@ class ProjectPreviewer extends StatelessWidget {
           children: [
             // IMAGE -------------------------------------------------------------
             Positioned.fill(
-              child: ClipRRect(
-                child: CoveringNetworkImage(
-                  project.preview,
-                ),
+              child: CoveringNetworkImage(
+                project.preview,
               ),
             ),
 
             Positioned.fill(
               child: Column(
                 children: [
-                  const Expanded(flex: 3, child: SizedBox()),
-                  XContainer(
-                    borderRadius: BorderRadius.zero,
-                    enableShadow: false,
+                  const Expanded(child: SizedBox()),
+                  Container(
                     color:
                         context.theme.colorScheme.background.withOpacity(0.5),
                     padding: EdgeInsets.all(XLayout.paddingM),

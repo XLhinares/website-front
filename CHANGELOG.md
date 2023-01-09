@@ -1,3 +1,9 @@
+## 1.9.1
+
+- :sparkles: Better cookie consent card.
+- :sparkles: Option to disable cookies in the cookie policy tab.
+- :sparkles: Added a `PresetStyles` class to save non-default styles that I still often use.
+
 ## 1.9.0
 
 - :bento: Deleted unused assets.

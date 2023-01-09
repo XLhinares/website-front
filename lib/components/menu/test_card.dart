@@ -29,7 +29,9 @@ class TestCard extends StatelessWidget {
         right: XLayout.paddingM,
       ),
       title: Text("Click to run the test.".tr),
-      onTap: () => api.test(context),
+      onTap: () {
+        api.test(context);
+      },
     );
   }
 

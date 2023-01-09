@@ -23,8 +23,10 @@ void main() async {
   // Theme ---------------------------------------------------------------------
 
   xTheme.set(
-      // paddingValue: XLayout.paddingM,
-      padding: EdgeInsets.all(XLayout.paddingS));
+    // paddingValue: XLayout.paddingM,
+    padding: EdgeInsets.all(XLayout.paddingS),
+    // borderDecoration: Border.all(width: 3, color: Colors.black45),
+  );
 
   // Run -----------------------------------------------------------------------
   runApp(GetMaterialApp(

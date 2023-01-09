@@ -15,8 +15,11 @@ class TabLegal extends StatelessWidget {
   /// The title of the tab.
   final String title;
 
-  /// The children to display in the tab.
+  /// The text to write in the legal section.
   final String text;
+
+  /// A widget to display at the end of the tab.
+  final Widget? appendix;
 
   // CONSTRUCTOR ===============================================================
 
@@ -25,6 +28,7 @@ class TabLegal extends StatelessWidget {
     super.key,
     required this.title,
     required this.text,
+    this.appendix,
   });
 
   // BUILD =====================================================================
@@ -64,10 +68,11 @@ class TabLegal extends StatelessWidget {
               ),
               XLayout.verticalL,
               XContainer(
+                padding: EdgeInsets.zero,
                 child: Markdown(
                   data: text,
                   physics: const NeverScrollableScrollPhysics(),
-                  padding: EdgeInsets.all(XLayout.paddingM),
+                  padding: EdgeInsets.all(XLayout.paddingL),
                   selectable: true,
                   shrinkWrap: true,
                   softLineBreak: false,
@@ -93,7 +98,12 @@ class TabLegal extends StatelessWidget {
                     }
                   },
                 ),
-              )
+              ),
+              if (appendix != null)
+                Padding(
+                  padding: EdgeInsets.only(top: XLayout.paddingM),
+                  child: appendix!,
+                ),
             ]),
       ),
     );

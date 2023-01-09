@@ -74,6 +74,7 @@ class MenuList extends StatelessWidget {
           // updated.
           init: _animationController,
           builder: (_) => Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
               // An invisible box that pushes the grey box down to
               // match the start of the selected tile.
@@ -89,9 +90,11 @@ class MenuList extends StatelessWidget {
               // highlight it.
               AnimatedSize(
                 duration: animDurationLong,
-                child: XContainer(
-                  color: Colors.grey.withAlpha(100),
-                  enableShadow: false,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: XLayout.brcXS,
+                    color: Colors.grey.withAlpha(100),
+                  ),
                   height: _animationController.height,
                   width: double.infinity,
                 ),

@@ -75,14 +75,8 @@ class ProjectFocus extends StatelessWidget {
 
   Widget _loadingWidget(BuildContext context) {
     user.loadMediaParts(project.id);
-    return Center(
-      child: SizedBox(
-        height: Get.height * 0.2,
-        width: Get.height * 0.2,
-        child: CircularProgressIndicator(
-          color: context.theme.colorScheme.secondary,
-        ),
-      ),
+    return LinearProgressIndicator(
+      color: context.theme.colorScheme.secondary,
     );
   }
 }

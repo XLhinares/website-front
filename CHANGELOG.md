@@ -1,3 +1,12 @@
+## 1.9.0
+
+- :bento: Deleted unused assets.
+- :sparkles: The splash screen has been removed and checking the the app is ready to run is now done on every route.
+- :sparkles: The app now has explicit routes to navigate.
+- :sparkles: Both mobile and desktop app are controlled by a `PageView`.
+- :sparkles: MobileFocus on desktop now feature a "back" button.
+- :sparkles: The theme saved by the cookies is now saved to be loaded later if it is not available from the start.
+
 ## 1.8.0
 
 - :lipstick: Changed the `frameRatio` from `1.5` to `4/3` because bigger margins look nicer.

@@ -1,10 +1,14 @@
 import "package:flutter/material.dart";
+import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../classes/services/services.dart";
 import "../classes/user/user.dart";
 
 // SERVICES ====================================================================
+
+/// Whether the app is ready to be used.
+final RxBool appIsReady = false.obs;
 
 /// A special service which handle the local data and let the user interact with it.
 final User user = User();
@@ -24,7 +28,7 @@ final ThemeService themes = ThemeService();
 // CONSTANTS ===================================================================
 
 /// The version of the app.
-const String versionNumber = "v1.8.0";
+const String versionNumber = "v1.9.0";
 
 /// The URL address of the app.
 const String xeppelinURL = "https://xeppelin.org";

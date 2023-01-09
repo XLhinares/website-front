@@ -22,22 +22,24 @@ class DesktopTabManager extends StatelessWidget {
         scale: 0.2,
       ),
       overlay: ButtonsOverlay(),
-      body: LayoutBuilder(
-        builder: (context, constraints) => Row(
-          children: [
-            // TITLE -----------------------------------------------------
-            SizedBox(
-              width: (constraints.maxWidth - 4 * XLayout.paddingL) / 3,
-              child: const BodyMenu(),
-            ),
+      body: IfAppIsReady(
+        child: LayoutBuilder(
+          builder: (context, constraints) => Row(
+            children: [
+              // TITLE -----------------------------------------------------
+              SizedBox(
+                width: (constraints.maxWidth - 4 * XLayout.paddingL) / 3,
+                child: const BodyMenu(),
+              ),
 
-            XLayout.horizontalL,
+              XLayout.horizontalL,
 
-            // CONTENTS --------------------------------------------------
-            const Expanded(
-              child: BodyContents(),
-            ),
-          ],
+              // CONTENTS --------------------------------------------------
+              const Expanded(
+                child: BodyContents(),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1,7 +1,10 @@
+import "dart:async";
+
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
 import "../../classes/dataclass/app_mode.dart";
+import "../../components/components.dart";
 import "../../utils/utils.dart";
 import "../../widgets/widgets.dart";
 import "../tabs.dart";
@@ -17,18 +20,26 @@ class MobileTabView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Timer.run(() => router.animateTo(index: router.modeIndex));
+
     return ScaffoldFit(
       // appBar: AppBar(
       //   title: const Text("Xeppelin"),
       // ),
       background: _responsiveBackground(context),
-      body: TabBarView(
-        controller: router.tabController,
-        children: const [
-          MobileHome(),
-          MobileProjects(),
-          MobileContact(),
-        ],
+      body: IfAppIsReady(
+        child: PageView(
+          clipBehavior: Clip.none,
+          scrollDirection: Axis.horizontal,
+          physics: const NeverScrollableScrollPhysics(),
+          allowImplicitScrolling: true,
+          controller: router.pageController,
+          children: const [
+            MobileHome(),
+            MobileProjects(),
+            MobileContact(),
+          ],
+        ),
       ),
       bottomNavigationBar: SizedBox(
         height: navigationBarHeight,

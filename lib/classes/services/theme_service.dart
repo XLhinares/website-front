@@ -5,6 +5,8 @@ import "package:flutter/services.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
+import "../../utils/tools.dart";
+
 // MODE MANAGEMENT =============================================================
 
 /// A class defining a few preset themes.
@@ -46,6 +48,12 @@ class ThemeService {
       fontWeight: FontWeight.w200,
     ),
   );
+
+  /// A theme that is requested but not available.
+  ///
+  /// This can happen if a custom theme is requested by the cookies before it is
+  /// added to memory.
+  String? _requestedTheme;
 
   // GETTERS ===================================================================
 
@@ -121,19 +129,30 @@ class ThemeService {
   // METHODS ===================================================================
 
   /// Changes the theme to [target] with the help of the [get] package.
-  void changeTheme(String target) {
-    final ThemeData newTheme = parse(target);
-    Get.changeTheme(newTheme);
+  void changeTheme(String target) => tryWrapper(
+        () async {
+          final ThemeData newTheme = parse(target);
+          Get.changeTheme(newTheme);
 
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        systemNavigationBarColor: newTheme.colorScheme.primary,
-      ),
-    );
-  }
+          SystemChrome.setSystemUIOverlayStyle(
+            SystemUiOverlayStyle(
+              statusBarColor: Colors.transparent,
+              systemNavigationBarColor: newTheme.colorScheme.primary,
+            ),
+          );
+        },
+        then: (success) {
+          if (!success) _requestedTheme = target;
+        },
+      );
 
   /// Adds a new theme to the [ThemeService].
-  void addTheme({required String name, required ThemeData data}) =>
-      all[name] = data;
+  void addTheme({required String name, required ThemeData data}) {
+    all[name] = data;
+
+    if (_requestedTheme == name) {
+      changeTheme(name);
+      _requestedTheme = null;
+    }
+  }
 }

@@ -186,7 +186,7 @@ class AutoColorText extends StatelessWidget {
       final GestureRecognizer? gestureRecognizer = part.isRoute || part.isLink
           ? (TapGestureRecognizer()
             ..onTap = () async {
-              if (part.isRoute) router.push(route: part.extra);
+              if (part.isRoute) router.push(path: part.extra);
               if (part.isLink) {
                 final uri = Uri.parse(part.extra);
                 if (await canLaunchUrl(uri)) {

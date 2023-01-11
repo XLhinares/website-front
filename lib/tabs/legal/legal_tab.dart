@@ -40,7 +40,7 @@ class TabLegal extends StatelessWidget {
       background: const AnimatedBackground(
         scale: 0.3,
       ),
-      overlay: ButtonsOverlay(),
+      // overlay: ButtonsOverlay(),
       padding: EdgeInsets.symmetric(horizontal: XLayout.paddingL),
       body: IfAppIsReady(
         child: ListView(

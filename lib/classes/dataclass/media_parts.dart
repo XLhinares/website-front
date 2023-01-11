@@ -9,6 +9,14 @@ class MediaParts {
   /// The sorted list of entries making the media parts.
   final List<MediaPartEntry> entries;
 
+  // GETTERS ===================================================================
+
+  /// Whether there are no entries in this object.
+  bool get isEmpty => entries.isEmpty;
+
+  /// Whether there are entries in this object.
+  bool get isNotEmpty => entries.isNotEmpty;
+
   // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [MediaParts] matching the given parameters.

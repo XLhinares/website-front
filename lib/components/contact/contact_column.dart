@@ -108,7 +108,7 @@ class ContactColumn extends StatelessWidget {
             //ignore: use_build_context_synchronously
             XSnackbar.text(
               title: "There was an error.".tr,
-              content: "Please try again later.".tr,
+              content: "Email error content.".tr,
               titleStyle: Get.context?.textTheme.headlineMedium,
               contentStyle: Get.context?.textTheme.bodyMedium,
               maxWidth: 1024,

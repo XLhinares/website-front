@@ -32,12 +32,12 @@ class MobileTabView extends StatelessWidget {
           clipBehavior: Clip.none,
           scrollDirection: Axis.horizontal,
           physics: const NeverScrollableScrollPhysics(),
-          allowImplicitScrolling: true,
           controller: router.pageController,
           children: const [
             MobileHome(),
             MobileProjects(),
             MobileContact(),
+            MobileSettings(),
           ],
         ),
       ),
@@ -47,6 +47,9 @@ class MobileTabView extends StatelessWidget {
           () => BottomNavigationBar(
             onTap: (index) => router.push(mode: AppMode.mainTabs[index]),
             currentIndex: router.modeIndex,
+            backgroundColor: context.theme.colorScheme.background,
+            unselectedItemColor: Colors.grey,
+            selectedItemColor: context.theme.colorScheme.secondary,
             items: _navigationItems,
           ),
         ),
@@ -57,20 +60,14 @@ class MobileTabView extends StatelessWidget {
   // WIDGETS ===================================================================
 
   /// The list of navigation items used by the [BottomNavigationBar].
-  List<BottomNavigationBarItem> get _navigationItems => [
-        const BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: "Home",
-        ),
-        const BottomNavigationBarItem(
-          icon: Icon(Icons.dashboard),
-          label: "Projects",
-        ),
-        const BottomNavigationBarItem(
-          icon: Icon(Icons.contact_mail),
-          label: "Contact",
-        ),
-      ];
+  List<BottomNavigationBarItem> get _navigationItems => AppMode.mainTabs
+      .map((tab) => BottomNavigationBarItem(
+            icon: Icon(
+              tab.icon,
+            ),
+            label: tab.name.capitalizeFirst,
+          ))
+      .toList();
 
   /// Returns the usual [AnimatedBackground] wrapped in a [GetBuilder] in order to
   /// make the background disappear in specific situations.

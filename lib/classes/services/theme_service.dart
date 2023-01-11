@@ -41,11 +41,9 @@ class ThemeService {
     // LABEL
     labelMedium: TextStyle(
       fontSize: 14,
-      fontWeight: FontWeight.w200,
     ),
     labelSmall: TextStyle(
       fontSize: 12,
-      fontWeight: FontWeight.w200,
     ),
   );
 

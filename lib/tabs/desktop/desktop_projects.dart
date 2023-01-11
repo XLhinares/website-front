@@ -47,6 +47,7 @@ class DesktopProjects extends StatelessWidget {
                   scrollController: scrollController,
                 ),
                 partsBuilder: (parts) => MediaDesktopParts(parts: parts),
+                listViewVerticalPadding: XLayout.paddingL,
                 onBack: () => router.selectProject(null),
               ),
       ),

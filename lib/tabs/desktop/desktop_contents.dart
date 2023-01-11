@@ -4,6 +4,7 @@ import "package:flutter/material.dart";
 
 import "../../../utils/utils.dart";
 import "desktop.dart";
+import "desktop_settings.dart";
 
 /// What's inside the body. It depends on the current mode.
 class BodyContents extends StatelessWidget {
@@ -23,7 +24,6 @@ class BodyContents extends StatelessWidget {
       clipBehavior: Clip.none,
       scrollDirection: Axis.vertical,
       physics: const NeverScrollableScrollPhysics(),
-      allowImplicitScrolling: true,
       controller: router.pageController,
       children: _tabs(context),
     );
@@ -35,5 +35,6 @@ class BodyContents extends StatelessWidget {
         DesktopHome(),
         DesktopProjects(),
         DesktopContact(),
+        DesktopSettings(),
       ];
 }

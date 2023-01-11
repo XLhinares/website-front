@@ -42,6 +42,12 @@ class CustomRoute {
             postInit: (_) => router.push(mode: AppMode.home),
           ));
 
+  /// Route to the blog tab of the app.
+  static final BLOG = CustomRoute("/blog",
+      builder: () => ResponsiveHome(
+            postInit: (_) => router.push(mode: AppMode.blog),
+          ));
+
   /// Route to the projects tab of the app.
   static final PROJECTS = CustomRoute("/projects",
       builder: () => ResponsiveHome(
@@ -52,6 +58,12 @@ class CustomRoute {
   static final CONTACTS = CustomRoute("/contact",
       builder: () => ResponsiveHome(
             postInit: (_) => router.push(mode: AppMode.contact),
+          ));
+
+  /// Route to the settings tab of the app.
+  static final SETTINGS = CustomRoute("/settings",
+      builder: () => ResponsiveHome(
+            postInit: (_) => router.push(mode: AppMode.settings),
           ));
 
   /// Route to the cookie legal page of the app.
@@ -83,6 +95,7 @@ class CustomRoute {
     CustomRoute.COOKIES,
     CustomRoute.PRIVACY,
     CustomRoute.LEGAL,
+    CustomRoute.SETTINGS,
     CustomRoute.NOT_FOUND,
   ];
 

@@ -26,6 +26,8 @@ class MobileProjects extends StatelessWidget {
                   limit: 4,
                   renderingStrategy: (list) => ListView.separated(
                     physics: const BouncingScrollPhysics(),
+                    padding: EdgeInsets.all(XLayout.paddingM),
+                    clipBehavior: Clip.none,
                     itemCount: list.length,
                     itemBuilder: (context, index) =>
                         _projectBuilder(context, list[index]),
@@ -34,8 +36,10 @@ class MobileProjects extends StatelessWidget {
                 )
               : ProjectFocus(
                   project: user.getProject(router.project!),
-                  headerBuilder: (media, scrollController) =>
-                      MediaMobileHeader(media: media),
+                  headerBuilder: (media, scrollController) => MediaMobileHeader(
+                    media: media,
+                    scrollController: scrollController,
+                  ),
                   partsBuilder: (parts) => MediaMobileParts(parts: parts),
                 );
         });

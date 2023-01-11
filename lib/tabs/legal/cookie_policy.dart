@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../utils/utils.dart";
+import "../../widgets/widgets.dart";
 import "legal_tab.dart";
 
 /// A tab to display the cookie policy of the website
@@ -30,21 +30,7 @@ class CookiePolicy extends StatelessWidget {
               "Delete and disable cookies".tr,
             ),
             const Expanded(child: SizedBox()),
-            TextButton(
-              style: PresetStyles.secondaryButtonStyle(context),
-              onPressed: () {
-                settings.cookies.value = false;
-                XSnackbar.text(
-                  maxWidth: maxSnackbarLength,
-                  title: "Done.",
-                  content: "Your cookies were deleted and disabled.",
-                ).show(context);
-              },
-              child: Padding(
-                padding: EdgeInsets.all(XLayout.paddingS),
-                child: Text("Disable".tr),
-              ),
-            ),
+            const DisableCookiesButton(),
           ],
         ),
       ),

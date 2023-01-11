@@ -16,24 +16,36 @@ class MenuList extends StatelessWidget {
   final GlobalKey _keyHome = GlobalKey();
   final GlobalKey _keyProjects = GlobalKey();
   final GlobalKey _keyContacts = GlobalKey();
+  final GlobalKey _keySettings = GlobalKey();
   final GlobalKey _keyDivider = GlobalKey();
 
   // CONSTRUCTOR ===============================================================
 
   /// Returns a [MenuList] matching the given parameters.
   MenuList({super.key}) {
-    _animationController = Get.put(MenuSelectionAnimationController());
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _animationController
-          .addTileHeight(_keyHome.currentContext?.size?.height ?? 0);
-      _animationController
-          .addTileHeight(_keyProjects.currentContext?.size?.height ?? 0);
-      _animationController
-          .addTileHeight(_keyContacts.currentContext?.size?.height ?? 0);
-      _animationController
-          .setPadding(_keyDivider.currentContext?.size?.height ?? 0);
-      _animationController.selectTile(router.modeIndex);
-    });
+    _animationController = Get.put(MenuSelectionAnimationController(
+      length: AppMode.mainTabs.length,
+    ));
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => _animationController
+      ..setTileHeight(0, _keyHome.currentContext?.size?.height ?? 0)
+      ..setTileHeight(1, _keyProjects.currentContext?.size?.height ?? 0)
+      ..setTileHeight(2, _keyContacts.currentContext?.size?.height ?? 0)
+      ..setTileHeight(3, _keySettings.currentContext?.size?.height ?? 0)
+      ..setPadding(_keyDivider.currentContext?.size?.height ?? 0)
+      ..selectTile(router.modeIndex));
+
+    // Reload the tile sizes when the locale change so the new strings don't
+    // cause an overflow.
+    ever(
+        settings.locale,
+        (_) => WidgetsBinding.instance
+            .addPostFrameCallback((_) => _animationController
+              ..setTileHeight(0, _keyHome.currentContext?.size?.height ?? 0)
+              ..setTileHeight(1, _keyProjects.currentContext?.size?.height ?? 0)
+              ..setTileHeight(2, _keyContacts.currentContext?.size?.height ?? 0)
+              ..setTileHeight(3, _keySettings.currentContext?.size?.height ?? 0)
+              ..setPadding(_keyDivider.currentContext?.size?.height ?? 0)));
   }
 
   // BUILD =====================================================================
@@ -46,24 +58,26 @@ class MenuList extends StatelessWidget {
         ListView(
           shrinkWrap: true,
           children: [
-            MenuTile(
+            _tile(
               key: _keyHome,
               mode: AppMode.home,
-              onTap: () => _animationController.selectTile(0),
             ),
             Divider(
               key: _keyDivider,
             ),
-            MenuTile(
+            _tile(
               key: _keyProjects,
               mode: AppMode.projects,
-              onTap: () => _animationController.selectTile(1),
             ),
             const Divider(),
-            MenuTile(
+            _tile(
               key: _keyContacts,
               mode: AppMode.contact,
-              onTap: () => _animationController.selectTile(2),
+            ),
+            const Divider(),
+            _tile(
+              key: _keySettings,
+              mode: AppMode.settings,
             ),
           ],
         ),
@@ -106,6 +120,15 @@ class MenuList extends StatelessWidget {
     );
   }
 
-  // WIDGETS ===================================================================
+// WIDGETS ===================================================================
 
+  Widget _tile({
+    required GlobalKey key,
+    required AppMode mode,
+  }) =>
+      MenuTile(
+        key: key,
+        mode: mode,
+        controller: _animationController,
+      );
 }

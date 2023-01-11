@@ -25,56 +25,53 @@ class ProjectWidePreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return XInkContainer(
       onTap: onTap,
-      child: ColoredBox(
-        color: context.theme.shadowColor,
-        child: SizedBox(
-          width: Get.width,
-          height: XLayout.paddingS * 20,
-          child: Stack(
-            children: [
-              // IMAGE -------------------------------------------------------------
-              Positioned.fill(
-                child: CoveringNetworkImage(
-                  project.preview,
-                ),
-              ),
-
-              Positioned.fill(
-                child: Padding(
-                  padding: EdgeInsets.all(XLayout.paddingM),
-                  child: Center(
-                    child: Container(
-                      padding: EdgeInsets.all(XLayout.paddingM),
-                      color: context.theme.colorScheme.primary.withOpacity(0.5),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          // NAME ------------------------------------------------------
-                          Text(
-                            project.name,
-                            style: context.textTheme.titleMedium,
-                          ),
-
-                          XLayout.verticalS,
-                          const Divider(),
-                          XLayout.verticalS,
-
-                          // SUMMARY ---------------------------------------------------
-                          AutoColorText(
-                            project.summary,
-                            style: context.textTheme.bodyMedium,
-                          ),
-                        ],
-                      ),
-                    ).asGlass(clipBorderRadius: XLayout.brcXS),
-                  ),
-                ),
-              ),
-            ],
+      height: XLayout.paddingS * 20,
+      padding: EdgeInsets.zero,
+      child: Stack(
+        children: [
+          // IMAGE -------------------------------------------------------------
+          Positioned.fill(
+            child: CoveringNetworkImage(
+              project.preview,
+            ),
           ),
-        ),
+
+          Positioned.fill(
+            child: Padding(
+              padding: EdgeInsets.all(XLayout.paddingM),
+              child: Center(
+                child: Container(
+                  padding: EdgeInsets.all(XLayout.paddingM),
+                  color: context.theme.colorScheme.primary.withOpacity(0.5),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      // NAME ------------------------------------------------------
+                      Text(
+                        project.name,
+                        style: context.textTheme.titleMedium,
+                      ),
+
+                      XLayout.verticalS,
+                      const Divider(),
+                      XLayout.verticalS,
+
+                      // SUMMARY ---------------------------------------------------
+                      AutoColorText(
+                        project.summary,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: context.textTheme.bodyMedium,
+                      ),
+                    ],
+                  ),
+                ).asGlass(clipBorderRadius: XLayout.brcXS),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -1,3 +1,14 @@
+## 1.10.0
+
+- :sparkles: Disabled the whitespace below a project focus when the project has no parts.
+- :sparkles: Improved `MediaMobileHeader`.
+- :sparkles: Added basic `MediaMobileParts`. 
+- :sparkles: Added a settings tab.
+- :recycle: Moved the theme settings to the settings tab.
+- :recycle: Moved the locale settings to the settings tab.
+- :recycle: Moved the legal stuff to the settings tab.
+- :arrow_up: Updated `x_containers` dependency.
+
 ## 1.9.1
 
 - :sparkles: Better cookie consent card.
@@ -7,7 +18,7 @@
 ## 1.9.0
 
 - :bento: Deleted unused assets.
-- :sparkles: The splash screen has been removed and checking the the app is ready to run is now done on every route.
+- :recycle: The splash screen has been removed and checking the the app is ready to run is now done on every route.
 - :sparkles: The app now has explicit routes to navigate.
 - :sparkles: Both mobile and desktop app are controlled by a `PageView`.
 - :sparkles: MobileFocus on desktop now feature a "back" button.
@@ -94,14 +105,14 @@
 
 ## 1.2.2 
 
-- :recycle: Split widgets and components folders.
+- :truck: Split widgets and components folders.
 - :globe_with_meridians: the mobile handling of the contact section.
 
 ## 1.2.1 
 
 - :art: the contact form behaves better on user input.
 - :art: the localisation to cover the existing content.
-- :recycle: the linting used for imports.
+- :truck: the linting used for imports.
 
 ## 1.2.0 
 

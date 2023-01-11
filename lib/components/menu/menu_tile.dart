@@ -4,6 +4,7 @@ import "package:x_containers/x_containers.dart";
 
 import "../../../classes/dataclass/app_mode.dart";
 import "../../../utils/globals.dart";
+import "../../classes/animations/menu_selection_animation_controller.dart";
 
 /// A tile displaying one menu element.
 class MenuTile extends StatelessWidget {
@@ -12,8 +13,10 @@ class MenuTile extends StatelessWidget {
   /// The mode this [MenuTile] is about.
   final AppMode mode;
 
-  /// The behavior when this box is tapped.
-  final void Function()? onTap;
+  /// The controller of the menu selection animation.
+  ///
+  /// This is used to call the tile selection when the tile is tapped.
+  final MenuSelectionAnimationController controller;
 
   // CONSTRUCTOR ===============================================================
 
@@ -21,24 +24,33 @@ class MenuTile extends StatelessWidget {
   const MenuTile({
     super.key,
     required this.mode,
-    this.onTap,
+    required this.controller,
   });
 
   // BUILD =====================================================================
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      contentPadding: EdgeInsets.all(XLayout.paddingM),
-      title: Text(mode.name.capitalizeFirst!.tr,
-          style: context.textTheme.titleMedium),
-      subtitle: Text(mode.description, style: context.textTheme.bodyMedium),
-      leading: mode.icon,
+    return GestureDetector(
       onTap: () {
         printInfo(info: "\nEVENT: Menu tile ${mode.name} was tapped.");
+        controller.selectTile(AppMode.mainTabs.indexOf(mode));
         router.push(mode: mode);
-        onTap?.call();
       },
+      // A invisible box is added to make sure there is a tappable target.
+      child: ColoredBox(
+        color: Colors.transparent,
+        child: XListTile.text(
+          margin: EdgeInsets.all(XLayout.paddingM),
+          internalHorizontalPadding: XLayout.paddingM,
+          title: mode.name.capitalizeFirst!.tr,
+          content: mode.description,
+          leading: Icon(
+            mode.icon,
+            size: XLayout.paddingL,
+          ),
+        ),
+      ),
     );
   }
 

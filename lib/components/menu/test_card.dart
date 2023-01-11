@@ -22,13 +22,10 @@ class TestCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return XCard(
-      padding: EdgeInsets.only(
-        top: XLayout.paddingM,
-        bottom: XLayout.paddingM,
-        left: XLayout.paddingL,
-        right: XLayout.paddingM,
+      padding: EdgeInsets.all(
+        XLayout.paddingM,
       ),
-      title: Text("Click to run the test.".tr),
+      title: Text("Click test".tr),
       onTap: () {
         api.test(context);
       },

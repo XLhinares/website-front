@@ -7,7 +7,6 @@ import "package:x_containers/x_containers.dart";
 import "classes/routes/custom_route.dart";
 import "tabs/tabs.dart";
 import "utils/globals.dart";
-import "utils/translations.dart";
 
 void main() async {
   // Utils ---------------------------------------------------------------------
@@ -25,7 +24,7 @@ void main() async {
   xTheme.set(
     // paddingValue: XLayout.paddingM,
     padding: EdgeInsets.all(XLayout.paddingS),
-    // borderDecoration: Border.all(width: 3, color: Colors.black45),
+    // borderDecoration: Border.all(width: 4, color: Colors.black45),
   );
 
   // Run -----------------------------------------------------------------------
@@ -34,7 +33,7 @@ void main() async {
     title: "Xeppelin",
 
     // Localization
-    translations: CustomTranslations(),
+    translations: translations,
     locale: Get.deviceLocale,
     fallbackLocale: const Locale("en"),
 

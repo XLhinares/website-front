@@ -13,12 +13,16 @@ class MediaMobileHeader extends StatelessWidget {
   /// The metadata of the project.
   final Media media;
 
+  /// An optional [ScrollController] to handle special scroll animation.
+  final ScrollController? scrollController;
+
   // CONSTRUCTOR ===============================================================
 
   /// Returns a [MediaMobileHeader] matching the given parameters.
   const MediaMobileHeader({
     super.key,
     required this.media,
+    this.scrollController,
   });
 
   // BUILD =====================================================================
@@ -40,51 +44,57 @@ class MediaMobileHeader extends StatelessWidget {
           ),
 
           // TEXT
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              decoration: _decoration(context),
-              padding: EdgeInsets.all(XLayout.paddingL),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  // Adds extra room for the background gradient to be displayed.
-                  XLayout.verticalL,
+          Positioned.fill(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _goBack(context),
+                const Expanded(child: SizedBox()),
+                Container(
+                  decoration: _decoration(context),
+                  padding: EdgeInsets.all(XLayout.paddingL),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      // Adds extra room for the background gradient to be displayed.
+                      XLayout.verticalL,
+                      XLayout.verticalL,
 
-                  // Title bloc
-                  Text(
-                    media.name,
-                    style: context.textTheme.titleLarge,
+                      // Title bloc
+                      Text(
+                        media.name,
+                        style: context.textTheme.titleLarge,
+                      ),
+                      XLayout.verticalS, // Tags bloc.
+                      Wrap(
+                        spacing: XLayout.paddingXS,
+                        runSpacing: XLayout.paddingXS,
+                        children: media.tags
+                            .map((tag) => FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  child: XContainer(
+                                    padding: EdgeInsets.all(XLayout.paddingXS),
+                                    child: Text(
+                                      tag,
+                                      style: context.textTheme.labelSmall,
+                                    ),
+                                  ),
+                                ))
+                            .toList(),
+                      ),
+
+                      XLayout.verticalM,
+
+                      AutoColorText(media.summary),
+
+                      XLayout.verticalL,
+
+                      _seeMore(context),
+                    ],
                   ),
-                  XLayout.verticalS, // Tags bloc.
-                  Wrap(
-                    spacing: XLayout.paddingXS,
-                    runSpacing: XLayout.paddingXS,
-                    children: media.tags
-                        .map((tag) => FittedBox(
-                              fit: BoxFit.scaleDown,
-                              child: XContainer(
-                                padding: EdgeInsets.all(XLayout.paddingXS),
-                                child: Text(
-                                  tag,
-                                  style: context.textTheme.labelSmall,
-                                ),
-                              ),
-                            ))
-                        .toList(),
-                  ),
-
-                  XLayout.verticalL,
-
-                  // todo: description
-
-                  // Adds extra room for the background gradient to be displayed.
-                  XLayout.verticalM,
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],
@@ -106,10 +116,65 @@ class MediaMobileHeader extends StatelessWidget {
             ],
             stops: const [
               0,
-              0.3,
+              0.25,
               0.6,
               0.8,
               0.95,
             ]),
+      );
+
+  Widget _goBack(BuildContext context) => FittedBox(
+        child: XInkContainer(
+          onTap: () => router.selectProject(null),
+          margin: EdgeInsets.all(XLayout.paddingM),
+          padding: EdgeInsets.only(
+            top: XLayout.paddingXS,
+            bottom: XLayout.paddingXS,
+            left: XLayout.paddingXS,
+            right: XLayout.paddingM,
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                Icons.keyboard_arrow_left,
+                size: XLayout.paddingL,
+              ),
+              Text(
+                "Go back",
+                style: context.textTheme.labelSmall,
+              ),
+            ],
+          ),
+        ),
+      );
+
+  Widget _seeMore(BuildContext context) => GetBuilder(
+        init: user,
+        builder: (_) => AnimatedSwitcher(
+          duration: animDurationShort,
+          child: user.hasParts(media.id) && user.getParts(media.id)!.isNotEmpty
+              ? GestureDetector(
+                  onTap: () => scrollController?.animateTo(
+                    Get.height,
+                    duration: animDurationShort,
+                    curve: Curves.easeIn,
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        "Scroll to see more...",
+                        style: context.textTheme.labelSmall,
+                      ),
+                      Icon(
+                        Icons.keyboard_arrow_down,
+                        size: XLayout.paddingL,
+                      ),
+                    ],
+                  ),
+                )
+              : const SizedBox(),
+        ),
       );
 }

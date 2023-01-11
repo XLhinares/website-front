@@ -18,6 +18,9 @@ class ProjectFocus extends StatelessWidget {
   /// The building strategy to display the parts.
   final Widget Function(MediaParts) partsBuilder;
 
+  /// The vertical padding of the [ListView].
+  final double listViewVerticalPadding;
+
   /// The behavior when the "back" button is tapped.
   final void Function()? onBack;
 
@@ -36,6 +39,7 @@ class ProjectFocus extends StatelessWidget {
     required this.project,
     required this.headerBuilder,
     required this.partsBuilder,
+    this.listViewVerticalPadding = 0,
     this.onBack,
   }) {
     _controller = ScrollController();
@@ -48,14 +52,25 @@ class ProjectFocus extends StatelessWidget {
     return ScrollConfiguration(
       behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
       child: ListView(
-        padding: EdgeInsets.symmetric(vertical: XLayout.paddingL),
+        padding: EdgeInsets.symmetric(vertical: listViewVerticalPadding),
         physics: const BouncingScrollPhysics(),
         controller: _controller,
         children: [
           // Header
           headerBuilder(project, _controller),
 
-          XLayout.verticalL,
+          // If the parts are loading or loaded and not empty, there is a spacer.
+          // However, if they are empty, then there is no space and the user cannot scroll.
+          GetBuilder(
+            init: user,
+            builder: (_) => AnimatedSize(
+              duration: animDurationShort,
+              child: !user.hasParts(project.id) ||
+                      user.getParts(project.id)!.isNotEmpty
+                  ? XLayout.verticalL
+                  : const SizedBox(),
+            ),
+          ),
 
           // Parts
           GetBuilder(

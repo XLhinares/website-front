@@ -5,13 +5,13 @@ class MenuSelectionAnimationController extends GetxController {
   // VARIABLES =================================================================
 
   /// The list of the tile heights in the order in which they come.
-  final List<double> _heightOfTiles = [];
+  late final List<double> _heightOfTiles;
 
   /// The padding between the tiles.
   double _padding = 0;
 
   /// The index of the selected tile.
-  int _selectedTile = -1;
+  int _selectedTile = 0;
 
   // GETTERS ===================================================================
 
@@ -35,15 +35,18 @@ class MenuSelectionAnimationController extends GetxController {
   // CONSTRUCTOR ===============================================================
 
   /// Returns an [MenuSelectionAnimationController].
-  MenuSelectionAnimationController();
+  MenuSelectionAnimationController({required int length}) {
+    _heightOfTiles = List<double>.generate(length, (index) => 0);
+  }
 
   // METHODS ===================================================================
 
   /// Adds the height of one tile to the stack
-  void addTileHeight(double height) {
-    // printInfo(info: "Adding a tile of height: $height");
-    _heightOfTiles.add(height);
-    if (_selectedTile < 0) selectTile(0);
+  void setTileHeight(int index, double height) {
+    assert(index >= 0 && index < _heightOfTiles.length,
+        "[index] should be between 0 and ${_heightOfTiles.length}");
+
+    _heightOfTiles[index] = height;
   }
 
   /// Adds a padding between the tiles.

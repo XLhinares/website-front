@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:x_containers/x_containers.dart";
 
 /// Representation of a "mode" (pretty much the top-level state of the app).
 class AppMode {
@@ -30,6 +29,12 @@ class AppMode {
     icon: Icons.contact_mail,
   );
 
+  /// The unique [AppMode.settings].
+  static const AppMode settings = AppMode._internal(
+    "settings",
+    icon: Icons.settings,
+  );
+
   /// The unique [AppMode.legal].
   static const AppMode legal = AppMode._internal(
     "legal",
@@ -48,6 +53,7 @@ class AppMode {
     projects,
     contact,
     legal,
+    settings,
     other,
   ];
 
@@ -57,6 +63,7 @@ class AppMode {
     // blog,
     projects,
     contact,
+    settings,
   ];
 
   // VARIABLES =================================================================
@@ -73,12 +80,7 @@ class AppMode {
   String get description => "About $name".tr;
 
   /// An icon matching the mode.
-  Widget get icon {
-    return Icon(
-      _icon ?? Icons.not_interested,
-      size: XLayout.paddingL,
-    );
-  }
+  IconData get icon => _icon ?? Icons.not_interested;
 
   /// Whether this AppMode is part of the main tabs.
   bool get isMainTab => mainTabs.contains(this);

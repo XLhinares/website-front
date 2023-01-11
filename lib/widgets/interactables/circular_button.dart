@@ -20,6 +20,9 @@ class CircularButton extends StatelessWidget {
   /// The [icon] or [svg] arguments should be preferred whenever possible.
   final Widget? child;
 
+  /// The background color of the button.
+  final Color? color;
+
   /// The behavior when the button is tapped.
   final void Function()? onTap;
 
@@ -58,6 +61,7 @@ class CircularButton extends StatelessWidget {
     this.svg,
     this.child,
     this.size,
+    this.color,
     this.onTap,
   }) : assert((icon != null) ^ (svg != null) ^ (child != null),
             "You should specify either 'icon' or 'svg' or 'child'");
@@ -69,6 +73,7 @@ class CircularButton extends StatelessWidget {
     return XInkContainer(
       width: size,
       height: size,
+      color: color,
       borderRadius: XLayout.brcX,
       onTap: onTap,
       child: FittedBox(child: image),

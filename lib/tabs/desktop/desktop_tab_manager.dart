@@ -21,7 +21,7 @@ class DesktopTabManager extends StatelessWidget {
       background: const AnimatedBackground(
         scale: 0.2,
       ),
-      overlay: ButtonsOverlay(),
+      // overlay: ButtonsOverlay(),
       body: IfAppIsReady(
         child: LayoutBuilder(
           builder: (context, constraints) => Row(

@@ -1,0 +1,35 @@
+import "package:flutter/material.dart";
+import "package:x_containers/x_containers.dart";
+
+import "../../components/components.dart";
+
+/// The content of the body in the "Settings" mode.
+class DesktopSettings extends StatelessWidget {
+  // VARIABLES =================================================================
+
+  // CONSTRUCTOR ===============================================================
+
+  /// Returns a [DesktopSettings] matching the given parameters.
+  const DesktopSettings({super.key});
+
+  // BUILD =====================================================================
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      padding: EdgeInsets.symmetric(vertical: XLayout.paddingL),
+      children: [
+        const SettingsHeader(),
+        XLayout.verticalL,
+        SettingsLocale(),
+        XLayout.verticalM,
+        const SettingsThemes(),
+        XLayout.verticalM,
+        const SettingsLegal(),
+      ],
+    );
+  }
+
+  // WIDGETS ===================================================================
+
+}

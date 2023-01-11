@@ -1,6 +1,8 @@
 import "package:flutter/material.dart";
+import "package:x_containers/x_containers.dart";
 
 import "../../classes/dataclass/dataclass.dart";
+import "../widgets.dart";
 
 /// A widget displaying the parts of the given media on desktop.
 class MediaMobileParts extends StatelessWidget {
@@ -21,9 +23,30 @@ class MediaMobileParts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return ListView.separated(
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: parts.entries.length,
+      padding: EdgeInsets.only(bottom: XLayout.paddingM),
+      itemBuilder: (context, index) => _entryWidget(parts.entries[index]),
+      separatorBuilder: (context, index) => XLayout.verticalL,
+    );
   }
 
-// WIDGETS ===================================================================
+  // WIDGETS ===================================================================
 
+  Widget _entryWidget(MediaPartEntry entry) {
+    switch (entry.type) {
+      case MediaPartType.text:
+        return XContainer(
+          padding: EdgeInsets.all(XLayout.paddingM),
+          margin: EdgeInsets.symmetric(horizontal: XLayout.paddingM),
+          child: AutoColorText(entry.content),
+        );
+      case MediaPartType.image:
+        return CoveringNetworkImage(entry.content);
+      default:
+        return const SizedBox();
+    }
+  }
 }

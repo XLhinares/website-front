@@ -22,18 +22,9 @@ class HomeDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     return XContainer(
       padding: EdgeInsets.all(XLayout.paddingL),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          AutoColorText(
-            "Home description 1".tr,
-            style: context.textTheme.titleMedium,
-          ),
-          // XLayout.verticalM,
-          // AutoColorText("I also make %bc art%.".tr,
-          //   defaultStyle: context.textTheme.titleMedium,
-          // ),
-        ],
+      child: AutoColorText(
+        "Home description 1".tr,
+        style: context.textTheme.titleMedium,
       ),
     );
   }

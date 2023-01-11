@@ -85,7 +85,7 @@ class MediaDesktopHeader extends StatelessWidget {
     });
   }
 
-// WIDGETS ===================================================================
+  // WIDGETS ===================================================================
 
   Widget _goBack(BuildContext context) => GestureDetector(
         onTap: () => router.selectProject(null),
@@ -110,28 +110,29 @@ class MediaDesktopHeader extends StatelessWidget {
           height: XLayout.paddingL * 2,
           child: AnimatedSwitcher(
             duration: animDurationShort,
-            child: user.hasParts(media.id)
-                ? GestureDetector(
-                    onTap: () => scrollController?.animateTo(
-                      Get.height,
-                      duration: animDurationShort,
-                      curve: Curves.easeIn,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(
-                          "Scroll to see more...",
-                          style: context.textTheme.labelSmall,
+            child:
+                user.hasParts(media.id) && user.getParts(media.id)!.isNotEmpty
+                    ? GestureDetector(
+                        onTap: () => scrollController?.animateTo(
+                          Get.height,
+                          duration: animDurationShort,
+                          curve: Curves.easeIn,
                         ),
-                        Icon(
-                          Icons.keyboard_arrow_down,
-                          size: XLayout.paddingL,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              "Scroll to see more...",
+                              style: context.textTheme.labelSmall,
+                            ),
+                            Icon(
+                              Icons.keyboard_arrow_down,
+                              size: XLayout.paddingL,
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  )
-                : const SizedBox(),
+                      )
+                    : const SizedBox(),
           ),
         ),
       );

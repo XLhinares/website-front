@@ -1,37 +1,37 @@
 import "package:flutter/material.dart";
-import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../components/components.dart";
-import "../../widgets/widgets.dart";
 
-/// The home tab
-class MobileHome extends StatelessWidget {
+/// A tab where the user can configure the website on mobile.
+class MobileSettings extends StatelessWidget {
   // VARIABLES =================================================================
 
   // CONSTRUCTOR ===============================================================
 
-  /// Returns an instance of [MobileHome] matching the given parameters.
-  const MobileHome({
-    super.key,
-  });
+  /// Returns a [MobileSettings] matching the given parameters.
+  const MobileSettings({super.key});
 
   // BUILD =====================================================================
 
   @override
   Widget build(BuildContext context) {
     return ListView(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       padding: EdgeInsets.all(XLayout.paddingM),
       children: [
-        XeppelinLogo(
-          size: Get.height * 0.3,
-        ),
+        const SettingsHeader(),
+        XLayout.verticalL,
+        SettingsLocale(),
         XLayout.verticalM,
-        const HomeDescription(),
+        const SettingsThemes(),
+        XLayout.verticalM,
+        const SettingsLegal(),
       ],
     );
   }
 
-// METHODS ===================================================================
+  // WIDGETS ===================================================================
 
 }

@@ -1,9 +1,8 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
-import "package:auto_size_text/auto_size_text.dart";
 
-import "../../../utils/globals.dart";
+import "../../utils/utils.dart";
 
 /// A card explaining what how this site uses cookies.
 class CookiesCard extends StatelessWidget {
@@ -23,25 +22,48 @@ class CookiesCard extends StatelessWidget {
     return Obx(
       () => AnimatedSwitcher(
         duration: animDurationShort,
-        child: settings.cookies.value
+        child: settings.cookieBannerDismissed.value
             ? const SizedBox()
             : XCard(
                 margin: EdgeInsets.only(top: XLayout.paddingM),
                 padding: EdgeInsets.all(XLayout.paddingM),
-                title: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                title: Text(
+                  "Cookies title".tr,
+                ),
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text("Cookies title".tr,
-                        style: context.textTheme.titleMedium),
-                    IconButton(
-                      onPressed: () => settings.cookies.value = true,
-                      icon: const Icon(Icons.close),
+                    Text(
+                      "Cookies description".tr,
+                    ),
+                    XLayout.verticalS,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        TextButton(
+                          style: PresetStyles.secondaryButtonStyle(context),
+                          onPressed: () {
+                            settings.cookieBannerDismissed.value = true;
+                            settings.cookies.value = false;
+                          },
+                          child: Text(
+                            "No, thanks".tr,
+                          ),
+                        ),
+                        XLayout.horizontalS,
+                        TextButton(
+                          style: PresetStyles.secondaryButtonStyle(context),
+                          onPressed: () {
+                            settings.cookieBannerDismissed.value = true;
+                            settings.cookies.value = true;
+                          },
+                          child: Text(
+                            "Okay".tr,
+                          ),
+                        ),
+                      ],
                     )
                   ],
-                ),
-                content: AutoSizeText(
-                  "Cookies description".tr,
-                  style: context.textTheme.bodyMedium,
                 ),
               ),
       ),

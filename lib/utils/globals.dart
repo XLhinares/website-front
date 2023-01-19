@@ -29,7 +29,7 @@ final ThemeService themes = ThemeService();
 // CONSTANTS ===================================================================
 
 /// The version of the app.
-const String versionNumber = "v1.10.0";
+const String versionNumber = "v1.10.1";
 
 /// The URL address of the app.
 const String xeppelinURL = "https://xeppelin.org";

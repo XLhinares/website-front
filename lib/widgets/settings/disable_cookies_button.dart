@@ -25,8 +25,8 @@ class DisableCookiesButton extends StatelessWidget {
         settings.cookies.value = false;
         XSnackbar.text(
           maxWidth: maxSnackbarLength,
-          title: "Done.",
-          content: "Your cookies were deleted and disabled.",
+          title: "Done.".tr,
+          content: "Your cookies were deleted and disabled.".tr,
         ).show(context);
       },
       child: Text(

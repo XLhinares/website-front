@@ -57,6 +57,7 @@ class MenuList extends StatelessWidget {
         // MENU ITEMS ------------------------------------------------
         ListView(
           shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
           children: [
             _tile(
               key: _keyHome,
@@ -96,7 +97,7 @@ class MenuList extends StatelessWidget {
                 duration: animDurationLong,
                 child: SizedBox(
                   height: _animationController.offset,
-                  // width: 0,
+                  width: 0,
                 ),
               ),
 
@@ -104,13 +105,15 @@ class MenuList extends StatelessWidget {
               // highlight it.
               AnimatedSize(
                 duration: animDurationLong,
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: XLayout.brcXS,
-                    color: Colors.grey.withAlpha(100),
+                child: IgnorePointer(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: XLayout.brcXS,
+                      color: Colors.grey.withAlpha(100),
+                    ),
+                    height: _animationController.height,
+                    width: double.infinity,
                   ),
-                  height: _animationController.height,
-                  width: double.infinity,
                 ),
               ),
             ],

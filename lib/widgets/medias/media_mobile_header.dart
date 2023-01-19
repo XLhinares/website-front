@@ -72,15 +72,15 @@ class MediaMobileHeader extends StatelessWidget {
                         runSpacing: XLayout.paddingXS,
                         children: media.tags
                             .map((tag) => FittedBox(
-                                  fit: BoxFit.scaleDown,
-                                  child: XContainer(
-                                    padding: EdgeInsets.all(XLayout.paddingXS),
-                                    child: Text(
-                                      tag,
-                                      style: context.textTheme.labelSmall,
-                                    ),
-                                  ),
-                                ))
+                          fit: BoxFit.scaleDown,
+                          child: XContainer(
+                            padding: EdgeInsets.all(XLayout.paddingXS),
+                            child: Text(
+                              tag,
+                              style: context.textTheme.labelSmall,
+                            ),
+                          ),
+                        ))
                             .toList(),
                       ),
 
@@ -104,77 +104,79 @@ class MediaMobileHeader extends StatelessWidget {
 
 // WIDGETS ===================================================================
   BoxDecoration _decoration(BuildContext context) => BoxDecoration(
-        gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Colors.transparent,
-              context.theme.colorScheme.background.withOpacity(0.6),
-              context.theme.colorScheme.background.withOpacity(0.9),
-              context.theme.colorScheme.background.withOpacity(0.95),
-              context.theme.colorScheme.background,
-            ],
-            stops: const [
-              0,
-              0.25,
-              0.6,
-              0.8,
-              0.95,
-            ]),
-      );
+    gradient: LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [
+          Colors.transparent,
+          context.theme.colorScheme.background.withOpacity(0.6),
+          context.theme.colorScheme.background.withOpacity(0.9),
+          context.theme.colorScheme.background.withOpacity(0.95),
+          context.theme.colorScheme.background,
+        ],
+        stops: const [
+          0,
+          0.25,
+          0.6,
+          0.8,
+          0.95,
+        ]),
+  );
 
   Widget _goBack(BuildContext context) => FittedBox(
-        child: XInkContainer(
-          onTap: () => router.selectProject(null),
-          margin: EdgeInsets.all(XLayout.paddingM),
-          padding: EdgeInsets.only(
-            top: XLayout.paddingXS,
-            bottom: XLayout.paddingXS,
-            left: XLayout.paddingXS,
-            right: XLayout.paddingM,
+    child: XInkContainer(
+      onTap: () => router.selectProject(null),
+      margin: EdgeInsets.all(XLayout.paddingM),
+      padding: EdgeInsets.only(
+        top: XLayout.paddingS,
+        bottom: XLayout.paddingS,
+        left: XLayout.paddingS,
+        right: XLayout.paddingM,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            Icons.keyboard_arrow_left,
+            size: XLayout.paddingM,
           ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(
-                Icons.keyboard_arrow_left,
-                size: XLayout.paddingL,
-              ),
-              Text(
-                "Go back",
-                style: context.textTheme.labelSmall,
-              ),
-            ],
+          Text(
+            "Go back",
+            style: context.textTheme.labelSmall,
           ),
-        ),
-      );
+        ],
+      ),
+    ),
+  );
 
   Widget _seeMore(BuildContext context) => GetBuilder(
-        init: user,
-        builder: (_) => AnimatedSwitcher(
+    init: user,
+    builder: (_) => AnimatedSwitcher(
+      duration: animDurationShort,
+      child: user.hasParts(media.id) && user.getParts(media.id)!.isNotEmpty
+          ? XInkContainer(
+        color: Colors.transparent,
+        enableShadow: false,
+        onTap: () => scrollController?.animateTo(
+          Get.height,
           duration: animDurationShort,
-          child: user.hasParts(media.id) && user.getParts(media.id)!.isNotEmpty
-              ? GestureDetector(
-                  onTap: () => scrollController?.animateTo(
-                    Get.height,
-                    duration: animDurationShort,
-                    curve: Curves.easeIn,
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        "Scroll to see more...",
-                        style: context.textTheme.labelSmall,
-                      ),
-                      Icon(
-                        Icons.keyboard_arrow_down,
-                        size: XLayout.paddingL,
-                      ),
-                    ],
-                  ),
-                )
-              : const SizedBox(),
+          curve: Curves.easeIn,
         ),
-      );
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              "Scroll to see more...",
+              style: context.textTheme.labelSmall,
+            ),
+            Icon(
+              Icons.keyboard_arrow_down,
+              size: XLayout.paddingM,
+            ),
+          ],
+        ),
+      )
+          : const SizedBox(),
+    ),
+  );
 }

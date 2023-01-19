@@ -31,25 +31,20 @@ class MenuTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return XCard.text(
+      enableShadow: false,
       onTap: () {
         printInfo(info: "\nEVENT: Menu tile ${mode.name} was tapped.");
         controller.selectTile(AppMode.mainTabs.indexOf(mode));
         router.push(mode: mode);
       },
-      // A invisible box is added to make sure there is a tappable target.
-      child: ColoredBox(
-        color: Colors.transparent,
-        child: XListTile.text(
-          margin: EdgeInsets.all(XLayout.paddingM),
-          internalHorizontalPadding: XLayout.paddingM,
-          title: mode.name.capitalizeFirst!.tr,
-          content: mode.description,
-          leading: Icon(
-            mode.icon,
-            size: XLayout.paddingL,
-          ),
-        ),
+      padding: EdgeInsets.all(XLayout.paddingM),
+      internalHorizontalPadding: XLayout.paddingM,
+      title: mode.name.capitalizeFirst!.tr,
+      content: mode.description,
+      leading: Icon(
+        mode.icon,
+        size: XLayout.paddingL,
       ),
     );
   }

@@ -1,3 +1,9 @@
+## 1.10.1
+
+- :sparkles: Give the "Go back" and "See more" buttons a box target.
+- :sparkles: Give the menu tiles a box target.
+- :globe_with_meridians: Added missing localizations.
+
 ## 1.10.0
 
 - :sparkles: Disabled the whitespace below a project focus when the project has no parts.

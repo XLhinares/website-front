@@ -71,7 +71,7 @@ class ContactColumn extends StatelessWidget {
               onTap: () => sendEmail(context),
               // onTap: sendEmail,
               color: context.theme.colorScheme.secondary,
-              child: const Text("Send"),
+              child: Text("Send".tr),
             ),
           ],
         ),

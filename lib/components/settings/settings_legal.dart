@@ -33,11 +33,7 @@ class SettingsLegal extends StatelessWidget {
             "Xeppelin $versionNumber © 2023, All rights reserved.".tr,
           ),
           XLayout.verticalXS,
-          AutoColorText(
-            "Please check our \\route{/legal/legal_mentions}{${"Legal mentions".tr}}, "
-            "\\route{/legal/privacy_policy}{${"Data policy".tr}} and "
-            "\\route{/legal/cookie_policy}{${"Cookie policy".tr}}.",
-          ),
+          AutoColorText("Settings legal".tr),
         ],
       ),
       trailing: const DisableCookiesButton(),

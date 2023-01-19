@@ -31,7 +31,7 @@ class MediaPartEntry {
   ///
   /// Used when fetching data from the API.
   factory MediaPartEntry.fromJson(Map<String, dynamic> json) => MediaPartEntry(
-      index: json["part"],
+      index: json["entry"],
       type: MediaPartType.parse(json["type"]),
       content: json["content"]);
 }

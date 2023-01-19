@@ -57,7 +57,7 @@ class MediaDesktopHeader extends StatelessWidget {
                       spacing: XLayout.paddingXS,
                       runSpacing: XLayout.paddingXS,
                       children:
-                          media.tags.map((tag) => MediaTag(tag: tag)).toList(),
+                      media.tags.map((tag) => MediaTag(tag: tag)).toList(),
                     ),
                     XLayout.verticalL,
                     // Summary
@@ -87,53 +87,66 @@ class MediaDesktopHeader extends StatelessWidget {
 
   // WIDGETS ===================================================================
 
-  Widget _goBack(BuildContext context) => GestureDetector(
+  Widget _goBack(BuildContext context) => Align(
+    alignment: Alignment.topLeft,
+    child: FittedBox(
+      fit: BoxFit.scaleDown,
+      child: XInkContainer(
+        enableShadow: false,
         onTap: () => router.selectProject(null),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Icon(
               Icons.keyboard_arrow_left,
-              size: XLayout.paddingL,
+              size: XLayout.paddingM,
             ),
             Text(
               "Go back",
               style: context.textTheme.labelSmall,
             ),
+            XLayout.horizontalXS,
           ],
         ),
-      );
+      ),
+    ),
+  );
 
   Widget _seeMore(BuildContext context) => GetBuilder(
-        init: user,
-        builder: (_) => SizedBox(
-          height: XLayout.paddingL * 2,
-          child: AnimatedSwitcher(
-            duration: animDurationShort,
-            child:
-                user.hasParts(media.id) && user.getParts(media.id)!.isNotEmpty
-                    ? GestureDetector(
-                        onTap: () => scrollController?.animateTo(
-                          Get.height,
-                          duration: animDurationShort,
-                          curve: Curves.easeIn,
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Text(
-                              "Scroll to see more...",
-                              style: context.textTheme.labelSmall,
-                            ),
-                            Icon(
-                              Icons.keyboard_arrow_down,
-                              size: XLayout.paddingL,
-                            ),
-                          ],
-                        ),
-                      )
-                    : const SizedBox(),
+    init: user,
+    builder: (_) => SizedBox(
+      height: XLayout.paddingL * 2,
+      child: AnimatedSwitcher(
+        duration: animDurationShort,
+        child:
+        user.hasParts(media.id) && user.getParts(media.id)!.isNotEmpty
+            ? Align(
+          alignment: Alignment.bottomCenter,
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: XInkContainer(
+              enableShadow: false,
+              onTap: () => scrollController?.animateTo(
+                Get.height,
+                duration: animDurationShort,
+                curve: Curves.easeIn,
+              ),
+              child: Column(
+                children: [
+                  Text(
+                    "Scroll to see more...",
+                    style: context.textTheme.labelSmall,
+                  ),
+                  Icon(
+                    Icons.keyboard_arrow_down,
+                    size: XLayout.paddingM,
+                  ),
+                ],
+              ),
+            ),
           ),
-        ),
-      );
+        )
+            : const SizedBox(),
+      ),
+    ),
+  );
 }

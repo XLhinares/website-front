@@ -34,6 +34,7 @@ class CustomTranslations extends Translations {
       "Email validation": "Please enter a valid e-mail.",
       "Subject": "Subject",
       "Details": "Details",
+      "Send": "Send",
       "Email error content":
           "Please try again later.\nIf the issue persist, please send me a mail at: support@xeppelin.org",
 
@@ -41,6 +42,17 @@ class CustomTranslations extends Translations {
 
       "Settings description":
           "Here you can configure the website to match your preferences.",
+      "Locale": "Locale",
+      "Theme selection": "Theme selection",
+      "Light": "Light",
+      "Dark": "Dark",
+      "Pastel": "Pastel",
+      "Settings legal": "Please check our \\route{/legal/legal_mentions}{Legal mentions}, "
+          "\\route{/legal/privacy_policy}{Data policy} and "
+          "\\route{/legal/cookie_policy}{Cookie policy}.",
+      "Disable cookies": "Disable cookies",
+      "Done.": "Done.",
+      "Your cookies were deleted and disabled.": "Your cookies were deleted and disabled.",
 
       // OTHER -----------------------------------------------------------------
       "No, thanks": "No, thanks",
@@ -100,6 +112,7 @@ class CustomTranslations extends Translations {
       "Email validation": "Veuillez entrer une adresse mail valide.",
       "Subject": "Objet",
       "Details": "Détails",
+      "Send": "Envoyer",
       "Email error content":
           "Veuillez ré-essayer plus tard.\nSi l'issue persiste, je vous prie de m'envoyer un mail à l'adresse: support@xeppelin.org",
 
@@ -107,6 +120,17 @@ class CustomTranslations extends Translations {
 
       "Settings description":
           "Dans cet onglet, vous pouvez configuer le site pour correspondre plus précisément à vos préférences.",
+      "Locale": "Langage",
+      "Theme selection": "Choix du thème",
+      "Light": "Clair",
+      "Dark": "Sombre",
+      "Pastel": "Pastel",
+      "Settings legal": "Vous pouvez consulter nos \\route{/legal/legal_mentions}{Mentions légales}, "
+          "\\route{/legal/privacy_policy}{Politique de confidentialité} et "
+          "\\route{/legal/cookie_policy}{Politique en matière de cookies}.",
+      "Disable cookies": "Désactiver les cookies",
+      "Done.": "C'est fait.",
+      "Your cookies were deleted and disabled.": "Vos cookies ont été supprimés et désactivés.",
 
       // OTHER -----------------------------------------------------------------
       "No, thanks": "Non merci",

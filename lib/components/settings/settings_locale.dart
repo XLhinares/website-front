@@ -36,7 +36,7 @@ class SettingsLocale extends StatelessWidget {
         width: Get.width * 0.2,
         child: XContainer(
           enableShadow: false,
-          color: context.theme.backgroundColor,
+          color: context.theme.colorScheme.background,
           margin: EdgeInsets.zero,
           padding: EdgeInsets.symmetric(horizontal: XLayout.paddingS),
           child: TypeAheadFormField<String>(

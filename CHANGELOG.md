@@ -1,3 +1,12 @@
+## 2.0.0
+
+- :sparkles: Added blog support.
+- :sparkles: Added permission level.
+
+- :lipstick: Gave bouncing scroll physics to all scrollable tabs.
+
+- :bug: Fixed issue with media dates becoming strings.
+
 ## 1.10.1
 
 - :sparkles: Give the "Go back" and "See more" buttons a box target.

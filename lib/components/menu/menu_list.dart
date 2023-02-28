@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../../classes/animations/menu_selection_animation_controller.dart";
+import "../../../classes/controllers/menu_selection_animation_controller.dart";
 import "../../../classes/dataclass/app_mode.dart";
 import "../../../utils/globals.dart";
 import "menu.dart";
@@ -13,39 +13,41 @@ class MenuList extends StatelessWidget {
 
   late final MenuSelectionAnimationController _animationController;
 
-  final GlobalKey _keyHome = GlobalKey();
-  final GlobalKey _keyProjects = GlobalKey();
-  final GlobalKey _keyContacts = GlobalKey();
-  final GlobalKey _keySettings = GlobalKey();
-  final GlobalKey _keyDivider = GlobalKey();
+  late final List<GlobalKey> _keys;
 
   // CONSTRUCTOR ===============================================================
 
   /// Returns a [MenuList] matching the given parameters.
   MenuList({super.key}) {
+    _keys = List.generate(AppMode.mainTabs.length + 1, (index) => GlobalKey());
+
     _animationController = Get.put(MenuSelectionAnimationController(
       length: AppMode.mainTabs.length,
     ));
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => _animationController
-      ..setTileHeight(0, _keyHome.currentContext?.size?.height ?? 0)
-      ..setTileHeight(1, _keyProjects.currentContext?.size?.height ?? 0)
-      ..setTileHeight(2, _keyContacts.currentContext?.size?.height ?? 0)
-      ..setTileHeight(3, _keySettings.currentContext?.size?.height ?? 0)
-      ..setPadding(_keyDivider.currentContext?.size?.height ?? 0)
-      ..selectTile(router.modeIndex));
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      for (int i = 0; i < AppMode.mainTabs.length; i++) {
+        _animationController.setTileHeight(
+            i, _keys[i].currentContext?.size?.height ?? 0);
+      }
+      _animationController
+          .setPadding(_keys.last.currentContext?.size?.height ?? 0);
+      _animationController.selectTile(router.modeIndex);
+    });
 
     // Reload the tile sizes when the locale change so the new strings don't
     // cause an overflow.
     ever(
-        settings.locale,
-        (_) => WidgetsBinding.instance
-            .addPostFrameCallback((_) => _animationController
-              ..setTileHeight(0, _keyHome.currentContext?.size?.height ?? 0)
-              ..setTileHeight(1, _keyProjects.currentContext?.size?.height ?? 0)
-              ..setTileHeight(2, _keyContacts.currentContext?.size?.height ?? 0)
-              ..setTileHeight(3, _keySettings.currentContext?.size?.height ?? 0)
-              ..setPadding(_keyDivider.currentContext?.size?.height ?? 0)));
+      settings.locale,
+      (_) => WidgetsBinding.instance.addPostFrameCallback((_) {
+        for (int i = 0; i < AppMode.mainTabs.length; i++) {
+          _animationController.setTileHeight(
+              i, _keys[i].currentContext?.size?.height ?? 0);
+        }
+        _animationController
+            .setPadding(_keys.last.currentContext?.size?.height ?? 0);
+      }),
+    );
   }
 
   // BUILD =====================================================================
@@ -55,32 +57,20 @@ class MenuList extends StatelessWidget {
     return Stack(
       children: [
         // MENU ITEMS ------------------------------------------------
-        ListView(
+        ListView.separated(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          children: [
-            _tile(
-              key: _keyHome,
-              mode: AppMode.home,
-            ),
-            Divider(
-              key: _keyDivider,
-            ),
-            _tile(
-              key: _keyProjects,
-              mode: AppMode.projects,
-            ),
-            const Divider(),
-            _tile(
-              key: _keyContacts,
-              mode: AppMode.contact,
-            ),
-            const Divider(),
-            _tile(
-              key: _keySettings,
-              mode: AppMode.settings,
-            ),
-          ],
+          itemCount: AppMode.mainTabs.length,
+          itemBuilder: (context, index) => _tile(
+            key: _keys[index],
+            mode: AppMode.mainTabs[index],
+          ),
+          separatorBuilder: (context, index) {
+            if (index != 0) return const Divider();
+            return Divider(
+              key: _keys.last,
+            );
+          },
         ),
 
         // ANIMATED BOX ----------------------------------------------

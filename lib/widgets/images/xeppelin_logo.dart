@@ -51,5 +51,4 @@ class XeppelinLogo extends StatelessWidget {
   }
 
   // METHODS ===================================================================
-
 }

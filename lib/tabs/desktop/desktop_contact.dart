@@ -21,6 +21,7 @@ class DesktopContact extends StatelessWidget {
     return Center(
       child: ListView(
         padding: EdgeInsets.symmetric(vertical: XLayout.paddingL),
+        physics: const BouncingScrollPhysics(),
         clipBehavior: Clip.none,
         shrinkWrap: true,
         children: [
@@ -40,5 +41,4 @@ class DesktopContact extends StatelessWidget {
   }
 
 // METHODS ===================================================================
-
 }

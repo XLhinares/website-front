@@ -3,7 +3,7 @@ import "package:get/get.dart";
 import "package:glass/glass.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../../classes/dataclass/media.dart";
+import "../../classes/medias/medias.dart";
 import "../../widgets/widgets.dart";
 
 /// A preview of a project.
@@ -11,7 +11,7 @@ class ProjectPreviewer extends StatelessWidget {
   // VARIABLES =================================================================
 
   /// The project being previewed.
-  final Media project;
+  final Project project;
 
   /// The behavior when the box is tapped.
   final void Function()? onTap;
@@ -42,6 +42,7 @@ class ProjectPreviewer extends StatelessWidget {
             Positioned.fill(
               child: CoveringNetworkImage(
                 project.preview,
+                errorBuilder: (context, object, trace) => const XeppelinLogo(),
               ),
             ),
 

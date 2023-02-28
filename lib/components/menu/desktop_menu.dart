@@ -48,5 +48,4 @@ class BodyMenu extends StatelessWidget {
   }
 
 // METHODS ===================================================================
-
 }

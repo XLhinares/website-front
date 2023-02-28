@@ -39,5 +39,4 @@ class DisableCookiesButton extends StatelessWidget {
   }
 
 // WIDGETS ===================================================================
-
 }

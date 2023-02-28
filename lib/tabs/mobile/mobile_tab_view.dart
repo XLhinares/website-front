@@ -35,6 +35,7 @@ class MobileTabView extends StatelessWidget {
           controller: router.pageController,
           children: const [
             MobileHome(),
+            MobileBlogs(),
             MobileProjects(),
             MobileContact(),
             MobileSettings(),

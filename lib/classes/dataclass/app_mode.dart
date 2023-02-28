@@ -1,5 +1,8 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "dataclass.dart";
+
+import "../../utils/utils.dart";
 
 /// Representation of a "mode" (pretty much the top-level state of the app).
 class AppMode {
@@ -17,9 +20,9 @@ class AppMode {
     icon: Icons.gesture,
   );
 
-  /// The unique [AppMode.blog].
-  static const AppMode blog = AppMode._internal(
-    "blog",
+  /// The unique [AppMode.blogs].
+  static const AppMode blogs = AppMode._internal(
+    "blogs",
     icon: Icons.dashboard,
   );
 
@@ -49,7 +52,7 @@ class AppMode {
   /// The different possible values of [AppMode].
   static const values = [
     home,
-    blog,
+    blogs,
     projects,
     contact,
     legal,
@@ -60,7 +63,7 @@ class AppMode {
   /// The main tabs of the app.
   static const mainTabs = [
     home,
-    // blog,
+    blogs,
     projects,
     contact,
     settings,
@@ -74,6 +77,9 @@ class AppMode {
   /// An icon to matching the mode.
   final IconData? _icon;
 
+  /// The permission level required to access this mode.
+  final PermissionLevel permissionLevel = PermissionLevel.all;
+
   // GETTERS ===================================================================
 
   /// A short description of the mode.
@@ -84,6 +90,12 @@ class AppMode {
 
   /// Whether this AppMode is part of the main tabs.
   bool get isMainTab => mainTabs.contains(this);
+
+  /// Whether the user is allowed to access this mode.
+  bool get isAccessibleToUser =>
+      permissionLevel == PermissionLevel.all ||
+      permissionLevel == PermissionLevel.userOnly && user.isConnected ||
+      permissionLevel == PermissionLevel.adminOnly && user.isAdmin;
 
   // CONSTRUCTOR ===============================================================
 

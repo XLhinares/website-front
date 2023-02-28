@@ -21,5 +21,4 @@ class TabNotFound extends StatelessWidget {
   }
 
   // WIDGETS ===================================================================
-
 }

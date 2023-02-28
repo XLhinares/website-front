@@ -43,16 +43,20 @@ class CustomRoute {
           ));
 
   /// Route to the blog tab of the app.
-  static final BLOG = CustomRoute("/blog",
-      builder: () => ResponsiveHome(
-            postInit: (_) => router.push(mode: AppMode.blog),
-          ));
+  static final BLOGS = CustomRoute(
+    "/blogs",
+    builder: () => ResponsiveHome(
+      postInit: (_) => router.push(mode: AppMode.blogs),
+    ),
+  );
 
   /// Route to the projects tab of the app.
-  static final PROJECTS = CustomRoute("/projects",
-      builder: () => ResponsiveHome(
-            postInit: (_) => router.push(mode: AppMode.projects),
-          ));
+  static final PROJECTS = CustomRoute(
+    "/projects",
+    builder: () => ResponsiveHome(
+      postInit: (_) => router.push(mode: AppMode.projects),
+    ),
+  );
 
   /// Route to the contacts tab of the app.
   static final CONTACTS = CustomRoute("/contact",
@@ -90,6 +94,7 @@ class CustomRoute {
   static final values = [
     CustomRoute.ROOT,
     CustomRoute.HOME,
+    CustomRoute.BLOGS,
     CustomRoute.PROJECTS,
     CustomRoute.CONTACTS,
     CustomRoute.COOKIES,
@@ -99,10 +104,18 @@ class CustomRoute {
     CustomRoute.NOT_FOUND,
   ];
 
+  // PSEUDO-GETTERS ============================================================
+
+  /// Whether this route is accessible to the current user.
+  bool isAccessibleToUser() => mode.isAccessibleToUser;
+
   // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [CustomRoute] matching the given parameters.
-  CustomRoute(this.name, {this.builder}) {
+  CustomRoute(
+    this.name, {
+    this.builder,
+  }) {
     parts = name.split("/");
     mode = AppMode.parse(parts.isEmpty ? "" : parts[1]);
     page = GetPage(name: name, page: builder ?? () => const ResponsiveHome());
@@ -131,6 +144,19 @@ class CustomRoute {
             postInit: (_) {
               router.push(mode: AppMode.projects);
               router.selectProject(id);
+            },
+          ),
+        );
+
+  /// Returns a [CustomRoute] linking to the given blog.
+  factory CustomRoute.fromBlog(int? id) => id == null
+      ? CustomRoute.BLOGS
+      : CustomRoute(
+          "/blogs/$id",
+          builder: () => ResponsiveHome(
+            postInit: (_) {
+              router.push(mode: AppMode.blogs);
+              router.selectBlog(id);
             },
           ),
         );

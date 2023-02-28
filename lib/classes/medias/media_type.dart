@@ -1,3 +1,5 @@
+import "medias.dart";
+
 /// Representation of a "mode" (pretty much the top-level state of the app).
 class MediaType {
   // CONSTANTS =================================================================
@@ -27,7 +29,7 @@ class MediaType {
 
   const MediaType._internal(this.name);
 
-  /// Returns an MediaType instance according to the mode's name.
+  /// Returns an [MediaType] instance according to the mode's name.
   factory MediaType.parse(String name) {
     switch (name.toLowerCase()) {
       case "blog":
@@ -37,5 +39,12 @@ class MediaType {
       default:
         return MediaType.other;
     }
+  }
+
+  /// Returns an [MediaType] instance matching the requested type.
+  factory MediaType.fromType(Type t) {
+    if (t == Project) return MediaType.project;
+    if (t == Blog) return MediaType.blog;
+    return other;
   }
 }

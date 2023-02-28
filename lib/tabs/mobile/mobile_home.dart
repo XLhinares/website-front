@@ -33,5 +33,4 @@ class MobileHome extends StatelessWidget {
   }
 
 // METHODS ===================================================================
-
 }

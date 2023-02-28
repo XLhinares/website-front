@@ -1,4 +1,3 @@
-import "dart:collection";
 import "dart:convert";
 import "dart:io";
 
@@ -11,6 +10,7 @@ import "../../utils/globals.dart";
 import "../../utils/tools.dart";
 import "../../utils/tools_api.dart";
 import "../dataclass/dataclass.dart";
+import "../medias/medias.dart";
 
 /// A service that handles all the API requests.
 class APIService {
@@ -22,21 +22,12 @@ class APIService {
   /// The URI prefix to reach the the assets.
   late final String assets;
 
-  late final List<Media> _projects;
-
-  // GETTERS ===================================================================
-
-  /// A list of the registered trackable metadata.
-  UnmodifiableListView<Media> get lastTracked =>
-      UnmodifiableListView(_projects);
-
   // CONSTRUCTOR ===============================================================
 
   /// The instantiation logic of [APIService].
   APIService._internal() {
     api = "https://api.xeppelin.org/";
     assets = "https://assets.xeppelin.org/";
-    _projects = [];
 
     printInfo(info: "API Service initialized.");
   }
@@ -48,6 +39,7 @@ class APIService {
   factory APIService() => _instance;
 
   // METHODS ===================================================================
+
   /// Fetches a JSON object from the given URL.
   ///
   /// Parameters:
@@ -111,35 +103,107 @@ class APIService {
     }
   }
 
+  /// Attempts to log the user in on the API.
+  Future<UserData> logIn({
+    required String email,
+    required String password,
+  }) async =>
+      tryWrapper(() async {
+        final response = await http.post(
+            (CustomURL(initialText: api)
+                  ..addPath("account")
+                  ..addFile("login"))
+                .cleanUri,
+            body: {
+              "email": email,
+              "password": password,
+            });
+
+        printInfo(info: response.body.toString());
+
+        return UserData.fromJson(jsonDecode(response.body));
+      });
+
+  /// Attempts to sign the user up on the API.
+  ///
+  /// If the request is successful, we return [null];
+  /// otherwise, the error message is returned.
+  Future<String?> signUp({
+    required String username,
+    required String email,
+    required String password,
+  }) async =>
+      tryWrapper(() async {
+        final response = await http.post(
+            (CustomURL(initialText: api)
+                  ..addPath("account")
+                  ..addFile("signUp"))
+                .cleanUri,
+            body: {
+              "username": username,
+              "email": email,
+              "password": password,
+            });
+
+        printInfo(info: response.body.toString());
+
+        if (response.statusCode == 200) return null;
+        if (response.statusCode == 401) return "The user already exists.";
+        return "There was an error, please try again later.";
+      });
+
+  /// Attempts to refresh the token from the API.
+  Future<UserData> refreshToken({
+    required String email,
+    required String token,
+  }) async =>
+      tryWrapper(() async {
+        final response = await http.post(
+          (CustomURL(initialText: api)
+                ..addPath("account")
+                ..addFile("refresh"))
+              .cleanUri,
+          body: {
+            "email": email,
+            "token": token,
+          },
+          headers: {"Authorization": "Bearer ${user.data.token}"},
+        );
+
+        printInfo(info: response.body.toString());
+
+        return UserData.fromJson(jsonDecode(response.body));
+      });
+
   /// Retrieves a list of medias from the api.
-  Future<List<Media>> getMedias({
-    MediaType? type,
+  Future<List<T>> getMedias<T extends Media>({
     int page = 0,
     APISorter sorter = APISorter.relevance,
   }) async =>
-      tryWrapper<List<Media>>(() async {
+      tryWrapper<List<T>>(() async {
         final response = await fetchJson((CustomURL(initialText: api)
               ..addPath("media")
               ..addFile("all")
-              ..addCustomParameter(name: "type", value: type?.name)
+              ..addCustomParameter(
+                  name: "type", value: MediaType.fromType(T).name)
               ..addCustomParameter(name: "page", value: page)
               ..addCustomParameter(name: "sorter", value: sorter.name))
             .cleanUri);
 
         printInfo(info: response[0].toString());
 
-        return response.map((e) => Media.fromJson(e)).toList();
+        return response.map((e) => Media.fromJson(e) as T).toList();
       });
 
   /// Retrieves the full information on the project matching the given name.
-  Future<MediaParts?> getMediaParts(int id) async => tryWrapper(
+  Future<MediaContent?> getMediaContent(int id) async => tryWrapper(
         () async {
           final response = await fetchJson((CustomURL(initialText: api)
                 ..addPath("media")
                 ..addFile(id))
               .cleanUri);
 
-          return MediaParts.fromJson(response);
+          return MediaContent.fromJson(response);
         },
         errorMessage: "The media $id could not be loaded.",
       );
@@ -174,18 +238,4 @@ class APIService {
       });
 
 // EXAMPLES ==================================================================
-
-// // Post request with File
-// Future<Response<CasesModel>> postCases(List<int> image) {
-//   final form = FormData({
-//     "file": MultipartFile(image, filename: "avatar.png"),
-//     "otherFile": MultipartFile(image, filename: "cover.png"),
-//   });
-//   return post("http://youapi/users/upload", form);
-// }
-
-// GetSocket userMessages() {
-//   return socket('https://yourapi/users/socket');
-// }
-
 }

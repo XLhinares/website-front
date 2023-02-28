@@ -1,12 +1,13 @@
 import "dart:async";
 
+import "user_connection.dart";
 import "user_medias.dart";
 import "user_core.dart";
 
 /// A singleton class to represent the user.
 ///
 /// The user manages the local database and .
-class User extends UserCore with UserMedias {
+class User extends UserCore with UserMedias, UserConnection {
   // CONSTRUCTOR ===============================================================
 
   /// The private instance of user.
@@ -24,9 +25,11 @@ class User extends UserCore with UserMedias {
     init(
       instantiate: () {
         instantiateMedias();
+        instantiateConnection();
       },
       initialize: () async {
         await initializeMedias();
+        await initializeConnection();
       },
     );
   }
@@ -34,18 +37,6 @@ class User extends UserCore with UserMedias {
   /// All the tasks that should be run after the app was loaded.
   Future<void> postInit() async {
     postInitMedias();
-  }
-
-  // DANGER ====================================================================
-
-  /// Drops all the tables and recreates them.
-  Future<void> resetDatabase({bool debug = false}) async {
-    loaded = false;
-
-    // Delete the new activity
-    await initializeMedias();
-    loaded = true;
-
-    update();
+    postInitConnection();
   }
 }

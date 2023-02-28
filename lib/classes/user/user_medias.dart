@@ -1,7 +1,7 @@
 import "dart:collection";
 
 import "../../utils/utils.dart";
-import "../dataclass/dataclass.dart";
+import "../../classes/medias/medias.dart";
 import "user_core.dart";
 
 /// A mixin that implements the handling of trackables in the user class.
@@ -14,7 +14,7 @@ mixin UserMedias on UserCore {
   /// A list of the registered projects metadata.
   late final Map<int, Blog> _blogs;
 
-  late final Map<int, MediaParts> _mediaParts;
+  late final Map<int, MediaContent> _mediaContent;
 
   // GETTERS ===================================================================
 
@@ -22,13 +22,16 @@ mixin UserMedias on UserCore {
   UnmodifiableListView<Project> get projects =>
       UnmodifiableListView(_projects.values);
 
+  /// A list of the registered blogs partial metadata.
+  UnmodifiableListView<Blog> get blogs => UnmodifiableListView(_blogs.values);
+
   // PSEUDO-GETTERS ============================================================
 
   /// Whether the user has the parts of the media matching the given id.
-  bool hasParts(int id) => _mediaParts.containsKey(id);
+  bool hasContent(int id) => _mediaContent.containsKey(id);
 
   /// The parts of the media matching the given id, if it is known.
-  MediaParts? getParts(int id) => _mediaParts[id];
+  MediaContent? getContent(int id) => _mediaContent[id];
 
   /// The project matching the given id, if it is known.
   Project getProject(int id) => _projects[id]!;
@@ -42,7 +45,7 @@ mixin UserMedias on UserCore {
   void instantiateMedias() {
     _projects = {};
     _blogs = {};
-    _mediaParts = {};
+    _mediaContent = {};
   }
 
   /// Initializes the people mixin.
@@ -64,8 +67,17 @@ mixin UserMedias on UserCore {
   // METHODS ===================================================================
 
   /// Loads the list of projects from the API.
-  Future<void> loadMedias(MediaType type) async => tryWrapper(() async {
-        final res = await api.getMedias(type: type);
+  Future<List<T>> loadMedias<T extends Media>({
+    APISorter sorter = APISorter.relevance,
+    int page = 0,
+  }) async =>
+      tryWrapper(() async {
+        final res = await api.getMedias<T>(
+          sorter: sorter,
+          page: page,
+        );
+
+        final type = MediaType.fromType(T);
 
         if (type == MediaType.project) {
           _projects.clear();
@@ -80,14 +92,13 @@ mixin UserMedias on UserCore {
         }
 
         update();
+        return res;
       });
 
   /// Loads the list of projects from the API.
-  Future<void> loadMediaParts(int id) async => tryWrapper(() async {
-        final res = await api.getMediaParts(id);
-        if (res == null) return;
-        _mediaParts[id] = res;
-
+  Future<void> loadMediaContent(int id) async => tryWrapper(() async {
+        final res = await api.getMediaContent(id);
+        if (res != null) _mediaContent[id] = res;
         update();
       });
 }

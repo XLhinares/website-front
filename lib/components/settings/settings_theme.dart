@@ -41,5 +41,4 @@ class SettingsThemes extends StatelessWidget {
   }
 
 // WIDGETS ===================================================================
-
 }

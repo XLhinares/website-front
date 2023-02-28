@@ -38,5 +38,4 @@ class ResponsiveHome extends StatelessWidget {
   }
 
 // METHODS ===================================================================
-
 }

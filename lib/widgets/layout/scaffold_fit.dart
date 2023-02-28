@@ -62,5 +62,4 @@ class ScaffoldFit extends StatelessWidget {
   }
 
 // METHODS ===================================================================
-
 }

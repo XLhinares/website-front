@@ -30,5 +30,4 @@ class HomeDescription extends StatelessWidget {
   }
 
   // METHODS ===================================================================
-
 }

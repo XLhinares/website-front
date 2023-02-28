@@ -18,6 +18,9 @@ class RoutingService extends GetxController {
   /// The name of the project currently selected by the app.
   late final Rx<int?> _selectedProject;
 
+  /// The name of the blog currently selected by the app.
+  late final Rx<int?> _selectedBlog;
+
   /// A controller handling the [PageView] of the mobile version.
   late final PageController _pageController;
 
@@ -37,6 +40,9 @@ class RoutingService extends GetxController {
 
   /// The currently selected project if it exists.
   int? get project => _selectedProject.value;
+
+  /// The currently selected blog if it exists.
+  int? get blog => _selectedBlog.value;
 
   /// Whether the app is at home.
   bool get atHome => mode == AppMode.home;
@@ -68,6 +74,7 @@ class RoutingService extends GetxController {
     _selectedTab = AppMode.home.obs;
     _lastMainTab = AppMode.home.obs;
     _selectedProject = Rx<int?>(null);
+    _selectedBlog = Rx<int?>(null);
     _history = [CustomRoute.HOME];
 
     routes = CustomRoute.values;
@@ -120,6 +127,19 @@ class RoutingService extends GetxController {
     update();
   }
 
+  /// Select a blog to be displayed by the router.
+  void selectBlog(int? id) {
+    printInfo(info: "Selecting blog: $id");
+    if (id == _selectedBlog.value) {
+      _selectedBlog.value = null;
+    } else {
+      _selectedBlog.value = id;
+    }
+
+    _history.add(CustomRoute.fromBlog(id));
+    update();
+  }
+
   void _pushRoot() {
     if (_history.last == CustomRoute.HOME) return;
     Get.toNamed("/home");
@@ -160,6 +180,7 @@ class RoutingService extends GetxController {
         "Either [mode] or [route] or [path] should be given.");
 
     final newRoute = route ?? CustomRoute.parse(path: path, mode: mode);
+    if (!newRoute.isAccessibleToUser()) return;
 
     printInfo(info: "ROUTER > Pushing new route: ${newRoute.name}.");
 

@@ -35,7 +35,7 @@ analyze:
 ## Formats the code to match flutter's conventions
 format:
 	@echo "\n>>> FORMATTING PROJECT CODE:"
-	@flutter format .
+	@dart format .
 
 ## Analyzes and format the code to make sure of the quality.
 pre-commit:

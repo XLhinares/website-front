@@ -2,9 +2,14 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
+import "../classes/controllers/blog_loader_controller.dart";
+import "../classes/controllers/project_loader_controller.dart";
 import "../classes/services/services.dart";
 import "../classes/user/user.dart";
 import "translations.dart";
+
+/// The version of the app.
+const String versionNumber = "v2.0.0";
 
 // SERVICES ====================================================================
 
@@ -26,10 +31,14 @@ final CookieService settings = CookieService();
 /// A service that handles the themes of the app.
 final ThemeService themes = ThemeService();
 
-// CONSTANTS ===================================================================
+/// A controller that handles loading projects from the API.
+final ProjectLoaderController projectLoaderController =
+    ProjectLoaderController();
 
-/// The version of the app.
-const String versionNumber = "v1.10.1";
+/// A controller that handles loading blogs from the API.
+final BlogLoaderController blogLoaderController = BlogLoaderController();
+
+// CONSTANTS ===================================================================
 
 /// The URL address of the app.
 const String xeppelinURL = "https://xeppelin.org";
@@ -45,6 +54,9 @@ const double maxSnackbarLength = 600;
 
 /// The vertical extent of the [BottomNavigationBar] used on the mobile display.
 double get navigationBarHeight => XLayout.paddingS * 6;
+
+/// The size of the pages loaded on the API.
+const int pageSize = 20;
 
 // ANIMATIONS ------------------------------------------------------------------
 

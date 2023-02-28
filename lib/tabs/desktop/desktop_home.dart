@@ -60,5 +60,4 @@ class DesktopHome extends StatelessWidget {
   }
 
 // METHODS ===================================================================
-
 }

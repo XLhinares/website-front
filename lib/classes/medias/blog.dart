@@ -26,7 +26,7 @@ class Blog extends Media {
         id: json["id"],
         name: json["name"],
         relevance: double.parse(json["relevance"].toString()),
-        date: DateTime.fromMillisecondsSinceEpoch(json["date_start"]),
+        date: DateTime.parse(json["date"]),
         tags: json.containsKey("tags")
             ? List<String>.from(json["tags"])
             : <String>[],

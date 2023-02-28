@@ -30,6 +30,12 @@ class CookieService extends GetxController {
   /// Whether the user is allowing the cookies.
   late final RxBool cookies;
 
+  /// Whether the user is allowing the cookies.
+  late final RxString email;
+
+  /// Whether the user is allowing the cookies.
+  late final RxString token;
+
   /// Whether the user has dismissed the cookie banner.
   late final RxBool cookieBannerDismissed;
 
@@ -55,6 +61,19 @@ class CookieService extends GetxController {
     loaded = false.obs;
     _storage = GetStorage();
 
+    // COOKIES
+    cookies = RxBool(_storage.read<bool>("cookies") ?? false);
+    _saveCookies(cookies.value);
+    cookieBannerDismissed = RxBool(cookies.value);
+
+    // EMAIL
+    email = RxString(_storage.read<String>("email") ?? "");
+    _saveEmail(email.value);
+
+    // TOKEN
+    token = RxString(_storage.read<String>("token") ?? "");
+    _saveToken(token.value);
+
     // LOCALE
     locale = RxString(_storage.read<String>("locale") ?? "en");
     _saveLocale(locale.value);
@@ -63,12 +82,9 @@ class CookieService extends GetxController {
     theme = RxString(_storage.read<String>("theme") ?? "dark");
     _saveTheme(theme.value);
 
-    // COOKIES
-    cookies = RxBool(_storage.read<bool>("cookies") ?? false);
-    _saveCookies(cookies.value);
-    cookieBannerDismissed = RxBool(cookies.value);
-
     // Setting up workers.
+    ever<String>(email, _saveEmail);
+    ever<String>(token, _saveToken);
     ever<String>(locale, _saveLocale);
     ever<String>(theme, _saveTheme);
     ever<bool>(cookies, _saveCookies);
@@ -80,6 +96,17 @@ class CookieService extends GetxController {
   }
 
   // METHODS ===================================================================
+
+  /// Performs a check on the value of the [token] then save it to memory.
+  Future<void> _saveToken(String value) async {
+    if (cookies.isTrue) await _storage.write("token", value);
+  }
+
+  /// Performs a check on the value of the [email] then save it to memory.
+  Future<void> _saveEmail(String value) async {
+    printInfo(info: "Changing email to: $value");
+    if (cookies.isTrue) await _storage.write("email", value);
+  }
 
   /// Performs a check on the value of the [locale] then save it to memory.
   Future<void> _saveLocale(String value) async {

@@ -54,5 +54,4 @@ class ContactField extends StatelessWidget {
   }
 
   // METHODS ===================================================================
-
 }

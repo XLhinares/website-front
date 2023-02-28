@@ -2,16 +2,16 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../classes/dataclass/media.dart";
+import "../../classes/medias/medias.dart";
 import "../../utils/utils.dart";
 import "../widgets.dart";
 
 /// A widget displaying all the top-level info on the given project.
-class MediaMobileHeader extends StatelessWidget {
+class MediaMobileHeader<T extends Media> extends StatelessWidget {
   // VARIABLES =================================================================
 
   /// The metadata of the project.
-  final Media media;
+  final T media;
 
   /// An optional [ScrollController] to handle special scroll animation.
   final ScrollController? scrollController;
@@ -72,15 +72,15 @@ class MediaMobileHeader extends StatelessWidget {
                         runSpacing: XLayout.paddingXS,
                         children: media.tags
                             .map((tag) => FittedBox(
-                          fit: BoxFit.scaleDown,
-                          child: XContainer(
-                            padding: EdgeInsets.all(XLayout.paddingXS),
-                            child: Text(
-                              tag,
-                              style: context.textTheme.labelSmall,
-                            ),
-                          ),
-                        ))
+                                  fit: BoxFit.scaleDown,
+                                  child: XContainer(
+                                    padding: EdgeInsets.all(XLayout.paddingXS),
+                                    child: Text(
+                                      tag,
+                                      style: context.textTheme.labelSmall,
+                                    ),
+                                  ),
+                                ))
                             .toList(),
                       ),
 
@@ -104,79 +104,84 @@ class MediaMobileHeader extends StatelessWidget {
 
 // WIDGETS ===================================================================
   BoxDecoration _decoration(BuildContext context) => BoxDecoration(
-    gradient: LinearGradient(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        colors: [
-          Colors.transparent,
-          context.theme.colorScheme.background.withOpacity(0.6),
-          context.theme.colorScheme.background.withOpacity(0.9),
-          context.theme.colorScheme.background.withOpacity(0.95),
-          context.theme.colorScheme.background,
-        ],
-        stops: const [
-          0,
-          0.25,
-          0.6,
-          0.8,
-          0.95,
-        ]),
-  );
+        gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Colors.transparent,
+              context.theme.colorScheme.background.withOpacity(0.6),
+              context.theme.colorScheme.background.withOpacity(0.9),
+              context.theme.colorScheme.background.withOpacity(0.95),
+              context.theme.colorScheme.background,
+            ],
+            stops: const [
+              0,
+              0.25,
+              0.6,
+              0.8,
+              0.95,
+            ]),
+      );
 
   Widget _goBack(BuildContext context) => FittedBox(
-    child: XInkContainer(
-      onTap: () => router.selectProject(null),
-      margin: EdgeInsets.all(XLayout.paddingM),
-      padding: EdgeInsets.only(
-        top: XLayout.paddingS,
-        bottom: XLayout.paddingS,
-        left: XLayout.paddingS,
-        right: XLayout.paddingM,
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            Icons.keyboard_arrow_left,
-            size: XLayout.paddingM,
+        child: XInkContainer(
+          onTap: () {
+            final type = MediaType.fromType(T);
+            if (type == MediaType.project) router.selectProject(null);
+            if (type == MediaType.blog) router.selectBlog(null);
+          },
+          margin: EdgeInsets.all(XLayout.paddingM),
+          padding: EdgeInsets.only(
+            top: XLayout.paddingS,
+            bottom: XLayout.paddingS,
+            left: XLayout.paddingS,
+            right: XLayout.paddingM,
           ),
-          Text(
-            "Go back",
-            style: context.textTheme.labelSmall,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                Icons.keyboard_arrow_left,
+                size: XLayout.paddingM,
+              ),
+              Text(
+                "Go back",
+                style: context.textTheme.labelSmall,
+              ),
+            ],
           ),
-        ],
-      ),
-    ),
-  );
+        ),
+      );
 
   Widget _seeMore(BuildContext context) => GetBuilder(
-    init: user,
-    builder: (_) => AnimatedSwitcher(
-      duration: animDurationShort,
-      child: user.hasParts(media.id) && user.getParts(media.id)!.isNotEmpty
-          ? XInkContainer(
-        color: Colors.transparent,
-        enableShadow: false,
-        onTap: () => scrollController?.animateTo(
-          Get.height,
+        init: user,
+        builder: (_) => AnimatedSwitcher(
           duration: animDurationShort,
-          curve: Curves.easeIn,
+          child:
+              user.hasContent(media.id) && user.getContent(media.id)!.isNotEmpty
+                  ? XInkContainer(
+                      color: Colors.transparent,
+                      enableShadow: false,
+                      onTap: () => scrollController?.animateTo(
+                        Get.height,
+                        duration: animDurationShort,
+                        curve: Curves.easeIn,
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            "Scroll to see more...",
+                            style: context.textTheme.labelSmall,
+                          ),
+                          Icon(
+                            Icons.keyboard_arrow_down,
+                            size: XLayout.paddingM,
+                          ),
+                        ],
+                      ),
+                    )
+                  : const SizedBox(),
         ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              "Scroll to see more...",
-              style: context.textTheme.labelSmall,
-            ),
-            Icon(
-              Icons.keyboard_arrow_down,
-              size: XLayout.paddingM,
-            ),
-          ],
-        ),
-      )
-          : const SizedBox(),
-    ),
-  );
+      );
 }

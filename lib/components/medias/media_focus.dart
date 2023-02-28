@@ -2,21 +2,21 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../classes/dataclass/dataclass.dart";
+import "../../classes/medias/medias.dart";
 import "../../utils/utils.dart";
 
 /// A detailed view of a project.
-class ProjectFocus extends StatelessWidget {
+class MediaFocus<T extends Media> extends StatelessWidget {
   // VARIABLES =================================================================
 
   /// The project in question.
-  final Project project;
+  final T media;
 
   /// The building strategy to display the header.
-  final Widget Function(Media, ScrollController) headerBuilder;
+  final Widget Function(T media, ScrollController) headerBuilder;
 
   /// The building strategy to display the parts.
-  final Widget Function(MediaParts) partsBuilder;
+  final Widget Function(MediaContent content) partsBuilder;
 
   /// The vertical padding of the [ListView].
   final double listViewVerticalPadding;
@@ -28,15 +28,12 @@ class ProjectFocus extends StatelessWidget {
 
   // GETTERS ===================================================================
 
-  /// The project being displayed.
-  MediaParts? get parts => user.getParts(project.id);
-
   // CONSTRUCTOR ===============================================================
 
-  /// Returns an instance of [ProjectFocus] matching the given parameters.
-  ProjectFocus({
+  /// Returns an instance of [MediaFocus] matching the given parameters.
+  MediaFocus({
     super.key,
-    required this.project,
+    required this.media,
     required this.headerBuilder,
     required this.partsBuilder,
     this.listViewVerticalPadding = 0,
@@ -57,28 +54,17 @@ class ProjectFocus extends StatelessWidget {
         controller: _controller,
         children: [
           // Header
-          headerBuilder(project, _controller),
+          headerBuilder(media, _controller),
 
-          // If the parts are loading or loaded and not empty, there is a spacer.
-          // However, if they are empty, then there is no space and the user cannot scroll.
-          GetBuilder(
-            init: user,
-            builder: (_) => AnimatedSize(
-              duration: animDurationShort,
-              child: !user.hasParts(project.id) ||
-                      user.getParts(project.id)!.isNotEmpty
-                  ? XLayout.verticalL
-                  : const SizedBox(),
-            ),
-          ),
+          XLayout.verticalL,
 
           // Parts
           GetBuilder(
             init: user,
             builder: (_) {
-              return parts == null
+              return user.getContent(media.id) == null
                   ? _loadingWidget(context)
-                  : partsBuilder(parts!);
+                  : partsBuilder(user.getContent(media.id)!);
             },
           ),
         ],
@@ -89,7 +75,7 @@ class ProjectFocus extends StatelessWidget {
   // METHODS ===================================================================
 
   Widget _loadingWidget(BuildContext context) {
-    user.loadMediaParts(project.id);
+    user.loadMediaContent(media.id);
     return LinearProgressIndicator(
       color: context.theme.colorScheme.secondary,
     );

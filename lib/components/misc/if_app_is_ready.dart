@@ -29,5 +29,4 @@ class IfAppIsReady extends StatelessWidget {
   }
 
   // WIDGETS ===================================================================
-
 }

@@ -18,7 +18,7 @@ class MobileSettings extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       padding: EdgeInsets.all(XLayout.paddingM),
       children: [
         const SettingsHeader(),
@@ -33,5 +33,4 @@ class MobileSettings extends StatelessWidget {
   }
 
   // WIDGETS ===================================================================
-
 }

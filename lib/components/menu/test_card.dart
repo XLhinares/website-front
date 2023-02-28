@@ -33,5 +33,4 @@ class TestCard extends StatelessWidget {
   }
 
 // METHODS ===================================================================
-
 }

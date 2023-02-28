@@ -18,6 +18,7 @@ class DesktopSettings extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       padding: EdgeInsets.symmetric(vertical: XLayout.paddingL),
+      physics: const BouncingScrollPhysics(),
       children: [
         const SettingsHeader(),
         XLayout.verticalL,
@@ -31,5 +32,4 @@ class DesktopSettings extends StatelessWidget {
   }
 
   // WIDGETS ===================================================================
-
 }

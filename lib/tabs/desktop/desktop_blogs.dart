@@ -8,12 +8,12 @@ import "../../components/components.dart";
 import "../../utils/utils.dart";
 import "../../widgets/medias/medias.dart";
 
-/// The content of the body in the "ProjectPreviews" mode.
-class DesktopProjects extends StatelessWidget {
+/// The content of the body in the "BlogPreviews" mode.
+class DesktopBlogs extends StatelessWidget {
   // CONSTRUCTOR ===============================================================
 
-  /// Returns a [DesktopProjects] matching the given parameters.
-  const DesktopProjects({
+  /// Returns a [DesktopBlogs] matching the given parameters.
+  const DesktopBlogs({
     super.key,
   });
 
@@ -25,29 +25,26 @@ class DesktopProjects extends StatelessWidget {
       init: router,
       builder: (context) => AnimatedSwitcher(
         duration: animDurationShort,
-        child: router.project == null
-            ? PagewiseGridView<Project>.extent(
-                maxCrossAxisExtent: Get.height * 0.3,
-                mainAxisSpacing: XLayout.paddingL,
-                crossAxisSpacing: XLayout.paddingL,
-                childAspectRatio: 3 / 4,
+        child: router.blog == null
+            ? PagewiseListView<Blog>(
                 padding: EdgeInsets.symmetric(vertical: XLayout.paddingL),
+                pageLoadController: blogLoaderController.controller,
+                itemExtent: XLayout.paddingM * 8,
                 physics: const BouncingScrollPhysics(),
-                pageLoadController: projectLoaderController.controller,
                 itemBuilder: (context, entry, index) =>
-                    _projectBuilder(context, entry),
+                    _blogBuilder(context, entry),
               )
-            : MediaFocus<Project>(
-                media: user.getProject(router.project!),
+            : MediaFocus<Blog>(
+                media: user.getBlog(router.blog!),
                 headerBuilder: (media, scrollController) =>
-                    MediaDesktopHeader<Project>(
+                    MediaDesktopHeader<Blog>(
                   media: media,
                   scrollController: scrollController,
                 ),
                 partsBuilder: (content) =>
                     MediaDesktopContent(content: content),
                 listViewVerticalPadding: XLayout.paddingL,
-                onBack: () => router.selectProject(null),
+                onBack: () => router.selectBlog(null),
               ),
       ),
     );
@@ -55,9 +52,9 @@ class DesktopProjects extends StatelessWidget {
 
   // METHODS ===================================================================
 
-  Widget _projectBuilder(BuildContext context, Project project) =>
-      ProjectPreviewer(
-        project: project,
-        onTap: () => router.selectProject(project.id),
+  Widget _blogBuilder(BuildContext context, Blog blog) => MediaWidePreview(
+        media: blog,
+        onTap: () => router.selectBlog(blog.id),
+        // margin: EdgeInsets.only(bottom: XLayout.paddingL),
       );
 }

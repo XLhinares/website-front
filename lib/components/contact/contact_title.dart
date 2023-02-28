@@ -31,5 +31,4 @@ class ContactTitle extends StatelessWidget {
   }
 
   // METHODS ===================================================================
-
 }

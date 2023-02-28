@@ -110,5 +110,4 @@ class TabLegal extends StatelessWidget {
   }
 
 // WIDGETS ===================================================================
-
 }

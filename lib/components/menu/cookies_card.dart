@@ -71,5 +71,4 @@ class CookiesCard extends StatelessWidget {
   }
 
   // METHODS ===================================================================
-
 }

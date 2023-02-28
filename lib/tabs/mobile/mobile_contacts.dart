@@ -20,6 +20,7 @@ class MobileContact extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       padding: EdgeInsets.all(XLayout.paddingM),
+      physics: const BouncingScrollPhysics(),
       children: [
         const ContactTitle(),
         XLayout.verticalM,
@@ -34,5 +35,4 @@ class MobileContact extends StatelessWidget {
   }
 
 // METHODS ===================================================================
-
 }

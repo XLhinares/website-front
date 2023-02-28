@@ -1,22 +1,23 @@
 import "package:flutter/material.dart";
+import "package:flutter_markdown/flutter_markdown.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../classes/dataclass/dataclass.dart";
+import "../../classes/medias/medias.dart";
 import "../widgets.dart";
 
 /// A widget displaying the parts of the given media on desktop.
-class MediaMobileParts extends StatelessWidget {
+class MediaDesktopContent extends StatelessWidget {
   // VARIABLES =================================================================
 
   /// The parts of the media.
-  final MediaParts parts;
+  final MediaContent content;
 
   // CONSTRUCTOR ===============================================================
 
-  /// Returns a [MediaMobileParts] matching the given parameters.
-  const MediaMobileParts({
+  /// Returns a [MediaDesktopContent] matching the given parameters.
+  const MediaDesktopContent({
     super.key,
-    required this.parts,
+    required this.content,
   });
 
   // BUILD =====================================================================
@@ -26,24 +27,22 @@ class MediaMobileParts extends StatelessWidget {
     return ListView.separated(
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      itemCount: parts.entries.length,
-      padding: EdgeInsets.only(bottom: XLayout.paddingM),
-      itemBuilder: (context, index) => _entryWidget(parts.entries[index]),
+      itemCount: content.entries.length,
+      itemBuilder: (context, index) => _entryWidget(content.entries[index]),
       separatorBuilder: (context, index) => XLayout.verticalL,
     );
   }
 
   // WIDGETS ===================================================================
 
-  Widget _entryWidget(MediaPartEntry entry) {
+  Widget _entryWidget(MediaEntry entry) {
     switch (entry.type) {
-      case MediaPartType.text:
+      case MediaContentType.text:
         return XContainer(
           padding: EdgeInsets.all(XLayout.paddingM),
-          margin: EdgeInsets.symmetric(horizontal: XLayout.paddingM),
-          child: AutoColorText(entry.content),
+          child: MarkdownBody(data: entry.content),
         );
-      case MediaPartType.image:
+      case MediaContentType.image:
         return CoveringNetworkImage(entry.content);
       default:
         return const SizedBox();

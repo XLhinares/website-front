@@ -47,12 +47,14 @@ class CustomTranslations extends Translations {
       "Light": "Light",
       "Dark": "Dark",
       "Pastel": "Pastel",
-      "Settings legal": "Please check our \\route{/legal/legal_mentions}{Legal mentions}, "
-          "\\route{/legal/privacy_policy}{Data policy} and "
-          "\\route{/legal/cookie_policy}{Cookie policy}.",
+      "Settings legal":
+          "Please check our \\route{/legal/legal_mentions}{Legal mentions}, "
+              "\\route{/legal/privacy_policy}{Data policy} and "
+              "\\route{/legal/cookie_policy}{Cookie policy}.",
       "Disable cookies": "Disable cookies",
       "Done.": "Done.",
-      "Your cookies were deleted and disabled.": "Your cookies were deleted and disabled.",
+      "Your cookies were deleted and disabled.":
+          "Your cookies were deleted and disabled.",
 
       // OTHER -----------------------------------------------------------------
       "No, thanks": "No, thanks",
@@ -125,12 +127,14 @@ class CustomTranslations extends Translations {
       "Light": "Clair",
       "Dark": "Sombre",
       "Pastel": "Pastel",
-      "Settings legal": "Vous pouvez consulter nos \\route{/legal/legal_mentions}{Mentions légales}, "
-          "\\route{/legal/privacy_policy}{Politique de confidentialité} et "
-          "\\route{/legal/cookie_policy}{Politique en matière de cookies}.",
+      "Settings legal":
+          "Vous pouvez consulter nos \\route{/legal/legal_mentions}{Mentions légales}, "
+              "\\route{/legal/privacy_policy}{Politique de confidentialité} et "
+              "\\route{/legal/cookie_policy}{Politique en matière de cookies}.",
       "Disable cookies": "Désactiver les cookies",
       "Done.": "C'est fait.",
-      "Your cookies were deleted and disabled.": "Vos cookies ont été supprimés et désactivés.",
+      "Your cookies were deleted and disabled.":
+          "Vos cookies ont été supprimés et désactivés.",
 
       // OTHER -----------------------------------------------------------------
       "No, thanks": "Non merci",

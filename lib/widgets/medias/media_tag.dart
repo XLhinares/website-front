@@ -35,5 +35,4 @@ class MediaTag extends StatelessWidget {
   }
 
   // WIDGETS ===================================================================
-
 }

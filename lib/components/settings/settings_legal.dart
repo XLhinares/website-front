@@ -41,5 +41,4 @@ class SettingsLegal extends StatelessWidget {
   }
 
 // WIDGETS ===================================================================
-
 }

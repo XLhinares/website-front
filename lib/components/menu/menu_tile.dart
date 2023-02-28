@@ -4,7 +4,7 @@ import "package:x_containers/x_containers.dart";
 
 import "../../../classes/dataclass/app_mode.dart";
 import "../../../utils/globals.dart";
-import "../../classes/animations/menu_selection_animation_controller.dart";
+import "../../classes/controllers/menu_selection_animation_controller.dart";
 
 /// A tile displaying one menu element.
 class MenuTile extends StatelessWidget {
@@ -35,7 +35,12 @@ class MenuTile extends StatelessWidget {
       enableShadow: false,
       onTap: () {
         printInfo(info: "\nEVENT: Menu tile ${mode.name} was tapped.");
-        controller.selectTile(AppMode.mainTabs.indexOf(mode));
+
+        /// Abort if the mode is not accessible to the user.
+        if (!mode.isAccessibleToUser) return;
+
+        final int index = AppMode.mainTabs.indexOf(mode);
+        controller.selectTile(index);
         router.push(mode: mode);
       },
       padding: EdgeInsets.all(XLayout.paddingM),
@@ -50,5 +55,4 @@ class MenuTile extends StatelessWidget {
   }
 
 // WIDGETS ===================================================================
-
 }

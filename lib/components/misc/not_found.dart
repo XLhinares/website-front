@@ -22,5 +22,4 @@ class NotFound extends StatelessWidget {
   }
 
   // WIDGETS ===================================================================
-
 }

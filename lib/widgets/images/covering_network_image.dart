@@ -71,5 +71,4 @@ class CoveringNetworkImage extends StatelessWidget {
   }
 
 // WIDGETS ===================================================================
-
 }

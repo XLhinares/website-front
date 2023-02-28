@@ -2,17 +2,17 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../classes/dataclass/dataclass.dart";
+import "../../classes/medias/medias.dart";
 import "../../utils/utils.dart";
 import "../widgets.dart";
 import "medias.dart";
 
 /// A widget displaying the metadata of the given media on desktop.
-class MediaDesktopHeader extends StatelessWidget {
+class MediaDesktopHeader<T extends Media> extends StatelessWidget {
   // VARIABLES =================================================================
 
   /// The project in question.
-  final Media media;
+  final T media;
 
   /// An optional [ScrollController] to handle special scroll animation.
   final ScrollController? scrollController;
@@ -57,7 +57,7 @@ class MediaDesktopHeader extends StatelessWidget {
                       spacing: XLayout.paddingXS,
                       runSpacing: XLayout.paddingXS,
                       children:
-                      media.tags.map((tag) => MediaTag(tag: tag)).toList(),
+                          media.tags.map((tag) => MediaTag(tag: tag)).toList(),
                     ),
                     XLayout.verticalL,
                     // Summary
@@ -88,65 +88,69 @@ class MediaDesktopHeader extends StatelessWidget {
   // WIDGETS ===================================================================
 
   Widget _goBack(BuildContext context) => Align(
-    alignment: Alignment.topLeft,
-    child: FittedBox(
-      fit: BoxFit.scaleDown,
-      child: XInkContainer(
-        enableShadow: false,
-        onTap: () => router.selectProject(null),
-        child: Row(
-          children: [
-            Icon(
-              Icons.keyboard_arrow_left,
-              size: XLayout.paddingM,
-            ),
-            Text(
-              "Go back",
-              style: context.textTheme.labelSmall,
-            ),
-            XLayout.horizontalXS,
-          ],
-        ),
-      ),
-    ),
-  );
-
-  Widget _seeMore(BuildContext context) => GetBuilder(
-    init: user,
-    builder: (_) => SizedBox(
-      height: XLayout.paddingL * 2,
-      child: AnimatedSwitcher(
-        duration: animDurationShort,
-        child:
-        user.hasParts(media.id) && user.getParts(media.id)!.isNotEmpty
-            ? Align(
-          alignment: Alignment.bottomCenter,
-          child: FittedBox(
-            fit: BoxFit.scaleDown,
-            child: XInkContainer(
-              enableShadow: false,
-              onTap: () => scrollController?.animateTo(
-                Get.height,
-                duration: animDurationShort,
-                curve: Curves.easeIn,
-              ),
-              child: Column(
-                children: [
-                  Text(
-                    "Scroll to see more...",
-                    style: context.textTheme.labelSmall,
-                  ),
-                  Icon(
-                    Icons.keyboard_arrow_down,
-                    size: XLayout.paddingM,
-                  ),
-                ],
-              ),
+        alignment: Alignment.topLeft,
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: XInkContainer(
+            enableShadow: false,
+            onTap: () {
+              final type = MediaType.fromType(T);
+              if (type == MediaType.project) router.selectProject(null);
+              if (type == MediaType.blog) router.selectBlog(null);
+            },
+            child: Row(
+              children: [
+                Icon(
+                  Icons.keyboard_arrow_left,
+                  size: XLayout.paddingM,
+                ),
+                Text(
+                  "Go back",
+                  style: context.textTheme.labelSmall,
+                ),
+                XLayout.horizontalXS,
+              ],
             ),
           ),
-        )
-            : const SizedBox(),
-      ),
-    ),
-  );
+        ),
+      );
+
+  Widget _seeMore(BuildContext context) => GetBuilder(
+        init: user,
+        builder: (_) => SizedBox(
+          height: XLayout.paddingL * 2,
+          child: AnimatedSwitcher(
+            duration: animDurationShort,
+            child: user.hasContent(media.id) &&
+                    user.getContent(media.id)!.isNotEmpty
+                ? Align(
+                    alignment: Alignment.bottomCenter,
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: XInkContainer(
+                        enableShadow: false,
+                        onTap: () => scrollController?.animateTo(
+                          Get.height,
+                          duration: animDurationShort,
+                          curve: Curves.easeIn,
+                        ),
+                        child: Column(
+                          children: [
+                            Text(
+                              "Scroll to see more...",
+                              style: context.textTheme.labelSmall,
+                            ),
+                            Icon(
+                              Icons.keyboard_arrow_down,
+                              size: XLayout.paddingM,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
+                : const SizedBox(),
+          ),
+        ),
+      );
 }

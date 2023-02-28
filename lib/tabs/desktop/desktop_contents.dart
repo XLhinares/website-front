@@ -33,6 +33,7 @@ class BodyContents extends StatelessWidget {
 
   List<Widget> _tabs(BuildContext context) => const [
         DesktopHome(),
+        DesktopBlogs(),
         DesktopProjects(),
         DesktopContact(),
         DesktopSettings(),

@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:flutter_markdown/flutter_markdown.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/medias.dart";
@@ -29,7 +30,7 @@ class MediaMobileContent extends StatelessWidget {
       itemCount: content.entries.length,
       padding: EdgeInsets.only(bottom: XLayout.paddingM),
       itemBuilder: (context, index) => _entryWidget(content.entries[index]),
-      separatorBuilder: (context, index) => XLayout.verticalL,
+      separatorBuilder: (context, index) => XLayout.verticalM,
     );
   }
 
@@ -41,7 +42,7 @@ class MediaMobileContent extends StatelessWidget {
         return XContainer(
           padding: EdgeInsets.all(XLayout.paddingM),
           margin: EdgeInsets.symmetric(horizontal: XLayout.paddingM),
-          child: AutoColorText(entry.content),
+          child: MarkdownBody(data: entry.content),
         );
       case MediaContentType.image:
         return CoveringNetworkImage(entry.content);

@@ -22,7 +22,7 @@ class MobileBlogs extends StatelessWidget {
     return GetBuilder(
         init: router,
         builder: (context) {
-          return router.project == null
+          return router.blog == null
               ? PagewiseListView<Blog>(
                   physics: const BouncingScrollPhysics(),
                   padding: EdgeInsets.all(XLayout.paddingM),

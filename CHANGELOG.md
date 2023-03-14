@@ -1,3 +1,9 @@
+## 2.0.1
+
+- :bug: Hid the background wave on mobile blog focus.
+- :bug: Solved the bug where a blog could not be focused/unfocused on mobile.
+- :bug: Text media content on mobile is now displayed as markdown. 
+
 ## 2.0.0
 
 - :sparkles: Added blog support.
@@ -11,6 +17,7 @@
 
 - :sparkles: Give the "Go back" and "See more" buttons a box target.
 - :sparkles: Give the menu tiles a box target.
+
 - :globe_with_meridians: Added missing localizations.
 
 ## 1.10.0
@@ -19,9 +26,11 @@
 - :sparkles: Improved `MediaMobileHeader`.
 - :sparkles: Added basic `MediaMobileParts`. 
 - :sparkles: Added a settings tab.
+
 - :recycle: Moved the theme settings to the settings tab.
 - :recycle: Moved the locale settings to the settings tab.
 - :recycle: Moved the legal stuff to the settings tab.
+
 - :arrow_up: Updated `x_containers` dependency.
 
 ## 1.9.1

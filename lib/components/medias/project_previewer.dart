@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:glass/glass.dart";
+// import "package:glass/glass.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/medias.dart";
@@ -77,9 +77,9 @@ class ProjectPreviewer extends StatelessWidget {
                         ),
                       ],
                     ),
-                  ).asGlass(
-                    tintColor: context.theme.colorScheme.background,
-                  ),
+                  )
+                  // .asGlass(tintColor: context.theme.colorScheme.background,)
+                  ,
                 ],
               ),
             ),

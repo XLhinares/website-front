@@ -10,11 +10,10 @@ fi
 
 echo "Recreating the git folder."
 git init .
-git remote add production ssh://luwz4482@maine.o2switch.net:22/home2/luwz4482/repositories/bare-build.git/ && echo "Successfully created remote [production]"
+git remote add production ssh://lhta5458@boeuf.o2switch.net:22/home/lhta5458/xeppelin/repositories/bare-front.git/ && echo "Successfully created remote [production]"
 git fetch
-git checkout -b main
+git checkout -b master
 git add .
-echo "Enter a commit message."
-read -r COMMIT_MESSAGE
-git commit -m "$COMMIT_MESSAGE"
-git push --set-upstream -f production main
+NOW="$(date +'%Y/%m/%d-%H:%M:%S')"
+git commit -m "$NOW: New build"
+git push --set-upstream -f production master

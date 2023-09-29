@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:glass/glass.dart";
+// import "package:glass/glass.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/medias.dart";
@@ -48,8 +48,8 @@ class BlogPreviewer extends StatelessWidget {
 
             Positioned.fill(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  const Expanded(child: SizedBox()),
                   Container(
                     color:
                         context.theme.colorScheme.background.withOpacity(0.5),
@@ -77,9 +77,9 @@ class BlogPreviewer extends StatelessWidget {
                         ),
                       ],
                     ),
-                  ).asGlass(
-                    tintColor: context.theme.colorScheme.background,
-                  ),
+                  )
+                  // .asGlass(tintColor: context.theme.colorScheme.background,)
+                  ,
                 ],
               ),
             ),

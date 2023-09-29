@@ -1,3 +1,8 @@
+## 2.0.1
+
+- :construction_worker: Modified scripts to fit the new host.
+- :heavy_plus_sign: Upgraded the dependencies.
+
 ## 2.0.0
 
 - :sparkles: Added blog support.

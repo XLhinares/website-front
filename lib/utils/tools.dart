@@ -31,7 +31,7 @@ Future<T> tryWrapper<T>(
 extension DateLegible on DateTime {
   /// A legible [String] to display the month and year.
   String get legibleMY {
-    final String legibleMonth = "month-$month".tr;
+    final String legibleMonth = "month_$month".tr;
     return "$legibleMonth $year";
   }
 }

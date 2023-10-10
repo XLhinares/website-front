@@ -9,78 +9,105 @@ class CustomTranslations extends Translations {
     // ENGLISH =================================================================
     "en": {
       // HOME ------------------------------------------------------------------
-      "Home description 1": "\\title{[Xeppelin]} lifts your projects ;) \n\nThe "
+      "home_description": "\\title{[Xeppelin]} lifts your projects ;) \n\nThe "
           "website is under construction but don't hesitate to check the "
           "projects I have worked on, or reach out to me via the contact form.",
 
       // MENU ------------------------------------------------------------------
-      "Home": "Home",
-      "About home": "What I am about.",
-      "Projects": "Projects",
-      "About projects": "What I have done.",
-      "Contact": "Contact",
-      "About contact": "How to contact me.",
-      "Settings": "Settings",
-      "About settings": "Customize the site.",
+      "tab_home": "Home",
+      "tab_projects": "Projects",
+      "tab_blogs": "Blogs",
+      "tab_contact": "Contact",
+      "tab_settings": "Settings",
+      "tab_splash": "Loading the site...",
+      "tab_home_description": "What this is about.",
+      "tab_blogs_description": "My coding stories.",
+      "tab_projects_description": "My coding projects.",
+      "tab_contact_description": "How to contact me.",
+      "tab_settings_description": "Customize the site.",
 
       // PROJECTS --------------------------------------------------------------
 
       // CONTACT ---------------------------------------------------------------
-      "Contact form": "Contact form",
-      "Contact form explanation":
+      "contact_title": "Contact form",
+      "contact_description":
           "If you have a project or an idea, an inquiry, or just want my resume, feel free to contact me via the form below!",
-      "Name": "Name",
-      "Email": "E-mail address",
-      "Email validation": "Please enter a valid e-mail.",
-      "Subject": "Subject",
-      "Details": "Details",
-      "Send": "Send",
-      "Email error content":
+      "contact_name": "Name",
+      "contact_email": "E-mail address",
+      "contact_email_invalid": "Please enter a valid e-mail.",
+      "contact_subject": "Subject",
+      "contact_details": "Details",
+      "contact_send": "Send",
+      "contact_mail_sent_success_title": "Email sent.",
+      "contact_mail_sent_success_content":
+          "I'll get back to you as soon as possible :)",
+      "contact_mail_sent_failure_title": "An error occurred.",
+      "contact_mail_sent_failure_content":
           "Please try again later.\nIf the issue persist, please send me a mail at: support@xeppelin.org",
 
       // SETTINGS --------------------------------------------------------------
 
-      "Settings description":
+      "settings_title": "Settings",
+      "settings_description":
           "Here you can configure the website to match your preferences.",
-      "Locale": "Locale",
-      "Theme selection": "Theme selection",
-      "Light": "Light",
-      "Dark": "Dark",
-      "Pastel": "Pastel",
-      "Settings legal":
+      "settings_locale": "Locale",
+      "settings_locale_description":
+          "The language used on this site (this setting has no impact on projects and blogs).",
+      "settings_theme_selection": "Theme selection",
+      "settings_background_selection": "Background selection",
+      "settings_theme_light": "Light",
+      "settings_theme_dark": "Dark",
+      "settings_theme_pastel": "Pastel",
+      "settings_theme_halloween": "Halloween",
+      "settings_background_none": "None",
+      "settings_background_wave": "Wave",
+      "settings_legal":
           "Please check our \\route{/legal/legal_mentions}{Legal mentions}, "
               "\\route{/legal/privacy_policy}{Data policy} and "
               "\\route{/legal/cookie_policy}{Cookie policy}.",
-      "Disable cookies": "Disable cookies",
-      "Done.": "Done.",
-      "Your cookies were deleted and disabled.":
+      "settings_disable_cookies": "Disable cookies",
+      "settings_disable_cookie_snackbar_title": "Done.",
+      "settings_disable_cookie_snackbar_content":
           "Your cookies were deleted and disabled.",
 
-      // OTHER -----------------------------------------------------------------
-      "No, thanks": "No, thanks",
-      "Okay": "Okay",
-      "Cookies title": "About cookies",
-      "Cookies description":
-          "This site only uses functional cookies. They are used to remember your preferred language and theme.",
-      "Click test": "Click to run the test.",
-      "Test success": "It worked!",
-      "Test success message": "Have a cat fact:",
-      "Test failure": "It failed :/",
-      "Test failure message": "Mucho triste...",
+      // LEGAL -----------------------------------------------------------------
 
-      "month-1": "January",
-      "month-2": "February",
-      "month-3": "March",
-      "month-4": "April",
-      "month-5": "May",
-      "month-6": "June",
-      "month-7": "July",
-      "month-8": "August",
-      "month-9": "September",
-      "month-10": "October",
-      "month-11": "November",
-      "month-12": "December",
-      "lorem ipsum":
+      "cookie_policy_title": "Cookie policy",
+      "privacy_policy_title": "Data policy",
+      "legal_mentions_title": "Legal mentions",
+
+      // BUTTONS ---------------------------------------------------------------
+
+      "button_back": "Go back",
+      "button_scroll_to_see_more": "Scroll to see more...",
+
+      // OTHER -----------------------------------------------------------------
+      "cookies_title": "About cookies",
+      "cookies_description":
+          "This site only uses functional cookies. They are used to remember your preferred language and theme.",
+      "cookies_decline": "No, thanks",
+      "cookies_accept": "Okay",
+      "test_card_title": "Click to run the test.",
+      "test_card_snackbar_success_title": "It worked!",
+      "test_card_snackbar_success_content": "Have a cat fact:\n\n@fact",
+      "test_card_snackbar_failure_title": "It failed :/",
+      "test_card_snackbar_failure_content":
+          "Don't worry, it won't affect your experience on here.",
+      "misc_content_not_found": "Content not found.",
+
+      "month_1": "January",
+      "month_2": "February",
+      "month_3": "March",
+      "month_4": "April",
+      "month_5": "May",
+      "month_6": "June",
+      "month_7": "July",
+      "month_8": "August",
+      "month_9": "September",
+      "month_10": "October",
+      "month_11": "November",
+      "month_12": "December",
+      "lorem_ipsum":
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     },
 
@@ -90,78 +117,106 @@ class CustomTranslations extends Translations {
 
     "fr": {
       // HOME ------------------------------------------------------------------
-      "Home description 1":
+      "home_description":
           "\\title{Xeppelin} fait décoller vos projets ;) \n\nLe site est en construction mais n'hésitez pas à aller regarder les projets sur lesquels j'ai travaillé, ou à prendre contact via le formulaire de contact.",
 
       // MENU ------------------------------------------------------------------
-      "Home": "Accueil",
-      "About home": "Qui je suis.",
-      "Projects": "Projets",
-      "About projects": "Ce que j'ai fait.",
-      "Contact": "Contact",
-      "About contact": "Comment me contacter.",
-      "Settings": "Paramètres",
-      "About settings": "Configurer le site.",
+      "tab_home": "Accueil",
+      "tab_projects": "Projets",
+      "tab_blogs": "Blogs",
+      "tab_contact": "Contact",
+      "tab_settings": "Paramètres",
+      "tab_splash": "Site en cours de chargement...",
+      "tab_home_description": "Qui je suis.",
+      "tab_blogs_description": "Mes histoires de code.",
+      "tab_projects_description": "Mes projets.",
+      "tab_contact_description": "Comment me contacter.",
+      "tab_settings_description": "Configurer le site.",
 
       // PROJECTS --------------------------------------------------------------
 
       // CONTACT ---------------------------------------------------------------
-      "Contact form": "Formulaire de contact",
-      "Contact form explanation":
+      "contact_title": "Formulaire de contact",
+      "contact_description":
           "Si vous avez un projet ou une idée, une question, ou que vous voulez simplement voir mon CV, n'hésitez pas à prendre contact avec moi via le formulaire ci-dessous.",
-      "Name": "Nom",
-      "Email": "Adresse mail",
-      "Email validation": "Veuillez entrer une adresse mail valide.",
-      "Subject": "Objet",
-      "Details": "Détails",
-      "Send": "Envoyer",
-      "Email error content":
+      "contact_name": "Nom",
+      "contact_email": "Adresse mail",
+      "contact_email_invalid": "Veuillez entrer une adresse mail valide.",
+      "contact_subject": "Objet",
+      "contact_details": "Détails",
+      "contact_send": "Envoyer",
+      "contact_mail_sent_success_title": "Mail envoyé.",
+      "contact_mail_sent_success_content":
+          "Je vous recontacterai au plus vite :)",
+      "contact_mail_sent_failure_title": "Une erreur est survenue.",
+      "contact_mail_sent_failure_content":
           "Veuillez ré-essayer plus tard.\nSi l'issue persiste, je vous prie de m'envoyer un mail à l'adresse: support@xeppelin.org",
 
       // SETTINGS --------------------------------------------------------------
 
-      "Settings description":
+      "settings_title": "Paramètres",
+      "settings_description":
           "Dans cet onglet, vous pouvez configuer le site pour correspondre plus précisément à vos préférences.",
-      "Locale": "Langage",
-      "Theme selection": "Choix du thème",
-      "Light": "Clair",
-      "Dark": "Sombre",
-      "Pastel": "Pastel",
-      "Settings legal":
+      "settings_locale": "Langage",
+      "settings_locale_description":
+          "La langue utilisée sur ce site (cela n'affecte pas les projets et blogs).",
+      "settings_theme_selection": "Choix du thème",
+      "settings_background_selection": "Choix du fond",
+      "settings_theme_light": "Clair",
+      "settings_theme_dark": "Sombre",
+      "settings_theme_pastel": "Pastel",
+      "settings_theme_halloween": "Halloween",
+      "settings_background_none": "Aucun",
+      "settings_background_wave": "Vague",
+      "settings_legal":
           "Vous pouvez consulter nos \\route{/legal/legal_mentions}{Mentions légales}, "
               "\\route{/legal/privacy_policy}{Politique de confidentialité} et "
               "\\route{/legal/cookie_policy}{Politique en matière de cookies}.",
-      "Disable cookies": "Désactiver les cookies",
-      "Done.": "C'est fait.",
-      "Your cookies were deleted and disabled.":
+      "settings_disable_cookies": "Désactiver les cookies",
+      "settings_disable_cookie_snackbar_title": "C'est fait.",
+      "settings_disable_cookie_snackbar_content":
           "Vos cookies ont été supprimés et désactivés.",
 
-      // OTHER -----------------------------------------------------------------
-      "No, thanks": "Non merci",
-      "Okay": "Okay",
-      "Cookies title": "À propos des cookies.",
-      "Cookies description":
-          "Ce site utilise uniquement des cookies fonctionnels. Ils sont utilisés pour retenir vos langages et thèmes préférés.",
-      "Click test": "Cliquez pour lancer le test.",
-      "Test success": "Ça marche!",
-      "Test success message":
-          "Vous gagnez une fact sur les chats (en anglais):",
-      "Test failure": "Le test a échoué :/",
-      "Test failure message": "Mucho triste...",
+      // LEGAL -----------------------------------------------------------------
 
-      "month-1": "Janvier",
-      "month-2": "Février",
-      "month-3": "Mars",
-      "month-4": "Avril",
-      "month-5": "Mai",
-      "month-6": "Juin",
-      "month-7": "Juillet",
-      "month-8": "Août",
-      "month-9": "Septembre",
-      "month-10": "Octobre",
-      "month-11": "Novembre",
-      "month-12": "Décembre",
-      "lorem ipsum":
+      "cookie_policy_title": "Politique en matière de cookies",
+      "privacy_policy_title": "Politique de confidentialité",
+      "legal_mentions_title": "Mentions légales",
+
+      // BUTTONS ---------------------------------------------------------------
+
+      "button_back": "Retour",
+      "button_scroll_to_see_more": "Faites défiler pour afficher le reste...",
+
+      // OTHER -----------------------------------------------------------------
+
+      "cookies_title": "À propos des cookies.",
+      "cookies_description":
+          "Ce site utilise uniquement des cookies fonctionnels. Ils sont utilisés pour retenir vos langages et thèmes préférés.",
+      "cookies_decline": "Non merci",
+      "cookies_accept": "Okay",
+      "test_card_title": "Cliquez pour lancer le test.",
+      "test_card_snackbar_success_title": "Ça marche!",
+      "test_card_snackbar_success_content":
+          "Vous gagnez une fact sur les chats (en anglais):\n\n@fact",
+      "test_card_snackbar_failure_title": "Le test a échoué :/",
+      "test_card_snackbar_failure_content":
+          "Ne vous inquiétez pas, cela ne devrait pas affecter votre expérience sur ce site.",
+      "misc_content_not_found": "Contenu introuvable.",
+
+      "month_1": "Janvier",
+      "month_2": "Février",
+      "month_3": "Mars",
+      "month_4": "Avril",
+      "month_5": "Mai",
+      "month_6": "Juin",
+      "month_7": "Juillet",
+      "month_8": "Août",
+      "month_9": "Septembre",
+      "month_10": "Octobre",
+      "month_11": "Novembre",
+      "month_12": "Décembre",
+      "lorem_ipsum":
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     }
   };

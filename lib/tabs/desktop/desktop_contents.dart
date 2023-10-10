@@ -2,9 +2,9 @@ import "dart:async";
 
 import "package:flutter/material.dart";
 
-import "../../../utils/utils.dart";
-import "desktop.dart";
+import "../../../utils/exports.dart";
 import "desktop_settings.dart";
+import "exports.dart";
 
 /// What's inside the body. It depends on the current mode.
 class BodyContents extends StatelessWidget {

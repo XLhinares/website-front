@@ -3,14 +3,14 @@ import "package:flutter_typeahead/flutter_typeahead.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../utils/utils.dart";
+import "../../utils/exports.dart";
 
 /// The settings allowing the user to set the locale of the app.
 class SettingsLocale extends StatelessWidget {
   // VARIABLES =================================================================
 
   final TextEditingController _controller = TextEditingController(
-    text: settings.locale.value,
+    text: cookies.locale.value,
   );
 
   // CONSTRUCTOR ===============================================================
@@ -22,18 +22,21 @@ class SettingsLocale extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return XCard(
+    return XCard.text(
       padding: EdgeInsets.only(
-        top: XLayout.paddingS,
-        bottom: XLayout.paddingS,
-        right: XLayout.paddingS,
+        top: XLayout.paddingM,
+        bottom: XLayout.paddingM,
+        right: XLayout.paddingM,
         left: XLayout.paddingM,
       ),
       // We add "locale" in english so that it is always easy to find for a user
       // who might not be familiar with the currently selected language.
-      title: Text("${"Locale".tr} (Locale)"),
+      title:
+          "${"settings_locale".tr}${cookies.locale.value == "en" ? "" : " (Locale)"}",
+      content: "settings_locale_description".tr,
+      internalVerticalPadding: XLayout.paddingS,
       trailing: SizedBox(
-        width: Get.width * 0.2,
+        width: XLayout.paddingL * 3,
         child: XContainer(
           enableShadow: false,
           color: context.theme.colorScheme.background,
@@ -72,7 +75,7 @@ class SettingsLocale extends StatelessWidget {
             ),
             onSuggestionSelected: (suggestion) {
               _controller.text = suggestion;
-              settings.locale.value = suggestion;
+              cookies.locale.value = suggestion;
             },
           ),
         ),

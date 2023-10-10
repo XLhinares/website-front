@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/medias.dart";
-import "../widgets.dart";
+import "../exports.dart";
 
 /// A widget displaying the parts of the given media on desktop.
 class MediaMobileContent extends StatelessWidget {

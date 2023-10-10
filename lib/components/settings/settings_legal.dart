@@ -3,7 +3,7 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../utils/globals.dart";
-import "../../widgets/widgets.dart";
+import "../../widgets/exports.dart";
 
 /// A setting where you can control your cookie consent and check out the legal stuff.
 class SettingsLegal extends StatelessWidget {
@@ -33,7 +33,7 @@ class SettingsLegal extends StatelessWidget {
             "Xeppelin $versionNumber © 2023, All rights reserved.".tr,
           ),
           XLayout.verticalXS,
-          AutoColorText("Settings legal".tr),
+          AutoColorText("settings_legal".tr),
         ],
       ),
       trailing: const DisableCookiesButton(),

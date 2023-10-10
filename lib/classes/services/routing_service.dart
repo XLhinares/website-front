@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
-import "../../utils/utils.dart";
+import "../../utils/exports.dart";
 import "../dataclass/dataclass.dart";
 import "../routes/custom_route.dart";
 

@@ -25,7 +25,7 @@ class TestCard extends StatelessWidget {
       padding: EdgeInsets.all(
         XLayout.paddingM,
       ),
-      title: Text("Click test".tr),
+      title: Text("test_card_title".tr),
       onTap: () {
         api.test(context);
       },

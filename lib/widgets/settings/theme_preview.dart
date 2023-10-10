@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../utils/utils.dart";
+import "../../utils/exports.dart";
 
 /// A widget allowing the user to preview a theme.
 class ThemePreview extends StatelessWidget {
@@ -48,10 +48,10 @@ class ThemePreview extends StatelessWidget {
           center: Alignment.topLeft,
           // end: Alignment.bottomRight,
         ),
-        borderDecoration: settings.theme.value == name
+        borderDecoration: cookies.theme.value == name
             ? Border.all(width: 2, color: Colors.black45)
             : null,
-        onTap: () => settings.theme.value = name,
+        onTap: () => cookies.theme.value = name,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.stretch,

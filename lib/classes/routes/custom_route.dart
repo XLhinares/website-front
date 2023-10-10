@@ -2,8 +2,8 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../tabs/tabs.dart";
-import "../../utils/utils.dart";
+import "../../tabs/exports.dart";
+import "../../utils/exports.dart";
 import "../dataclass/app_mode.dart";
 
 /// A custom route data-class.

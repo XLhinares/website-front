@@ -105,6 +105,36 @@ class ThemeService {
         textTheme: defaultTextTheme,
       ),
     );
+
+    // Add some extra themes
+    addTheme(
+      name: "pastel",
+      data: xTheme.getTheme(
+        mode: ThemeMode.light,
+        primary: const Color(0xFFE0AA3A),
+        secondary: const Color(0xFFEF596C),
+        background: const Color(0xFF689BA6),
+        // backgroundAlt: Color(0xFF282627),
+        cardColor: const Color(0xFFE0AA3A),
+        containerColor: Colors.white.withOpacity(0.7),
+        textTheme: ThemeService.defaultTextTheme,
+      ),
+    );
+
+    addTheme(
+      name: "halloween",
+      data: xTheme.getTheme(
+        mode: ThemeMode.dark,
+        primary: const Color(0xFF3a3630),
+        secondary: const Color(0xFFa85c06),
+        background: const Color(0xFF110f0f),
+        // backgroundAlt: Color(0xFF282627),
+        cardColor: const Color(0xFF3a3630),
+        // containerColor: Colors.white.withOpacity(0.7),
+
+        textTheme: ThemeService.defaultTextTheme,
+      ),
+    );
   }
 
   /// The unique instance of [ThemeService], implements the singleton pattern.

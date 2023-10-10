@@ -44,24 +44,25 @@ class ContactColumn extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             ContactField(
-              title: "Name".tr,
+              title: "contact_name".tr,
               controller: _controllerName,
             ),
             XLayout.verticalM,
             ContactField(
-              title: "Email".tr,
+              title: "contact_email".tr,
               controller: _controllerEmail,
-              validator: (value) =>
-                  GetUtils.isEmail(value ?? "") ? null : "Email validation".tr,
+              validator: (value) => GetUtils.isEmail(value ?? "")
+                  ? null
+                  : "contact_email_invalid".tr,
             ),
             XLayout.verticalM,
             ContactField(
-              title: "Subject".tr,
+              title: "contact_subject".tr,
               controller: _controllerSubject,
             ),
             XLayout.verticalM,
             ContactField(
-              title: "Details".tr,
+              title: "contact_details".tr,
               maxLines: 10,
               controller: _controllerDetails,
               textInputAction: null,
@@ -71,7 +72,7 @@ class ContactColumn extends StatelessWidget {
               onTap: () => sendEmail(context),
               // onTap: sendEmail,
               color: context.theme.colorScheme.secondary,
-              child: Text("Send".tr),
+              child: Text("contact_send".tr),
             ),
           ],
         ),
@@ -98,8 +99,8 @@ class ContactColumn extends StatelessWidget {
           if (success) {
             //ignore: use_build_context_synchronously
             XSnackbar.text(
-              title: "Email sent.".tr,
-              content: "I'll get back to you as soon as possible :)".tr,
+              title: "contact_mail_sent_success_title".tr,
+              content: "contact_mail_sent_success_content".tr,
               titleStyle: Get.context?.textTheme.headlineMedium,
               contentStyle: Get.context?.textTheme.bodyMedium,
               maxWidth: 1024,
@@ -107,8 +108,8 @@ class ContactColumn extends StatelessWidget {
           } else {
             //ignore: use_build_context_synchronously
             XSnackbar.text(
-              title: "There was an error.".tr,
-              content: "Email error content.".tr,
+              title: "contact_mail_sent_failure_title".tr,
+              content: "contact_mail_sent_failure_content".tr,
               titleStyle: Get.context?.textTheme.headlineMedium,
               contentStyle: Get.context?.textTheme.bodyMedium,
               maxWidth: 1024,
@@ -120,8 +121,8 @@ class ContactColumn extends StatelessWidget {
           if (success) return;
 
           XSnackbar.text(
-            title: "Could not send the email.".tr,
-            content: "There was an error, please try again later.".tr,
+            title: "contact_mail_sent_failure_title".tr,
+            content: "contact_mail_sent_failure_content".tr,
             titleStyle: Get.context?.textTheme.headlineMedium,
             contentStyle: Get.context?.textTheme.bodyMedium,
             maxWidth: 1024,

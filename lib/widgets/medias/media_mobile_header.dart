@@ -3,8 +3,8 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/medias.dart";
-import "../../utils/utils.dart";
-import "../widgets.dart";
+import "../../utils/exports.dart";
+import "../exports.dart";
 
 /// A widget displaying all the top-level info on the given project.
 class MediaMobileHeader<T extends Media> extends StatelessWidget {
@@ -145,7 +145,7 @@ class MediaMobileHeader<T extends Media> extends StatelessWidget {
                 size: XLayout.paddingM,
               ),
               Text(
-                "Go back",
+                "button_back".tr,
                 style: context.textTheme.labelSmall,
               ),
             ],
@@ -171,7 +171,7 @@ class MediaMobileHeader<T extends Media> extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            "Scroll to see more...",
+                            "button_scroll_to_see_more".tr,
                             style: context.textTheme.labelSmall,
                           ),
                           Icon(

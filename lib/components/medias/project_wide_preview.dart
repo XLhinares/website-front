@@ -3,7 +3,7 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/medias.dart";
-import "../../widgets/widgets.dart";
+import "../../widgets/exports.dart";
 
 /// A preview of a project.
 class MediaWidePreview extends StatelessWidget {
@@ -36,7 +36,7 @@ class MediaWidePreview extends StatelessWidget {
       builder: (context, constraints) => XCard(
         onTap: onTap,
         padding: EdgeInsets.only(right: XLayout.paddingM),
-        margin: margin ?? EdgeInsets.only(bottom: XLayout.paddingS),
+        margin: margin ?? EdgeInsets.only(bottom: XLayout.paddingM),
         internalHorizontalPadding: XLayout.paddingM,
         leading: SizedBox(
           width: constraints.maxWidth * 0.3,

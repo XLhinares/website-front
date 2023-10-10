@@ -3,7 +3,7 @@ import "package:flutter_markdown/flutter_markdown.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/medias.dart";
-import "../widgets.dart";
+import "../exports.dart";
 
 /// A widget displaying the parts of the given media on desktop.
 class MediaDesktopContent extends StatelessWidget {

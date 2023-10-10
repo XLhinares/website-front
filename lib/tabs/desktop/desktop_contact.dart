@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../components/components.dart";
+import "../../components/exports.dart";
 
 /// The content of the body in the "Projects" mode.
 class DesktopContact extends StatelessWidget {

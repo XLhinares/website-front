@@ -1,3 +1,15 @@
+## 2.1.0
+
+- :bento: Added the logo as a local svg asset to save resources on fetching.
+
+- :lipstick: Added Halloween theme.
+
+- :sparkles: Added customizable background in a similar way to the customizable theme.
+- :sparkles: Renamed the global [settings] to [cookies].
+- :sparkles: Renamed all export files "exports".
+
+- :globe_with_meridians: Reworked all translations to be based on keys rather than the english text.
+
 ## 2.0.1
 
 - :construction_worker: Modified scripts to fit the new host.

@@ -4,10 +4,10 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 
 import "../../classes/dataclass/app_mode.dart";
-import "../../components/components.dart";
-import "../../utils/utils.dart";
-import "../../widgets/widgets.dart";
-import "../tabs.dart";
+import "../../components/exports.dart";
+import "../../utils/exports.dart";
+import "../../widgets/exports.dart";
+import "../exports.dart";
 
 /// The app body as it should
 class MobileTabView extends StatelessWidget {
@@ -66,16 +66,16 @@ class MobileTabView extends StatelessWidget {
             icon: Icon(
               tab.icon,
             ),
-            label: tab.name.capitalizeFirst,
+            label: tab.name.tr.capitalizeFirst,
           ))
       .toList();
 
-  /// Returns the usual [AnimatedBackground] wrapped in a [GetBuilder] in order to
+  /// Returns the usual [AnimatedBackgroundWave] wrapped in a [GetBuilder] in order to
   /// make the background disappear in specific situations.
   Widget _responsiveBackground(BuildContext context) {
     return GetBuilder(
       init: router,
-      builder: (_) => AnimatedBackground(
+      builder: (_) => AnimatedBackgroundWave(
         scale:
             router.mode == AppMode.projects && router.project != null ? 0 : 0.3,
       ),

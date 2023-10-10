@@ -4,9 +4,9 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/medias.dart";
-import "../../components/components.dart";
-import "../../utils/utils.dart";
-import "../../widgets/medias/medias.dart";
+import "../../components/exports.dart";
+import "../../utils/exports.dart";
+import "../../widgets/medias/exports.dart";
 
 /// The content of the body in the "BlogPreviews" mode.
 class DesktopBlogs extends StatelessWidget {
@@ -29,7 +29,7 @@ class DesktopBlogs extends StatelessWidget {
             ? PagewiseListView<Blog>(
                 padding: EdgeInsets.symmetric(vertical: XLayout.paddingL),
                 pageLoadController: blogLoaderController.controller,
-                itemExtent: XLayout.paddingM * 8,
+                itemExtent: XLayout.paddingM * 10,
                 physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, entry, index) =>
                     _blogBuilder(context, entry),

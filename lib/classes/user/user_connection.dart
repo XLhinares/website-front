@@ -2,7 +2,7 @@ import "dart:async";
 
 import "package:get/get.dart";
 
-import "../../utils/utils.dart";
+import "../../utils/exports.dart";
 import "../dataclass/dataclass.dart";
 import "user_core.dart";
 
@@ -49,8 +49,8 @@ mixin UserConnection on UserCore {
 
   /// All the tasks that should be run after the app was loaded.
   Future<void> postInitConnection() async {
-    if (settings.email.isNotEmpty && settings.token.isNotEmpty) {
-      data = UserData(email: settings.email.value, token: settings.token.value);
+    if (cookies.email.isNotEmpty && cookies.token.isNotEmpty) {
+      data = UserData(email: cookies.email.value, token: cookies.token.value);
       _refreshToken();
     }
   }
@@ -86,8 +86,8 @@ mixin UserConnection on UserCore {
           communicatingWithServer.value = true;
 
           data = await api.logIn(email: email, password: password);
-          settings.email.value = data.email ?? "";
-          settings.token.value = data.token ?? "";
+          cookies.email.value = data.email ?? "";
+          cookies.token.value = data.token ?? "";
 
           communicatingWithServer.value = false;
         },
@@ -100,8 +100,8 @@ mixin UserConnection on UserCore {
   ///
   /// Only the email address is kept to make logging in again easier.
   Future<void> disconnect() async {
-    settings.email.value = data.email ?? "";
-    settings.token.value = "";
+    cookies.email.value = data.email ?? "";
+    cookies.token.value = "";
     data = UserData(email: data.email);
     update();
   }
@@ -114,8 +114,8 @@ mixin UserConnection on UserCore {
       email: data.email ?? "",
       token: data.token ?? "",
     );
-    settings.email.value = data.email ?? "";
-    settings.token.value = data.token ?? "";
+    cookies.email.value = data.email ?? "";
+    cookies.token.value = data.token ?? "";
 
     communicatingWithServer.value = false;
   }

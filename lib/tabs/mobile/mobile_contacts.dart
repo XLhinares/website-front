@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../components/contact/contact.dart";
+import "../../components/contact/exports.dart";
 
 /// The content of the body in the "Contact" mode.
 class MobileContact extends StatelessWidget {

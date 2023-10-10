@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
+import "../../utils/exports.dart";
 import "legal_tab.dart";
 
 /// A tab to display the legal mentions of the website
@@ -16,7 +17,7 @@ class LegalMentions extends StatelessWidget {
   Widget build(BuildContext context) {
     return TabLegal(
       title: "Legal mentions".tr,
-      text: "legal_mentions.md".tr,
+      content: api.getLegal("legal_mentions"),
     );
   }
 }

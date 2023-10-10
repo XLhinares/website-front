@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:x_containers/x_containers.dart";
 
-import "menu.dart";
+import "exports.dart";
 
 /// The half of the body containing the title and the menu.
 class BodyMenu extends StatelessWidget {

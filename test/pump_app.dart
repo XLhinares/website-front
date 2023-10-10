@@ -1,9 +1,8 @@
 import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:get/get.dart";
-
-import "package:website_front/tabs/tabs.dart";
-import "package:website_front/utils/utils.dart";
+import "package:website_front/tabs/exports.dart";
+import "package:website_front/utils/exports.dart";
 
 /// A utility to pump the full app without having to rewrite it every time.
 Future<void> pumpApp(WidgetTester tester) async {
@@ -12,7 +11,7 @@ Future<void> pumpApp(WidgetTester tester) async {
   // Memory --------------------------------------------------------------------
 
   Get.put(router);
-  Get.put(settings);
+  Get.put(cookies);
 
   await tester.pumpWidget(
     GetMaterialApp(

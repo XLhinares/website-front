@@ -4,9 +4,9 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/medias.dart";
-import "../../components/components.dart";
-import "../../utils/utils.dart";
-import "../../widgets/medias/medias.dart";
+import "../../components/exports.dart";
+import "../../utils/exports.dart";
+import "../../widgets/medias/exports.dart";
 
 /// The "project" tab adapted for mobile.
 class MobileProjects extends StatelessWidget {

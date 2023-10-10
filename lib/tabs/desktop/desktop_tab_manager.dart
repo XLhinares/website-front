@@ -1,9 +1,9 @@
 import "package:flutter/material.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../components/components.dart";
-import "../../widgets/widgets.dart";
-import "desktop.dart";
+import "../../components/exports.dart";
+import "../../widgets/exports.dart";
+import "exports.dart";
 
 /// The
 class DesktopTabManager extends StatelessWidget {
@@ -18,9 +18,6 @@ class DesktopTabManager extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScaffoldFit(
       padding: EdgeInsets.symmetric(horizontal: XLayout.paddingL),
-      background: const AnimatedBackground(
-        scale: 0.2,
-      ),
       // overlay: ButtonsOverlay(),
       body: IfAppIsReady(
         child: LayoutBuilder(

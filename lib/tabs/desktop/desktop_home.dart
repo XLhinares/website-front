@@ -2,8 +2,8 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../components/components.dart";
-import "../../widgets/widgets.dart";
+import "../../components/exports.dart";
+import "../../widgets/exports.dart";
 
 /// The content of the body in the "Home" mode.
 class DesktopHome extends StatelessWidget {

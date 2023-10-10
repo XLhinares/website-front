@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
+import "../../utils/globals.dart";
 import "legal_tab.dart";
 
 /// A tab to display the data policy of the website
@@ -15,8 +16,8 @@ class PrivacyPolicy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TabLegal(
-      title: "Privacy policy".tr,
-      text: "privacy_policy.md".tr,
+      title: "privacy_policy_title".tr,
+      content: api.getLegal("data_policy"),
     );
   }
 }

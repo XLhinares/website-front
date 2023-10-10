@@ -1,7 +1,7 @@
 import "dart:collection";
 
-import "../../utils/utils.dart";
 import "../../classes/medias/medias.dart";
+import "../../utils/exports.dart";
 import "user_core.dart";
 
 /// A mixin that implements the handling of trackables in the user class.

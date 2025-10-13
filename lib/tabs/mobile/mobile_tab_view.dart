@@ -84,9 +84,9 @@ class MobileTabView extends StatelessWidget {
 
   // METHODS ===================================================================
 
-  double _backgroundScale() {
-    if (router.mode == AppMode.projects && router.project != null) return 0;
-    if (router.mode == AppMode.blogs && router.blog != null) return 0;
-    return 0.3;
-  }
+  // double _backgroundScale() {
+  //   if (router.mode == AppMode.projects && router.project != null) return 0;
+  //   if (router.mode == AppMode.blogs && router.blog != null) return 0;
+  //   return 0.3;
+  // }
 }

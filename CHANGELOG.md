@@ -1,3 +1,8 @@
+## 2.2.1
+
+- :bug: Removed remaining `flutter_markdown` uses.
+- :art: Commented `MobileTabView._backgroundScale` for being unused
+
 ## 2.2.0
 
 - :sparkles: Removed blog support as it doesn't have enough content.

@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../utils/utils.dart";
+import "../../utils/exports.dart";
 
 /// A widget allowing the user to preview a theme.
 class ThemePreview extends StatelessWidget {
@@ -35,8 +35,8 @@ class ThemePreview extends StatelessWidget {
           colors: [
             data.colorScheme.primary,
             data.colorScheme.primary,
-            data.colorScheme.background,
-            data.colorScheme.background,
+            data.colorScheme.surface,
+            data.colorScheme.surface,
           ],
           stops: const [
             0,
@@ -48,16 +48,16 @@ class ThemePreview extends StatelessWidget {
           center: Alignment.topLeft,
           // end: Alignment.bottomRight,
         ),
-        borderDecoration: settings.theme.value == name
+        borderDecoration: cookies.theme.value == name
             ? Border.all(width: 2, color: Colors.black45)
             : null,
-        onTap: () => settings.theme.value = name,
+        onTap: () => cookies.theme.value = name,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
-              color: context.theme.colorScheme.background.withAlpha(100),
+              color: context.theme.colorScheme.surface.withAlpha(100),
               padding: EdgeInsets.all(XLayout.paddingXS),
               child: Center(child: Text(name)),
             )

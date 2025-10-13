@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
-import "../../tabs/tabs.dart";
-import "../../utils/utils.dart";
+import "../../tabs/exports.dart";
+import "../../utils/exports.dart";
 
 /// A widget that displays its child if the requirement for the app are loaded.
 ///

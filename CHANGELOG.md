@@ -1,6 +1,44 @@
+## 2.2.1
+
+- :bug: Removed remaining `flutter_markdown` uses.
+- :art: Commented `MobileTabView._backgroundScale` for being unused
+
+## 2.2.0
+
+- :sparkles: Removed blog support as it doesn't have enough content.
+- :sparkles: Removed the test card as it was deemed confusing by users.
+- :sparkles: Added [MediaContentType.github] to display content from github.
+- :sparkles: Added [fetchFile] method to the [APIService].
+
+- :art: Added an extension `XeppelinMD` on `String` to support some custom Markdown. (used in the legal tabs)
+- :art: Added a [FlatButton] widget because the [TextButton] were not working properly on Firefox
+
+- :construction_worker: New `.env` file for the SSH identifier.
+- :construction_worker: New script to read the `.env` variables.
+- :construction_worker: Better formatting on version numbers script.
+
+- :heavy_plus_sign: Upgraded the dependencies.
+- :heavy_plus_sign: Removed `flutter_markdown` for being deprecated.
+- :heavy_plus_sign: Added `gpt_markdown`.
+
+- :fire: Removed some unused assets
+
+## 2.1.0
+
+- :bento: Added the logo as a local svg asset to save resources on fetching.
+
+- :lipstick: Added Halloween theme.
+
+- :sparkles: Added customizable background in a similar way to the customizable theme.
+- :sparkles: Renamed the global [settings] to [cookies].
+- :sparkles: Renamed all export files "exports".
+
+- :globe_with_meridians: Reworked all translations to be based on keys rather than the english text.
+
 ## 2.0.1
 
-- :bug: Hid the background wave on mobile blog focus.
+- :construction_worker: Modified scripts to fit the new host.
+- :heavy_plus_sign: Upgraded the dependencies.
 - :bug: Solved the bug where a blog could not be focused/unfocused on mobile.
 - :bug: Text media content on mobile is now displayed as markdown. 
 

@@ -45,8 +45,8 @@ class MenuTile extends StatelessWidget {
       },
       padding: EdgeInsets.all(XLayout.paddingM),
       internalHorizontalPadding: XLayout.paddingM,
-      title: mode.name.capitalizeFirst!.tr,
-      content: mode.description,
+      title: "tab_${mode.name}".tr,
+      content: "tab_${mode.name}_description".tr,
       leading: Icon(
         mode.icon,
         size: XLayout.paddingL,

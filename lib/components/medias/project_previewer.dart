@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:glass/glass.dart";
+// import "package:glass/glass.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/medias.dart";
-import "../../widgets/widgets.dart";
+import "../../widgets/exports.dart";
 
 /// A preview of a project.
 class ProjectPreviewer extends StatelessWidget {
@@ -51,8 +51,8 @@ class ProjectPreviewer extends StatelessWidget {
                 children: [
                   const Expanded(child: SizedBox()),
                   Container(
-                    color:
-                        context.theme.colorScheme.background.withOpacity(0.5),
+                    color: context.theme.colorScheme.surface
+                        .withValues(alpha: 0.5),
                     padding: EdgeInsets.all(XLayout.paddingM),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -77,9 +77,9 @@ class ProjectPreviewer extends StatelessWidget {
                         ),
                       ],
                     ),
-                  ).asGlass(
-                    tintColor: context.theme.colorScheme.background,
-                  ),
+                  )
+                  // .asGlass(tintColor: context.theme.colorScheme.background,)
+                  ,
                 ],
               ),
             ),

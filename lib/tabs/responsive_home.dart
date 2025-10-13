@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 
-import "tabs.dart";
+import "exports.dart";
 
 /// The one-page style website that the user navigates on.
 class ResponsiveHome extends StatelessWidget {

@@ -1,7 +1,5 @@
 import "package:flutter/material.dart";
-import "package:get/get.dart";
-
-import "../../utils/globals.dart";
+import "package:flutter_svg/flutter_svg.dart";
 
 /// The [Xeppelin] logo.
 class XeppelinLogo extends StatelessWidget {
@@ -30,23 +28,11 @@ class XeppelinLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.network(
-      "${api.assets}logo/logo.webp",
+    return SvgPicture.asset(
+      "assets/icons/logo.svg",
       width: size,
       height: size,
       fit: fit,
-      loadingBuilder: (context, child, loadingProgress) {
-        if (loadingProgress == null) return child;
-        return Center(
-          child: CircularProgressIndicator(
-            color: context.theme.colorScheme.secondary,
-            value: loadingProgress.expectedTotalBytes != null
-                ? loadingProgress.cumulativeBytesLoaded /
-                    loadingProgress.expectedTotalBytes!
-                : null,
-          ),
-        );
-      },
     );
   }
 

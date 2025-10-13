@@ -2,8 +2,8 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../utils/utils.dart";
-import "../../widgets/widgets.dart";
+import "../../utils/exports.dart";
+import "../../widgets/exports.dart";
 
 /// The different buttons that allow the using to change some settings.
 class ButtonsOverlay extends StatelessWidget {
@@ -32,11 +32,11 @@ class ButtonsOverlay extends StatelessWidget {
               // DARK THEME
               CircularButton(
                 size: buttonSize,
-                onTap: () => settings.rotateTheme(),
+                onTap: () => cookies.rotateTheme(),
                 child: RotatingIcon(
                   builder: (_) =>
                       Icon(Icons.light_mode_outlined, size: buttonSize * 0.8),
-                  observed: settings.theme,
+                  observed: cookies.theme,
                   tag: "button_theme",
                 ),
               ),
@@ -46,13 +46,13 @@ class ButtonsOverlay extends StatelessWidget {
               // LOCALE
               CircularButton(
                 size: buttonSize,
-                onTap: settings.rotateLocale,
+                onTap: cookies.rotateLocale,
                 child: RotatingIcon(
                   builder: (_) => Text(
-                    settings.locale.value.capitalize!,
+                    cookies.locale.value.capitalize!,
                     style: context.textTheme.titleMedium,
                   ),
-                  observed: settings.locale,
+                  observed: cookies.locale,
                   tag: "button_locale",
                 ),
               ),

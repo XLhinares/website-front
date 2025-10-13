@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import "dart:convert";
 import "dart:io";
 
@@ -71,30 +73,54 @@ class APIService {
         errorMessage: "Fetching the JSON object from [$url] failed.",
       );
 
+  /// Fetches a text file object from the given URL.
+  ///
+  /// Parameters:
+  /// * url: The path to the resource; cannot be null.
+  Future<String> fetchFile(Uri? url) async => tryWrapper<String>(
+        () async {
+          assert(url != null, "URL cannot be [null].");
+
+          printInfo(info: "Fetching file resource from: '$url'");
+          final http.Response response = await http.get(url!);
+
+          if (response.statusCode < 200 || response.statusCode >= 400) {
+            throw HttpException(
+                "Response status code is ${response.statusCode}");
+          }
+
+          final data = response.body;
+
+          return data;
+        },
+        errorMessage: "Fetching the file object from [$url] failed.",
+      );
+
   /// A request to test the connection to the API.
   Future<void> test(BuildContext? context) async {
     TextStyle? titleStyle = context?.textTheme.titleMedium;
     TextStyle? contentStyle = context?.textTheme.bodyMedium;
-    Color color = context?.theme.colorScheme.background ?? Colors.black12;
+    Color color = context?.theme.colorScheme.surface ?? Colors.black12;
 
     try {
       final uri = Uri.parse("https://catfact.ninja/fact");
       final response = await fetchJson(uri, subsetPicker: (e) => [e]);
 
       XSnackbar.text(
-        title: "$versionNumber - ${"Test success".tr}",
-        content: "${"Test success message".tr}\n\n${response[0]["fact"]}",
+        title: "$versionNumber - ${"test_card_snackbar_success_title".tr}",
+        content: "test_card_snackbar_success_content"
+            .trParams({"fact": response[0]["fact"]}),
         titleStyle: titleStyle,
         contentStyle: contentStyle,
         color: color,
-        duration: const Duration(seconds: 7),
+        duration: const Duration(seconds: 10),
       ).show(context!);
     } catch (e) {
       printError(info: "\n$e");
 
       XSnackbar.text(
-        title: "Test failure".tr,
-        content: "Test failure message".tr,
+        title: "test_card_snackbar_failure_title".tr,
+        content: "test_card_snackbar_failure_content".tr,
         titleStyle: titleStyle,
         contentStyle: contentStyle,
         color: color,
@@ -184,10 +210,9 @@ class APIService {
         final response = await fetchJson((CustomURL(initialText: api)
               ..addPath("media")
               ..addFile("all")
-              ..addCustomParameter(
-                  name: "type", value: MediaType.fromType(T).name)
-              ..addCustomParameter(name: "page", value: page)
-              ..addCustomParameter(name: "sorter", value: sorter.name))
+              ..addCustomParameter("type", MediaType.fromType(T).name)
+              ..addCustomParameter("page", page)
+              ..addCustomParameter("sorter", sorter.name))
             .cleanUri);
 
         printInfo(info: response[0].toString());
@@ -236,6 +261,18 @@ class APIService {
         printInfo(info: response.statusCode.toString());
         return response.statusCode == 200;
       });
+
+  /// Fetches an asset from the legal folder and return the content as a string.
+  Future<String> getLegal(String source) async {
+    final http.Response response = await http.get(
+      (CustomURL(initialText: assets)
+            ..addPath("legal")
+            ..addFile("${source}_${cookies.locale.value}.md"))
+          .cleanUri,
+    );
+
+    return utf8.decode(response.bodyBytes);
+  }
 
 // EXAMPLES ==================================================================
 }

@@ -74,10 +74,10 @@ class CustomURL {
   /// Auto-completes the URL with the a custom parameter and value.
   ///
   /// If either is null, then nothing is added to the URL.
-  void addCustomParameter({
+  void addCustomParameter([
     String? name,
     Object? value,
-  }) {
+  ]) {
     if (name == null || value == null) return;
     _buffer.write("&$name=");
     _buffer.write(value.toString());
@@ -87,11 +87,11 @@ class CustomURL {
   void addQueryParameter(
     String? text,
   ) =>
-      addCustomParameter(name: "query", value: text);
+      addCustomParameter("query", text);
 
   /// Auto-completes the URL with the given sorter.
   void addSorterParameter(
     APISorter? sorter,
   ) =>
-      addCustomParameter(name: "sorter", value: sorter.toString());
+      addCustomParameter("sorter", sorter.toString());
 }

@@ -24,7 +24,7 @@ class MediaTag extends StatelessWidget {
     return FittedBox(
       fit: BoxFit.scaleDown,
       child: XContainer(
-        color: context.theme.colorScheme.background,
+        color: context.theme.colorScheme.surface,
         padding: EdgeInsets.all(XLayout.paddingXS),
         child: Text(
           tag,

@@ -1,6 +1,9 @@
 #!/bin/sh
 
 # Author: Xavier Lhinares
+SSH_USER=$(./scripts/utils.sh --getenv SSH_USER)
+SSH_HOST=$(./scripts/utils.sh --getenv SSH_HOST)
+
 
 cd build/web/ || exit
 if [ -d ".git" ]; then
@@ -10,11 +13,10 @@ fi
 
 echo "Recreating the git folder."
 git init .
-git remote add production ssh://luwz4482@maine.o2switch.net:22/home2/luwz4482/repositories/bare-build.git/ && echo "Successfully created remote [production]"
+git remote add production ssh://$SSH_USER@$SSH_HOST:22/home/$SSH_USER/xeppelin/repositories/bare-home.git/ && echo "Successfully created remote [production]"
 git fetch
-git checkout -b main
+git checkout -b master
 git add .
-echo "Enter a commit message."
-read -r COMMIT_MESSAGE
-git commit -m "$COMMIT_MESSAGE"
-git push --set-upstream -f production main
+NOW="$(date +'%Y/%m/%d-%H:%M:%S')"
+git commit -m "$NOW: New build"
+git push --set-upstream -f production master

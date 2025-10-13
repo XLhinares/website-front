@@ -1,8 +1,7 @@
 import "package:flutter/material.dart";
-import "package:get/get.dart";
-import "dataclass.dart";
 
-import "../../utils/utils.dart";
+import "../../utils/exports.dart";
+import "dataclass.dart";
 
 /// Representation of a "mode" (pretty much the top-level state of the app).
 class AppMode {
@@ -52,7 +51,7 @@ class AppMode {
   /// The different possible values of [AppMode].
   static const values = [
     home,
-    blogs,
+    // blogs,
     projects,
     contact,
     legal,
@@ -63,7 +62,7 @@ class AppMode {
   /// The main tabs of the app.
   static const mainTabs = [
     home,
-    blogs,
+    // blogs,
     projects,
     contact,
     settings,
@@ -81,9 +80,6 @@ class AppMode {
   final PermissionLevel permissionLevel = PermissionLevel.all;
 
   // GETTERS ===================================================================
-
-  /// A short description of the mode.
-  String get description => "About $name".tr;
 
   /// An icon matching the mode.
   IconData get icon => _icon ?? Icons.not_interested;

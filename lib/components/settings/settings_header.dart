@@ -15,8 +15,8 @@ class SettingsHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return XCard(
       padding: EdgeInsets.all(XLayout.paddingM),
-      title: Text("Settings".tr),
-      content: Text("Settings description".tr),
+      title: Text("settings_title".tr),
+      content: Text("settings_description".tr),
     );
   }
 }

@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../components/components.dart";
+import "../../components/exports.dart";
 
 /// A tab where the user can configure the website on mobile.
 class MobileSettings extends StatelessWidget {

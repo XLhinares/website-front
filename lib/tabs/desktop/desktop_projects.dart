@@ -4,9 +4,9 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/medias.dart";
-import "../../components/components.dart";
-import "../../utils/utils.dart";
-import "../../widgets/medias/medias.dart";
+import "../../components/exports.dart";
+import "../../utils/exports.dart";
+import "../../widgets/medias/exports.dart";
 
 /// The content of the body in the "ProjectPreviews" mode.
 class DesktopProjects extends StatelessWidget {
@@ -26,10 +26,10 @@ class DesktopProjects extends StatelessWidget {
       builder: (context) => AnimatedSwitcher(
         duration: animDurationShort,
         child: router.project == null
-            ? PagewiseGridView<Project>.extent(
-                maxCrossAxisExtent: Get.height * 0.3,
-                mainAxisSpacing: XLayout.paddingL,
-                crossAxisSpacing: XLayout.paddingL,
+            ? PagewiseGridView<Project>.count(
+                crossAxisCount: 3,
+                mainAxisSpacing: XLayout.paddingM,
+                crossAxisSpacing: XLayout.paddingM,
                 childAspectRatio: 3 / 4,
                 padding: EdgeInsets.symmetric(vertical: XLayout.paddingL),
                 physics: const BouncingScrollPhysics(),

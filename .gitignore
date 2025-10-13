@@ -1,4 +1,6 @@
-# Miscellaneous
+.env
+
+### Miscellaneous
 *.class
 *.log
 *.pyc
@@ -10,7 +12,7 @@
 .svn/
 migrate_working_dir/
 
-# IntelliJ related
+### IntelliJ related
 *.iml
 *.ipr
 *.iws
@@ -21,7 +23,7 @@ migrate_working_dir/
 # is commented out by default.
 #.vscode/
 
-# Flutter/Dart/Pub related
+### Flutter/Dart/Pub related
 **/doc/api/
 **/ios/Flutter/.last_build_id
 .dart_tool/
@@ -32,15 +34,19 @@ migrate_working_dir/
 .pub/
 /build/
 
-# Web related
+### WEB RELATED
+web/
 
-# Symbolication related
+### Symbolication related
 app.*.symbols
 
-# Obfuscation related
+### Obfuscation related
 app.*.map.json
 
-# Android Studio will place build artifacts here
+### Android Studio will place build artifacts here
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+### LINUX RELATED
+linux/

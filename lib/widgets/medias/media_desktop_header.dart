@@ -3,9 +3,9 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/medias.dart";
-import "../../utils/utils.dart";
-import "../widgets.dart";
-import "medias.dart";
+import "../../utils/exports.dart";
+import "../exports.dart";
+import "exports.dart";
 
 /// A widget displaying the metadata of the given media on desktop.
 class MediaDesktopHeader<T extends Media> extends StatelessWidget {
@@ -105,7 +105,7 @@ class MediaDesktopHeader<T extends Media> extends StatelessWidget {
                   size: XLayout.paddingM,
                 ),
                 Text(
-                  "Go back",
+                  "button_back".tr,
                   style: context.textTheme.labelSmall,
                 ),
                 XLayout.horizontalXS,
@@ -137,7 +137,7 @@ class MediaDesktopHeader<T extends Media> extends StatelessWidget {
                         child: Column(
                           children: [
                             Text(
-                              "Scroll to see more...",
+                              "button_scroll_to_see_more".tr,
                               style: context.textTheme.labelSmall,
                             ),
                             Icon(

@@ -16,7 +16,7 @@ class NotFound extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Center(
       child: XContainer(
-        child: Text("Content not found."),
+        child: Text("misc_content_not_found"),
       ),
     );
   }

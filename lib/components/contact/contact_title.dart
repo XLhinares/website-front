@@ -20,11 +20,11 @@ class ContactTitle extends StatelessWidget {
     return XCard(
       padding: EdgeInsets.all(XLayout.paddingM),
       title: Text(
-        "Contact form".tr,
+        "contact_title".tr,
         style: context.textTheme.titleMedium,
       ),
       content: Text(
-        "Contact form explanation".tr,
+        "contact_description".tr,
         style: context.textTheme.bodyMedium,
       ),
     );

@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
-import "../../utils/utils.dart";
+import "../../utils/exports.dart";
 
 /// An animated widget which allows to preview and expand text.
 class ExpandableText extends StatelessWidget {

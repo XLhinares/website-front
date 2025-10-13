@@ -5,7 +5,7 @@ import "package:get_storage/get_storage.dart";
 import "package:x_containers/x_containers.dart";
 
 import "classes/routes/custom_route.dart";
-import "tabs/tabs.dart";
+import "tabs/exports.dart";
 import "utils/globals.dart";
 
 void main() async {
@@ -17,7 +17,7 @@ void main() async {
   // Memory --------------------------------------------------------------------
 
   Get.put(router);
-  Get.put(settings);
+  Get.put(cookies);
 
   // Theme ---------------------------------------------------------------------
 

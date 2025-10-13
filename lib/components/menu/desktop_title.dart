@@ -3,7 +3,7 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../../utils/globals.dart";
-import "../../widgets/widgets.dart";
+import "../../widgets/exports.dart";
 
 /// An animated title for the body.
 class BodyTitle extends StatelessWidget {
@@ -12,7 +12,7 @@ class BodyTitle extends StatelessWidget {
   // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [BodyTitle] matching the given parameters.
-  const BodyTitle({Key? key}) : super(key: key);
+  const BodyTitle({super.key});
 
   // BUILD =====================================================================
 

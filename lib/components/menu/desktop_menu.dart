@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:x_containers/x_containers.dart";
 
-import "menu.dart";
+import "exports.dart";
 
 /// The half of the body containing the title and the menu.
 class BodyMenu extends StatelessWidget {
@@ -38,9 +38,10 @@ class BodyMenu extends StatelessWidget {
 
             const CookiesCard(),
 
-            XLayout.verticalM,
-
-            const TestCard(),
+            // // The test was a way to verify access to the internet.
+            // // It doesn't appear any more on the website because users don't understand what it's for.
+            // XLayout.verticalM,
+            // const TestCard(),
           ],
         ),
       ],

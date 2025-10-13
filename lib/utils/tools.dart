@@ -31,7 +31,23 @@ Future<T> tryWrapper<T>(
 extension DateLegible on DateTime {
   /// A legible [String] to display the month and year.
   String get legibleMY {
-    final String legibleMonth = "month-$month".tr;
+    final String legibleMonth = "month_$month".tr;
     return "$legibleMonth $year";
+  }
+}
+
+/// An extension on [String] to automatically fill in some frequently used information.
+extension XeppelinMD on String {
+  /// The string with some website-specific modifications.
+  ///
+  /// The list of modifications is:
+  /// - "$xeppelinMD" => "[xeppelin.org](www.xeppelin.org)"
+  /// - "$xeppelinURL" => "www.xeppelin.org"
+  String get withXeppelinMD {
+    final String result = replaceAllMapped(
+        "\$xeppelinMD", (match) => "[xeppelin.org](www.xeppelin.org)")
+      ..replaceAllMapped("\$xeppelinURL", (match) => "www.xeppelin.org");
+
+    return result;
   }
 }

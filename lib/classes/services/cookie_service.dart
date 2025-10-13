@@ -1,4 +1,5 @@
 import "dart:async";
+
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:get_storage/get_storage.dart";
@@ -26,6 +27,9 @@ class CookieService extends GetxController {
 
   /// Whether the app should display in dark mode.
   late final RxString theme;
+
+  /// The identifier of the current app background.
+  late final RxString background;
 
   /// Whether the user is allowing the cookies.
   late final RxBool cookies;
@@ -78,9 +82,13 @@ class CookieService extends GetxController {
     locale = RxString(_storage.read<String>("locale") ?? "en");
     _saveLocale(locale.value);
 
-    // DARK THEME
+    // THEME
     theme = RxString(_storage.read<String>("theme") ?? "dark");
     _saveTheme(theme.value);
+
+    // BACKGROUND
+    background = RxString(_storage.read<String>("background") ?? "wave");
+    _saveBackground(background.value);
 
     // Setting up workers.
     ever<String>(email, _saveEmail);
@@ -130,6 +138,13 @@ class CookieService extends GetxController {
     themes.changeTheme(theme.value);
   }
 
+  /// Performs a check on the value of [darkTheme] then save it to memory.
+  Future<void> _saveBackground(String value) async {
+    printInfo(info: "Changing background to: $value");
+    if (cookies.isFalse) return;
+    await _storage.write("background", value);
+  }
+
   /// Toggles the app between light and dark theme.
   Future<void> rotateTheme() async {
     final int index = themes.handledThemes.indexOf(theme.value);
@@ -154,7 +169,9 @@ class CookieService extends GetxController {
   /// Deletes the cookies.
   Future<void> _clearCookies() async {
     await _storage.remove("cookies");
+    await _storage.remove("email");
     await _storage.remove("locale");
     await _storage.remove("theme");
+    await _storage.remove("background");
   }
 }

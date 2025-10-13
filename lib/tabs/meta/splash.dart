@@ -1,4 +1,5 @@
 import "dart:async";
+
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
@@ -40,7 +41,7 @@ class Splash extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "Loading the app...".tr,
+              "tab_splash".tr,
               style: context.textTheme.bodyMedium,
             ),
             XLayout.verticalM,
@@ -60,7 +61,7 @@ class Splash extends StatelessWidget {
   /// If they are not, a new check is scheduled after 50ms.
   void checkIfLoaded() {
     // Guard clause if not loaded.
-    if (!settings.loaded.value) {
+    if (!cookies.loaded.value) {
       Timer(const Duration(milliseconds: 50), checkIfLoaded);
       return;
     }

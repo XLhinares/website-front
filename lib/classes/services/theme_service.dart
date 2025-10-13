@@ -1,5 +1,3 @@
-import "dart:ui";
-
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:get/get.dart";
@@ -72,16 +70,16 @@ class ThemeService {
       name: "light",
       data: xTheme.getTheme(
         mode: ThemeMode.light,
-        appBarTheme: const AppBarTheme().copyWith(
-          color: const Color(0xFF284B63),
-          titleTextStyle: const TextStyle().copyWith(
-            color: Colors.white,
-            fontSize: 24,
-            fontWeight: FontWeight.w600,
-            fontFeatures: [const FontFeature.enable("smcp")],
-            letterSpacing: 0.25,
-          ),
-        ),
+        // appBarTheme: const AppBarTheme().copyWith(
+        //   backgroundColor: const Color(0xFF284B63),
+        //   titleTextStyle: const TextStyle().copyWith(
+        //     color: Colors.white,
+        //     fontSize: 24,
+        //     fontWeight: FontWeight.w600,
+        //     fontFeatures: [const FontFeature.enable("smcp")],
+        //     letterSpacing: 0.25,
+        //   ),
+        // ),
         primary: const Color(0xFFB4B8AB),
         secondary: const Color(0xFF284B63),
         background: const Color(0xFFF4F9E9),
@@ -103,6 +101,36 @@ class ThemeService {
         cardColor: const Color(0xFF464245),
         containerColor: const Color(0xFF686866),
         textTheme: defaultTextTheme,
+      ),
+    );
+
+    // Add some extra themes
+    addTheme(
+      name: "pastel",
+      data: xTheme.getTheme(
+        mode: ThemeMode.light,
+        primary: const Color(0xFFE0AA3A),
+        secondary: const Color(0xFFEF596C),
+        background: const Color(0xFF689BA6),
+        // backgroundAlt: Color(0xFF282627),
+        cardColor: const Color(0xFFE0AA3A),
+        containerColor: Colors.white.withValues(alpha: 0.7),
+        textTheme: ThemeService.defaultTextTheme,
+      ),
+    );
+
+    addTheme(
+      name: "halloween",
+      data: xTheme.getTheme(
+        mode: ThemeMode.dark,
+        primary: const Color(0xFF3a3630),
+        secondary: const Color(0xFFa85c06),
+        background: const Color(0xFF110f0f),
+        // backgroundAlt: Color(0xFF282627),
+        cardColor: const Color(0xFF3a3630),
+        // containerColor: Colors.white.withOpacity(0.7),
+
+        textTheme: ThemeService.defaultTextTheme,
       ),
     );
   }

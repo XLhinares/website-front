@@ -9,14 +9,11 @@ class Blog extends Media {
     required super.name,
     required super.date,
     super.relevance,
-    List<String>? tags,
-    String? previewPath,
-    String? summary,
+    super.tags,
+    super.previewPath,
+    super.summary,
   }) : super(
           type: MediaType.blog,
-          tags: tags,
-          previewPath: previewPath,
-          summary: summary,
         );
 
   /// Factory instantiate the [Blog] from a json-like map.

@@ -18,6 +18,8 @@ if [ $VERSION_NUMBER_PUBSPEC = $VERSION_NUMBER_CHANGELOG ]; then
   echo "${G}Version numbers are matching! (v$VERSION_NUMBER_CHANGELOG)$C";
   exit 0;
 else
-  echo "${R}The version numbers do NOT match! (v$VERSION_NUMBER_CHANGELOG & v$VERSION_NUMBER_PUBSPEC)$C";
+  echo "${R}The version numbers do NOT match!
+      CHANGELOG: v$VERSION_NUMBER_CHANGELOG
+      PUBSPEC:   v$VERSION_NUMBER_PUBSPEC$C";
   exit 2;
 fi;

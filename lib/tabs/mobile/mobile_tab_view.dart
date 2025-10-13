@@ -4,10 +4,10 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 
 import "../../classes/dataclass/app_mode.dart";
-import "../../components/components.dart";
-import "../../utils/utils.dart";
-import "../../widgets/widgets.dart";
-import "../tabs.dart";
+import "../../components/exports.dart";
+import "../../utils/exports.dart";
+import "../../widgets/exports.dart";
+import "../exports.dart";
 
 /// The app body as it should
 class MobileTabView extends StatelessWidget {
@@ -35,7 +35,7 @@ class MobileTabView extends StatelessWidget {
           controller: router.pageController,
           children: const [
             MobileHome(),
-            MobileBlogs(),
+            // MobileBlogs(),
             MobileProjects(),
             MobileContact(),
             MobileSettings(),
@@ -48,7 +48,7 @@ class MobileTabView extends StatelessWidget {
           () => BottomNavigationBar(
             onTap: (index) => router.push(mode: AppMode.mainTabs[index]),
             currentIndex: router.modeIndex,
-            backgroundColor: context.theme.colorScheme.background,
+            backgroundColor: context.theme.colorScheme.surface,
             unselectedItemColor: Colors.grey,
             selectedItemColor: context.theme.colorScheme.secondary,
             items: _navigationItems,
@@ -66,26 +66,27 @@ class MobileTabView extends StatelessWidget {
             icon: Icon(
               tab.icon,
             ),
-            label: tab.name.capitalizeFirst,
+            label: tab.name.tr.capitalizeFirst,
           ))
       .toList();
 
-  /// Returns the usual [AnimatedBackground] wrapped in a [GetBuilder] in order to
+  /// Returns the usual [AnimatedBackgroundWave] wrapped in a [GetBuilder] in order to
   /// make the background disappear in specific situations.
   Widget _responsiveBackground(BuildContext context) {
     return GetBuilder(
       init: router,
-      builder: (_) => AnimatedBackground(
-        scale: _backgroundScale(),
+      builder: (_) => AnimatedBackgroundWave(
+        scale:
+            router.mode == AppMode.projects && router.project != null ? 0 : 0.3,
       ),
     );
   }
 
   // METHODS ===================================================================
 
-  double _backgroundScale() {
-    if (router.mode == AppMode.projects && router.project != null) return 0;
-    if (router.mode == AppMode.blogs && router.blog != null) return 0;
-    return 0.3;
-  }
+  // double _backgroundScale() {
+  //   if (router.mode == AppMode.projects && router.project != null) return 0;
+  //   if (router.mode == AppMode.blogs && router.blog != null) return 0;
+  //   return 0.3;
+  // }
 }

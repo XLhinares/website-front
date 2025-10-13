@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 
+import "../../components/misc/background.dart";
 import "frame_fit.dart";
 
 /// A Scaffold that fits its body within a central column if needed.
@@ -34,7 +35,7 @@ class ScaffoldFit extends StatelessWidget {
 
   /// Returns an instance of [ScaffoldFit] matching the given parameters.
   const ScaffoldFit({
-    Key? key,
+    super.key,
     this.appBar,
     required this.body,
     this.background,
@@ -42,7 +43,7 @@ class ScaffoldFit extends StatelessWidget {
     this.bottomNavigationBar,
     this.padding,
     this.alignment = Alignment.center,
-  }) : super(key: key);
+  });
 
 // BUILD =====================================================================
 
@@ -52,7 +53,7 @@ class ScaffoldFit extends StatelessWidget {
       appBar: appBar,
       body: FrameFit(
         padding: padding,
-        background: background,
+        background: background ?? const ScaffoldBackground(),
         overlay: overlay,
         alignment: alignment,
         child: body,

@@ -8,6 +8,9 @@ class MediaContentType {
   /// The unique [MediaContentType.image].
   static const MediaContentType image = MediaContentType._internal("image");
 
+  /// The unique [MediaContentType.github].
+  static const MediaContentType github = MediaContentType._internal("github");
+
   /// The unique [MediaContentType.other].
   static const MediaContentType other = MediaContentType._internal("other");
 
@@ -15,6 +18,7 @@ class MediaContentType {
   static const values = [
     text,
     image,
+    github,
     other,
   ];
 
@@ -34,6 +38,8 @@ class MediaContentType {
         return MediaContentType.text;
       case "image":
         return MediaContentType.image;
+      case "github":
+        return MediaContentType.github;
       default:
         return MediaContentType.other;
     }

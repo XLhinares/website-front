@@ -32,14 +32,14 @@ class FrameFit extends StatelessWidget {
 
   /// Returns an instance of [FrameFit] matching the given parameters.
   const FrameFit({
-    Key? key,
+    super.key,
     required this.child,
     this.background,
     this.overlay,
     this.padding,
     this.aspectRatio = frameRatio,
     this.alignment = Alignment.center,
-  }) : super(key: key);
+  });
 
 // BUILD =====================================================================
 

@@ -35,7 +35,7 @@ class MobileTabView extends StatelessWidget {
           controller: router.pageController,
           children: const [
             MobileHome(),
-            MobileBlogs(),
+            // MobileBlogs(),
             MobileProjects(),
             MobileContact(),
             MobileSettings(),
@@ -48,7 +48,7 @@ class MobileTabView extends StatelessWidget {
           () => BottomNavigationBar(
             onTap: (index) => router.push(mode: AppMode.mainTabs[index]),
             currentIndex: router.modeIndex,
-            backgroundColor: context.theme.colorScheme.background,
+            backgroundColor: context.theme.colorScheme.surface,
             unselectedItemColor: Colors.grey,
             selectedItemColor: context.theme.colorScheme.secondary,
             items: _navigationItems,

@@ -43,7 +43,7 @@ class BackgroundPreview extends StatelessWidget {
                   right: 0,
                   bottom: 0,
                   child: Container(
-                    color: context.theme.colorScheme.background.withAlpha(100),
+                    color: context.theme.colorScheme.surface.withAlpha(100),
                     padding: EdgeInsets.all(XLayout.paddingXS),
                     child: Center(
                         child: AutoSizeText(

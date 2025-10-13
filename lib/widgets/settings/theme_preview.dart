@@ -35,8 +35,8 @@ class ThemePreview extends StatelessWidget {
           colors: [
             data.colorScheme.primary,
             data.colorScheme.primary,
-            data.colorScheme.background,
-            data.colorScheme.background,
+            data.colorScheme.surface,
+            data.colorScheme.surface,
           ],
           stops: const [
             0,
@@ -57,7 +57,7 @@ class ThemePreview extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
-              color: context.theme.colorScheme.background.withAlpha(100),
+              color: context.theme.colorScheme.surface.withAlpha(100),
               padding: EdgeInsets.all(XLayout.paddingXS),
               child: Center(child: Text(name)),
             )

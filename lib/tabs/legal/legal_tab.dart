@@ -1,11 +1,13 @@
 import "package:flutter/material.dart";
-import "package:flutter_markdown/flutter_markdown.dart";
 import "package:get/get.dart";
-import "package:url_launcher/url_launcher.dart";
+import "package:google_fonts/google_fonts.dart";
+import "package:gpt_markdown/gpt_markdown.dart";
+// import "package:url_launcher/url_launcher.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../components/exports.dart";
 import "../../utils/globals.dart";
+import "../../utils/tools.dart";
 import "../../widgets/animations/loading_indicator.dart";
 import "../../widgets/exports.dart";
 
@@ -38,9 +40,6 @@ class TabLegal extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScaffoldFit(
       alignment: Alignment.topCenter,
-      background: const AnimatedBackgroundWave(
-        scale: 0.3,
-      ),
       // overlay: ButtonsOverlay(),
       padding: EdgeInsets.symmetric(horizontal: XLayout.paddingL),
       body: IfAppIsReady(
@@ -69,7 +68,7 @@ class TabLegal extends StatelessWidget {
               ),
               XLayout.verticalL,
               XContainer(
-                padding: EdgeInsets.zero,
+                padding: EdgeInsets.all(XLayout.paddingM),
                 child: FutureBuilder<String>(
                     future: content,
                     builder: (context, snapshot) {
@@ -83,34 +82,38 @@ class TabLegal extends StatelessWidget {
                         return Text("legal_content_error".tr);
                       }
 
-                      return Markdown(
-                        data: snapshot.data!,
-                        physics: const NeverScrollableScrollPhysics(),
-                        padding: EdgeInsets.all(XLayout.paddingL),
-                        selectable: true,
-                        shrinkWrap: true,
-                        softLineBreak: false,
-                        styleSheetTheme: MarkdownStyleSheetBaseTheme.material,
-                        styleSheet: MarkdownStyleSheet(
-                          blockSpacing: XLayout.paddingM,
-                          h2: context.textTheme.titleLarge,
-                        ),
-                        onTapLink: (text, href, title) async {
-                          if (href == null) return;
-                          final link = Uri.parse(href);
+                      return GptMarkdown(
+                        snapshot.data!.withXeppelinMD,
 
-                          if (link.host == "xeppelin.org") {
-                            // The link matches a route.
-                            router.push(path: link.path.replaceAll("/#", ""));
-                          } else {
-                            // The link redirects to another website.
-                            if (await canLaunchUrl(link)) {
-                              await launchUrl(link);
-                            } else {
-                              throw "Could not launch $link";
-                            }
-                          }
-                        },
+                        style: GoogleFonts.sono().copyWith(
+                            fontSize:
+                                context.textTheme.bodyMedium!.fontSize! - 2),
+                        // physics: const NeverScrollableScrollPhysics(),
+                        // padding: EdgeInsets.all(XLayout.paddingL),
+                        // selectable: true,
+                        // shrinkWrap: true,
+                        // softLineBreak: false,
+                        // styleSheetTheme: MarkdownStyleSheetBaseTheme.material,
+                        // styleSheet: MarkdownStyleSheet(
+                        //   blockSpacing: XLayout.paddingM,
+                        //   h2: context.textTheme.titleLarge,
+                        // ),
+                        // onTapLink: (text, href, title) async {
+                        //   if (href == null) return;
+                        //   final link = Uri.parse(href);
+
+                        //   if (link.host == "xeppelin.org") {
+                        //     // The link matches a route.
+                        //     router.push(path: link.path.replaceAll("/#", ""));
+                        //   } else {
+                        //     // The link redirects to another website.
+                        //     if (await canLaunchUrl(link)) {
+                        //       await launchUrl(link);
+                        //     } else {
+                        //       throw "Could not launch $link";
+                        //     }
+                        //   }
+                        // },
                       );
                     }),
               ),

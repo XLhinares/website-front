@@ -38,9 +38,10 @@ class BodyMenu extends StatelessWidget {
 
             const CookiesCard(),
 
-            XLayout.verticalM,
-
-            const TestCard(),
+            // // The test was a way to verify access to the internet.
+            // // It doesn't appear any more on the website because users don't understand what it's for.
+            // XLayout.verticalM,
+            // const TestCard(),
           ],
         ),
       ],

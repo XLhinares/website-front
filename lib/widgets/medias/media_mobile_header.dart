@@ -109,10 +109,10 @@ class MediaMobileHeader<T extends Media> extends StatelessWidget {
             end: Alignment.bottomCenter,
             colors: [
               Colors.transparent,
-              context.theme.colorScheme.background.withOpacity(0.6),
-              context.theme.colorScheme.background.withOpacity(0.9),
-              context.theme.colorScheme.background.withOpacity(0.95),
-              context.theme.colorScheme.background,
+              context.theme.colorScheme.surface.withValues(alpha: 0.6),
+              context.theme.colorScheme.surface.withValues(alpha: 0.9),
+              context.theme.colorScheme.surface.withValues(alpha: 0.95),
+              context.theme.colorScheme.surface,
             ],
             stops: const [
               0,

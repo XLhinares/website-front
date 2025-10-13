@@ -95,7 +95,7 @@ class ContactColumn extends StatelessWidget {
             details: _controllerDetails.text,
           );
 
-          // if (!context.mounted) return;
+          if (!context.mounted) return;
           if (success) {
             //ignore: use_build_context_synchronously
             XSnackbar.text(

@@ -3,6 +3,7 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../utils/exports.dart";
+import "../../widgets/interactables/x_flat_button.dart";
 
 /// A card explaining what how this site uses cookies.
 class CookiesCard extends StatelessWidget {
@@ -40,26 +41,23 @@ class CookiesCard extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        TextButton(
-                          style: PresetStyles.secondaryButtonStyle(context),
-                          onPressed: () {
+                        Expanded(
+                          child: SizedBox(),
+                        ),
+                        XFlatButton.text(
+                          onTap: () {
                             cookies.cookieBannerDismissed.value = true;
                             cookies.cookies.value = false;
                           },
-                          child: Text(
-                            "cookies_decline".tr,
-                          ),
+                          text: "cookies_decline".tr,
                         ),
                         XLayout.horizontalS,
-                        TextButton(
-                          style: PresetStyles.secondaryButtonStyle(context),
-                          onPressed: () {
+                        XFlatButton.text(
+                          onTap: () {
                             cookies.cookieBannerDismissed.value = true;
                             cookies.cookies.value = true;
                           },
-                          child: Text(
-                            "cookies_accept".tr,
-                          ),
+                          text: "cookies_accept".tr,
                         ),
                       ],
                     )

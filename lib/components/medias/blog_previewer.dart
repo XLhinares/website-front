@@ -52,7 +52,7 @@ class BlogPreviewer extends StatelessWidget {
                 children: [
                   Container(
                     color:
-                        context.theme.colorScheme.background.withOpacity(0.5),
+                        context.theme.colorScheme.surface.withValues(alpha: .5),
                     padding: EdgeInsets.all(XLayout.paddingM),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,

@@ -1,3 +1,23 @@
+## 2.2.0
+
+- :sparkles: Removed blog support as it doesn't have enough content.
+- :sparkles: Removed the test card as it was deemed confusing by users.
+- :sparkles: Added [MediaContentType.github] to display content from github.
+- :sparkles: Added [fetchFile] method to the [APIService].
+
+- :art: Added an extension `XeppelinMD` on `String` to support some custom Markdown. (used in the legal tabs)
+- :art: Added a [FlatButton] widget because the [TextButton] were not working properly on Firefox
+
+- :construction_worker: New `.env` file for the SSH identifier.
+- :construction_worker: New script to read the `.env` variables.
+- :construction_worker: Better formatting on version numbers script.
+
+- :heavy_plus_sign: Upgraded the dependencies.
+- :heavy_plus_sign: Removed `flutter_markdown` for being deprecated.
+- :heavy_plus_sign: Added `gpt_markdown`.
+
+- :fire: Removed some unused assets
+
 ## 2.1.0
 
 - :bento: Added the logo as a local svg asset to save resources on fetching.

@@ -35,7 +35,7 @@ class ScaffoldFit extends StatelessWidget {
 
   /// Returns an instance of [ScaffoldFit] matching the given parameters.
   const ScaffoldFit({
-    Key? key,
+    super.key,
     this.appBar,
     required this.body,
     this.background,
@@ -43,7 +43,7 @@ class ScaffoldFit extends StatelessWidget {
     this.bottomNavigationBar,
     this.padding,
     this.alignment = Alignment.center,
-  }) : super(key: key);
+  });
 
 // BUILD =====================================================================
 

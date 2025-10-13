@@ -12,8 +12,7 @@ class BackgroundData {
   static BackgroundData none = BackgroundData._internal(
     name: "none",
     builder: (context) => null,
-    preview: (context) =>
-        ColoredBox(color: context.theme.colorScheme.background),
+    preview: (context) => ColoredBox(color: context.theme.colorScheme.surface),
   );
 
   /// An animated wave moving in the background.

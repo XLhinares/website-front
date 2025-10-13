@@ -12,7 +12,7 @@ class BodyTitle extends StatelessWidget {
   // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [BodyTitle] matching the given parameters.
-  const BodyTitle({Key? key}) : super(key: key);
+  const BodyTitle({super.key});
 
   // BUILD =====================================================================
 

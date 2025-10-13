@@ -1,5 +1,3 @@
-import "dart:ui";
-
 import "package:flutter/gestures.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
@@ -94,12 +92,12 @@ class AutoColorText extends StatelessWidget {
   /// Returns an instance of [AutoColorText] matching the given parameters.
   const AutoColorText(
     this.text, {
-    Key? key,
+    super.key,
     this.style,
     this.highlightColor,
     this.maxLines,
     this.overflow,
-  }) : super(key: key);
+  });
 
   // BUILD =====================================================================
 

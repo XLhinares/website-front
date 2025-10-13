@@ -5,8 +5,6 @@
 echo "Publishing the latest web build to the remote repository."
 cd build/web/ || exit
 git add .
-echo "Enter a commit message."
-read -r COMMIT_MESSAGE
-git commit -m "$COMMIT_MESSAGE"
-git push origin main
-git push production main
+NOW="$(date +'%Y/%m/%d-%H:%M:%S')"
+git commit -m "$NOW: New build"
+git push production master

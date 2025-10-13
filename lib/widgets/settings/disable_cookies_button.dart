@@ -3,6 +3,7 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../utils/exports.dart";
+import "../interactables/x_flat_button.dart";
 
 /// A button allowing the user to delete and disable the cookies.
 class DisableCookiesButton extends StatelessWidget {
@@ -17,10 +18,8 @@ class DisableCookiesButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return XInkContainer(
+    return XFlatButton.text(
       padding: EdgeInsets.all(XLayout.paddingS),
-      color: context.theme.colorScheme.secondary,
-      enableShadow: false,
       onTap: () {
         cookies.cookies.value = false;
         XSnackbar.text(
@@ -29,12 +28,10 @@ class DisableCookiesButton extends StatelessWidget {
           content: "settings_disable_cookie_snackbar_content".tr,
         ).show(context);
       },
-      child: Text(
-        "settings_disable_cookies".tr,
-        style: context.textTheme.labelMedium?.copyWith(
-          fontWeight: FontWeight.w500,
-        ),
-      ),
+      text: "settings_disable_cookies".tr,
+      // textStyle: context.textTheme.labelMedium?.copyWith(
+      //   fontWeight: FontWeight.w500,
+      // ),
     );
   }
 

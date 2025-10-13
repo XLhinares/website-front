@@ -51,7 +51,7 @@ class AppMode {
   /// The different possible values of [AppMode].
   static const values = [
     home,
-    blogs,
+    // blogs,
     projects,
     contact,
     legal,
@@ -62,7 +62,7 @@ class AppMode {
   /// The main tabs of the app.
   static const mainTabs = [
     home,
-    blogs,
+    // blogs,
     projects,
     contact,
     settings,

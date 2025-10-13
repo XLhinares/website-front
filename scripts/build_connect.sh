@@ -1,6 +1,9 @@
 #!/bin/sh
 
 # Author: Xavier Lhinares
+SSH_USER=$(./scripts/utils.sh --getenv SSH_USER)
+SSH_HOST=$(./scripts/utils.sh --getenv SSH_HOST)
+
 
 cd build/web/ || exit
 if [ -d ".git" ]; then
@@ -10,7 +13,7 @@ fi
 
 echo "Recreating the git folder."
 git init .
-git remote add production ssh://lhta5458@boeuf.o2switch.net:22/home/lhta5458/xeppelin/repositories/bare-front.git/ && echo "Successfully created remote [production]"
+git remote add production ssh://$SSH_USER@$SSH_HOST:22/home/$SSH_USER/xeppelin/repositories/bare-home.git/ && echo "Successfully created remote [production]"
 git fetch
 git checkout -b master
 git add .

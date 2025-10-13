@@ -7,6 +7,6 @@ class PresetStyles {
   static ButtonStyle? secondaryButtonStyle(BuildContext context) =>
       context.theme.textButtonTheme.style?.copyWith(
         backgroundColor:
-            MaterialStatePropertyAll(context.theme.colorScheme.secondary),
+            WidgetStatePropertyAll(context.theme.colorScheme.secondary),
       );
 }

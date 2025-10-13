@@ -16,7 +16,7 @@ class SettingsLocale extends StatelessWidget {
   // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [SettingsLocale] matching the given parameters.
-  SettingsLocale({Key? key}) : super(key: key);
+  SettingsLocale({super.key});
 
   // BUILD =====================================================================
 
@@ -39,11 +39,11 @@ class SettingsLocale extends StatelessWidget {
         width: XLayout.paddingL * 3,
         child: XContainer(
           enableShadow: false,
-          color: context.theme.colorScheme.background,
+          color: context.theme.colorScheme.surface,
           margin: EdgeInsets.zero,
           padding: EdgeInsets.symmetric(horizontal: XLayout.paddingS),
-          child: TypeAheadFormField<String>(
-            textFieldConfiguration: TextFieldConfiguration(
+          child: TypeAheadField<String>(
+            builder: (context, controller, focusNode) => TextField(
               controller: _controller,
               style: context.textTheme.bodyMedium,
               decoration: const InputDecoration(
@@ -73,7 +73,7 @@ class SettingsLocale extends StatelessWidget {
                 style: context.textTheme.bodyMedium,
               ),
             ),
-            onSuggestionSelected: (suggestion) {
+            onSelected: (suggestion) {
               _controller.text = suggestion;
               cookies.locale.value = suggestion;
             },

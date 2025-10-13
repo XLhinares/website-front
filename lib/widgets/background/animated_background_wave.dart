@@ -13,9 +13,9 @@ class AnimatedBackgroundWave extends StatelessWidget {
 
   /// Returns an instance of [AnimatedBackgroundWave] matching the given parameters.
   const AnimatedBackgroundWave({
-    Key? key,
+    super.key,
     this.scale = 1,
-  }) : super(key: key);
+  });
 
   // BUILD =====================================================================
 

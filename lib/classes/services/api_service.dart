@@ -73,11 +73,34 @@ class APIService {
         errorMessage: "Fetching the JSON object from [$url] failed.",
       );
 
+  /// Fetches a text file object from the given URL.
+  ///
+  /// Parameters:
+  /// * url: The path to the resource; cannot be null.
+  Future<String> fetchFile(Uri? url) async => tryWrapper<String>(
+        () async {
+          assert(url != null, "URL cannot be [null].");
+
+          printInfo(info: "Fetching file resource from: '$url'");
+          final http.Response response = await http.get(url!);
+
+          if (response.statusCode < 200 || response.statusCode >= 400) {
+            throw HttpException(
+                "Response status code is ${response.statusCode}");
+          }
+
+          final data = response.body;
+
+          return data;
+        },
+        errorMessage: "Fetching the file object from [$url] failed.",
+      );
+
   /// A request to test the connection to the API.
   Future<void> test(BuildContext? context) async {
     TextStyle? titleStyle = context?.textTheme.titleMedium;
     TextStyle? contentStyle = context?.textTheme.bodyMedium;
-    Color color = context?.theme.colorScheme.background ?? Colors.black12;
+    Color color = context?.theme.colorScheme.surface ?? Colors.black12;
 
     try {
       final uri = Uri.parse("https://catfact.ninja/fact");

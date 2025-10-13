@@ -53,11 +53,11 @@ compile:
 	@flutter build web
 
 ## Re-initializes git in the build repository, connects it to the remote and publishes the current build.
-connect:
+server_connect:
 	@ ./scripts/build_connect.sh
 
 ## Pushes the latest build to the [website-build] repository.
-publish:
+server_publish:
 	@ ./scripts/build_publish.sh
 
 

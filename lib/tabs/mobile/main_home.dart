@@ -2,17 +2,22 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
+import "../../classes/dataclass/route.dart";
 import "../../components/exports.dart";
+import "../../widgets/body/tab.dart";
 import "../../widgets/exports.dart";
 
 /// The home tab
-class MobileHome extends StatelessWidget {
+class MobileMainHome extends RouteTab {
   // VARIABLES =================================================================
+
+  @override
+  final AppRoute route = AppRoute.MAIN_HOME;
 
   // CONSTRUCTOR ===============================================================
 
-  /// Returns an instance of [MobileHome] matching the given parameters.
-  const MobileHome({
+  /// Returns an instance of [MobileMainHome] matching the given parameters.
+  MobileMainHome({
     super.key,
   });
 
@@ -20,15 +25,18 @@ class MobileHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return Padding(
       padding: EdgeInsets.all(XLayout.paddingM),
-      children: [
-        XeppelinLogo(
-          size: Get.height * 0.3,
-        ),
-        XLayout.verticalM,
-        const HomeDescription(),
-      ],
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          XeppelinLogo(
+            size: Get.height * 0.3,
+          ),
+          XLayout.verticalM,
+          const HomeDescription(),
+        ],
+      ),
     );
   }
 

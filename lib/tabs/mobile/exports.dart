@@ -1,6 +1,6 @@
-export "mobile_blogs.dart";
-export "mobile_projects.dart";
-export "mobile_contacts.dart";
-export "mobile_home.dart";
-export "mobile_settings.dart";
-export "mobile_tab_view.dart";
+export "main_blogs.dart";
+export "main_projects.dart";
+export "main_contact.dart";
+export "main_home.dart";
+export "main_settings.dart";
+export "page_home.dart";

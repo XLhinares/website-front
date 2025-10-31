@@ -4,13 +4,13 @@ import "package:x_containers/x_containers.dart";
 import "../../components/exports.dart";
 
 /// The content of the body in the "Settings" mode.
-class DesktopSettings extends StatelessWidget {
+class DesktopMainSettings extends StatelessWidget {
   // VARIABLES =================================================================
 
   // CONSTRUCTOR ===============================================================
 
-  /// Returns a [DesktopSettings] matching the given parameters.
-  const DesktopSettings({super.key});
+  /// Returns a [DesktopMainSettings] matching the given parameters.
+  const DesktopMainSettings({super.key});
 
   // BUILD =====================================================================
 

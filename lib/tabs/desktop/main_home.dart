@@ -6,13 +6,13 @@ import "../../components/exports.dart";
 import "../../widgets/exports.dart";
 
 /// The content of the body in the "Home" mode.
-class DesktopHome extends StatelessWidget {
+class DesktopMainHome extends StatelessWidget {
   // VARIABLES =================================================================
 
   // CONSTRUCTOR ===============================================================
 
-  /// Returns an instance of [DesktopHome] matching the given parameters.
-  const DesktopHome({
+  /// Returns an instance of [DesktopMainHome] matching the given parameters.
+  const DesktopMainHome({
     super.key,
   });
 

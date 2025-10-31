@@ -1,10 +1,9 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:google_fonts/google_fonts.dart";
 import "package:gpt_markdown/gpt_markdown.dart";
-// import "package:url_launcher/url_launcher.dart";
 import "package:x_containers/x_containers.dart";
 
+import "../../classes/services/services.dart";
 import "../../components/exports.dart";
 import "../../utils/globals.dart";
 import "../../utils/tools.dart";
@@ -85,7 +84,8 @@ class TabLegal extends StatelessWidget {
                       return GptMarkdown(
                         snapshot.data!.withXeppelinMD,
 
-                        style: GoogleFonts.sono().copyWith(
+                        style: context.textTheme.bodyMedium!.copyWith(
+                            fontFamily: ThemeService.codeFontFamily,
                             fontSize:
                                 context.textTheme.bodyMedium!.fontSize! - 2),
                         // physics: const NeverScrollableScrollPhysics(),

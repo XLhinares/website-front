@@ -1,19 +1,19 @@
 import "package:flutter/material.dart";
-import "package:flutter_pagewise/flutter_pagewise.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/medias.dart";
 import "../../components/exports.dart";
+import "../../components/projects/projects_grid.dart";
 import "../../utils/exports.dart";
 import "../../widgets/medias/exports.dart";
 
 /// The content of the body in the "ProjectPreviews" mode.
-class DesktopProjects extends StatelessWidget {
+class DesktopMainProjects extends StatelessWidget {
   // CONSTRUCTOR ===============================================================
 
-  /// Returns a [DesktopProjects] matching the given parameters.
-  const DesktopProjects({
+  /// Returns a [DesktopMainProjects] matching the given parameters.
+  const DesktopMainProjects({
     super.key,
   });
 
@@ -26,17 +26,7 @@ class DesktopProjects extends StatelessWidget {
       builder: (context) => AnimatedSwitcher(
         duration: animDurationShort,
         child: router.project == null
-            ? PagewiseGridView<Project>.count(
-                crossAxisCount: 3,
-                mainAxisSpacing: XLayout.paddingM,
-                crossAxisSpacing: XLayout.paddingM,
-                childAspectRatio: 3 / 4,
-                padding: EdgeInsets.symmetric(vertical: XLayout.paddingL),
-                physics: const BouncingScrollPhysics(),
-                pageLoadController: projectLoaderController.controller,
-                itemBuilder: (context, entry, index) =>
-                    _projectBuilder(context, entry),
-              )
+            ? ProjectsGridView()
             : MediaFocus<Project>(
                 media: user.getProject(router.project!),
                 headerBuilder: (media, scrollController) =>
@@ -54,10 +44,4 @@ class DesktopProjects extends StatelessWidget {
   }
 
   // METHODS ===================================================================
-
-  Widget _projectBuilder(BuildContext context, Project project) =>
-      ProjectPreviewer(
-        project: project,
-        onTap: () => router.selectProject(project.id),
-      );
 }

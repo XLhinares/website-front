@@ -27,12 +27,12 @@ class ResponsiveHome extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth > 1000) {
-          return const DesktopTabManager();
+          return const DesktopPageHome();
         }
         // } else if (ResponsiveWrapper.of(context).isLargerThan(MOBILE)) {
         //   return ;
         // }
-        return const MobileTabView();
+        return const MobilePageHome();
       },
     );
   }

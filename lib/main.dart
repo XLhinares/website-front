@@ -4,7 +4,7 @@ import "package:get/get.dart";
 import "package:get_storage/get_storage.dart";
 import "package:x_containers/x_containers.dart";
 
-import "classes/routes/custom_route.dart";
+import "classes/dataclass/route.dart";
 import "tabs/exports.dart";
 import "utils/globals.dart";
 
@@ -43,8 +43,8 @@ void main() async {
     themeMode: ThemeMode.light,
 
     // Run
-    initialRoute: "/",
-    getPages: router.routes.map((e) => e.page).toList(),
+    initialRoute: "/main",
+    getPages: router.allRoutes.map((e) => e.page).toList(),
 
     onGenerateRoute: (RouteSettings routeSettings) {
       if (kDebugMode) {
@@ -64,6 +64,6 @@ void main() async {
       );
     },
 
-    unknownRoute: CustomRoute.NOT_FOUND.page,
+    unknownRoute: AppRoute.NOT_FOUND.page,
   ));
 }

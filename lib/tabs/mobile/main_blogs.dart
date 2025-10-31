@@ -3,17 +3,24 @@ import "package:flutter_pagewise/flutter_pagewise.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
+import "../../classes/dataclass/route.dart";
 import "../../classes/medias/medias.dart";
 import "../../components/exports.dart";
 import "../../utils/exports.dart";
+import "../../widgets/body/tab.dart";
 import "../../widgets/medias/exports.dart";
 
 /// The "project" tab adapted for mobile.
-class MobileBlogs extends StatelessWidget {
+class MobileMainBlogs extends RouteTab {
+  // VARIABLES =================================================================
+
+  @override
+  final AppRoute route = AppRoute.MAIN_BLOGS;
+
   // CONSTRUCTOR ===============================================================
 
-  /// Returns a [MobileBlogs] matching the given parameters.
-  const MobileBlogs({super.key});
+  /// Returns a [MobileMainBlogs] matching the given parameters.
+  MobileMainBlogs({super.key});
 
   // BUILD =====================================================================
 

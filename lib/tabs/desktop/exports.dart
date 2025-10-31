@@ -1,6 +1,6 @@
-export "desktop_home.dart";
-export "desktop_blogs.dart";
-export "desktop_projects.dart";
-export "desktop_contents.dart";
-export "desktop_contact.dart";
-export "desktop_tab_manager.dart";
+export "main_home.dart";
+export "main_blogs.dart";
+export "main_projects.dart";
+export "main_contents.dart";
+export "main_contact.dart";
+export "page_home.dart";

@@ -9,11 +9,11 @@ import "../../utils/exports.dart";
 import "../../widgets/medias/exports.dart";
 
 /// The content of the body in the "BlogPreviews" mode.
-class DesktopBlogs extends StatelessWidget {
+class DesktopMainBlogs extends StatelessWidget {
   // CONSTRUCTOR ===============================================================
 
-  /// Returns a [DesktopBlogs] matching the given parameters.
-  const DesktopBlogs({
+  /// Returns a [DesktopMainBlogs] matching the given parameters.
+  const DesktopMainBlogs({
     super.key,
   });
 
@@ -25,7 +25,7 @@ class DesktopBlogs extends StatelessWidget {
       init: router,
       builder: (context) => AnimatedSwitcher(
         duration: animDurationShort,
-        child: router.blog == null
+        child: router.project == null
             ? PagewiseListView<Blog>(
                 padding: EdgeInsets.symmetric(vertical: XLayout.paddingL),
                 pageLoadController: blogLoaderController.controller,
@@ -35,7 +35,7 @@ class DesktopBlogs extends StatelessWidget {
                     _blogBuilder(context, entry),
               )
             : MediaFocus<Blog>(
-                media: user.getBlog(router.blog!),
+                media: user.getBlog(router.project!),
                 headerBuilder: (media, scrollController) =>
                     MediaDesktopHeader<Blog>(
                   media: media,
@@ -44,7 +44,7 @@ class DesktopBlogs extends StatelessWidget {
                 partsBuilder: (content) =>
                     MediaDesktopContent(content: content),
                 listViewVerticalPadding: XLayout.paddingL,
-                onBack: () => router.selectBlog(null),
+                onBack: () => router.selectProject(null),
               ),
       ),
     );
@@ -54,7 +54,7 @@ class DesktopBlogs extends StatelessWidget {
 
   Widget _blogBuilder(BuildContext context, Blog blog) => MediaWidePreview(
         media: blog,
-        onTap: () => router.selectBlog(blog.id),
+        onTap: () => router.selectProject(blog.id),
         // margin: EdgeInsets.only(bottom: XLayout.paddingL),
       );
 }

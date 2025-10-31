@@ -27,6 +27,10 @@ class CustomTranslations extends Translations {
       "tab_settings_description": "Customize the site.",
 
       // PROJECTS --------------------------------------------------------------
+      "projects_title": "Projects",
+      "projects_description":
+          "A list of projects demonstrating various skills.",
+      "display_more": "Display more...",
 
       // CONTACT ---------------------------------------------------------------
       "contact_title": "Contact form",
@@ -75,6 +79,8 @@ class CustomTranslations extends Translations {
       "cookie_policy_title": "Cookie policy",
       "privacy_policy_title": "Data policy",
       "legal_mentions_title": "Legal mentions",
+      "legal_content_error": "The content you asked for couldn't be reached."
+          "Sorry for the inconvenience and please try again later.",
 
       // BUTTONS ---------------------------------------------------------------
 
@@ -134,6 +140,10 @@ class CustomTranslations extends Translations {
       "tab_settings_description": "Configurer le site.",
 
       // PROJECTS --------------------------------------------------------------
+      "projects_title": "Projets",
+      "projects_description":
+          "Une liste de projets illustrant différentes compétences.",
+      "display_more": "Afficher plus...",
 
       // CONTACT ---------------------------------------------------------------
       "contact_title": "Formulaire de contact",
@@ -182,6 +192,9 @@ class CustomTranslations extends Translations {
       "cookie_policy_title": "Politique en matière de cookies",
       "privacy_policy_title": "Politique de confidentialité",
       "legal_mentions_title": "Mentions légales",
+      "legal_content_error":
+          "Le contenu que vous cherchez est momentanemment indisponible."
+              "Désolé du desagrement causé et veuillez reessayer plus tard.",
 
       // BUTTONS ---------------------------------------------------------------
 

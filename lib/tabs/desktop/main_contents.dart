@@ -1,17 +1,15 @@
-import "dart:async";
-
 import "package:flutter/material.dart";
 
 import "../../../utils/exports.dart";
-import "desktop_settings.dart";
+import "main_settings.dart";
 import "exports.dart";
 
 /// What's inside the body. It depends on the current mode.
-class BodyContents extends StatelessWidget {
+class DesktopMainContents extends StatelessWidget {
   // CONSTRUCTOR ===============================================================
 
-  /// Returns an instance of [BodyContents] matching the given parameters.
-  const BodyContents({
+  /// Returns an instance of [DesktopMainContents] matching the given parameters.
+  const DesktopMainContents({
     super.key,
   });
 
@@ -19,12 +17,12 @@ class BodyContents extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Timer.run(() => router.animateTo(index: router.modeIndex));
+    // Timer.run(() => router.animateTo(index: router.routeIndex));
     return PageView(
       clipBehavior: Clip.none,
       scrollDirection: Axis.vertical,
       physics: const NeverScrollableScrollPhysics(),
-      controller: router.pageController,
+      controller: router.newPageController,
       children: _tabs(context),
     );
   }
@@ -32,10 +30,10 @@ class BodyContents extends StatelessWidget {
   // METHODS ===================================================================
 
   List<Widget> _tabs(BuildContext context) => const [
-        DesktopHome(),
+        DesktopMainHome(),
         // DesktopBlogs(),
-        DesktopProjects(),
-        DesktopContact(),
-        DesktopSettings(),
+        DesktopMainProjects(),
+        DesktopMainContact(),
+        DesktopMainSettings(),
       ];
 }

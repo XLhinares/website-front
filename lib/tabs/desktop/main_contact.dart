@@ -4,13 +4,13 @@ import "package:x_containers/x_containers.dart";
 import "../../components/exports.dart";
 
 /// The content of the body in the "Projects" mode.
-class DesktopContact extends StatelessWidget {
+class DesktopMainContact extends StatelessWidget {
   // VARIABLES =================================================================
 
   // CONSTRUCTOR ===============================================================
 
-  /// Returns a [DesktopContact] matching the given parameters.
-  const DesktopContact({
+  /// Returns a [DesktopMainContact] matching the given parameters.
+  const DesktopMainContact({
     super.key,
   });
 

@@ -124,10 +124,11 @@ class CookieService extends GetxController {
   }
 
   /// Rotates between the different supported locales.
-  Future<void> rotateLocale() async {
+  Future<void> rotateLocale({bool reverse = false}) async {
     final int index = supportedLocales.indexOf(locale.value);
+    final int length = supportedLocales.length;
     final String newLocale =
-        supportedLocales[(index + 1) % supportedLocales.length];
+        supportedLocales[(index + (reverse ? -1 : 1)) % length];
     locale.value = newLocale;
   }
 
@@ -146,10 +147,11 @@ class CookieService extends GetxController {
   }
 
   /// Toggles the app between light and dark theme.
-  Future<void> rotateTheme() async {
+  Future<void> rotateTheme({bool reverse = false}) async {
     final int index = themes.handledThemes.indexOf(theme.value);
     final int length = themes.handledThemes.length;
-    theme.value = themes.handledThemes[(index + 1) % length];
+    final int nextIndex = (index + (reverse ? -1 : 1)) % length;
+    theme.value = themes.handledThemes[nextIndex];
   }
 
   /// Performs a check on the value of [cookies] then save it to memory.

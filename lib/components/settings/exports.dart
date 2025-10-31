@@ -1,4 +1,4 @@
-export "settings_header.dart";
-export "settings_legal.dart";
-export "settings_locale.dart";
-export "settings_theme.dart";
+export "header.dart";
+export "legal.dart";
+export "locale.dart";
+export "theme.dart";

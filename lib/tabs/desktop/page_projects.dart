@@ -2,15 +2,16 @@ import "package:flutter/material.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../components/exports.dart";
+import "../../components/projects/projects_menu.dart";
 import "../../widgets/exports.dart";
-import "exports.dart";
+import "projects_content.dart";
 
 /// The
-class DesktopTabManager extends StatelessWidget {
+class DesktopPageProjects extends StatelessWidget {
   // CONSTRUCTOR ===============================================================
 
-  /// Returns an instance of [DesktopTabManager] matching the given parameters.
-  const DesktopTabManager({super.key});
+  /// Returns an instance of [DesktopPageProjects] matching the given parameters.
+  const DesktopPageProjects({super.key});
 
   // BUILD =====================================================================
 
@@ -26,14 +27,14 @@ class DesktopTabManager extends StatelessWidget {
               // TITLE -----------------------------------------------------
               SizedBox(
                 width: (constraints.maxWidth - 4 * XLayout.paddingL) / 3,
-                child: const BodyMenu(),
+                child: const ProjectsMenu(),
               ),
 
               XLayout.horizontalL,
 
               // CONTENTS --------------------------------------------------
-              const Expanded(
-                child: BodyContents(),
+              Expanded(
+                child: DesktopProjectsContent(),
               ),
             ],
           ),

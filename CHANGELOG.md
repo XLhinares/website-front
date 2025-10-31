@@ -1,3 +1,19 @@
+## 2.3.0
+
+- :fire: Got rid of the [AppMode] class and did everything with the [XRoute] (previously [CustomRoute]) since both classes were redundant and adding a lot of complexity to the project.
+
+- :sparkles: New projects tab in main page on mobile.
+- :sparkles: New settings tab in main page on mobile.
+- :sparkles: New projects page on mobile.
+- :sparkles: New projects page on desktop.
+- :sparkles: Doubling clicking on the projects tab redirects to projects page.
+
+- :art: Made the router use a new [PageController] whenever reloading the main page to avoid errors. 
+
+- :recycle: Renamed many files with "main" if they belong to the main page, or "page" if they have their own page.
+
+- :bento: Added the "sono" font to the assets.
+
 ## 2.2.1
 
 - :bug: Removed remaining `flutter_markdown` uses.

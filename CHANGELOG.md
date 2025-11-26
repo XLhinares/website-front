@@ -1,3 +1,9 @@
+## 2.3.1
+
+- :art: Added a [NoProjectSelected] widget to display on the desktop project page. 
+- :bug: Fixed a bug where the contact form wasn't displayed on desktop.
+- :globe_with_meridians: Added missing translations.
+
 ## 2.3.0
 
 - :fire: Got rid of the [AppMode] class and did everything with the [XRoute] (previously [CustomRoute]) since both classes were redundant and adding a lot of complexity to the project.

@@ -31,6 +31,9 @@ class CustomTranslations extends Translations {
       "projects_description":
           "A list of projects demonstrating various skills.",
       "display_more": "Display more...",
+      "no_project_selected_title": "No project is currently selected.",
+      "no_project_selected_content":
+          "You can find out about a project by clicking on it in the left menu or go back to the main page by clicking on the Xeppelin logo.",
 
       // CONTACT ---------------------------------------------------------------
       "contact_title": "Contact form",
@@ -144,6 +147,10 @@ class CustomTranslations extends Translations {
       "projects_description":
           "Une liste de projets illustrant différentes compétences.",
       "display_more": "Afficher plus...",
+      "no_project_selected_title":
+          "Aucun projet n'est sélectionné pour le moment.",
+      "no_project_selected_content":
+          "Vous pouvez découvrir les détails d'un projet en cliquant dessus dans le menu de gauche ou revenir au menu principal en cliquant sur le logo \"Xeppelin\".",
 
       // CONTACT ---------------------------------------------------------------
       "contact_title": "Formulaire de contact",

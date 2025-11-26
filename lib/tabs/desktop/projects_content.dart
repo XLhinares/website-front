@@ -4,6 +4,7 @@ import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/project.dart";
 import "../../components/medias/media_focus.dart";
+import "../../components/medias/no_project_selected.dart";
 import "../../utils/globals.dart";
 import "../../widgets/medias/exports.dart";
 
@@ -21,9 +22,7 @@ class DesktopProjectsContent extends StatelessWidget {
         builder: (context) => AnimatedSwitcher(
           duration: animDurationShort,
           child: router.project == null
-              ? XContainer(
-                  child: Text("no_project_selected".tr),
-                )
+              ? NoProjectSelected()
               : MediaFocus<Project>(
                   media: user.getProject(router.project!),
                   headerBuilder: (media, scrollController) =>

@@ -95,7 +95,7 @@ class MediaDesktopHeader<T extends Media> extends StatelessWidget {
             enableShadow: false,
             onTap: () {
               final type = MediaType.fromType(T);
-              if (type == MediaType.project) router.selectBlog(null);
+              if (type == MediaType.project) router.selectProject(null);
               if (type == MediaType.blog) router.selectBlog(null);
             },
             child: Row(

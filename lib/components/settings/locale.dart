@@ -1,22 +1,35 @@
 import "package:flutter/material.dart";
-import "package:flutter_typeahead/flutter_typeahead.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../utils/exports.dart";
 
-/// The settings allowing the user to set the locale of the app.
+/// The row settings allowing the user to set the locale of the app.
 class SettingsLocale extends StatelessWidget {
   // VARIABLES =================================================================
 
-  final TextEditingController _controller = TextEditingController(
-    text: cookies.locale.value,
-  );
+  /// The horizontal extent of the "selector" box
+  final double? width;
 
   // CONSTRUCTOR ===============================================================
 
-  /// Returns an instance of [SettingsLocale] matching the given parameters.
-  SettingsLocale({super.key});
+  /// The row settings allowing the user to set the locale of the app.
+  const SettingsLocale({
+    super.key,
+    this.width,
+  });
+
+  /// A preset [SettingsLocale] with a compact "selector" widget.
+  factory SettingsLocale.compact({Key? key}) => SettingsLocale(
+        key: key,
+        width: XLayout.paddingL * 4,
+      );
+
+  /// A preset [SettingsLocale] with a compact "selector" widget.
+  factory SettingsLocale.wide({Key? key}) => SettingsLocale(
+        key: key,
+        width: Get.width * 0.4,
+      );
 
   // BUILD =====================================================================
 
@@ -36,47 +49,33 @@ class SettingsLocale extends StatelessWidget {
       content: "settings_locale_description".tr,
       internalVerticalPadding: XLayout.paddingS,
       trailing: SizedBox(
-        width: XLayout.paddingL * 3,
-        child: XContainer(
-          enableShadow: false,
-          color: context.theme.colorScheme.surface,
-          margin: EdgeInsets.zero,
-          padding: EdgeInsets.symmetric(horizontal: XLayout.paddingS),
-          child: TypeAheadField<String>(
-            builder: (context, controller, focusNode) => TextField(
-              controller: _controller,
-              style: context.textTheme.bodyMedium,
-              decoration: const InputDecoration(
-                fillColor: Colors.transparent,
-                border: InputBorder.none,
-                focusedBorder: InputBorder.none,
-              ),
+        width: width ?? XLayout.paddingL * 4,
+        child: GestureDetector(
+          onHorizontalDragEnd: (details) {
+            if ((details.primaryVelocity ?? 0) > 10) {
+              cookies.rotateLocale(reverse: true);
+            } else if ((details.primaryVelocity ?? 0) < -10) {
+              cookies.rotateLocale(reverse: false);
+            }
+          },
+          child: XCard(
+            color: context.theme.colorScheme.surface,
+            internalHorizontalPadding: XLayout.paddingS,
+            internalVerticalPadding: XLayout.paddingS,
+            leading: GestureDetector(
+              child: const Icon(Icons.chevron_left),
+              onTap: () => cookies.rotateLocale(reverse: true),
             ),
-            suggestionsCallback: (pattern) {
-              List<String> res = List.from(
-                supportedLocales.where(
-                  (element) => element.contains(pattern),
-                ),
-              );
-
-              if (res.isEmpty) return supportedLocales;
-
-              // If there's only one known locale matching,
-              // the whole list is returned.
-              if (res.length == 1 && res[0] == pattern) return supportedLocales;
-
-              return res;
-            },
-            itemBuilder: (context, itemData) => ListTile(
-              title: Text(
-                itemData,
-                style: context.textTheme.bodyMedium,
-              ),
+            title: Center(
+              child: Obx(() => Text(
+                    cookies.locale.value.capitalize!,
+                    style: context.textTheme.bodyMedium,
+                  )),
             ),
-            onSelected: (suggestion) {
-              _controller.text = suggestion;
-              cookies.locale.value = suggestion;
-            },
+            trailing: GestureDetector(
+              child: const Icon(Icons.chevron_right),
+              onTap: () => cookies.rotateLocale(),
+            ),
           ),
         ),
       ),

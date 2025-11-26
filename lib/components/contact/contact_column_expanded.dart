@@ -7,7 +7,7 @@ import "../../utils/tools.dart";
 import "contact_field.dart";
 
 /// The traversable column which contains all the contact fields.
-class ContactColumn extends StatelessWidget {
+class ContactColumnExpanded extends StatelessWidget {
   // VARIABLES =================================================================
 
   final GlobalKey<FormState> _formKey = GlobalKey();
@@ -26,8 +26,8 @@ class ContactColumn extends StatelessWidget {
 
   // CONSTRUCTOR ===============================================================
 
-  /// Returns an instance of [ContactColumn] matching the given parameters.
-  ContactColumn({
+  /// Returns an instance of [ContactColumnExpanded] matching the given parameters.
+  ContactColumnExpanded({
     super.key,
   });
 
@@ -60,11 +60,13 @@ class ContactColumn extends StatelessWidget {
               controller: _controllerSubject,
             ),
             XLayout.verticalM,
-            ContactField(
-              title: "contact_details".tr,
-              maxLines: 5,
-              controller: _controllerDetails,
-              textInputAction: null,
+            Expanded(
+              child: ContactField(
+                title: "contact_details".tr,
+                maxLines: 5,
+                controller: _controllerDetails,
+                textInputAction: null,
+              ),
             ),
             XLayout.verticalM,
             XInkContainer(

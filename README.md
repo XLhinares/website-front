@@ -1,18 +1,38 @@
 # Xeppelin
 
-Xeppelin lifts your projects. 
-Our goal is to create unique and interesting projects with you. 
-Contact us so we may work together to bring your website or mobile app ideas into fruition.
+*Xeppelin lifts your projects.*
 
-## Getting Started
+This repository contains the code for the front side of the [Xeppelin](www.xeppelin.org) website.
 
-This project is a starting point for a Flutter application.
+## About the site
 
-A few resources to get you started if this is your first Flutter project:
+This website was made using Flutter with the goal of presenting the projects I have realized.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+I wanted to create a strong visual identity while making the information available in a clear and organized way.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+The name `Xeppelin` was found by mixing my usual pseudonym and the word "zeppelin" which I chose because it combines the feeling of lightness and might. These values, I hope I can make appear in my work through rock-solid-yet-epurated interface and features.
+
+## Code structure:
+
+The code is organized in the following way:
+
+```md
+- assets/:          The static fonts and images used.
+- lib/:             The source code
+    - classes/:     The data structures and other services
+    - tabs/:        The different pages (and pseudo-pages) of the website.
+    - components/:  The non-top-level composite widgets (the menu, the contact form, etc.)
+    - widgets/:     The low-level, basic widgets.
+    - utils/:       The translations and utility functions.
+- scripts/:         The various automation scripts making development easier.
+```
+
+## Hosting
+
+The website is hosted via an O2Switch server.
+I set up a remote git repository there to simplify pushing production code.
+The server also contains the remote assets and the API.
+
+## Contact Me
+
+You can contact me through the contact form on [xeppelin.org](www.xeppelin.org) or via my [LinkedIn](https://www.linkedin.com/in/xavier-lhinares).

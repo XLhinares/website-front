@@ -33,9 +33,9 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
-
-### WEB RELATED
 web/
+linux/
+android/
 
 ### Symbolication related
 app.*.symbols
@@ -48,5 +48,3 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-### LINUX RELATED
-linux/

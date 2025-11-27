@@ -3,8 +3,10 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/medias.dart";
-import "../../utils/exports.dart";
-import "../exports.dart";
+import "../../globals.dart";
+import "../images/covering_network_image.dart";
+import "../images/xeppelin_logo.dart";
+import "../text/auto_color_text.dart";
 
 /// A widget displaying all the top-level info on the given project.
 class MediaMobileHeader<T extends Media> extends StatelessWidget {
@@ -61,12 +63,12 @@ class MediaMobileHeader<T extends Media> extends StatelessWidget {
                       XLayout.verticalL,
                       XLayout.verticalL,
 
-                      // Title bloc
+                      // Title block
                       Text(
                         media.name,
                         style: context.textTheme.titleLarge,
                       ),
-                      XLayout.verticalS, // Tags bloc.
+                      XLayout.verticalS, // Tags block.
                       Wrap(
                         spacing: XLayout.paddingXS,
                         runSpacing: XLayout.paddingXS,

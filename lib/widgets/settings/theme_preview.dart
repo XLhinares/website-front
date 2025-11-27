@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../utils/exports.dart";
+import "../../globals.dart";
 
 /// A widget allowing the user to preview a theme.
 class ThemePreview extends StatelessWidget {

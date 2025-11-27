@@ -4,7 +4,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../utils/globals.dart";
+import "../../globals.dart";
 
 /// The screen at the beginning of the app that loads the required components.
 ///

@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 
-import "../../components/exports.dart";
+import "../../components/misc/not_found.dart";
 
 /// The go-to tab to display when content was not found.
 class TabNotFound extends StatelessWidget {

@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
-import "../../utils/exports.dart";
+import "../../globals.dart";
 import "legal_tab.dart";
 
 /// A tab to display the legal mentions of the website

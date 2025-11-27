@@ -2,8 +2,9 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../utils/exports.dart";
-import "../../widgets/exports.dart";
+import "../../globals.dart";
+import "../../widgets/animations/rotating_icon.dart";
+import "../../widgets/interactables/circular_button.dart";
 
 /// The different buttons that allow the using to change some settings.
 class ButtonsOverlay extends StatelessWidget {

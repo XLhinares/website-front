@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
-import "../../utils/globals.dart";
+import "../../globals.dart";
 import "legal_tab.dart";
 
 /// A tab to display the data policy of the website

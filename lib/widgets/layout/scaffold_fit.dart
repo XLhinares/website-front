@@ -16,6 +16,9 @@ class ScaffoldFit extends StatelessWidget {
   /// This can be used for floating buttons.
   final Widget? overlay;
 
+  /// An optional drawer.
+  final Widget? drawer;
+
   /// An optional bottom navigation bar.
   final Widget? bottomNavigationBar;
 
@@ -40,6 +43,7 @@ class ScaffoldFit extends StatelessWidget {
     required this.body,
     this.background,
     this.overlay,
+    this.drawer,
     this.bottomNavigationBar,
     this.padding,
     this.alignment = Alignment.center,
@@ -58,6 +62,7 @@ class ScaffoldFit extends StatelessWidget {
         alignment: alignment,
         child: body,
       ),
+      drawer: drawer,
       bottomNavigationBar: bottomNavigationBar,
     );
   }

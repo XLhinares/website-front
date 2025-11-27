@@ -3,9 +3,9 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../../classes/controllers/menu_selection_animation_controller.dart";
-import "../../../classes/dataclass/app_mode.dart";
-import "../../../utils/globals.dart";
-import "exports.dart";
+import "../../globals.dart";
+import "../../classes/dataclass/route.dart";
+import "menu_tile.dart";
 
 /// The list view containing the menu items.
 class MenuList extends StatelessWidget {
@@ -19,20 +19,21 @@ class MenuList extends StatelessWidget {
 
   /// Returns a [MenuList] matching the given parameters.
   MenuList({super.key}) {
-    _keys = List.generate(AppMode.mainTabs.length + 1, (index) => GlobalKey());
+    _keys =
+        List.generate(AppRoute.mainRoutes.length + 1, (index) => GlobalKey());
 
     _animationController = Get.put(MenuSelectionAnimationController(
-      length: AppMode.mainTabs.length,
+      length: AppRoute.mainRoutes.length,
     ));
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      for (int i = 0; i < AppMode.mainTabs.length; i++) {
+      for (int i = 0; i < AppRoute.mainRoutes.length; i++) {
         _animationController.setTileHeight(
             i, _keys[i].currentContext?.size?.height ?? 0);
       }
       _animationController
           .setPadding(_keys.last.currentContext?.size?.height ?? 0);
-      _animationController.selectTile(router.modeIndex);
+      _animationController.selectTile(router.routeIndex);
     });
 
     // Reload the tile sizes when the locale change so the new strings don't
@@ -40,7 +41,7 @@ class MenuList extends StatelessWidget {
     ever(
       cookies.locale,
       (_) => WidgetsBinding.instance.addPostFrameCallback((_) {
-        for (int i = 0; i < AppMode.mainTabs.length; i++) {
+        for (int i = 0; i < AppRoute.mainRoutes.length; i++) {
           _animationController.setTileHeight(
               i, _keys[i].currentContext?.size?.height ?? 0);
         }
@@ -60,10 +61,10 @@ class MenuList extends StatelessWidget {
         ListView.separated(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          itemCount: AppMode.mainTabs.length,
+          itemCount: AppRoute.mainRoutes.length,
           itemBuilder: (context, index) => _tile(
             key: _keys[index],
-            mode: AppMode.mainTabs[index],
+            route: AppRoute.mainRoutes[index],
           ),
           separatorBuilder: (context, index) {
             if (index != 0) return const Divider();
@@ -117,11 +118,11 @@ class MenuList extends StatelessWidget {
 
   Widget _tile({
     required GlobalKey key,
-    required AppMode mode,
+    required AppRoute route,
   }) =>
       MenuTile(
         key: key,
-        mode: mode,
+        route: route,
         controller: _animationController,
       );
 }

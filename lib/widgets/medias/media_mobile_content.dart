@@ -1,12 +1,12 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:google_fonts/google_fonts.dart";
 import "package:gpt_markdown/gpt_markdown.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/medias.dart";
-import "../../utils/globals.dart";
-import "../exports.dart";
+import "../../classes/services/theme_service.dart";
+import "../../globals.dart";
+import "../images/covering_network_image.dart";
 
 /// A widget displaying the parts of the given media on desktop.
 class MediaMobileContent extends StatelessWidget {
@@ -83,7 +83,8 @@ class MediaMobileContent extends StatelessWidget {
                       ),
                       child: GptMarkdown(
                         snapshot.data!,
-                        style: GoogleFonts.sono().copyWith(
+                        style: context.textTheme.bodyMedium!.copyWith(
+                            fontFamily: ThemeService.codeFontFamily,
                             fontSize:
                                 context.textTheme.bodyMedium!.fontSize! - 2),
                       ),

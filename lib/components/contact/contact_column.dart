@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../utils/globals.dart";
+import "../../globals.dart";
 import "../../utils/tools.dart";
 import "contact_field.dart";
 
@@ -41,7 +41,6 @@ class ContactColumn extends StatelessWidget {
         key: _formKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
           children: [
             ContactField(
               title: "contact_name".tr,
@@ -63,7 +62,7 @@ class ContactColumn extends StatelessWidget {
             XLayout.verticalM,
             ContactField(
               title: "contact_details".tr,
-              maxLines: 10,
+              maxLines: 5,
               controller: _controllerDetails,
               textInputAction: null,
             ),

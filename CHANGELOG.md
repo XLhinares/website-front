@@ -1,3 +1,31 @@
+## 2.3.2
+
+- :lipstick: Labels are written using the code font family
+- :recycle: Moved `globals.dart` file to the top level of the `lib` folder to make it easier to find.
+- :recycle: Removed all the `export.dart` files since usually they were only used to import a single element, and were otherwise generating clutter.
+
+## 2.3.1
+
+- :art: Added a [NoProjectSelected] widget to display on the desktop project page. 
+- :bug: Fixed a bug where the contact form wasn't displayed on desktop.
+- :globe_with_meridians: Added missing translations.
+
+## 2.3.0
+
+- :fire: Got rid of the [AppMode] class and did everything with the [XRoute] (previously [CustomRoute]) since both classes were redundant and adding a lot of complexity to the project.
+
+- :sparkles: New projects tab in main page on mobile.
+- :sparkles: New settings tab in main page on mobile.
+- :sparkles: New projects page on mobile.
+- :sparkles: New projects page on desktop.
+- :sparkles: Doubling clicking on the projects tab redirects to projects page.
+
+- :art: Made the router use a new [PageController] whenever reloading the main page to avoid errors. 
+
+- :recycle: Renamed many files with "main" if they belong to the main page, or "page" if they have their own page.
+
+- :bento: Added the "sono" font to the assets.
+
 ## 2.2.1
 
 - :bug: Removed remaining `flutter_markdown` uses.

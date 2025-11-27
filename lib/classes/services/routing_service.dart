@@ -1,60 +1,72 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
-import "../../utils/exports.dart";
-import "../dataclass/dataclass.dart";
-import "../routes/custom_route.dart";
+import "../../globals.dart";
+import "../dataclass/route.dart";
 
 /// A service managing the state of the app.
 class RoutingService extends GetxController {
   // VARIABLES =================================================================
 
-  /// The current mode of the app.
-  late final Rx<AppMode> _selectedTab;
+  /// The current route of the app.
+  late final Rx<AppRoute> _currentTab;
 
   /// The last selected main tab.
-  late final Rx<AppMode> _lastMainTab;
+  late final Rx<AppRoute> _lastMainTab;
 
-  /// The name of the project currently selected by the app.
+  /// The name of the media currently selected by the app.
   late final Rx<int?> _selectedProject;
 
-  /// The name of the blog currently selected by the app.
+  /// The name of the media currently selected by the app.
   late final Rx<int?> _selectedBlog;
 
   /// A controller handling the [PageView] of the mobile version.
-  late final PageController _pageController;
+  late PageController _pageController;
 
   /// The history of what the user did.
-  late final List<CustomRoute> _history;
-
-  /// The list of named routes used in the app.
-  late final List<CustomRoute> routes;
+  late final List<AppRoute> _history;
 
   // GETTERS ===================================================================
 
-  /// The current mode of the app.
-  AppMode get mode => _selectedTab.value;
+  /// The current route of the app.
+  AppRoute get currentRoute => _currentTab.value;
 
-  /// The current mode of the app.
-  int get modeIndex => AppMode.mainTabs.indexOf(_lastMainTab.value);
+  /// The currently selected main tab.
+  ///
+  /// It is node necessarily the displayed route tho, because the user can go on a different page.
+  AppRoute get mainTab => _lastMainTab.value;
+
+  /// The current route of the app.
+  int get routeIndex => AppRoute.mainRoutes.indexOf(_lastMainTab.value);
 
   /// The currently selected project if it exists.
   int? get project => _selectedProject.value;
 
-  /// The currently selected blog if it exists.
+  /// The currently selected project if it exists.
   int? get blog => _selectedBlog.value;
 
   /// Whether the app is at home.
-  bool get atHome => mode == AppMode.home;
+  bool get atHome => currentRoute == AppRoute.MAIN_HOME;
 
-  /// A controller handling the pages of the desktop version of the app.
+  /// A controller handling the pages of the main page.
   PageController get pageController => _pageController;
+
+  /// A clean pageController handling the pages of the main page.
+  ///
+  /// The purpose of creating a new one is to avoid the "Multiple PageViews are attached to the same PageController" error.
+  PageController get newPageController {
+    _pageController = PageController();
+    return _pageController;
+  }
 
   // PSEUDO-GETTERS ============================================================
 
   /// Whether the given route exist in our app.
   bool isRoute(String route) =>
-      routes.where((element) => element.name == route).isNotEmpty;
+      allRoutes.where((element) => element.path == route).isNotEmpty;
+
+  /// A list of all the routes in the app.
+  List<AppRoute> get allRoutes => AppRoute.values;
 
   // CONSTRUCTOR ===============================================================
 
@@ -71,13 +83,10 @@ class RoutingService extends GetxController {
   /// It is called exactly once and contains the instantiation logic.
   RoutingService._internal() {
     // INITIAL VALUES ----------------------------------------------------------
-    _selectedTab = AppMode.home.obs;
-    _lastMainTab = AppMode.home.obs;
+    _currentTab = AppRoute.MAIN_HOME.obs;
+    _lastMainTab = AppRoute.MAIN_HOME.obs;
     _selectedProject = Rx<int?>(null);
-    _selectedBlog = Rx<int?>(null);
-    _history = [CustomRoute.HOME];
-
-    routes = CustomRoute.values;
+    _history = [AppRoute.MAIN_HOME];
 
     // TAB / PAGE VIEW
     _pageController = PageController();
@@ -85,32 +94,35 @@ class RoutingService extends GetxController {
 
   // METHODS ===================================================================
 
-  /// Jumps to the given mode without reloading the controller.
-  void jumpTo({AppMode? mode, int? index}) {
-    assert((mode != null) ^ (index != null),
-        "Either [mode] or [index] should be given.");
+  // /// Jumps to the given route without reloading the controller.
+  // void jumpTo({AppRoute? route, int? index}) {
+  //   assert((route != null) ^ (index != null),
+  //       "Either [route] or [index] should be given.");
 
-    // Infer the missing value between the mode and the index.
-    final AppMode selectedMode = mode ?? AppMode.values[index!];
-    final int selectedIndex = index ?? AppMode.values.indexOf(mode!);
+  //   // Infer the missing value between the route and the index.
+  //   final AppRoute selectedMode = route ?? AppRoute.values[index!];
+  //   final int selectedIndex = index ?? AppRoute.values.indexOf(route!);
 
-    _pageController.jumpToPage(selectedIndex);
-    _selectedTab.value = selectedMode;
-  }
+  //   _pageController.jumpToPage(selectedIndex);
+  //   _currentTab.value = selectedMode;
+  // }
 
-  /// Animates to the given mode.
+  /// Animates to the given route.
   ///
-  /// This does not select a new mode nor reload!
-  void animateTo({AppMode? mode, int? index}) {
-    assert((mode != null) ^ (index != null),
-        "Either [mode] or [index] should be given.");
+  /// This does not select a new route nor reload!
+  void animateTo({AppRoute? route, int? index}) {
+    assert((route != null) ^ (index != null),
+        "Either [route] or [index] should be given.");
 
-    // Infer the missing value between the mode and the index.
-    final int selectedIndex = index ?? AppMode.mainTabs.indexOf(mode!);
+    // Infer the missing value between the route and the index.
+    final int selectedIndex = index ?? AppRoute.mainRoutes.indexOf(route!);
 
     if (_pageController.hasClients) {
-      _pageController.animateToPage(selectedIndex,
-          duration: animDurationLong, curve: Curves.easeIn);
+      _pageController.animateToPage(
+        selectedIndex,
+        duration: animDurationLong,
+        curve: Curves.easeIn,
+      );
     }
   }
 
@@ -121,75 +133,126 @@ class RoutingService extends GetxController {
       _selectedProject.value = null;
     } else {
       _selectedProject.value = id;
+      if (currentRoute.isMainRoute) {
+        _history.add(AppRoute.previewFromProject(id));
+      } else {
+        _history.add(AppRoute.pageFromProject(id));
+      }
     }
-
-    _history.add(CustomRoute.fromProject(id));
     update();
   }
 
   /// Select a blog to be displayed by the router.
   void selectBlog(int? id) {
     printInfo(info: "Selecting blog: $id");
-    if (id == _selectedBlog.value) {
-      _selectedBlog.value = null;
-    } else {
-      _selectedBlog.value = id;
-    }
-
-    _history.add(CustomRoute.fromBlog(id));
+    // if (id == _selectedBlog.value) {
+    //   _selectedBlog.value = null;
+    // } else {
+    //   _selectedBlog.value = id;
+    //   if (currentRoute.isMainRoute) {
+    //     _history.add(AppRoute.previewFromBlog(id));
+    //   } else {
+    //     _history.add(AppRoute.pageFromBlog(id));
+    //   }
+    // }
     update();
   }
 
-  void _pushRoot() {
-    if (_history.last == CustomRoute.HOME) return;
-    Get.toNamed("/home");
-  }
+  /// Goes back to the root of the website.
+  // void _pushRoot() {
+  //   if (_history.last == AppRoute.MAIN_HOME) return;
+  //   Get.toNamed("/home");
+  // }
 
-  void _pushIdentical(CustomRoute route) {
-    printInfo(info: "Tapped on the current mode, applying custom behavior");
-    if (route.mode == AppMode.projects) {
-      selectProject(null);
+  /// Handles special behaviors when trying to open current route.
+  void _pushIdentical(AppRoute route) {
+    printInfo(info: "Tapped on the current route, applying custom behavior");
+
+    // When trying to navigate [AppRoute.MAIN_PROJECTS].
+    //
+    // - If no project is selected, it's a shortcut to open the full project page
+    // - If a project was currently selected, it is unselected.
+    if (route == AppRoute.MAIN_PROJECTS) {
+      if (_selectedProject.value == null) {
+        pushRoute(AppRoute.PAGE_PROJECTS);
+      } else {
+        _selectedProject.value = null;
+      }
     }
   }
 
-  // If the route is part of the main tabs, we animate the controller there.
-  void _pushMainTab(CustomRoute route) {
-    printInfo(info: "Animating to main tab.");
-    animateTo(mode: route.mode);
-    if (route.mode == AppMode.projects && route.parts.length > 1) {
-      selectProject(int.tryParse(route.parts[1]));
-    }
-    _lastMainTab.value = route.mode;
-  }
+  /// Pushes the given route to navigator and add it to the history.
+  void _pushNew(AppRoute route) {
+    printInfo(info: "Applying new route behavior:");
 
-  void _pushNew(CustomRoute route) {
-    if (route.mode.isMainTab) {
-      _pushMainTab(route);
+    if (route.isMainRoute && currentRoute.isMainRoute) {
+      printInfo(info: "--- within ${AppRoute.ROOT_MAIN}");
+      animateTo(route: route);
+    } else if (route.isProjectsRoute && currentRoute.isProjectsRoute) {
+      printInfo(info: "--- within ${AppRoute.ROOT_PROJECTS}");
+      // No need for specific animation.
     } else {
-      if (!isRoute(route.name)) return;
-      printInfo(info: "Animating to other tab.");
-      Get.toNamed(route.name);
+      printInfo(info: "--- outside old route's root");
+      Get.toNamed(route.path);
     }
-    _selectedTab.value = route.mode;
+
+    if (route.hasProject) selectProject(route.projectID);
+    if (route.isBlog) selectBlog(route.blogID);
+    _currentTab.value = route;
     _history.add(route);
   }
 
   /// Pushes the given route to navigator and add it to the history.
-  void push({CustomRoute? route, String? path, AppMode? mode}) {
-    assert((mode != null) ^ (route != null) ^ (path != null),
-        "Either [mode] or [route] or [path] should be given.");
+  void push({AppRoute? route, String? path}) {
+    assert((route != null) ^ (path != null),
+        "Either [route] or [path] should be given.");
 
-    final newRoute = route ?? CustomRoute.parse(path: path, mode: mode);
-    if (!newRoute.isAccessibleToUser()) return;
+    final newRoute = route ?? AppRoute.parse(path: path);
+    if (!newRoute.isAccessibleToUser) return;
 
-    printInfo(info: "ROUTER > Pushing new route: ${newRoute.name}.");
+    printInfo(info: "");
+    printInfo(
+        info: "Pushing route: [${currentRoute.path}] >>> [${newRoute.path}]");
+    printInfo(info: "--- old route: root (${currentRoute.root})");
+    printInfo(info: "--- new route: root (${newRoute.root})");
 
-    if (newRoute == CustomRoute.ROOT) {
-      _pushRoot();
-    } else if (_history.isNotEmpty && newRoute == _history.last) {
+    printInfo(info: "ROUTER > Pushing new route: ${newRoute.path}.");
+
+    // Behavior when starting the app.
+    // if (newRoute == AppRoute.ROOT) {
+    //   _pushRoot();
+    // } else
+    if (_history.isNotEmpty && newRoute == _history.last) {
       _pushIdentical(newRoute);
     } else {
       _pushNew(newRoute);
+    }
+
+    update();
+  }
+
+  /// Pushes the given route to navigator and add it to the history.
+  void pushRoute(AppRoute route) => push(route: route);
+
+  /// Tells the navigator that a given route was accessed.
+  /// Adds the route to the history if needed
+  void set({AppRoute? route, String? path}) {
+    assert((route != null) ^ (path != null),
+        "Either [route] or [path] should be given.");
+
+    final newRoute = route ?? AppRoute.parse(path: path);
+    if (!newRoute.isAccessibleToUser) return;
+
+    printInfo(info: "ROUTER > Setting new route: ${newRoute.path}.");
+
+    // if (newRoute == XRoute.ROOT) {
+    //   _pushRoot();
+    // } else
+    if (_history.isNotEmpty && newRoute == _history.last) {
+      // Don't do anything
+    } else {
+      _currentTab.value = newRoute;
+      _history.add(newRoute);
     }
 
     update();
@@ -206,8 +269,11 @@ class RoutingService extends GetxController {
 
       // If the last tab is not one of the main tabs, it need to be popped from
       // the navigator.
-      if (!lastTab.mode.isMainTab) Get.back();
-      push(route: newRoute);
+      if (!lastTab.isMainRoute) {
+        Get.back();
+      } else {
+        pushRoute(newRoute);
+      }
     }
   }
 }

@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
-import "../../utils/exports.dart";
+import "../../globals.dart";
 import "get_animation_controller.dart";
 
 /// An icon which rotates when the given [observed] is updated.

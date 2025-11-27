@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../utils/exports.dart";
+import "../../globals.dart";
 import "../../widgets/interactables/x_flat_button.dart";
 
 /// A card explaining what how this site uses cookies.

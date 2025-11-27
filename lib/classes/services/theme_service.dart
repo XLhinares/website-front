@@ -17,6 +17,9 @@ class ThemeService {
   /// The default font family used in the app.
   static const defaultFontFamily = "JosefinSans";
 
+  /// The font family used for code blocks.
+  static const codeFontFamily = "Sono";
+
   /// A custom text theme to merge with the [xTheme] one.
   static TextTheme defaultTextTheme = const TextTheme(
     displayLarge: TextStyle(
@@ -38,9 +41,11 @@ class ThemeService {
     bodySmall: TextStyle(fontFamily: defaultFontFamily),
     // LABEL
     labelMedium: TextStyle(
+      fontFamily: codeFontFamily,
       fontSize: 14,
     ),
     labelSmall: TextStyle(
+      fontFamily: codeFontFamily,
       fontSize: 12,
     ),
   );

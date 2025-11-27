@@ -8,7 +8,7 @@ import "package:get/get.dart";
 import "package:http/http.dart" as http;
 import "package:x_containers/x_containers.dart";
 
-import "../../utils/globals.dart";
+import "../../globals.dart";
 import "../../utils/tools.dart";
 import "../../utils/tools_api.dart";
 import "../dataclass/dataclass.dart";

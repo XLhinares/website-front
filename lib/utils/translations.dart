@@ -27,6 +27,13 @@ class CustomTranslations extends Translations {
       "tab_settings_description": "Customize the site.",
 
       // PROJECTS --------------------------------------------------------------
+      "projects_title": "Projects",
+      "projects_description":
+          "A list of projects demonstrating various skills.",
+      "display_more": "Display more...",
+      "no_project_selected_title": "No project is currently selected.",
+      "no_project_selected_content":
+          "You can find out about a project by clicking on it in the left menu or go back to the main page by clicking on the Xeppelin logo.",
 
       // CONTACT ---------------------------------------------------------------
       "contact_title": "Contact form",
@@ -75,6 +82,8 @@ class CustomTranslations extends Translations {
       "cookie_policy_title": "Cookie policy",
       "privacy_policy_title": "Data policy",
       "legal_mentions_title": "Legal mentions",
+      "legal_content_error": "The content you asked for couldn't be reached."
+          "Sorry for the inconvenience and please try again later.",
 
       // BUTTONS ---------------------------------------------------------------
 
@@ -134,6 +143,14 @@ class CustomTranslations extends Translations {
       "tab_settings_description": "Configurer le site.",
 
       // PROJECTS --------------------------------------------------------------
+      "projects_title": "Projets",
+      "projects_description":
+          "Une liste de projets illustrant différentes compétences.",
+      "display_more": "Afficher plus...",
+      "no_project_selected_title":
+          "Aucun projet n'est sélectionné pour le moment.",
+      "no_project_selected_content":
+          "Vous pouvez découvrir les détails d'un projet en cliquant dessus dans le menu de gauche ou revenir au menu principal en cliquant sur le logo \"Xeppelin\".",
 
       // CONTACT ---------------------------------------------------------------
       "contact_title": "Formulaire de contact",
@@ -182,6 +199,9 @@ class CustomTranslations extends Translations {
       "cookie_policy_title": "Politique en matière de cookies",
       "privacy_policy_title": "Politique de confidentialité",
       "legal_mentions_title": "Mentions légales",
+      "legal_content_error":
+          "Le contenu que vous cherchez est momentanemment indisponible."
+              "Désolé du desagrement causé et veuillez reessayer plus tard.",
 
       // BUTTONS ---------------------------------------------------------------
 

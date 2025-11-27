@@ -3,7 +3,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../widgets/exports.dart";
+import "../../widgets/text/auto_color_text.dart";
 
 /// A widget describing what the site is about.
 class HomeDescription extends StatelessWidget {

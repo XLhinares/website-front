@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
-import "../../utils/globals.dart";
+import "../../globals.dart";
 import "../../widgets/background/animated_background_wave.dart";
 
 /// A dataclass with the information required to display a background.

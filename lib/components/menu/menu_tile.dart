@@ -2,16 +2,16 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../../classes/dataclass/app_mode.dart";
-import "../../../utils/globals.dart";
+import "../../globals.dart";
 import "../../classes/controllers/menu_selection_animation_controller.dart";
+import "../../classes/dataclass/route.dart";
 
 /// A tile displaying one menu element.
 class MenuTile extends StatelessWidget {
   // VARIABLES =================================================================
 
-  /// The mode this [MenuTile] is about.
-  final AppMode mode;
+  /// The route this [MenuTile] is about.
+  final AppRoute route;
 
   /// The controller of the menu selection animation.
   ///
@@ -23,7 +23,7 @@ class MenuTile extends StatelessWidget {
   /// Returns an instance of [MenuTile] matching the given parameters.
   const MenuTile({
     super.key,
-    required this.mode,
+    required this.route,
     required this.controller,
   });
 
@@ -34,21 +34,21 @@ class MenuTile extends StatelessWidget {
     return XCard.text(
       enableShadow: false,
       onTap: () {
-        printInfo(info: "\nEVENT: Menu tile ${mode.name} was tapped.");
+        printInfo(info: "\nEVENT: Menu tile ${route.path} was tapped.");
 
-        /// Abort if the mode is not accessible to the user.
-        if (!mode.isAccessibleToUser) return;
+        /// Abort if the route is not accessible to the user.
+        if (!route.isAccessibleToUser) return;
 
-        final int index = AppMode.mainTabs.indexOf(mode);
+        final int index = AppRoute.mainRoutes.indexOf(route);
         controller.selectTile(index);
-        router.push(mode: mode);
+        router.push(route: route);
       },
       padding: EdgeInsets.all(XLayout.paddingM),
       internalHorizontalPadding: XLayout.paddingM,
-      title: "tab_${mode.name}".tr,
-      content: "tab_${mode.name}_description".tr,
+      title: "tab_${route.name}".tr,
+      content: "tab_${route.name}_description".tr,
       leading: Icon(
-        mode.icon,
+        route.icon,
         size: XLayout.paddingL,
       ),
     );

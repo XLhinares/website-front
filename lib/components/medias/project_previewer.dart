@@ -4,7 +4,9 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/medias.dart";
-import "../../widgets/exports.dart";
+import "../../widgets/images/covering_network_image.dart";
+import "../../widgets/images/xeppelin_logo.dart";
+import "../../widgets/text/auto_color_text.dart";
 
 /// A preview of a project.
 class ProjectPreviewer extends StatelessWidget {

@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 
 import "../../classes/dataclass/background_data.dart";
-import "../../utils/globals.dart";
+import "../../globals.dart";
 
 /// The background used in our scaffold widgets.
 ///

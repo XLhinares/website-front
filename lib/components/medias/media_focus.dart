@@ -3,7 +3,7 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/medias.dart";
-import "../../utils/exports.dart";
+import "../../globals.dart";
 
 /// A detailed view of a project.
 class MediaFocus<T extends Media> extends StatelessWidget {

@@ -2,8 +2,8 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../utils/globals.dart";
-import "../../widgets/exports.dart";
+import "../../globals.dart";
+import "../../widgets/settings/disable_cookies_button.dart";
 import "legal_tab.dart";
 
 /// A tab to display the cookie policy of the website

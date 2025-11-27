@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 
-import "exports.dart";
+import "desktop/page_home.dart";
+import "mobile/page_home.dart";
 
 /// The one-page style website that the user navigates on.
 class ResponsiveHome extends StatelessWidget {
@@ -27,12 +28,12 @@ class ResponsiveHome extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth > 1000) {
-          return const DesktopTabManager();
+          return const DesktopPageHome();
         }
         // } else if (ResponsiveWrapper.of(context).isLargerThan(MOBILE)) {
         //   return ;
         // }
-        return const MobileTabView();
+        return const MobilePageHome();
       },
     );
   }

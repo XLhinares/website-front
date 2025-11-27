@@ -9,7 +9,7 @@ import "classes/user/user.dart";
 import "utils/translations.dart";
 
 /// The version of the app.
-const String versionNumber = "v2.4.0";
+const String versionNumber = "v2.4.1";
 
 // SERVICES ====================================================================
 

@@ -60,13 +60,11 @@ class ContactColumnExpanded extends StatelessWidget {
               controller: _controllerSubject,
             ),
             XLayout.verticalM,
-            Expanded(
-              child: ContactField(
-                title: "contact_details".tr,
-                maxLines: 5,
-                controller: _controllerDetails,
-                textInputAction: null,
-              ),
+            ContactField(
+              title: "contact_details".tr,
+              maxLines: 5,
+              controller: _controllerDetails,
+              textInputAction: null,
             ),
             XLayout.verticalM,
             XInkContainer(

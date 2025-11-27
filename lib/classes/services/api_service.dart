@@ -6,6 +6,7 @@ import "dart:io";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:http/http.dart" as http;
+import "package:url_launcher/url_launcher.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../globals.dart";
@@ -272,6 +273,14 @@ class APIService {
     );
 
     return utf8.decode(response.bodyBytes);
+  }
+
+  /// Launch the given URL in a new tab.
+  Future<void> launch(String url, {bool isNewTab = true}) async {
+    await launchUrl(
+      Uri.parse(url),
+      webOnlyWindowName: isNewTab ? "_blank" : "_self",
+    );
   }
 
 // EXAMPLES ==================================================================

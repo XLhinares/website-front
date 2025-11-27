@@ -127,7 +127,7 @@ class CustomTranslations extends Translations {
     "fr": {
       // HOME ------------------------------------------------------------------
       "home_description":
-          "\\title{Xeppelin} fait décoller vos projets ;) \n\nLe site est en construction mais n'hésitez pas à aller regarder les projets sur lesquels j'ai travaillé, ou à prendre contact via le formulaire de contact.",
+          "\\title{Xeppelin} fait décoller vos projets ;) \n\nLe site est en construction mais n'hésitez pas à aller regarder les projets sur lesquels j'ai travaillés, ou à prendre contact via le formulaire de contact.",
 
       // MENU ------------------------------------------------------------------
       "tab_home": "Accueil",

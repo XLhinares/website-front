@@ -1,3 +1,9 @@
+## 2.4.1
+
+- :sparkles: Added social networks button icons on the home page.
+- :bento: Added a custom-made icon for the resume.
+- :globe_with_meridians: Fix minor translation error.
+
 ## 2.4.0
 
 - :memo: Added `LICENSE`.

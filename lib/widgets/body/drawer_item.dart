@@ -2,9 +2,9 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../../utils/exports.dart";
 import "../../classes/dataclass/route.dart";
 import "../../tabs/mobile/drawer.dart";
+import "../../globals.dart";
 
 /// An item for the [CustomDrawer], it represents an [AppMode] that the user can access.
 ///

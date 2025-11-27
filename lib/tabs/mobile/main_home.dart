@@ -3,9 +3,9 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/dataclass/route.dart";
-import "../../components/exports.dart";
+import "../../components/home/home_description.dart";
 import "../../widgets/body/tab.dart";
-import "../../widgets/exports.dart";
+import "../../widgets/images/xeppelin_logo.dart";
 
 /// The home tab
 class MobileMainHome extends RouteTab {

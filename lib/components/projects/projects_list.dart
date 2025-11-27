@@ -3,7 +3,7 @@ import "package:flutter_pagewise/flutter_pagewise.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/project.dart";
-import "../../utils/globals.dart";
+import "../../globals.dart";
 import "../medias/project_wide_preview.dart";
 
 /// A list of the projects.

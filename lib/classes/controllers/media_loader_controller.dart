@@ -1,7 +1,8 @@
 import "package:flutter_pagewise/flutter_pagewise.dart";
 import "package:get/get.dart";
 
-import "../../utils/exports.dart";
+import "../../globals.dart";
+import "../../utils/tools_api.dart";
 import "../medias/medias.dart";
 
 /// A controller that handles loading projects from the API.

@@ -1,7 +1,9 @@
 import "package:flutter/material.dart";
 import "package:x_containers/x_containers.dart";
 
-import "exports.dart";
+import "cookies_card.dart";
+import "desktop_title.dart";
+import "menu_list.dart";
 
 /// The half of the body containing the title and the menu.
 class BodyMenu extends StatelessWidget {

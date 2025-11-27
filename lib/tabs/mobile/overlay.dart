@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../utils/exports.dart";
+import "../../globals.dart";
 import "../../widgets/interactables/overlay_button.dart";
 
 /// A stack to display an overlay over some content.

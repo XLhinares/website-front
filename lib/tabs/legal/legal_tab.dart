@@ -4,11 +4,11 @@ import "package:gpt_markdown/gpt_markdown.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/services/services.dart";
-import "../../components/exports.dart";
-import "../../utils/globals.dart";
+import "../../components/misc/if_app_is_ready.dart";
+import "../../globals.dart";
 import "../../utils/tools.dart";
 import "../../widgets/animations/loading_indicator.dart";
-import "../../widgets/exports.dart";
+import "../../widgets/layout/scaffold_fit.dart";
 
 /// A template tab to display the required legal mentions of the website.
 class TabLegal extends StatelessWidget {

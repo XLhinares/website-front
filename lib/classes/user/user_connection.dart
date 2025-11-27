@@ -2,7 +2,8 @@ import "dart:async";
 
 import "package:get/get.dart";
 
-import "../../utils/exports.dart";
+import "../../globals.dart";
+import "../../utils/tools.dart";
 import "../dataclass/dataclass.dart";
 import "user_core.dart";
 

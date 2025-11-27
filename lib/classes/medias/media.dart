@@ -1,4 +1,4 @@
-import "../../utils/globals.dart";
+import "../../globals.dart";
 import "blog.dart";
 import "media_type.dart";
 import "project.dart";

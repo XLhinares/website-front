@@ -1,3 +1,9 @@
+## 2.3.2
+
+- :lipstick: Labels are written using the code font family
+- :recycle: Moved `globals.dart` file to the top level of the `lib` folder to make it easier to find.
+- :recycle: Removed all the `export.dart` files since usually they were only used to import a single element, and were otherwise generating clutter.
+
 ## 2.3.1
 
 - :art: Added a [NoProjectSelected] widget to display on the desktop project page. 

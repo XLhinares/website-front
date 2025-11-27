@@ -3,7 +3,7 @@ import "package:flutter_pagewise/flutter_pagewise.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/project.dart";
-import "../../utils/globals.dart";
+import "../../globals.dart";
 import "../medias/project_tile_preview.dart";
 
 /// A [ListView] of the projects to be used in menus.

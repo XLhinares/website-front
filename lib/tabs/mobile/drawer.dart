@@ -3,7 +3,7 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/dataclass/route.dart";
-import "../../utils/globals.dart";
+import "../../globals.dart";
 import "../../widgets/animations/rotating_icon.dart";
 import "../../widgets/body/drawer_item.dart";
 import "../../widgets/images/xeppelin_logo.dart";

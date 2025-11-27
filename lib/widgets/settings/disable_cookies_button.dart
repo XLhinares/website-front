@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../utils/exports.dart";
+import "../../globals.dart";
 import "../interactables/x_flat_button.dart";
 
 /// A button allowing the user to delete and disable the cookies.

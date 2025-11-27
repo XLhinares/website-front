@@ -41,9 +41,11 @@ class ThemeService {
     bodySmall: TextStyle(fontFamily: defaultFontFamily),
     // LABEL
     labelMedium: TextStyle(
+      fontFamily: codeFontFamily,
       fontSize: 14,
     ),
     labelSmall: TextStyle(
+      fontFamily: codeFontFamily,
       fontSize: 12,
     ),
   );

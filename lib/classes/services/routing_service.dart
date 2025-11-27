@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
-import "../../utils/exports.dart";
+import "../../globals.dart";
 import "../dataclass/route.dart";
 
 /// A service managing the state of the app.
@@ -118,8 +118,11 @@ class RoutingService extends GetxController {
     final int selectedIndex = index ?? AppRoute.mainRoutes.indexOf(route!);
 
     if (_pageController.hasClients) {
-      _pageController.animateToPage(selectedIndex,
-          duration: animDurationLong, curve: Curves.easeIn);
+      _pageController.animateToPage(
+        selectedIndex,
+        duration: animDurationLong,
+        curve: Curves.easeIn,
+      );
     }
   }
 

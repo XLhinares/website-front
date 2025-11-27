@@ -3,7 +3,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:url_launcher/url_launcher.dart";
 
-import "../../utils/exports.dart";
+import "../../globals.dart";
 
 /// A custom String class carrying style codes that can be used for display.
 class CodeText {

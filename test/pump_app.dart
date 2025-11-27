@@ -1,8 +1,10 @@
 import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:get/get.dart";
-import "package:website_front/tabs/exports.dart";
-import "package:website_front/utils/exports.dart";
+import "package:website_front/globals.dart";
+import "package:website_front/tabs/meta/splash.dart";
+import "package:website_front/tabs/responsive_home.dart";
+import "package:website_front/utils/translations.dart";
 
 /// A utility to pump the full app without having to rewrite it every time.
 Future<void> pumpApp(WidgetTester tester) async {

@@ -5,8 +5,8 @@ import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/medias.dart";
 import "../../classes/services/theme_service.dart";
-import "../../utils/globals.dart";
-import "../exports.dart";
+import "../../globals.dart";
+import "../images/covering_network_image.dart";
 
 /// A widget displaying the parts of the given media on desktop.
 class MediaMobileContent extends StatelessWidget {

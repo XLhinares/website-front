@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../../utils/globals.dart";
+import "../../globals.dart";
 import "../../classes/controllers/menu_selection_animation_controller.dart";
 import "../../classes/dataclass/route.dart";
 

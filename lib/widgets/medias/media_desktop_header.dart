@@ -3,9 +3,11 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/medias.dart";
-import "../../utils/exports.dart";
-import "../exports.dart";
-import "exports.dart";
+import "../../globals.dart";
+import "../../utils/tools.dart";
+import "../images/covering_network_image.dart";
+import "../text/auto_color_text.dart";
+import "media_tag.dart";
 
 /// A widget displaying the metadata of the given media on desktop.
 class MediaDesktopHeader<T extends Media> extends StatelessWidget {

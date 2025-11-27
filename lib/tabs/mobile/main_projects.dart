@@ -4,11 +4,11 @@ import "package:x_containers/x_containers.dart";
 
 import "../../classes/dataclass/route.dart";
 import "../../classes/medias/medias.dart";
-import "../../components/exports.dart";
-import "../../utils/exports.dart";
+import "../../components/medias/project_wide_preview.dart";
+import "../../globals.dart";
 import "../../widgets/body/mobile_tab.dart";
 import "../../widgets/body/tab.dart";
-import "../../widgets/exports.dart";
+import "../../widgets/utils/preset_future_builder.dart";
 
 /// The "project" tab adapted for mobile.
 class MobileMainProjects extends RouteTab {

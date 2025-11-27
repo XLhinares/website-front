@@ -2,14 +2,14 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../classes/controllers/blog_loader_controller.dart";
-import "../classes/controllers/project_loader_controller.dart";
-import "../classes/services/services.dart";
-import "../classes/user/user.dart";
-import "translations.dart";
+import "classes/controllers/blog_loader_controller.dart";
+import "classes/controllers/project_loader_controller.dart";
+import "classes/services/services.dart";
+import "classes/user/user.dart";
+import "utils/translations.dart";
 
 /// The version of the app.
-const String versionNumber = "v2.3.1";
+const String versionNumber = "v2.3.2";
 
 // SERVICES ====================================================================
 

@@ -2,12 +2,16 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 
 import "../../classes/dataclass/route.dart";
-import "../../components/exports.dart";
-import "../../utils/exports.dart";
+import "../../components/misc/if_app_is_ready.dart";
+import "../../globals.dart";
+import "../../widgets/background/animated_background_wave.dart";
 import "../../widgets/body/tab.dart";
-import "../../widgets/exports.dart";
-import "../exports.dart";
+import "../../widgets/layout/scaffold_fit.dart";
 import "drawer.dart";
+import "main_contact.dart";
+import "main_home.dart";
+import "main_projects.dart";
+import "main_settings.dart";
 import "overlay.dart";
 
 /// The app body as it should

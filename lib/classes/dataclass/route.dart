@@ -4,9 +4,12 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../tabs/exports.dart";
+import "../../tabs/legal/cookie_policy.dart";
+import "../../tabs/legal/legal_mentions.dart";
+import "../../tabs/legal/privacy_policy.dart";
+import "../../tabs/responsive_home.dart";
 import "../../tabs/responsive_projects.dart";
-import "../../utils/exports.dart";
+import "../../globals.dart";
 
 /// A custom route data-class.
 class AppRoute {

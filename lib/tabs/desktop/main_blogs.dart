@@ -4,9 +4,11 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/medias.dart";
-import "../../components/exports.dart";
-import "../../utils/exports.dart";
-import "../../widgets/medias/exports.dart";
+import "../../components/medias/media_focus.dart";
+import "../../components/medias/project_wide_preview.dart";
+import "../../globals.dart";
+import "../../widgets/medias/media_desktop_content.dart";
+import "../../widgets/medias/media_desktop_header.dart";
 
 /// The content of the body in the "BlogPreviews" mode.
 class DesktopMainBlogs extends StatelessWidget {

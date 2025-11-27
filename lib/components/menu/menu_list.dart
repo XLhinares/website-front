@@ -3,9 +3,9 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../../classes/controllers/menu_selection_animation_controller.dart";
-import "../../../utils/globals.dart";
+import "../../globals.dart";
 import "../../classes/dataclass/route.dart";
-import "exports.dart";
+import "menu_tile.dart";
 
 /// The list view containing the menu items.
 class MenuList extends StatelessWidget {

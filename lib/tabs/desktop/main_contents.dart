@@ -1,8 +1,10 @@
 import "package:flutter/material.dart";
 
-import "../../../utils/exports.dart";
+import "../../globals.dart";
+import "main_contact.dart";
+import "main_home.dart";
+import "main_projects.dart";
 import "main_settings.dart";
-import "exports.dart";
 
 /// What's inside the body. It depends on the current mode.
 class DesktopMainContents extends StatelessWidget {

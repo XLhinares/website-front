@@ -2,8 +2,9 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../utils/globals.dart";
-import "../../widgets/exports.dart";
+import "../../globals.dart";
+import "../../widgets/settings/disable_cookies_button.dart";
+import "../../widgets/text/auto_color_text.dart";
 
 /// A setting where you can control your cookie consent and check out the legal stuff.
 class SettingsLegalCompact extends StatelessWidget {

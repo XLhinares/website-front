@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
-import "../../utils/globals.dart";
+import "../../globals.dart";
 
 /// A widget to that fit all its child within a central column if needed.
 class FrameFit extends StatelessWidget {

@@ -27,27 +27,28 @@ class SocialMediaLinks extends StatelessWidget {
       children: [
         // Github
         IconButton(
-            icon: FaIcon(
-              FontAwesomeIcons.github,
-              size: XLayout.paddingL,
-            ),
-            onPressed: () => api.launch("https://github.com/XLhinares/")),
+          icon: FaIcon(
+            FontAwesomeIcons.github,
+            size: XLayout.paddingL,
+          ),
+          onPressed: api.openGitHub,
+        ),
         // Linkedin
         IconButton(
-            icon: FaIcon(
-              FontAwesomeIcons.linkedin,
-              size: XLayout.paddingL,
-            ),
-            onPressed: () =>
-                api.launch("https://www.linkedin.com/in/xavier-lhinares/")),
+          icon: FaIcon(
+            FontAwesomeIcons.linkedin,
+            size: XLayout.paddingL,
+          ),
+          onPressed: api.openLinkedIn,
+        ),
         // Resume
         IconButton(
-            icon: SvgPicture.asset(
-              "assets/icons/icon_cv.svg",
-              height: XLayout.paddingL,
-            ),
-            onPressed: () => api.launch(
-                "https://assets.xeppelin.org/other/XAVIER-LHINARES-CV-en.pdf")),
+          icon: SvgPicture.asset(
+            "assets/icons/icon_cv.svg",
+            height: XLayout.paddingL,
+          ),
+          onPressed: api.openResume,
+        ),
       ],
     );
   }

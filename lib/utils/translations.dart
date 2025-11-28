@@ -129,7 +129,7 @@ class CustomTranslations extends Translations {
       "home_description_title":
           "\\title{Xeppelin} fait décoller vos projets ;)",
       "home_description_content":
-          "Nous souhaitons créer des projets uniques et intéressant avec vous. Prenez contact pour qu'ensemble, nous puissions faire de vos idées de site ou d'application une réalité.",
+          "Nous souhaitons créer des projets uniques et intéressants avec vous. Prenez contact pour qu'ensemble, nous puissions faire de vos idées de site ou d'application une réalité.",
       // MENU ------------------------------------------------------------------
       "tab_home": "Accueil",
       "tab_projects": "Projets",

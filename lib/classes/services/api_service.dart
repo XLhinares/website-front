@@ -275,6 +275,8 @@ class APIService {
     return utf8.decode(response.bodyBytes);
   }
 
+  // OPEN EXTERNAL SITES
+
   /// Launch the given URL in a new tab.
   Future<void> launch(String url, {bool isNewTab = true}) async {
     await launchUrl(
@@ -282,6 +284,17 @@ class APIService {
       webOnlyWindowName: isNewTab ? "_blank" : "_self",
     );
   }
+
+  /// Open a new tab with my linkedin account.
+  Future<void> openLinkedIn() async =>
+      launch("https://www.linkedin.com/in/xavier-lhinares/");
+
+  /// Open a new tab with my github account.
+  Future<void> openGitHub() async => launch("https://github.com/XLhinares/");
+
+  /// Open a new tab with my resume.
+  Future<void> openResume() async =>
+      launch("https://assets.xeppelin.org/other/XAVIER-LHINARES-CV.pdf");
 
 // EXAMPLES ==================================================================
 }

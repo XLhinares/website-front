@@ -5,10 +5,15 @@
 - :lipstick: Changed size of logo on home page.
 - :lipstick: Changed home page description of the website.
 
+- :recycle: Moved the functions opening external websites to the `api` code.
 - :recycle: Deleted the `local_selection_compact.dart` widget and moved the content to the `locale_compact.dart` component.
+
 - :bento: Made small edits to the resume icon.
+- :bento: Deleted unused font asset.
 
 - :bug: Fixed app always starting in english.
+
+- :globe_with_meridians: Fix minor translation error.
 
 ## 2.4.1
 

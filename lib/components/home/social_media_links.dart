@@ -22,24 +22,32 @@ class SocialMediaLinks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisSize: MainAxisSize.min,
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         // Github
         IconButton(
-      icon: FaIcon(FontAwesomeIcons.github, size: XLayout.paddingL,), 
-      onPressed: () => api.launch("https://github.com/XLhinares/")
-     ),
-     XLayout.horizontalXS,
-      // Linkedin
-      IconButton(
-      icon: FaIcon(FontAwesomeIcons.linkedin, size: XLayout.paddingL,), 
-      onPressed: () => api.launch("https://www.linkedin.com/in/xavier-lhinares/")
-     ),
+            icon: FaIcon(
+              FontAwesomeIcons.github,
+              size: XLayout.paddingL,
+            ),
+            onPressed: () => api.launch("https://github.com/XLhinares/")),
+        // Linkedin
+        IconButton(
+            icon: FaIcon(
+              FontAwesomeIcons.linkedin,
+              size: XLayout.paddingL,
+            ),
+            onPressed: () =>
+                api.launch("https://www.linkedin.com/in/xavier-lhinares/")),
         // Resume
         IconButton(
-      icon: SvgPicture.asset("assets/icons/icon_cv.svg", height: XLayout.paddingL,), 
-      onPressed: () => api.launch("https://assets.xeppelin.org/other/XAVIER-LHINARES-CV-en.pdf")
-     ),
+            icon: SvgPicture.asset(
+              "assets/icons/icon_cv.svg",
+              height: XLayout.paddingL,
+            ),
+            onPressed: () => api.launch(
+                "https://assets.xeppelin.org/other/XAVIER-LHINARES-CV-en.pdf")),
       ],
     );
   }

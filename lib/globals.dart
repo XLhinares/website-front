@@ -9,7 +9,7 @@ import "classes/user/user.dart";
 import "utils/translations.dart";
 
 /// The version of the app.
-const String versionNumber = "v2.4.1";
+const String versionNumber = "v2.4.2";
 
 // SERVICES ====================================================================
 
@@ -77,4 +77,7 @@ final CustomTranslations translations = CustomTranslations();
 List<String> supportedLocales = ["fr", "en"];
 
 /// Runs some extra commands asynchronously.
-void postInit() async {}
+void postInit() async {
+  cookies.locale.value = cookies.locale.value;
+  cookies.theme.value = cookies.theme.value;
+}

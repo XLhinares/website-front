@@ -27,12 +27,16 @@ class DesktopMainHome extends StatelessWidget {
           // FIRST BLOCK ---------------------------------------------------------
           Expanded(
             child: XContainer(
-              padding: EdgeInsets.all(3 * XLayout.paddingL),
+              padding: EdgeInsets.symmetric(
+                vertical: 3 * XLayout.paddingL,
+                horizontal: 2 * XLayout.paddingL,
+              ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   XeppelinLogo(
                     size: 8 * XLayout.paddingL,
+                    fit: BoxFit.contain,
                   ),
                 ],
               ),

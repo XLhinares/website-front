@@ -9,9 +9,9 @@ class CustomTranslations extends Translations {
     // ENGLISH =================================================================
     "en": {
       // HOME ------------------------------------------------------------------
-      "home_description": "\\title{[Xeppelin]} lifts your projects ;) \n\nThe "
-          "website is under construction but don't hesitate to check the "
-          "projects I have worked on, or reach out to me via the contact form.",
+      "home_description_title": "\\title{[Xeppelin]} lifts your projects ;)",
+      "home_description_content":
+          "Our goal is to create unique and interesting projects with you. Contact us so we may work together to bring your website or mobile app ideas to fruition.",
 
       // MENU ------------------------------------------------------------------
       "tab_home": "Home",
@@ -126,9 +126,10 @@ class CustomTranslations extends Translations {
 
     "fr": {
       // HOME ------------------------------------------------------------------
-      "home_description":
-          "\\title{Xeppelin} fait décoller vos projets ;) \n\nLe site est en construction mais n'hésitez pas à aller regarder les projets sur lesquels j'ai travaillés, ou à prendre contact via le formulaire de contact.",
-
+      "home_description_title":
+          "\\title{Xeppelin} fait décoller vos projets ;)",
+      "home_description_content":
+          "Nous souhaitons créer des projets uniques et intéressant avec vous. Prenez contact pour qu'ensemble, nous puissions faire de vos idées de site ou d'application une réalité.",
       // MENU ------------------------------------------------------------------
       "tab_home": "Accueil",
       "tab_projects": "Projets",

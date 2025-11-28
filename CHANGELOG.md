@@ -1,3 +1,15 @@
+## 2.4.2
+
+- :art: Created `LRSelector` widget to uniformize the different "left/right" selectors (for instance the locale selector).
+
+- :lipstick: Changed size of logo on home page.
+- :lipstick: Changed home page description of the website.
+
+- :recycle: Deleted the `local_selection_compact.dart` widget and moved the content to the `locale_compact.dart` component.
+- :bento: Made small edits to the resume icon.
+
+- :bug: Fixed app always starting in english.
+
 ## 2.4.1
 
 - :sparkles: Added social networks button icons on the home page.

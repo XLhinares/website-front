@@ -23,10 +23,16 @@ class HomeDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     return XContainer(
       padding: EdgeInsets.all(XLayout.paddingL),
-      child: Column(
+      child: ListView(
+        shrinkWrap: true,
         children: [
           AutoColorText(
-            "home_description".tr,
+            "home_description_title".tr,
+            style: context.textTheme.titleMedium,
+          ),
+          XLayout.verticalM,
+          AutoColorText(
+            "home_description_content".tr,
             style: context.textTheme.titleMedium,
           ),
           XLayout.verticalM,

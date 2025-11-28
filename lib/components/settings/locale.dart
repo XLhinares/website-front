@@ -3,6 +3,7 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../globals.dart";
+import "../../widgets/interactables/lr_selector.dart";
 
 /// The row settings allowing the user to set the locale of the app.
 class SettingsLocale extends StatelessWidget {
@@ -48,34 +49,14 @@ class SettingsLocale extends StatelessWidget {
           "${"settings_locale".tr}${cookies.locale.value == "en" ? "" : " (Locale)"}",
       content: "settings_locale_description".tr,
       internalVerticalPadding: XLayout.paddingS,
-      trailing: SizedBox(
+      trailing: LRSelector(
+        leftBehavior: () => cookies.rotateLocale(reverse: true),
+        rightBehavior: () => cookies.rotateLocale(reverse: false),
         width: width ?? XLayout.paddingL * 4,
-        child: GestureDetector(
-          onHorizontalDragEnd: (details) {
-            if ((details.primaryVelocity ?? 0) > 10) {
-              cookies.rotateLocale(reverse: true);
-            } else if ((details.primaryVelocity ?? 0) < -10) {
-              cookies.rotateLocale(reverse: false);
-            }
-          },
-          child: XCard(
-            color: context.theme.colorScheme.surface,
-            internalHorizontalPadding: XLayout.paddingS,
-            internalVerticalPadding: XLayout.paddingS,
-            leading: GestureDetector(
-              child: const Icon(Icons.chevron_left),
-              onTap: () => cookies.rotateLocale(reverse: true),
-            ),
-            title: Center(
-              child: Obx(() => Text(
-                    cookies.locale.value.capitalize!,
-                    style: context.textTheme.bodyMedium,
-                  )),
-            ),
-            trailing: GestureDetector(
-              child: const Icon(Icons.chevron_right),
-              onTap: () => cookies.rotateLocale(),
-            ),
+        child: Obx(
+          () => Text(
+            cookies.locale.value.capitalize!,
+            style: context.textTheme.bodyMedium,
           ),
         ),
       ),

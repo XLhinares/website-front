@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get_utils/get_utils.dart";
 import "package:x_containers/x_containers.dart";
 
-/// A custom [Button] widget based on [XInkContainer].
+/// A custom [Button] widget based on [XButton].
 class XFlatButton extends StatelessWidget {
   // VARIABLES =================================================================
 
@@ -128,7 +128,7 @@ class XFlatButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return XInkContainer(
+    return XButton(
       alignment: alignment,
       borderDecoration: borderDecoration,
       borderRadius: borderRadius,

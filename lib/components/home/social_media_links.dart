@@ -10,11 +10,16 @@ import "../../globals.dart";
 class SocialMediaLinks extends StatelessWidget {
   // VARIABLES =================================================================
 
+  /// The size of the social media icons.
+  final double? iconSize;
+  double get _iconSize => iconSize ?? XLayout.paddingL;
+
   // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [SocialMediaLinks] matching the given parameters.
   const SocialMediaLinks({
     super.key,
+    this.iconSize,
   });
 
   // BUILD =====================================================================
@@ -29,7 +34,7 @@ class SocialMediaLinks extends StatelessWidget {
         IconButton(
           icon: FaIcon(
             FontAwesomeIcons.github,
-            size: XLayout.paddingL,
+            size: _iconSize,
           ),
           onPressed: api.openGitHub,
         ),
@@ -37,7 +42,7 @@ class SocialMediaLinks extends StatelessWidget {
         IconButton(
           icon: FaIcon(
             FontAwesomeIcons.linkedin,
-            size: XLayout.paddingL,
+            size: _iconSize,
           ),
           onPressed: api.openLinkedIn,
         ),
@@ -45,7 +50,7 @@ class SocialMediaLinks extends StatelessWidget {
         IconButton(
           icon: SvgPicture.asset(
             "assets/icons/icon_cv.svg",
-            height: XLayout.paddingL,
+            height: _iconSize,
           ),
           onPressed: api.openResume,
         ),

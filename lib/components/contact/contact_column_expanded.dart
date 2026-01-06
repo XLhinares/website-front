@@ -67,7 +67,7 @@ class ContactColumnExpanded extends StatelessWidget {
               textInputAction: null,
             ),
             XLayout.verticalM,
-            XInkContainer(
+            XButton(
               onTap: () => sendEmail(context),
               // onTap: sendEmail,
               color: context.theme.colorScheme.secondary,

@@ -53,7 +53,7 @@ class DesktopMainHome extends StatelessWidget {
                 const Expanded(child: SizedBox()),
                 ConstrainedBox(
                   constraints: BoxConstraints(minHeight: Get.height * 0.7),
-                  child: const HomeDescription(),
+                  child: const HomeDescription(useMobileSize: false),
                 ),
               ],
             ),

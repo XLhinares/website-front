@@ -27,7 +27,7 @@ class BackgroundPreview extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: XLayout.brcXS,
-      child: Obx(() => XInkContainer(
+      child: Obx(() => XButton(
             margin: EdgeInsets.zero,
             padding: EdgeInsets.zero,
             borderDecoration: cookies.background.value == data.name

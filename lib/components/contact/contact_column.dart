@@ -67,11 +67,11 @@ class ContactColumn extends StatelessWidget {
               textInputAction: null,
             ),
             XLayout.verticalM,
-            XInkContainer(
+            XButton.text(
+              "contact_send".tr,
               onTap: () => sendEmail(context),
               // onTap: sendEmail,
               color: context.theme.colorScheme.secondary,
-              child: Text("contact_send".tr),
             ),
           ],
         ),

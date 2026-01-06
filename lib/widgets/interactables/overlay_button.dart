@@ -52,7 +52,7 @@ class OverlayButton extends StatelessWidget {
           bottom: bottom,
           left: left,
           right: right,
-          child: XInkContainer(
+          child: XButton(
             width: 1.5 * XLayout.paddingL,
             height: 1.5 * XLayout.paddingL,
             borderDecoration: Border.all(

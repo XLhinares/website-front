@@ -126,13 +126,13 @@ class MediaMobileHeader<T extends Media> extends StatelessWidget {
       );
 
   Widget _goBack(BuildContext context) => FittedBox(
-        child: XInkContainer(
+        child: XButton(
           onTap: () {
             final type = MediaType.fromType(T);
             if (type == MediaType.project) router.selectProject(null);
             if (type == MediaType.blog) router.selectBlog(null);
           },
-          margin: EdgeInsets.all(XLayout.paddingM),
+          margin: XLayout.edgeInsetsAllM,
           padding: EdgeInsets.only(
             top: XLayout.paddingS,
             bottom: XLayout.paddingS,
@@ -161,7 +161,7 @@ class MediaMobileHeader<T extends Media> extends StatelessWidget {
           duration: animDurationShort,
           child:
               user.hasContent(media.id) && user.getContent(media.id)!.isNotEmpty
-                  ? XInkContainer(
+                  ? XButton(
                       color: Colors.transparent,
                       enableShadow: false,
                       onTap: () => scrollController?.animateTo(

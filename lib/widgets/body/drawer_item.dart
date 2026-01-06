@@ -42,12 +42,12 @@ class DrawerItem extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         physics: const NeverScrollableScrollPhysics(),
         children: [
-          Obx(() => XInkContainer(
+          Obx(() => XButton(
                 color: router.currentRoute == route
                     ? context.theme.colorScheme.secondary
                     : context.theme.colorScheme.surface,
                 width: minWidth - 2 * XLayout.paddingS,
-                margin: EdgeInsets.all(XLayout.paddingXS),
+                margin: XLayout.edgeInsetsAllXS,
                 onTap: goToMode,
                 child: Icon(
                   route.icon,
@@ -55,12 +55,12 @@ class DrawerItem extends StatelessWidget {
                   // height: XLayout.paddingL * .75,
                 ),
               )),
-          XInkContainer(
-            margin: EdgeInsets.all(XLayout.paddingXS),
+          XButton.text(
+            route.name.tr.capitalizeFirst!,
+            margin: XLayout.edgeInsetsAllXS,
             width: maxWidth - minWidth - XLayout.paddingS,
             color: context.theme.colorScheme.surface,
             onTap: goToMode,
-            child: Text(route.name.tr.capitalizeFirst!),
           ),
         ],
       ),

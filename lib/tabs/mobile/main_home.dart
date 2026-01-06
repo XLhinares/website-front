@@ -27,14 +27,24 @@ class MobileMainHome extends RouteTab {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(XLayout.paddingM),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      child: Flex(
+        direction: Axis.vertical,
         children: [
-          XeppelinLogo(
-            size: Get.height * 0.3,
+          Flexible(
+            flex: 3,
+            child: XeppelinLogo(
+              size: Get.height * 0.25,
+            ),
           ),
-          XLayout.verticalM,
-          const HomeDescription(),
+          Flexible(flex: 1, child: XLayout.verticalL),
+          Flexible(
+            flex: 6,
+            child: Center(
+              child: const HomeDescription(
+                useMobileSize: true,
+              ),
+            ),
+          ),
         ],
       ),
     );

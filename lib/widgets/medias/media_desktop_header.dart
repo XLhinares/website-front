@@ -93,7 +93,7 @@ class MediaDesktopHeader<T extends Media> extends StatelessWidget {
         alignment: Alignment.topLeft,
         child: FittedBox(
           fit: BoxFit.scaleDown,
-          child: XInkContainer(
+          child: XButton(
             enableShadow: false,
             onTap: () {
               final type = MediaType.fromType(T);
@@ -129,7 +129,7 @@ class MediaDesktopHeader<T extends Media> extends StatelessWidget {
                     alignment: Alignment.bottomCenter,
                     child: FittedBox(
                       fit: BoxFit.scaleDown,
-                      child: XInkContainer(
+                      child: XButton(
                         enableShadow: false,
                         onTap: () => scrollController?.animateTo(
                           Get.height,

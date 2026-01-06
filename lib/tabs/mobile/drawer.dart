@@ -59,7 +59,7 @@ class CustomDrawer extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    XInkContainer(
+                    XButton(
                       margin: EdgeInsets.zero,
                       height: titleBoxHeight,
                       color: context.theme.colorScheme.secondary,
@@ -84,11 +84,11 @@ class CustomDrawer extends StatelessWidget {
                           getItem(
                             AppRoute.MAIN_SETTINGS,
                           ),
-                          XInkContainer(
+                          XButton(
                             color: context.theme.colorScheme.surface,
                             height: XLayout.paddingL,
                             padding: EdgeInsets.zero,
-                            margin: EdgeInsets.all(XLayout.paddingXS),
+                            margin: XLayout.edgeInsetsAllXS,
                             onTap: toggleExpansion,
                             child: RotatingIcon(
                               tag: "custom_drawer_toggle",

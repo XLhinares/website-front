@@ -76,6 +76,9 @@ class AutoColorText extends StatelessWidget {
   /// The default style of the auto-colored text.
   final TextStyle? style;
 
+  /// The default alignment of the auto-colored text.
+  final TextAlign? textAlign;
+
   /// The color of colored text.
   ///
   /// By default it takes the theme's secondary color.
@@ -94,6 +97,7 @@ class AutoColorText extends StatelessWidget {
     this.text, {
     super.key,
     this.style,
+    this.textAlign,
     this.highlightColor,
     this.maxLines,
     this.overflow,
@@ -104,6 +108,7 @@ class AutoColorText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RichText(
+      textAlign: textAlign ?? TextAlign.start,
       text: TextSpan(children: _coloredText(context)),
       maxLines: maxLines,
       overflow: overflow ?? TextOverflow.clip,

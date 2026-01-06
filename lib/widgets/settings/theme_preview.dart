@@ -29,7 +29,7 @@ class ThemePreview extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: XLayout.brcXS,
-      child: XInkContainer(
+      child: XButton(
         padding: EdgeInsets.zero,
         gradient: RadialGradient(
           colors: [

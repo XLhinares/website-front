@@ -31,7 +31,7 @@ class ProjectPreviewer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return XInkContainer(
+    return XButton(
       height: Get.height * 0.25,
       padding: EdgeInsets.zero,
       onTap: onTap,

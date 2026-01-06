@@ -40,9 +40,9 @@ class MobileMainProjects extends RouteTab {
               _projectBuilder(context, snapshot![0]),
               _projectBuilder(context, snapshot[1]),
               _projectBuilder(context, snapshot[2]),
-              XInkContainer(
+              XButton.text(
+                "display_more".tr,
                 onTap: () => router.push(route: AppRoute.PAGE_PROJECTS),
-                child: Text("display_more".tr),
               ),
             ],
           );
@@ -76,9 +76,9 @@ class MobileMainProjects extends RouteTab {
             height: XLayout.paddingM * 7,
           ),
           XLayout.verticalM,
-          XInkContainer(
+          XButton.text(
+            "display_more".tr,
             onTap: () => router.push(route: AppRoute.PAGE_PROJECTS),
-            child: Text("display_more".tr),
           )
         ],
       );

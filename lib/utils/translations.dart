@@ -129,7 +129,7 @@ class CustomTranslations extends Translations {
       "home_description_title":
           "\\title{Xeppelin} fait décoller vos projets ;)",
       "home_description_content":
-          "Nous souhaitons créer des projets uniques et intéressants avec vous. Prenez contact pour qu'ensemble, nous puissions faire de vos idées de site ou d'application une réalité.",
+          "Nous créons des projets uniques et intéressants avec vous. Prenez contact pour qu'ensemble, nous puissions faire de vos idées de site ou d'application une réalité.",
       // MENU ------------------------------------------------------------------
       "tab_home": "Accueil",
       "tab_projects": "Projets",
@@ -177,7 +177,7 @@ class CustomTranslations extends Translations {
           "Dans cet onglet, vous pouvez configuer le site pour correspondre plus précisément à vos préférences.",
       "settings_locale": "Langage",
       "settings_locale_description":
-          "La langue utilisée sur ce site (cela n'affecte pas les projets et blogs).",
+          "La langue utilisée sur ce site (cela n'affecte pas les projets).",
       "settings_theme_selection": "Choix du thème",
       "settings_background_selection": "Choix du fond",
       "settings_theme_light": "Clair",

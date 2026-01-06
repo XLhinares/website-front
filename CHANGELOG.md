@@ -1,3 +1,10 @@
+## 2.4.3
+
+- :bug: Changed website description to avoid overflow on mobile.
+- :recycle: Changed [XInkContainer] to [XButton] everywhere.
+
+- :bento: Edit favicon to use Xeppelin logo.
+
 ## 2.4.2
 
 - :art: Created `LRSelector` widget to uniformize the different "left/right" selectors (for instance the locale selector).

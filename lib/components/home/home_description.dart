@@ -10,33 +10,53 @@ import "social_media_links.dart";
 class HomeDescription extends StatelessWidget {
   // VARIABLES =================================================================
 
+  /// Whether to use the regular version or a smaller version to fit in smaller screen.
+  ///
+  /// This affects the text font size and the icon size.
+  final bool useMobileSize;
+
   // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [HomeDescription] matching the given parameters.
-  const HomeDescription({
-    super.key,
-  });
+  const HomeDescription({super.key, this.useMobileSize = false});
 
   // BUILD =====================================================================
 
   @override
   Widget build(BuildContext context) {
+    final TextStyle? textStyle = useMobileSize
+        ? context.textTheme.bodyMedium
+        : context.textTheme.titleMedium;
+    final double iconSize =
+        useMobileSize ? XLayout.paddingL * 0.8 : XLayout.paddingL;
+
     return XContainer(
       padding: EdgeInsets.all(XLayout.paddingL),
-      child: ListView(
-        shrinkWrap: true,
+      child: Column(
         children: [
-          AutoColorText(
-            "home_description_title".tr,
-            style: context.textTheme.titleMedium,
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                AutoColorText(
+                  "home_description_title".tr,
+                  style: textStyle,
+                ),
+                XLayout.verticalM,
+                AutoColorText(
+                  "home_description_content".tr,
+                  style: textStyle,
+                  textAlign: TextAlign.justify,
+                ),
+              ],
+            ),
           ),
           XLayout.verticalM,
-          AutoColorText(
-            "home_description_content".tr,
-            style: context.textTheme.titleMedium,
+          SocialMediaLinks(
+            iconSize: iconSize,
           ),
-          XLayout.verticalM,
-          SocialMediaLinks(),
+          // XLayout.verticalM,
         ],
       ),
     );

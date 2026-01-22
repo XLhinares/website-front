@@ -41,7 +41,7 @@ class MobileMainBlogs extends RouteTab {
                   itemExtent: XLayout.paddingM * 8,
                 )
               : MediaFocus<Blog>(
-                  media: user.getBlog(router.blog!),
+                  media: app.medias.getBlog(router.blog!),
                   headerBuilder: (media, scrollController) =>
                       MediaMobileHeader<Blog>(
                     media: media,

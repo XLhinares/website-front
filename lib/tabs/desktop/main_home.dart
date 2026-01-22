@@ -51,8 +51,8 @@ class DesktopMainHome extends StatelessWidget {
             child: Column(
               children: [
                 const Expanded(child: SizedBox()),
-                ConstrainedBox(
-                  constraints: BoxConstraints(minHeight: Get.height * 0.7),
+                SizedBox(
+                  height: Get.height * .7,
                   child: const HomeDescription(useMobileSize: false),
                 ),
               ],

@@ -1,8 +1,9 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
-import "../../globals.dart";
-import "../dataclass/route.dart";
+import "../globals.dart";
+import "../classes/dataclass/route.dart";
+import "../utils/tools.dart";
 
 /// A service managing the state of the app.
 class RoutingService extends GetxController {
@@ -128,7 +129,7 @@ class RoutingService extends GetxController {
 
   /// Select a project to be displayed by the router.
   void selectProject(int? id) {
-    printInfo(info: "Selecting project: $id");
+    dlog("Selecting project: $id");
     if (id == _selectedProject.value) {
       _selectedProject.value = null;
     } else {
@@ -144,7 +145,7 @@ class RoutingService extends GetxController {
 
   /// Select a blog to be displayed by the router.
   void selectBlog(int? id) {
-    printInfo(info: "Selecting blog: $id");
+    dlog("Selecting blog: $id");
     // if (id == _selectedBlog.value) {
     //   _selectedBlog.value = null;
     // } else {
@@ -166,7 +167,7 @@ class RoutingService extends GetxController {
 
   /// Handles special behaviors when trying to open current route.
   void _pushIdentical(AppRoute route) {
-    printInfo(info: "Tapped on the current route, applying custom behavior");
+    dlog("Tapped on the current route, applying custom behavior");
 
     // When trying to navigate [AppRoute.MAIN_PROJECTS].
     //
@@ -183,16 +184,16 @@ class RoutingService extends GetxController {
 
   /// Pushes the given route to navigator and add it to the history.
   void _pushNew(AppRoute route) {
-    printInfo(info: "Applying new route behavior:");
+    dlog("Applying new route behavior:");
 
     if (route.isMainRoute && currentRoute.isMainRoute) {
-      printInfo(info: "--- within ${AppRoute.ROOT_MAIN}");
+      dlog("--- within ${AppRoute.ROOT_MAIN}");
       animateTo(route: route);
     } else if (route.isProjectsRoute && currentRoute.isProjectsRoute) {
-      printInfo(info: "--- within ${AppRoute.ROOT_PROJECTS}");
+      dlog("--- within ${AppRoute.ROOT_PROJECTS}");
       // No need for specific animation.
     } else {
-      printInfo(info: "--- outside old route's root");
+      dlog("--- outside old route's root");
       Get.toNamed(route.path);
     }
 
@@ -210,13 +211,12 @@ class RoutingService extends GetxController {
     final newRoute = route ?? AppRoute.parse(path: path);
     if (!newRoute.isAccessibleToUser) return;
 
-    printInfo(info: "");
-    printInfo(
-        info: "Pushing route: [${currentRoute.path}] >>> [${newRoute.path}]");
-    printInfo(info: "--- old route: root (${currentRoute.root})");
-    printInfo(info: "--- new route: root (${newRoute.root})");
+    dlog("");
+    dlog("Pushing route: [${currentRoute.path}] >>> [${newRoute.path}]");
+    dlog("--- old route: root (${currentRoute.root})");
+    dlog("--- new route: root (${newRoute.root})");
 
-    printInfo(info: "ROUTER > Pushing new route: ${newRoute.path}.");
+    dlog("ROUTER > Pushing new route: ${newRoute.path}.");
 
     // Behavior when starting the app.
     // if (newRoute == AppRoute.ROOT) {
@@ -243,7 +243,7 @@ class RoutingService extends GetxController {
     final newRoute = route ?? AppRoute.parse(path: path);
     if (!newRoute.isAccessibleToUser) return;
 
-    printInfo(info: "ROUTER > Setting new route: ${newRoute.path}.");
+    dlog("ROUTER > Setting new route: ${newRoute.path}.");
 
     // if (newRoute == XRoute.ROOT) {
     //   _pushRoot();

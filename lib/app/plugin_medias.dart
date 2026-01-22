@@ -1,14 +1,20 @@
 import "dart:collection";
 
-import "../../classes/medias/medias.dart";
-import "../../globals.dart";
-import "../../utils/tools.dart";
-import "../../utils/tools_api.dart";
-import "user_core.dart";
+import "../classes/medias/blog.dart";
+import "../classes/medias/media.dart";
+import "../classes/medias/media_content.dart";
+import "../classes/medias/media_type.dart";
+import "../classes/medias/project.dart";
+import "../globals.dart";
+import "../utils/tools.dart";
+import "../utils/tools_api.dart";
+import "app_manager_plugin.dart";
 
-/// A mixin that implements the handling of trackables in the user class.
-mixin UserMedias on UserCore {
-  // VARIABLES =================================================================
+/// A plugin that handles the word decks.
+class MediaPlugin extends AppManagerPlugin {
+  @override
+  bool get blocking => true;
+// VARIABLES =================================================================
 
   /// A list of the registered projects metadata.
   late final Map<int, Project> _projects;
@@ -43,27 +49,13 @@ mixin UserMedias on UserCore {
 
   // CONSTRUCTOR ===============================================================
 
-  /// Instantiates the late fields of the trackable mixin.
-  void instantiateMedias() {
+  @override
+  Future<void> load({SuccessCallback? then}) async {
     _projects = {};
     _blogs = {};
     _mediaContent = {};
-  }
 
-  /// Initializes the people mixin.
-  Future<bool> initializeMedias() => tryWrapper(
-        () async {
-          // The initialization logic goes here.
-          return true;
-        },
-        errorMessage: "Could not initialize the people mixin.",
-      );
-
-  /// All the tasks that should be run after the app was loaded.
-  Future<void> postInitMedias() async {
-    // We don't load the projects by default because it would slow down the
-    // user's device.
-    // loadMedias();
+    return super.load(then: then);
   }
 
   // METHODS ===================================================================
@@ -74,7 +66,7 @@ mixin UserMedias on UserCore {
     int page = 0,
   }) async =>
       tryWrapper(() async {
-        final res = await api.getMedias<T>(
+        final res = await app.network.getMedias<T>(
           sorter: sorter,
           page: page,
         );
@@ -99,7 +91,7 @@ mixin UserMedias on UserCore {
 
   /// Loads the list of projects from the API.
   Future<void> loadMediaContent(int id) async => tryWrapper(() async {
-        final res = await api.getMediaContent(id);
+        final res = await app.network.getMediaContent(id);
         if (res != null) _mediaContent[id] = res;
         update();
       });

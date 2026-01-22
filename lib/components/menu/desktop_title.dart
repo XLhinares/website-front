@@ -3,6 +3,7 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../globals.dart";
+import "../../utils/tools.dart";
 import "../../widgets/images/xeppelin_logo.dart";
 
 /// An animated title for the body.
@@ -36,6 +37,7 @@ class BodyTitle extends StatelessWidget {
                         padding: EdgeInsets.only(right: XLayout.paddingXS),
                         child: XeppelinLogo(
                           size: 2 * XLayout.paddingL,
+                          color: context.colors.secondary,
                         )),
               ),
             ),
@@ -47,7 +49,8 @@ class BodyTitle extends StatelessWidget {
               fit: BoxFit.fitWidth,
               child: Text(
                 "Xeppelin",
-                style: context.textTheme.displayLarge,
+                style: context.textTheme.displayLarge!
+                    .copyWith(color: context.colors.onSurface),
               ),
             ),
           ),

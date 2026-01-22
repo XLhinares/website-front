@@ -2,14 +2,33 @@ import "dart:async";
 
 import "package:get/get.dart";
 
-import "../../globals.dart";
-import "../../utils/tools.dart";
-import "../dataclass/dataclass.dart";
-import "user_core.dart";
+import "../classes/dataclass/user_data.dart";
+import "../globals.dart";
+import "app_manager_plugin.dart";
 
-/// A mixin that implements the connection methods in the user class.
-mixin UserConnection on UserCore {
-  // VARIABLES =================================================================
+import "../../utils/tools.dart";
+
+/// A class handling the authentication of the user.
+class AuthenticationPlugin extends AppManagerPlugin {
+  // CONSTANTS =================================================================
+
+  @override
+  Future<void> load({SuccessCallback? then}) async {
+    data = const UserData();
+    communicatingWithServer = false.obs;
+    tokenRefreshTimer = null;
+
+    ever(communicatingWithServer, (callback) => update());
+
+    if (app.cookies.email.value.isNotEmpty &&
+        app.cookies.token.value.isNotEmpty) {
+      data = UserData(
+          email: app.cookies.email.value, token: app.cookies.token.value);
+      _refreshToken();
+    }
+    return await super.load(then: then);
+  }
+// VARIABLES =================================================================
 
   /// The connection data of the user.
   late UserData data;
@@ -31,13 +50,7 @@ mixin UserConnection on UserCore {
   // CONSTRUCTOR ===============================================================
 
   /// Instantiates the late fields of the trackable mixin.
-  void instantiateConnection() {
-    data = const UserData();
-    communicatingWithServer = false.obs;
-    tokenRefreshTimer = null;
-
-    ever(communicatingWithServer, (callback) => update());
-  }
+  void instantiateConnection() {}
 
   /// Initializes the people mixin.
   Future<bool> initializeConnection() => tryWrapper(
@@ -49,12 +62,7 @@ mixin UserConnection on UserCore {
       );
 
   /// All the tasks that should be run after the app was loaded.
-  Future<void> postInitConnection() async {
-    if (cookies.email.isNotEmpty && cookies.token.isNotEmpty) {
-      data = UserData(email: cookies.email.value, token: cookies.token.value);
-      _refreshToken();
-    }
-  }
+  Future<void> postInitConnection() async {}
 
   // METHODS ===================================================================
 
@@ -66,7 +74,7 @@ mixin UserConnection on UserCore {
   }) async {
     communicatingWithServer.value = true;
 
-    final errorMessage = await api.signUp(
+    final errorMessage = await app.network.signUp(
       username: username,
       email: email,
       password: password,
@@ -86,9 +94,9 @@ mixin UserConnection on UserCore {
         () async {
           communicatingWithServer.value = true;
 
-          data = await api.logIn(email: email, password: password);
-          cookies.email.value = data.email ?? "";
-          cookies.token.value = data.token ?? "";
+          data = await app.network.logIn(email: email, password: password);
+          app.cookies.email.value = data.email ?? "";
+          app.cookies.token.value = data.token ?? "";
 
           communicatingWithServer.value = false;
         },
@@ -101,8 +109,8 @@ mixin UserConnection on UserCore {
   ///
   /// Only the email address is kept to make logging in again easier.
   Future<void> disconnect() async {
-    cookies.email.value = data.email ?? "";
-    cookies.token.value = "";
+    app.cookies.email.value = data.email ?? "";
+    app.cookies.token.value = "";
     data = UserData(email: data.email);
     update();
   }
@@ -111,12 +119,12 @@ mixin UserConnection on UserCore {
   Future<void> _refreshToken() async {
     communicatingWithServer.value = true;
 
-    data = await api.refreshToken(
+    data = await app.network.refreshToken(
       email: data.email ?? "",
       token: data.token ?? "",
     );
-    cookies.email.value = data.email ?? "";
-    cookies.token.value = data.token ?? "";
+    app.cookies.email.value = data.email ?? "";
+    app.cookies.token.value = data.token ?? "";
 
     communicatingWithServer.value = false;
   }

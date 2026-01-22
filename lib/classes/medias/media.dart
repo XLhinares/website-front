@@ -36,7 +36,7 @@ class Media {
   // GETTERS ===================================================================
 
   /// A preview image of the media.
-  String get preview => "${api.assets}$_preview";
+  String get preview => "${app.network.assets}$_preview";
 
   // CONSTRUCTOR ===============================================================
 

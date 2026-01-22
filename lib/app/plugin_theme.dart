@@ -1,3 +1,6 @@
+import "../globals.dart";
+import "../utils/themes.dart";
+import "app_manager_plugin.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:get/get.dart";
@@ -5,23 +8,24 @@ import "package:x_containers/x_containers.dart";
 
 import "../../utils/tools.dart";
 
-// MODE MANAGEMENT =============================================================
-
 /// A class defining a few preset themes.
-class ThemeService {
+class ThemePlugin extends AppManagerPlugin {
   // CONSTANTS =================================================================
+
+  @override
+  bool get blocking => true;
 
   /// A map of all handled themes.
   final Map<String, ThemeData> all = {};
 
   /// The default font family used in the app.
-  static const defaultFontFamily = "JosefinSans";
+  final defaultFontFamily = "JosefinSans";
 
   /// The font family used for code blocks.
-  static const codeFontFamily = "Sono";
+  final codeFontFamily = "Sono";
 
   /// A custom text theme to merge with the [xTheme] one.
-  static TextTheme defaultTextTheme = const TextTheme(
+  late final TextTheme defaultTextTheme = TextTheme(
     displayLarge: TextStyle(
         fontFamily: defaultFontFamily,
         fontFeatures: [FontFeature.enable("smcp")]),
@@ -69,42 +73,52 @@ class ThemeService {
 
   // CONSTRUCTOR ===============================================================
 
-  /// Adds the default, light and dark themes to the [ThemeService].
-  ThemeService._internal() {
+  /// Adds the default, light and dark themes to the [ThemePlugin].
+  ThemePlugin._internal() {
+    // LIGHT THEMES ------------------------------------------------------------
     addTheme(
       name: "light",
-      data: xTheme.getTheme(
+      data: getTheme(
         mode: ThemeMode.light,
-        // appBarTheme: const AppBarTheme().copyWith(
-        //   backgroundColor: const Color(0xFF284B63),
-        //   titleTextStyle: const TextStyle().copyWith(
-        //     color: Colors.white,
-        //     fontSize: 24,
-        //     fontWeight: FontWeight.w600,
-        //     fontFeatures: [const FontFeature.enable("smcp")],
-        //     letterSpacing: 0.25,
-        //   ),
-        // ),
+        surface: const Color(0xFFF4F9E9),
+        surfaceVariant: const Color(0xFFEEF0EB),
+        onSurface: Colors.black,
         primary: const Color(0xFFB4B8AB),
+        onPrimary: Colors.black,
         secondary: const Color(0xFF284B63),
-        background: const Color(0xFFF4F9E9),
-        backgroundAlt: const Color(0xFFEEF0EB),
-        cardColor: const Color(0xFFB4B8AB),
-        containerColor: const Color(0xFFB4B8AB),
+        onSecondary: Colors.white,
         textTheme: defaultTextTheme,
       ),
     );
 
     addTheme(
-      name: "dark",
-      data: xTheme.getTheme(
-        mode: ThemeMode.dark,
-        primary: const Color(0xFF464245),
-        secondary: const Color(0xFFAF3131),
-        background: const Color(0xFF282627),
-        // backgroundAlt: Color(0xFF282627),
-        cardColor: const Color(0xFF464245),
-        containerColor: const Color(0xFF686866),
+      name: "crimson",
+      data: getTheme(
+        mode: ThemeMode.light,
+        surface: const Color(0xFFDEDDDB),
+        onSurface: const Color(0xFF1F1F1F),
+        primary: const Color(0xFF262424),
+        onPrimary: const Color(0xFFDEDDDB),
+        secondary: const Color(0xFFA82222),
+        onSecondary: const Color(0xFFDEDDDB),
+        textTheme: defaultTextTheme,
+      ),
+    );
+
+    addTheme(
+      name: "cottage",
+      data: getTheme(
+        mode: ThemeMode.light,
+        surface: const Color(0xFFE0CFB5),
+        surfaceVariant: const Color(0xFF49361E),
+        onSurface: const Color(0xFF47311C),
+        primary: const Color(0xFFACA872),
+        onPrimary: Colors.black,
+        secondary: const Color(0xFFDCAE61),
+        onSecondary: Colors.black,
+        tertiary: const Color(0xFF47311C),
+        onTertiary: const Color(0xFFE0CFB5),
+        shadowColor: const Color(0xFF47311C),
         textTheme: defaultTextTheme,
       ),
     );
@@ -112,39 +126,71 @@ class ThemeService {
     // Add some extra themes
     addTheme(
       name: "pastel",
-      data: xTheme.getTheme(
+      data: getTheme(
         mode: ThemeMode.light,
         primary: const Color(0xFFE0AA3A),
+        onPrimary: Colors.black,
         secondary: const Color(0xFFEF596C),
-        background: const Color(0xFF689BA6),
-        // backgroundAlt: Color(0xFF282627),
-        cardColor: const Color(0xFFE0AA3A),
-        containerColor: Colors.white.withValues(alpha: 0.7),
-        textTheme: ThemeService.defaultTextTheme,
+        onSecondary: Colors.white,
+        surface: const Color(0xFF689BA6),
+        textTheme: defaultTextTheme,
+      ),
+    );
+
+    // DARK THEMES -------------------------------------------------------------
+
+    addTheme(
+      name: "rust",
+      data: getTheme(
+        mode: ThemeMode.dark,
+        surface: const Color(0xFFccc5b9),
+        onSurface: Colors.black,
+        primary: const Color(0xFF403d39),
+        secondary: const Color(0xFFC45F37),
+        textTheme: defaultTextTheme,
       ),
     );
 
     addTheme(
       name: "halloween",
-      data: xTheme.getTheme(
+      data: getTheme(
         mode: ThemeMode.dark,
         primary: const Color(0xFF3a3630),
         secondary: const Color(0xFFa85c06),
-        background: const Color(0xFF110f0f),
-        // backgroundAlt: Color(0xFF282627),
-        cardColor: const Color(0xFF3a3630),
-        // containerColor: Colors.white.withOpacity(0.7),
+        surface: const Color(0xFF110f0f),
+        textTheme: defaultTextTheme,
+      ),
+    );
 
-        textTheme: ThemeService.defaultTextTheme,
+    addTheme(
+      name: "dark",
+      data: getTheme(
+        mode: ThemeMode.dark,
+        primary: const Color(0xFF464245),
+        secondary: const Color(0xFFAF3131),
+        surface: const Color(0xFF282627),
+        textTheme: defaultTextTheme,
+      ),
+    );
+
+    addTheme(
+      name: "terminal",
+      data: getTheme(
+        mode: ThemeMode.dark,
+        primary: const Color(0xFF1F1F1F),
+        secondary: const Color(0xFF49F377),
+        onSecondary: Colors.black,
+        surface: const Color(0xFF373737),
+        textTheme: defaultTextTheme,
       ),
     );
   }
 
-  /// The unique instance of [ThemeService], implements the singleton pattern.
-  static final ThemeService _service = ThemeService._internal();
+  /// The unique instance of [ThemePlugin], implements the singleton pattern.
+  static final ThemePlugin _service = ThemePlugin._internal();
 
-  /// Returns an access to the unique instance of [ThemeService].
-  factory ThemeService() => _service;
+  /// Returns an access to the unique instance of [ThemePlugin].
+  factory ThemePlugin() => _service;
 
   /// Tries to parse the type from the source.
   ///
@@ -154,14 +200,19 @@ class ThemeService {
       if (theme.toLowerCase() == source.toLowerCase()) return all[theme]!;
     }
 
-    throw UnsupportedError("This theme is not supported: $source");
+    dlog("Theme $source not available: using default value instead.");
+    return all[app.cookies.theme.defaultValue]!;
   }
 
   // METHODS ===================================================================
 
   /// Changes the theme to [target] with the help of the [get] package.
+  ///
+  /// !WARNING! This function only works if [GetMaterialApp.themeMode] is set
+  /// to [ThemeMode.light].
   void changeTheme(String target) => tryWrapper(
         () async {
+          dlog("Changing theme to: $target!");
           final ThemeData newTheme = parse(target);
           Get.changeTheme(newTheme);
 
@@ -177,7 +228,7 @@ class ThemeService {
         },
       );
 
-  /// Adds a new theme to the [ThemeService].
+  /// Adds a new theme to the [ThemePlugin].
   void addTheme({required String name, required ThemeData data}) {
     all[name] = data;
 

@@ -29,15 +29,10 @@ class SettingsLocaleCompact extends StatelessWidget {
           ),
           Expanded(child: SizedBox()),
           LRSelector(
-            leftBehavior: () => cookies.rotateLocale(reverse: true),
-            rightBehavior: () => cookies.rotateLocale(reverse: false),
+            leftBehavior: () => app.cookies.rotateLocale(reverse: true),
+            rightBehavior: () => app.cookies.rotateLocale(reverse: false),
             width: Get.width * .3,
-            child: Obx(
-              () => Text(
-                cookies.locale.value.capitalize!,
-                style: context.textTheme.bodyMedium,
-              ),
-            ),
+            controller: app.cookies.locale.rx,
           ),
         ],
       ),

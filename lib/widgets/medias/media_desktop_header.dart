@@ -118,13 +118,13 @@ class MediaDesktopHeader<T extends Media> extends StatelessWidget {
       );
 
   Widget _seeMore(BuildContext context) => GetBuilder(
-        init: user,
+        init: app,
         builder: (_) => SizedBox(
           height: XLayout.paddingL * 2,
           child: AnimatedSwitcher(
             duration: animDurationShort,
-            child: user.hasContent(media.id) &&
-                    user.getContent(media.id)!.isNotEmpty
+            child: app.medias.hasContent(media.id) &&
+                    app.medias.getContent(media.id)!.isNotEmpty
                 ? Align(
                     alignment: Alignment.bottomCenter,
                     child: FittedBox(

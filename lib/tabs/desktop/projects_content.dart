@@ -25,7 +25,7 @@ class DesktopProjectsContent extends StatelessWidget {
           child: router.project == null
               ? NoProjectSelected()
               : MediaFocus<Project>(
-                  media: user.getProject(router.project!),
+                  media: app.medias.getProject(router.project!),
                   headerBuilder: (media, scrollController) =>
                       MediaDesktopHeader<Project>(
                     media: media,

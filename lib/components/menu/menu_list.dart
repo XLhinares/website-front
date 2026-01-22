@@ -5,6 +5,7 @@ import "package:x_containers/x_containers.dart";
 import "../../../classes/controllers/menu_selection_animation_controller.dart";
 import "../../globals.dart";
 import "../../classes/dataclass/route.dart";
+import "../../utils/tools.dart";
 import "menu_tile.dart";
 
 /// The list view containing the menu items.
@@ -39,7 +40,7 @@ class MenuList extends StatelessWidget {
     // Reload the tile sizes when the locale change so the new strings don't
     // cause an overflow.
     ever(
-      cookies.locale,
+      app.cookies.locale.rx,
       (_) => WidgetsBinding.instance.addPostFrameCallback((_) {
         for (int i = 0; i < AppRoute.mainRoutes.length; i++) {
           _animationController.setTileHeight(
@@ -100,7 +101,7 @@ class MenuList extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: XLayout.brcXS,
-                      color: Colors.grey.withAlpha(100),
+                      color: context.colors.surface.withAlpha(50),
                     ),
                     height: _animationController.height,
                     width: double.infinity,

@@ -3,7 +3,7 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../globals.dart";
-import "../../widgets/interactables/x_flat_button.dart";
+import "../../utils/tools.dart";
 
 /// A card explaining what how this site uses cookies.
 class CookiesCard extends StatelessWidget {
@@ -23,7 +23,7 @@ class CookiesCard extends StatelessWidget {
     return Obx(
       () => AnimatedSwitcher(
         duration: animDurationShort,
-        child: cookies.cookieBannerDismissed.value
+        child: app.cookies.cookieBannerDismissed.value
             ? const SizedBox()
             : XCard(
                 margin: EdgeInsets.only(top: XLayout.paddingM),
@@ -44,20 +44,24 @@ class CookiesCard extends StatelessWidget {
                         Expanded(
                           child: SizedBox(),
                         ),
-                        XFlatButton.text(
+                        XButton.text(
+                          "cookies_decline".tr,
+                          textStyle: context.bodyMediumOnSecondary,
+                          color: context.colors.secondary,
                           onTap: () {
-                            cookies.cookieBannerDismissed.value = true;
-                            cookies.cookies.value = false;
+                            app.cookies.cookieBannerDismissed.value = true;
+                            app.cookies.allowCookies.value = false;
                           },
-                          text: "cookies_decline".tr,
                         ),
                         XLayout.horizontalS,
-                        XFlatButton.text(
+                        XButton.text(
+                          "cookies_accept".tr,
+                          textStyle: context.bodyMediumOnSecondary,
+                          color: context.colors.secondary,
                           onTap: () {
-                            cookies.cookieBannerDismissed.value = true;
-                            cookies.cookies.value = true;
+                            app.cookies.cookieBannerDismissed.value = true;
+                            app.cookies.allowCookies.value = true;
                           },
-                          text: "cookies_accept".tr,
                         ),
                       ],
                     )

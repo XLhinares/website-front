@@ -2,6 +2,8 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
+import "../../utils/tools.dart";
+
 /// A title card for the tabs as seen on mobile.
 class MobileTabTitle extends StatelessWidget {
   // VARIABLES =================================================================
@@ -25,7 +27,7 @@ class MobileTabTitle extends StatelessWidget {
       color: context.theme.colorScheme.secondary,
       child: Text(
         title.tr,
-        style: context.textTheme.titleMedium,
+        style: context.titleMediumOnSecondary,
       ),
     );
   }

@@ -51,6 +51,9 @@ class DrawerItem extends StatelessWidget {
                 onTap: goToMode,
                 child: Icon(
                   route.icon,
+                  color: router.currentRoute == route
+                      ? context.theme.colorScheme.onSecondary
+                      : context.theme.colorScheme.onSurface,
                   // width: XLayout.paddingL * 0.75,
                   // height: XLayout.paddingL * .75,
                 ),

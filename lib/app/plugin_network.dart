@@ -1,45 +1,41 @@
-// ignore_for_file: use_build_context_synchronously
-
 import "dart:convert";
 import "dart:io";
 
-import "package:flutter/material.dart";
-import "package:get/get.dart";
 import "package:http/http.dart" as http;
 import "package:url_launcher/url_launcher.dart";
-import "package:x_containers/x_containers.dart";
 
-import "../../globals.dart";
 import "../../utils/tools.dart";
-import "../../utils/tools_api.dart";
-import "../dataclass/dataclass.dart";
-import "../medias/medias.dart";
+import "../classes/dataclass/user_data.dart";
+import "../classes/medias/media.dart";
+import "../classes/medias/media_content.dart";
+import "../classes/medias/media_type.dart";
+import "../globals.dart";
+import "../utils/tools_api.dart";
+import "app_manager_plugin.dart";
 
 /// A service that handles all the API requests.
-class APIService {
+class NetworkPlugin extends AppManagerPlugin {
   // VARIABLES =================================================================
 
-  /// The URI prefix to reach the the API.
+  /// The URI prefix to reach the game API.
   late final String api;
 
-  /// The URI prefix to reach the the assets.
+  /// The URI prefix to reach the xeppelin API.
   late final String assets;
 
   // CONSTRUCTOR ===============================================================
 
-  /// The instantiation logic of [APIService].
-  APIService._internal() {
+  /// The instantiation logic of [NetworkPlugin].
+  NetworkPlugin._internal() {
     api = "https://api.xeppelin.org/";
     assets = "https://assets.xeppelin.org/";
-
-    printInfo(info: "API Service initialized.");
   }
 
-  /// The actual instance of [APIService].
-  static final APIService _instance = APIService._internal();
+  /// The actual instance of [NetworkPlugin].
+  static final NetworkPlugin _instance = NetworkPlugin._internal();
 
-  /// Returns the [APIService] singleton.
-  factory APIService() => _instance;
+  /// Returns the [NetworkPlugin] singleton.
+  factory NetworkPlugin() => _instance;
 
   // METHODS ===================================================================
 
@@ -57,7 +53,7 @@ class APIService {
         () async {
           assert(url != null, "URL cannot be [null].");
 
-          printInfo(info: "Fetching JSON resource from: '$url'");
+          dlog("Fetching JSON resource from: '$url'");
           final http.Response response = await http.get(url!);
 
           if (response.statusCode < 200 || response.statusCode >= 400) {
@@ -82,7 +78,7 @@ class APIService {
         () async {
           assert(url != null, "URL cannot be [null].");
 
-          printInfo(info: "Fetching file resource from: '$url'");
+          dlog("Fetching file resource from: '$url'");
           final http.Response response = await http.get(url!);
 
           if (response.statusCode < 200 || response.statusCode >= 400) {
@@ -96,39 +92,6 @@ class APIService {
         },
         errorMessage: "Fetching the file object from [$url] failed.",
       );
-
-  /// A request to test the connection to the API.
-  Future<void> test(BuildContext? context) async {
-    TextStyle? titleStyle = context?.textTheme.titleMedium;
-    TextStyle? contentStyle = context?.textTheme.bodyMedium;
-    Color color = context?.theme.colorScheme.surface ?? Colors.black12;
-
-    try {
-      final uri = Uri.parse("https://catfact.ninja/fact");
-      final response = await fetchJson(uri, subsetPicker: (e) => [e]);
-
-      XSnackbar.text(
-        title: "$versionNumber - ${"test_card_snackbar_success_title".tr}",
-        content: "test_card_snackbar_success_content"
-            .trParams({"fact": response[0]["fact"]}),
-        titleStyle: titleStyle,
-        contentStyle: contentStyle,
-        color: color,
-        duration: const Duration(seconds: 10),
-      ).show(context!);
-    } catch (e) {
-      printError(info: "\n$e");
-
-      XSnackbar.text(
-        title: "test_card_snackbar_failure_title".tr,
-        content: "test_card_snackbar_failure_content".tr,
-        titleStyle: titleStyle,
-        contentStyle: contentStyle,
-        color: color,
-      ).show(context!);
-      rethrow;
-    }
-  }
 
   /// Attempts to log the user in on the API.
   Future<UserData> logIn({
@@ -146,7 +109,7 @@ class APIService {
               "password": password,
             });
 
-        printInfo(info: response.body.toString());
+        dlog(response.body.toString());
 
         return UserData.fromJson(jsonDecode(response.body));
       });
@@ -172,7 +135,7 @@ class APIService {
               "password": password,
             });
 
-        printInfo(info: response.body.toString());
+        dlog(response.body.toString());
 
         if (response.statusCode == 200) return null;
         if (response.statusCode == 401) return "The user already exists.";
@@ -194,10 +157,10 @@ class APIService {
             "email": email,
             "token": token,
           },
-          headers: {"Authorization": "Bearer ${user.data.token}"},
+          headers: {"Authorization": "Bearer ${app.authentication.data.token}"},
         );
 
-        printInfo(info: response.body.toString());
+        dlog(response.body.toString());
 
         return UserData.fromJson(jsonDecode(response.body));
       });
@@ -216,7 +179,7 @@ class APIService {
               ..addCustomParameter("sorter", sorter.name))
             .cleanUri);
 
-        printInfo(info: response[0].toString());
+        dlog(response[0].toString());
 
         return response.map((e) => Media.fromJson(e) as T).toList();
       });
@@ -258,8 +221,8 @@ class APIService {
           url,
           body: body,
         );
-        printInfo(info: "Sending mail to support at: $url");
-        printInfo(info: response.statusCode.toString());
+        dlog("Sending mail to support at: $url");
+        dlog(response.statusCode.toString());
         return response.statusCode == 200;
       });
 
@@ -268,7 +231,7 @@ class APIService {
     final http.Response response = await http.get(
       (CustomURL(initialText: assets)
             ..addPath("legal")
-            ..addFile("${source}_${cookies.locale.value}.md"))
+            ..addFile("${source}_${app.cookies.locale.value}.md"))
           .cleanUri,
     );
 
@@ -296,5 +259,5 @@ class APIService {
   Future<void> openResume() async =>
       launch("https://assets.xeppelin.org/other/XAVIER-LHINARES-CV.pdf");
 
-// EXAMPLES ==================================================================
+  // EXAMPLES ==================================================================
 }

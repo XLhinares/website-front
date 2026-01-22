@@ -17,7 +17,7 @@ class LegalMentions extends StatelessWidget {
   Widget build(BuildContext context) {
     return TabLegal(
       title: "Legal mentions".tr,
-      content: api.getLegal("legal_mentions"),
+      content: app.network.getLegal("legal_mentions"),
     );
   }
 }

@@ -60,11 +60,11 @@ class MediaFocus<T extends Media> extends StatelessWidget {
 
           // Parts
           GetBuilder(
-            init: user,
+            init: app,
             builder: (_) {
-              return user.getContent(media.id) == null
+              return app.medias.getContent(media.id) == null
                   ? _loadingWidget(context)
-                  : partsBuilder(user.getContent(media.id)!);
+                  : partsBuilder(app.medias.getContent(media.id)!);
             },
           ),
         ],
@@ -75,7 +75,7 @@ class MediaFocus<T extends Media> extends StatelessWidget {
   // METHODS ===================================================================
 
   Widget _loadingWidget(BuildContext context) {
-    user.loadMediaContent(media.id);
+    app.medias.loadMediaContent(media.id);
     return LinearProgressIndicator(
       color: context.theme.colorScheme.secondary,
     );

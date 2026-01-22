@@ -57,8 +57,6 @@ class MenuSelectionAnimationController extends GetxController {
   /// Selects a new tile and updates the controller.
   void selectTile(int index) {
     _selectedTile = index;
-    // printInfo(info: "Going to tile: $index.\n"
-    //     "Offset: $offset ; height: $height");
     update();
   }
 }

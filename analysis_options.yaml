@@ -28,8 +28,8 @@ linter:
   # producing the lint.
 
   rules:
-#    avoid_print: false  # Use GetX's [printInfo] instead.
-    prefer_double_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
+    avoid_print: true
+    prefer_double_quotes: true
     prefer_const_declarations: true
     always_declare_return_types: true
     prefer_relative_imports: true

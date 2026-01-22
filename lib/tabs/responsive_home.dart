@@ -30,9 +30,6 @@ class ResponsiveHome extends StatelessWidget {
         if (constraints.maxWidth > 1000) {
           return const DesktopPageHome();
         }
-        // } else if (ResponsiveWrapper.of(context).isLargerThan(MOBILE)) {
-        //   return ;
-        // }
         return const MobilePageHome();
       },
     );

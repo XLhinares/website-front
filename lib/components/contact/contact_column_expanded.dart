@@ -87,7 +87,7 @@ class ContactColumnExpanded extends StatelessWidget {
           // Aborts if all the fields are not valid.
           if (!(_formKey.currentState?.validate() ?? false)) return;
 
-          bool success = await api.sendSupportMail(
+          bool success = await app.network.sendSupportMail(
             name: _controllerName.text,
             email: _controllerEmail.text,
             subject: _controllerSubject.text,

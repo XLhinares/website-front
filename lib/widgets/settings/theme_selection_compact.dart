@@ -1,4 +1,3 @@
-import "package:auto_size_text/auto_size_text.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
@@ -30,18 +29,10 @@ class SettingsThemeSelectionCompact extends StatelessWidget {
         ),
         Expanded(child: XLayout.horizontalL),
         LRSelector(
-          leftBehavior: () => cookies.rotateTheme(reverse: true),
-          rightBehavior: () => cookies.rotateTheme(reverse: false),
-          width: Get.width * .3,
-          child: Obx(
-            () => AutoSizeText(
-              cookies.theme.value.capitalizeFirst!,
-              minFontSize: 8,
-              maxLines: 1,
-              style: context.textTheme.bodyMedium,
-            ),
-          ),
-        ),
+            leftBehavior: () => app.cookies.rotateTheme(reverse: true),
+            rightBehavior: () => app.cookies.rotateTheme(reverse: false),
+            width: Get.width * .3,
+            controller: app.cookies.theme.rx),
       ],
     );
   }

@@ -4,6 +4,7 @@ import "package:get/get.dart";
 import "package:website_front/globals.dart";
 import "package:website_front/tabs/meta/splash.dart";
 import "package:website_front/tabs/responsive_home.dart";
+import "package:website_front/utils/themes.dart";
 import "package:website_front/utils/translations.dart";
 
 /// A utility to pump the full app without having to rewrite it every time.
@@ -13,7 +14,7 @@ Future<void> pumpApp(WidgetTester tester) async {
   // Memory --------------------------------------------------------------------
 
   Get.put(router);
-  Get.put(cookies);
+  Get.put(app);
 
   await tester.pumpWidget(
     GetMaterialApp(
@@ -26,7 +27,7 @@ Future<void> pumpApp(WidgetTester tester) async {
 
       // Theme
       themeMode: ThemeMode.dark,
-      theme: themes.dark,
+      theme: defaultTheme,
 
       // Run
       getPages: [

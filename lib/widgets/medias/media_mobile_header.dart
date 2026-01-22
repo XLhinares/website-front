@@ -156,34 +156,34 @@ class MediaMobileHeader<T extends Media> extends StatelessWidget {
       );
 
   Widget _seeMore(BuildContext context) => GetBuilder(
-        init: user,
+        init: app,
         builder: (_) => AnimatedSwitcher(
           duration: animDurationShort,
-          child:
-              user.hasContent(media.id) && user.getContent(media.id)!.isNotEmpty
-                  ? XButton(
-                      color: Colors.transparent,
-                      enableShadow: false,
-                      onTap: () => scrollController?.animateTo(
-                        Get.height,
-                        duration: animDurationShort,
-                        curve: Curves.easeIn,
+          child: app.medias.hasContent(media.id) &&
+                  app.medias.getContent(media.id)!.isNotEmpty
+              ? XButton(
+                  color: Colors.transparent,
+                  enableShadow: false,
+                  onTap: () => scrollController?.animateTo(
+                    Get.height,
+                    duration: animDurationShort,
+                    curve: Curves.easeIn,
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        "button_scroll_to_see_more".tr,
+                        style: context.textTheme.labelSmall,
                       ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            "button_scroll_to_see_more".tr,
-                            style: context.textTheme.labelSmall,
-                          ),
-                          Icon(
-                            Icons.keyboard_arrow_down,
-                            size: XLayout.paddingM,
-                          ),
-                        ],
+                      Icon(
+                        Icons.keyboard_arrow_down,
+                        size: XLayout.paddingM,
                       ),
-                    )
-                  : const SizedBox(),
+                    ],
+                  ),
+                )
+              : const SizedBox(),
         ),
       );
 }

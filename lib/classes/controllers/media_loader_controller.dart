@@ -23,7 +23,7 @@ abstract class MediaLoaderController<T extends Media> extends GetxController {
 
     controller = PagewiseLoadController<T>(
       pageFuture: (pageIndex) async {
-        final res = await user.loadMedias<T>(
+        final res = await app.medias.loadMedias<T>(
           page: pageIndex ?? 0,
           sorter: sorter,
         );

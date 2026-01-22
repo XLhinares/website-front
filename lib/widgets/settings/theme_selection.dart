@@ -31,10 +31,10 @@ class SettingsThemeSelection extends StatelessWidget {
             crossAxisSpacing: XLayout.paddingM),
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
-        itemCount: themes.handledThemes.length,
+        itemCount: app.themes.handledThemes.length,
         itemBuilder: (_, index) {
-          final String name = themes.handledThemes[index];
-          final ThemeData data = themes.all[name]!;
+          final String name = app.themes.handledThemes[index];
+          final ThemeData data = app.themes.all[name]!;
           return ThemePreview(name: name.capitalizeFirst!.tr, data: data);
         },
       ),

@@ -17,7 +17,7 @@ class PrivacyPolicy extends StatelessWidget {
   Widget build(BuildContext context) {
     return TabLegal(
       title: "privacy_policy_title".tr,
-      content: api.getLegal("data_policy"),
+      content: app.network.getLegal("data_policy"),
     );
   }
 }

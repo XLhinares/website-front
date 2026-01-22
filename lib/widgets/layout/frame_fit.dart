@@ -22,8 +22,8 @@ class FrameFit extends StatelessWidget {
   /// The space that should surround the child.
   final EdgeInsets? padding;
 
-  /// The ratio of the horizontal extent over the vertical.
-  final double aspectRatio;
+  /// The aspect ratio of the content of the frame.
+  final double frameRatio;
 
   /// How the child should be aligned in the frame.
   final AlignmentGeometry alignment;
@@ -37,7 +37,7 @@ class FrameFit extends StatelessWidget {
     this.background,
     this.overlay,
     this.padding,
-    this.aspectRatio = frameRatio,
+    this.frameRatio = frameRatioDesktop,
     this.alignment = Alignment.center,
   });
 
@@ -51,7 +51,7 @@ class FrameFit extends StatelessWidget {
         padding: padding ?? EdgeInsets.zero,
         child: ConstrainedBox(
           constraints: BoxConstraints(
-            maxWidth: Get.height * aspectRatio,
+            maxWidth: Get.height * frameRatio,
           ),
           child: child,
         ),

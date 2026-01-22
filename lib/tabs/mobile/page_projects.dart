@@ -31,29 +31,26 @@ class MobilePageProjects extends RouteTab {
 
   @override
   Widget build(BuildContext context) {
-    return ScaffoldFit(
-      background: _responsiveBackground(context),
-      drawer: CustomDrawer(),
-      body: IfAppIsReady(
-        child: GetBuilder(
-          init: router,
-          builder: (context) {
-            return router.project == null
-                ? MobileOverlay(
-                    showBackButton: true,
-                    child: ProjectsListView(),
-                  )
-                : MediaFocus<Project>(
-                    media: user.getProject(router.project!),
-                    headerBuilder: (media, scrollController) =>
-                        MediaMobileHeader(
-                      media: media,
-                      scrollController: scrollController,
-                    ),
-                    partsBuilder: (content) =>
-                        MediaMobileContent(content: content),
-                  );
-          },
+    return GetBuilder(
+      init: router,
+      builder: (controller) => ScaffoldFit(
+        background: _responsiveBackground(context),
+        drawer: CustomDrawer(),
+        overlay: MobileOverlay(
+          showBackButton: router.project == null,
+        ),
+        body: IfAppIsReady(
+          child: router.project == null
+              ? ProjectsListView()
+              : MediaFocus<Project>(
+                  media: app.medias.getProject(router.project!),
+                  headerBuilder: (media, scrollController) => MediaMobileHeader(
+                    media: media,
+                    scrollController: scrollController,
+                  ),
+                  partsBuilder: (content) =>
+                      MediaMobileContent(content: content),
+                ),
         ),
       ),
     );

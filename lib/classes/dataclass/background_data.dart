@@ -50,7 +50,7 @@ class BackgroundData {
   }) : preview = preview ?? builder;
 
   /// The currently used background according to the context.
-  static BackgroundData current() => parse(cookies.background.value);
+  static BackgroundData current() => parse(app.cookies.background.value);
 
   /// Attempts to match the given string with a known background.
   static BackgroundData parse(String source) {

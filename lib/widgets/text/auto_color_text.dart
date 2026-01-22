@@ -79,6 +79,9 @@ class AutoColorText extends StatelessWidget {
   /// The default alignment of the auto-colored text.
   final TextAlign? textAlign;
 
+  /// The color of regular text.
+  final Color? color;
+
   /// The color of colored text.
   ///
   /// By default it takes the theme's secondary color.
@@ -98,6 +101,7 @@ class AutoColorText extends StatelessWidget {
     super.key,
     this.style,
     this.textAlign,
+    this.color,
     this.highlightColor,
     this.maxLines,
     this.overflow,
@@ -174,15 +178,13 @@ class AutoColorText extends StatelessWidget {
     for (int i = 0; i < parsedText.length; i++) {
       final part = parsedText[i];
 
-      // print("part: ${part.text}; code: ${part.code}");
-
-      Color color = context.textTheme.titleMedium!.color!;
+      Color textColor = color ?? context.textTheme.titleMedium!.color!;
       FontWeight fWeight = FontWeight.normal;
       FontStyle fStyle = FontStyle.normal;
       List<FontFeature> fFeatures = [];
 
       // Check for special attributes.
-      if (part.isColored) color = context.theme.colorScheme.secondary;
+      if (part.isColored) textColor = context.theme.colorScheme.secondary;
       if (part.isBold) fWeight = FontWeight.w800;
       if (part.isItalics) fStyle = FontStyle.italic;
       if (part.isSmallCaps) fFeatures.add(const FontFeature.enable("smcp"));
@@ -206,7 +208,7 @@ class AutoColorText extends StatelessWidget {
         TextSpan(
           text: part.text,
           style: DefaultTextStyle.of(context).style.merge(style).copyWith(
-                color: color,
+                color: textColor,
                 fontWeight: fWeight,
                 fontStyle: fStyle,
                 fontFeatures: fFeatures,

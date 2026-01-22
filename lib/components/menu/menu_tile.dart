@@ -5,6 +5,7 @@ import "package:x_containers/x_containers.dart";
 import "../../globals.dart";
 import "../../classes/controllers/menu_selection_animation_controller.dart";
 import "../../classes/dataclass/route.dart";
+import "../../utils/tools.dart";
 
 /// A tile displaying one menu element.
 class MenuTile extends StatelessWidget {
@@ -34,7 +35,7 @@ class MenuTile extends StatelessWidget {
     return XCard.text(
       enableShadow: false,
       onTap: () {
-        printInfo(info: "\nEVENT: Menu tile ${route.path} was tapped.");
+        dlog("\nEVENT: Menu tile ${route.path} was tapped.");
 
         /// Abort if the route is not accessible to the user.
         if (!route.isAccessibleToUser) return;

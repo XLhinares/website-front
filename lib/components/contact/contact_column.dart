@@ -69,9 +69,11 @@ class ContactColumn extends StatelessWidget {
             XLayout.verticalM,
             XButton.text(
               "contact_send".tr,
+              textStyle: context.bodyMediumOnSecondary,
+              color: context.colors.secondary,
+              enableShadow: false,
               onTap: () => sendEmail(context),
               // onTap: sendEmail,
-              color: context.theme.colorScheme.secondary,
             ),
           ],
         ),
@@ -87,7 +89,7 @@ class ContactColumn extends StatelessWidget {
           // Aborts if all the fields are not valid.
           if (!(_formKey.currentState?.validate() ?? false)) return;
 
-          bool success = await api.sendSupportMail(
+          bool success = await app.network.sendSupportMail(
             name: _controllerName.text,
             email: _controllerEmail.text,
             subject: _controllerSubject.text,

@@ -29,7 +29,7 @@ class DesktopMainProjects extends StatelessWidget {
         child: router.project == null
             ? ProjectsGridView()
             : MediaFocus<Project>(
-                media: user.getProject(router.project!),
+                media: app.medias.getProject(router.project!),
                 headerBuilder: (media, scrollController) =>
                     MediaDesktopHeader<Project>(
                   media: media,

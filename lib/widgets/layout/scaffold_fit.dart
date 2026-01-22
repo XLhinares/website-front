@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 
 import "../../components/misc/background.dart";
+import "../../globals.dart";
 import "frame_fit.dart";
 
 /// A Scaffold that fits its body within a central column if needed.
@@ -28,6 +29,9 @@ class ScaffoldFit extends StatelessWidget {
   /// The widget we want to display within the frame.
   final Widget body;
 
+  /// The aspect ratio of the content of the frame.
+  final double frameRatio;
+
   /// The space that should surround the child.
   final EdgeInsets? padding;
 
@@ -45,6 +49,7 @@ class ScaffoldFit extends StatelessWidget {
     this.overlay,
     this.drawer,
     this.bottomNavigationBar,
+    this.frameRatio = frameRatioDesktop,
     this.padding,
     this.alignment = Alignment.center,
   });
@@ -60,6 +65,7 @@ class ScaffoldFit extends StatelessWidget {
         background: background ?? const ScaffoldBackground(),
         overlay: overlay,
         alignment: alignment,
+        frameRatio: frameRatio,
         child: body,
       ),
       drawer: drawer,

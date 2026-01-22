@@ -37,7 +37,7 @@ class DesktopMainBlogs extends StatelessWidget {
                     _blogBuilder(context, entry),
               )
             : MediaFocus<Blog>(
-                media: user.getBlog(router.project!),
+                media: app.medias.getBlog(router.project!),
                 headerBuilder: (media, scrollController) =>
                     MediaDesktopHeader<Blog>(
                   media: media,

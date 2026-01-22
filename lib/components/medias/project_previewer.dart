@@ -4,6 +4,7 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/medias.dart";
+import "../../utils/tools.dart";
 import "../../widgets/images/covering_network_image.dart";
 import "../../widgets/images/xeppelin_logo.dart";
 import "../../widgets/text/auto_color_text.dart";
@@ -63,7 +64,7 @@ class ProjectPreviewer extends StatelessWidget {
                         // NAME ------------------------------------------------------
                         Text(
                           project.name,
-                          style: context.textTheme.titleMedium,
+                          style: context.titleMediumOnSurface,
                         ),
 
                         XLayout.verticalXS,
@@ -73,7 +74,7 @@ class ProjectPreviewer extends StatelessWidget {
                         // SUMMARY ---------------------------------------------------
                         AutoColorText(
                           project.summary,
-                          style: context.textTheme.bodyMedium,
+                          style: context.bodyMediumOnSurface,
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,
                         ),

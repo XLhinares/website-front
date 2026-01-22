@@ -28,30 +28,19 @@ class MobilePageHome extends StatelessWidget {
     // Timer.run(() => router.animateTo(index: router.routeIndex));
 
     return ScaffoldFit(
-      // appBar: AppBar(
-      //   title: const Text("Xeppelin"),
-      // ),
       background: _responsiveBackground(context),
-      // appBar: AppBar(
-      //   title: Text("Xeppelin"),
-      //   actions: [
-      //     IconButton(
-      //         onPressed: () => Scaffold.of(context).openDrawer(),
-      //         icon: Icon(Icons.menu))
-      //   ],
-      // ),
       drawer: CustomDrawer(),
+      overlay: MobileOverlay(),
+      frameRatio: frameRatioMobile,
       body: IfAppIsReady(
-        child: MobileOverlay(
-          child: PageView(
-            clipBehavior: Clip.none,
-            scrollDirection: Axis.vertical,
-            physics: const AlwaysScrollableScrollPhysics(),
-            controller: router.newPageController,
-            pageSnapping: false,
-            onPageChanged: (index) => router.set(route: _tabs[index].route),
-            children: _tabs,
-          ),
+        child: PageView(
+          clipBehavior: Clip.none,
+          scrollDirection: Axis.vertical,
+          physics: const AlwaysScrollableScrollPhysics(),
+          controller: router.newPageController,
+          pageSnapping: false,
+          onPageChanged: (index) => router.set(route: _tabs[index].route),
+          children: _tabs,
         ),
       ),
     );

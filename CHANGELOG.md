@@ -1,3 +1,18 @@
+## 3.0.0
+
+- :sparkles: Switched to plugin based app management.
+- :sparkles: Copyright date updated to 2026.
+
+- :lipstick: The mobile overlay is not constrained by the frame fit anymore.
+- :lipstick: Separate the frame ratio of desktop and mobile mode.
+- :lipstick: Greatly improved the theming system and made corresponding changes.
+- :lipstick: Added new themes.
+- :lipstick: The Xeppelin logo can now be any color!
+
+
+- :bug: Fix UI error of main page.
+- :fire: Removed unused code (button overlay for settings)
+
 ## 2.4.3
 
 - :bug: Changed website description to avoid overflow on mobile.

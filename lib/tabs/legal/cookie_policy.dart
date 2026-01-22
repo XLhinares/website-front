@@ -19,7 +19,7 @@ class CookiePolicy extends StatelessWidget {
   Widget build(BuildContext context) {
     return TabLegal(
       title: "cookie_policy_title".tr,
-      content: api.getLegal("cookie_policy"),
+      content: app.network.getLegal("cookie_policy"),
       appendix: XContainer(
         padding: EdgeInsets.symmetric(
           horizontal: XLayout.paddingL,

@@ -2,10 +2,10 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
+import "app/app_manager.dart";
+import "app/routing_service.dart";
 import "classes/controllers/blog_loader_controller.dart";
 import "classes/controllers/project_loader_controller.dart";
-import "classes/services/services.dart";
-import "classes/user/user.dart";
 import "utils/translations.dart";
 
 /// The version of the app.
@@ -16,20 +16,11 @@ const String versionNumber = "v2.4.3";
 /// Whether the app is ready to be used.
 final RxBool appIsReady = false.obs;
 
-/// A special service which handle the local data and let the user interact with it.
-final User user = User();
+/// In-app representation of the [User].
+final AppManager app = AppManager();
 
 /// A service that manages the different elements of the app.
 final RoutingService router = RoutingService();
-
-/// A service that manages all the backend stuff.
-final APIService api = APIService();
-
-/// A service that manages the preferences of the user.
-final CookieService cookies = CookieService();
-
-/// A service that handles the themes of the app.
-final ThemeService themes = ThemeService();
 
 /// A controller that handles loading projects from the API.
 final ProjectLoaderController projectLoaderController =
@@ -47,7 +38,10 @@ const String xeppelinURL = "https://xeppelin.org";
 const String xeppelinMD = "[https://xeppelin.org](https://xeppelin.org)";
 
 /// The default ratio of horizontal extent over the vertical.
-const double frameRatio = 4 / 3;
+const double frameRatioDesktop = 4 / 3;
+
+/// The default ratio of horizontal extent over the vertical.
+const double frameRatioMobile = 1 / 2;
 
 /// The maximum horizontal extent of snack-bars appearing on the screen.
 const double maxSnackbarLength = 600;
@@ -57,6 +51,9 @@ double get navigationBarHeight => XLayout.paddingS * 6;
 
 /// The size of the pages loaded on the API.
 const int pageSize = 20;
+
+/// The gray color of the default Xeppelin logo.
+const Color xeppelinColor = Color(0xFFB0BDD4);
 
 // ANIMATIONS ------------------------------------------------------------------
 
@@ -75,9 +72,3 @@ final CustomTranslations translations = CustomTranslations();
 
 /// The list of the different supported localizations.
 List<String> supportedLocales = ["fr", "en"];
-
-/// Runs some extra commands asynchronously.
-void postInit() async {
-  cookies.locale.value = cookies.locale.value;
-  cookies.theme.value = cookies.theme.value;
-}

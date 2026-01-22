@@ -19,18 +19,21 @@ class DesktopMainSettings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: EdgeInsets.symmetric(vertical: XLayout.paddingL),
-      physics: const BouncingScrollPhysics(),
-      children: [
-        const SettingsHeader(),
-        XLayout.verticalL,
-        SettingsLocale(),
-        XLayout.verticalM,
-        const SettingsThemes(),
-        XLayout.verticalM,
-        const SettingsLegal(),
-      ],
+    return Center(
+      child: ListView(
+        padding: EdgeInsets.symmetric(vertical: XLayout.paddingL),
+        physics: const BouncingScrollPhysics(),
+        shrinkWrap: true,
+        children: [
+          const SettingsHeader(),
+          XLayout.verticalL,
+          SettingsLocale(),
+          XLayout.verticalM,
+          const SettingsThemes(),
+          XLayout.verticalM,
+          const SettingsLegal(),
+        ],
+      ),
     );
   }
 

@@ -7,6 +7,7 @@ import "package:x_containers/x_containers.dart";
 import "classes/dataclass/route.dart";
 import "globals.dart";
 import "tabs/responsive_home.dart";
+import "utils/themes.dart";
 
 void main() async {
   // Utils ---------------------------------------------------------------------
@@ -17,7 +18,7 @@ void main() async {
   // Memory --------------------------------------------------------------------
 
   Get.put(router);
-  Get.put(cookies);
+  Get.put(app);
 
   // Theme ---------------------------------------------------------------------
 
@@ -39,7 +40,7 @@ void main() async {
 
     // Theme
     // THEME =================================================================
-    theme: themes.dark,
+    theme: defaultTheme,
     themeMode: ThemeMode.light,
 
     // Run

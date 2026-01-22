@@ -5,6 +5,7 @@ import "package:x_containers/x_containers.dart";
 
 import "../../classes/dataclass/background_data.dart";
 import "../../globals.dart";
+import "../../utils/tools.dart";
 
 /// A widget allowing the user to preview a theme.
 class BackgroundPreview extends StatelessWidget {
@@ -30,10 +31,10 @@ class BackgroundPreview extends StatelessWidget {
       child: Obx(() => XButton(
             margin: EdgeInsets.zero,
             padding: EdgeInsets.zero,
-            borderDecoration: cookies.background.value == data.name
+            borderDecoration: app.cookies.background.value == data.name
                 ? Border.all(width: 2, color: Colors.black45)
                 : null,
-            onTap: () => cookies.background.value = data.name,
+            onTap: () => app.cookies.background.value = data.name,
             child: Stack(
               children: [
                 Positioned.fill(
@@ -43,11 +44,12 @@ class BackgroundPreview extends StatelessWidget {
                   right: 0,
                   bottom: 0,
                   child: Container(
-                    color: context.theme.colorScheme.surface.withAlpha(100),
+                    color: context.theme.colorScheme.surface.withAlpha(150),
                     padding: EdgeInsets.all(XLayout.paddingXS),
                     child: Center(
                         child: AutoSizeText(
                       data.name.capitalizeFirst!.tr,
+                      style: context.bodyMediumOnSurface,
                       maxLines: 1,
                     )),
                   ),

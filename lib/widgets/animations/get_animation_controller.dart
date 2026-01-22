@@ -1,5 +1,7 @@
 import "package:get/get.dart";
 
+import "../../utils/tools.dart";
+
 /// A custom controller for animations.
 ///
 /// It extends [GetxController] so that animated widget can be triggered by
@@ -51,7 +53,7 @@ class GetAnimationController extends GetxController {
 
   /// Plays the animation in the direction matching [alternateDirection].
   void play() {
-    printInfo(info: "Controller [$tag] is playing.");
+    dlog("Controller [$tag] is playing.");
     _progress.value += _alternateDirection * _forward * step;
     _lastDirectionForward.value = _alternateDirection * _forward > 0;
     update(tag != null ? [tag!] : null);

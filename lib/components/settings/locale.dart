@@ -46,19 +46,14 @@ class SettingsLocale extends StatelessWidget {
       // We add "locale" in english so that it is always easy to find for a user
       // who might not be familiar with the currently selected language.
       title:
-          "${"settings_locale".tr}${cookies.locale.value == "en" ? "" : " (Locale)"}",
+          "${"settings_locale".tr}${app.cookies.locale.value == "en" ? "" : " (Locale)"}",
       content: "settings_locale_description".tr,
       internalVerticalPadding: XLayout.paddingS,
       trailing: LRSelector(
-        leftBehavior: () => cookies.rotateLocale(reverse: true),
-        rightBehavior: () => cookies.rotateLocale(reverse: false),
+        leftBehavior: () => app.cookies.rotateLocale(reverse: true),
+        rightBehavior: () => app.cookies.rotateLocale(reverse: false),
         width: width ?? XLayout.paddingL * 4,
-        child: Obx(
-          () => Text(
-            cookies.locale.value.capitalize!,
-            style: context.textTheme.bodyMedium,
-          ),
-        ),
+        controller: app.cookies.locale.rx,
       ),
     );
   }

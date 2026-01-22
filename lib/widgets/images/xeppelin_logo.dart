@@ -1,6 +1,8 @@
 import "package:flutter/material.dart";
 import "package:flutter_svg/flutter_svg.dart";
 
+import "../../globals.dart";
+
 /// The [Xeppelin] logo.
 class XeppelinLogo extends StatelessWidget {
   // VARIABLES =================================================================
@@ -15,12 +17,18 @@ class XeppelinLogo extends StatelessWidget {
   /// The default is [BoxFit.contain].
   final BoxFit fit;
 
+  /// The color of the foreground logo.
+  ///
+  /// Defaults to the grey Xeppelin color.
+  final Color color;
+
   // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [XeppelinLogo] matching the given parameters.
   const XeppelinLogo({
     super.key,
     this.size,
+    this.color = xeppelinColor,
     this.fit = BoxFit.contain,
   });
 
@@ -33,6 +41,10 @@ class XeppelinLogo extends StatelessWidget {
       width: size,
       height: size,
       fit: fit,
+      colorFilter: ColorFilter.mode(
+        color,
+        BlendMode.srcIn,
+      ),
     );
   }
 

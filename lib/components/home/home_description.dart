@@ -35,21 +35,22 @@ class HomeDescription extends StatelessWidget {
       child: Column(
         children: [
           Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                AutoColorText(
-                  "home_description_title".tr,
-                  style: textStyle,
-                ),
-                XLayout.verticalM,
-                AutoColorText(
-                  "home_description_content".tr,
-                  style: textStyle,
-                  textAlign: TextAlign.justify,
-                ),
-              ],
+            child: Center(
+              child: ListView(
+                shrinkWrap: true,
+                children: [
+                  AutoColorText(
+                    "home_description_title".tr,
+                    style: textStyle,
+                  ),
+                  XLayout.verticalM,
+                  AutoColorText(
+                    "home_description_content".tr,
+                    style: textStyle,
+                    textAlign: TextAlign.justify,
+                  ),
+                ],
+              ),
             ),
           ),
           XLayout.verticalM,

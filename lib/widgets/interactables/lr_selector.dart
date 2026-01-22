@@ -1,19 +1,23 @@
+import "package:auto_size_text/auto_size_text.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
+import "../../globals.dart";
+import "../../utils/tools.dart";
+
 /// A widget that lets the user select a value through "left/right" interactions.
 class LRSelector extends StatelessWidget {
   // VARIABLES =================================================================
+
+  /// The controller of the text to display in the middle of the selector.
+  final Rx controller;
 
   /// The behavior to be executed when clicking of the left button.
   final void Function()? leftBehavior;
 
   /// The behavior to be executed when clicking of the right button.
   final void Function()? rightBehavior;
-
-  /// The widget to display in the middle of the selector.
-  final Widget child;
 
   /// The horizontal extent of this widget.
   final double? width;
@@ -23,7 +27,7 @@ class LRSelector extends StatelessWidget {
   /// A widget that lets the user select a value through "left/right" interactions.
   const LRSelector({
     super.key,
-    required this.child,
+    required this.controller,
     this.leftBehavior,
     this.rightBehavior,
     this.width,
@@ -52,14 +56,23 @@ class LRSelector extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: leftBehavior,
-              child: const Icon(Icons.chevron_left),
+              child: Icon(Icons.chevron_left, color: context.colors.onSurface),
             ),
             Expanded(
-              child: Center(child: child),
+              child: Center(
+                child: Obx(
+                  () => AutoSizeText(
+                    app.cookies.theme.value.capitalizeFirst!,
+                    minFontSize: 8,
+                    maxLines: 1,
+                    style: context.bodyMediumOnSurface,
+                  ),
+                ),
+              ),
             ),
             GestureDetector(
               onTap: rightBehavior,
-              child: const Icon(Icons.chevron_right),
+              child: Icon(Icons.chevron_right, color: context.colors.onSurface),
             ),
           ],
         ),

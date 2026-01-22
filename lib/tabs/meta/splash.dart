@@ -61,14 +61,13 @@ class Splash extends StatelessWidget {
   /// If they are not, a new check is scheduled after 50ms.
   void checkIfLoaded() {
     // Guard clause if not loaded.
-    if (!cookies.loaded.value) {
+    if (!app.isLoaded) {
       Timer(const Duration(milliseconds: 50), checkIfLoaded);
       return;
     }
 
     // Go to next screen
     opacity.value = 0;
-    postInit();
     appIsReady.value = true;
     // Timer(
     //   fadeOutTime,

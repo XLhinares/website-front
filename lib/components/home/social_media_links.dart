@@ -5,6 +5,7 @@ import "package:font_awesome_flutter/font_awesome_flutter.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../globals.dart";
+import "../../utils/tools.dart";
 
 /// A widget describing what the site is about.
 class SocialMediaLinks extends StatelessWidget {
@@ -35,24 +36,30 @@ class SocialMediaLinks extends StatelessWidget {
           icon: FaIcon(
             FontAwesomeIcons.github,
             size: _iconSize,
+            color: context.colors.onPrimary,
           ),
-          onPressed: api.openGitHub,
+          onPressed: app.network.openGitHub,
         ),
         // Linkedin
         IconButton(
           icon: FaIcon(
             FontAwesomeIcons.linkedin,
             size: _iconSize,
+            color: context.colors.onPrimary,
           ),
-          onPressed: api.openLinkedIn,
+          onPressed: app.network.openLinkedIn,
         ),
         // Resume
         IconButton(
           icon: SvgPicture.asset(
             "assets/icons/icon_cv.svg",
             height: _iconSize,
+            colorFilter: ColorFilter.mode(
+              context.colors.onPrimary,
+              BlendMode.srcIn,
+            ),
           ),
-          onPressed: api.openResume,
+          onPressed: app.network.openResume,
         ),
       ],
     );

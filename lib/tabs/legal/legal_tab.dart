@@ -3,7 +3,6 @@ import "package:get/get.dart";
 import "package:gpt_markdown/gpt_markdown.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../classes/services/services.dart";
 import "../../components/misc/if_app_is_ready.dart";
 import "../../globals.dart";
 import "../../utils/tools.dart";
@@ -85,7 +84,7 @@ class TabLegal extends StatelessWidget {
                         snapshot.data!.withXeppelinMD,
 
                         style: context.textTheme.bodyMedium!.copyWith(
-                            fontFamily: ThemeService.codeFontFamily,
+                            fontFamily: app.themes.codeFontFamily,
                             fontSize:
                                 context.textTheme.bodyMedium!.fontSize! - 2),
                         // physics: const NeverScrollableScrollPhysics(),

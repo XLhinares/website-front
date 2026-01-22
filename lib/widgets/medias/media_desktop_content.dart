@@ -4,7 +4,6 @@ import "package:gpt_markdown/gpt_markdown.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/medias.dart";
-import "../../classes/services/theme_service.dart";
 import "../../globals.dart";
 import "../images/covering_network_image.dart";
 
@@ -62,7 +61,7 @@ class MediaDesktopContent extends StatelessWidget {
                   "From the project's github [README.md](${entry.content}):"),
               XLayout.verticalM,
               FutureBuilder<String>(
-                future: api.fetchFile(
+                future: app.network.fetchFile(
                   Uri.parse(entry.content),
                 ),
                 builder: (context, snapshot) {
@@ -83,7 +82,7 @@ class MediaDesktopContent extends StatelessWidget {
                       child: GptMarkdown(
                         snapshot.data!,
                         style: context.textTheme.bodyMedium!.copyWith(
-                            fontFamily: ThemeService.codeFontFamily,
+                            fontFamily: app.themes.codeFontFamily,
                             fontSize:
                                 context.textTheme.bodyMedium!.fontSize! - 2),
                       ),

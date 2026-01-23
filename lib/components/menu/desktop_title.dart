@@ -21,40 +21,44 @@ class BodyTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => router.goBack(),
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          // ANIMATED ICON -------------------------------------------------------
-          GetBuilder(
-            init: router,
-            builder: (_) => AnimatedSize(
-              duration: animDurationShort,
-              child: AnimatedSwitcher(
+      child: LayoutBuilder(
+        builder: (context, constraints) => Row(
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            // ANIMATED ICON -------------------------------------------------------
+            GetBuilder(
+              init: router,
+              builder: (_) => AnimatedSize(
                 duration: animDurationShort,
-                child: router.atHome
-                    ? const SizedBox()
-                    : Padding(
-                        padding: EdgeInsets.only(right: XLayout.paddingXS),
-                        child: XeppelinLogo(
-                          size: 2 * XLayout.paddingL,
-                          color: context.colors.secondary,
-                        )),
+                child: AnimatedSwitcher(
+                  duration: animDurationShort,
+                  child: router.atHome
+                      ? const SizedBox()
+                      : Padding(
+                          padding: EdgeInsets.only(right: XLayout.paddingXS),
+                          child: XeppelinLogo(
+                            size: constraints.maxWidth * .25,
+                            color: context.colors.secondary,
+                          )),
+                ),
               ),
             ),
-          ),
 
-          // TEXT ----------------------------------------------------------------
-          Expanded(
-            child: FittedBox(
-              fit: BoxFit.fitWidth,
-              child: Text(
-                "Xeppelin",
-                style: context.textTheme.displayLarge!
-                    .copyWith(color: context.colors.onSurface),
+            // TEXT ----------------------------------------------------------------
+            Expanded(
+              child: FittedBox(
+                alignment: AlignmentGeometry.bottomCenter,
+                fit: BoxFit.fitWidth,
+                child: Text(
+                  "Xeppelin",
+                  style: context.textTheme.displayLarge!
+                      .copyWith(color: context.colors.onSurface),
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

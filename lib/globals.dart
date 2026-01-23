@@ -8,7 +8,7 @@ import "classes/controllers/project_loader_controller.dart";
 import "utils/translations.dart";
 
 /// The version of the app.
-const String versionNumber = "v3.1.0";
+const String versionNumber = "v3.1.2";
 
 // SERVICES ====================================================================
 

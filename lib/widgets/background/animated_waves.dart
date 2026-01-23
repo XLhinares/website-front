@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:simple_animations/simple_animations.dart";
 
+import "../../utils/tools.dart";
 import "curve_painter.dart";
 
 /// A custom wave widget.
@@ -31,7 +32,12 @@ class AnimatedWave extends StatelessWidget {
             duration: const Duration(seconds: 60),
             tween: Tween<double>(begin: 0, end: 1),
             builder: (context, progress, child) => CustomPaint(
-              painter: CurvePainter(scale: scale, progress: progress),
+              painter: CurvePainter(
+                scale: scale,
+                progress: progress,
+                colorBack: context.colors.primary,
+                colorFront: context.colors.primary,
+              ),
             ),
           ),
         );

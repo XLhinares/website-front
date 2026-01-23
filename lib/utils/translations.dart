@@ -66,6 +66,11 @@ class CustomTranslations extends Translations {
       "settings_theme_dark": "Dark",
       "settings_theme_pastel": "Pastel",
       "settings_theme_halloween": "Halloween",
+      "settings_theme_crimson": "Crimson",
+      "settings_theme_cottage": "Cottage",
+      "settings_theme_rust": "Rust",
+      "settings_theme_terminal": "Terminal",
+      "settings_theme_oled": "OLED",
       "settings_background_none": "None",
       "settings_background_wave": "Wave",
       "settings_legal":
@@ -76,6 +81,9 @@ class CustomTranslations extends Translations {
       "settings_disable_cookie_snackbar_title": "Done.",
       "settings_disable_cookie_snackbar_content":
           "Your cookies were deleted and disabled.",
+
+      "language_en": "English",
+      "language_fr": "Français",
 
       // LEGAL -----------------------------------------------------------------
 
@@ -184,6 +192,11 @@ class CustomTranslations extends Translations {
       "settings_theme_dark": "Sombre",
       "settings_theme_pastel": "Pastel",
       "settings_theme_halloween": "Halloween",
+      "settings_theme_crimson": "Écarlate",
+      "settings_theme_cottage": "Prairie",
+      "settings_theme_rust": "Rouille",
+      "settings_theme_terminal": "Terminal",
+      "settings_theme_oled": "OLED",
       "settings_background_none": "Aucun",
       "settings_background_wave": "Vague",
       "settings_legal":

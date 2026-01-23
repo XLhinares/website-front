@@ -33,6 +33,7 @@ class SettingsLocaleCompact extends StatelessWidget {
             rightBehavior: () => app.cookies.rotateLocale(reverse: false),
             width: Get.width * .3,
             controller: app.cookies.locale.rx,
+            textBuilder: (value) => "language_$value".tr,
           ),
         ],
       ),

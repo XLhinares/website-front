@@ -6,11 +6,11 @@ import "package:x_containers/x_containers.dart";
 import "../../utils/tools.dart";
 
 /// A widget that lets the user select a value through "left/right" interactions.
-class LRSelector extends StatelessWidget {
+class LRSelector<T> extends StatelessWidget {
   // VARIABLES =================================================================
 
   /// The controller of the text to display in the middle of the selector.
-  final Rx controller;
+  final Rx<T> controller;
 
   /// The behavior to be executed when clicking of the left button.
   final void Function()? leftBehavior;
@@ -21,12 +21,18 @@ class LRSelector extends StatelessWidget {
   /// The horizontal extent of this widget.
   final double? width;
 
+  /// An optional function to get the text to display from the controller's value.
+  ///
+  /// If no function is provided, [Objet.toString] is used.
+  final String Function(T value)? textBuilder;
+
   // CONSTRUCTOR ===============================================================
 
   /// A widget that lets the user select a value through "left/right" interactions.
   const LRSelector({
     super.key,
     required this.controller,
+    this.textBuilder,
     this.leftBehavior,
     this.rightBehavior,
     this.width,
@@ -61,7 +67,7 @@ class LRSelector extends StatelessWidget {
               child: Center(
                 child: Obx(
                   () => AutoSizeText(
-                    controller.value.toString().capitalizeFirst!,
+                    (textBuilder ?? (e) => e.toString()).call(controller.value),
                     minFontSize: 8,
                     maxLines: 1,
                     style: context.bodyMediumOnSurface,

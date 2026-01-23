@@ -311,6 +311,20 @@ class ThemePlugin extends AppManagerPlugin {
         textTheme: defaultTextTheme,
       ),
     );
+
+    addTheme(
+      name: "oled",
+      data: getTheme(
+        mode: ThemeMode.dark,
+        surface: const Color(0xFF000000),
+        onSurface: const Color(0xFFFFFFFF),
+        primary: const Color(0xFF18171A),
+        onPrimary: const Color(0xFFFFFFFF),
+        secondary: const Color(0xFF9367E6),
+        onSecondary: const Color(0xFF000000),
+        textTheme: defaultTextTheme,
+      ),
+    );
   }
 
   /// The unique instance of [ThemePlugin], implements the singleton pattern.

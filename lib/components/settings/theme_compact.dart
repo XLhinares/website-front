@@ -37,7 +37,7 @@ class SettingsThemesCompact extends StatelessWidget {
         itemBuilder: (_, index) {
           final String name = app.themes.handledThemes[index];
           final ThemeData data = app.themes.all[name]!;
-          return ThemePreview(name: name.capitalizeFirst!.tr, data: data);
+          return ThemePreview(name: name, data: data);
         },
       ),
     );

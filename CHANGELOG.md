@@ -1,3 +1,18 @@
+## 3.1.2
+
+- :bug: Fixed bug where project headers didn't display the "scroll to see more" button.
+- :bug: Theme preview background set to surface theme color (to mimic actual display).
+- :lipstick: Added OLED theme.
+
+- :globe_with_meridians: Languages are now display in full (rather than codes)
+- :globe_with_meridians: Theme names are now translated.
+
+## 3.1.1
+
+- :bug: Fixed bug where the xeppelin logo wasn't appearing in desktop [MenuTitle].
+- :bug: Fixed a bug where the media contents was rebuilded upon being loaded.
+- :bug: Fixed a bad 
+
 ## 3.1.0
 
 - :bug: Fixed the routing issues.

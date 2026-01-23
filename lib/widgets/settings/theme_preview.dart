@@ -57,7 +57,7 @@ class ThemePreview extends StatelessWidget {
               padding: EdgeInsets.all(XLayout.paddingXS),
               child: Center(
                 child: AutoSizeText(
-                  name,
+                  "settings_theme_$name".tr,
                   maxLines: 1,
                   style: context.bodyMediumOnSurface,
                 ),

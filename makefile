@@ -44,12 +44,19 @@ pre-commit:
 	@make analyze
 	@make check-version
 
+## Runs the dev packages to make sure the platforms are properly set up. (useful when cloning the project from scratch)
+initialize:
+	@dart run package_rename
+	@dart run flutter_launcher_icons
+	@dart run flutter_native_splash:create
+
 ## Builds the project for the web platform.
 compile:
 	@echo "\n>>> REBUILDING THE PROJECT:"
 	@make pre-commit
 	@flutter clean
 	@flutter pub get
+	@make initialize
 	@flutter build web
 
 ## Re-initializes git in the build repository, connects it to the remote and publishes the current build.

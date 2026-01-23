@@ -38,6 +38,8 @@ class BackgroundPreview extends StatelessWidget {
             child: Stack(
               children: [
                 Positioned.fill(
+                    child: ColoredBox(color: context.colors.surface)),
+                Positioned.fill(
                     child: data.preview(context) ?? const SizedBox()),
                 Positioned(
                   left: 0,

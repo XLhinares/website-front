@@ -34,7 +34,8 @@ class NoProjectSelected extends StatelessWidget {
         XLayout.verticalS,
         FittedBox(
           child: XButton.text(
-            "back".tr,
+            "button_back".tr,
+            textStyle: context.bodyMediumOnSecondary,
             color: context.colors.secondary,
             onTap: () => router.goBack(),
           ),

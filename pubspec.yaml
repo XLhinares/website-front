@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 3.1.0+37
+version: 3.1.2+39
 
 environment:
   sdk: ">=2.19.4 <4.0.0"
@@ -52,6 +52,9 @@ dependencies:
   intl: ^0.20.2
   scroll_to_index: ^3.0.1
   flutter_markdown_plus: ^1.0.7
+  flutter_launcher_icons: ^0.14.4
+  package_rename: ^1.10.1
+  flutter_native_splash: ^2.4.7
 
 dev_dependencies:
   flutter_test:
@@ -103,3 +106,40 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+
+# PACKAGE CONFIG ============================================================
+
+# dart run package_rename
+package_rename_config:
+  android:
+    app_name: "DrawFive"
+    package_name: "org.xeppelin.xeppelin"
+  
+# dart run flutter_launcher_icons
+flutter_launcher_icons:
+  android: "launcher_icon"
+  image_path: "assets/favicon/android-chrome-512x512.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "assets/favicon/android-chrome-512x512.png"
+    background_color: "#1F1F1F"
+    theme_color: "#B0BDD4"
+
+
+# dart run flutter_native_splash:create
+# dart run flutter_native_splash:remove
+flutter_native_splash:
+  color: "#1F1F1F"
+  image: "assets/favicon/android-chrome-512x512.png"
+  fullscreen: true
+  web: true
+  #! ANDROID 12+ configuration:
+  android_12:
+    color: "#1F1F1F"
+    # Please note that the splash screen will be clipped to a circle on the center of the screen. 
+    # with background: 960×960 px (fit within circle 640px in diameter)    
+    # without background: 1152×1152 px (fit within circle 768px in diameter)
+    image: "assets/favicon/android-chrome-512x512.png"
+    # icon_background_color: "#1F1F1F" # Optionnal

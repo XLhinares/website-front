@@ -12,12 +12,20 @@ class CurvePainter extends CustomPainter {
   /// How far along the animation it is.
   final double progress;
 
+  /// An optional color for the wave in the background.
+  final Color? colorBack;
+
+  /// An optional color for the wave in the foreground.
+  final Color? colorFront;
+
   // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [CurvePainter] matching the given parameters.
   CurvePainter({
     this.scale = 1,
     required this.progress,
+    this.colorBack,
+    this.colorFront,
   });
 
   // METHODS ===================================================================
@@ -69,8 +77,8 @@ class CurvePainter extends CustomPainter {
         Offset(size.width, size.height),
         size.height,
         <Color>[
-          Colors.grey.withAlpha(100),
-          Colors.grey.withAlpha(100),
+          (colorBack ?? Colors.grey).withAlpha(40),
+          (colorBack ?? Colors.grey).withAlpha(60),
         ],
         <double>[0, 1.5],
       );
@@ -80,8 +88,8 @@ class CurvePainter extends CustomPainter {
         Offset(size.width, size.height),
         size.height,
         <Color>[
-          Colors.grey.withAlpha(100),
-          Colors.grey.withAlpha(100),
+          (colorFront ?? Colors.grey).withAlpha(80),
+          (colorFront ?? Colors.grey).withAlpha(120),
         ],
         <double>[0.3, 1.5],
       );

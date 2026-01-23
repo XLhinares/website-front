@@ -118,7 +118,7 @@ class MediaDesktopHeader<T extends Media> extends StatelessWidget {
       );
 
   Widget _seeMore(BuildContext context) => GetBuilder(
-        init: app,
+        init: app.medias,
         builder: (_) => SizedBox(
           height: XLayout.paddingL * 2,
           child: AnimatedSwitcher(

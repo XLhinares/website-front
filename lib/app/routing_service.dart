@@ -65,7 +65,7 @@ class XRouter extends GetxController {
   int? get blog => _selectedBlog.value;
 
   /// Whether the app is at home.
-  bool get atHome => currentRoute == AppRoute.MAIN_HOME;
+  bool get atHome => mainTab == AppRoute.MAIN_HOME;
 
   /// A controller handling the pages of the main page.
   PageController get pageController => _pageController;

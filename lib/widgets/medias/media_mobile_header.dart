@@ -132,7 +132,7 @@ class MediaMobileHeader<T extends Media> extends StatelessWidget {
       );
 
   Widget _seeMore(BuildContext context) => GetBuilder(
-        init: app,
+        init: app.medias,
         builder: (_) => AnimatedSwitcher(
           duration: animDurationShort,
           child: app.medias.hasContent(media.id) &&

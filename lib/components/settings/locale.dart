@@ -37,12 +37,7 @@ class SettingsLocale extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return XCard.text(
-      padding: EdgeInsets.only(
-        top: XLayout.paddingM,
-        bottom: XLayout.paddingM,
-        right: XLayout.paddingM,
-        left: XLayout.paddingM,
-      ),
+      padding: XLayout.edgeInsetsAllM,
       // We add "locale" in english so that it is always easy to find for a user
       // who might not be familiar with the currently selected language.
       title:
@@ -54,6 +49,7 @@ class SettingsLocale extends StatelessWidget {
         rightBehavior: () => app.cookies.rotateLocale(reverse: false),
         width: width ?? XLayout.paddingL * 4,
         controller: app.cookies.locale.rx,
+        textBuilder: (value) => "language_$value".tr,
       ),
     );
   }

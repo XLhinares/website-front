@@ -4,6 +4,7 @@ import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/medias.dart";
 import "../../globals.dart";
+import "../../utils/tools.dart";
 import "../images/covering_network_image.dart";
 import "../images/xeppelin_logo.dart";
 import "../text/auto_color_text.dart";
@@ -31,76 +32,93 @@ class MediaMobileHeader<T extends Media> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: Get.width,
-      height: Get.height - navigationBarHeight,
-      child: Stack(
-        children: [
-          // BACKGROUND --------------------------------------------------------
-          Positioned.fill(
-            child: CoveringNetworkImage(
-              media.preview,
-              errorBuilder: (_, __, ___) => const XeppelinLogo(),
-              fit: BoxFit.cover,
-            ),
-          ),
-
-          // TEXT
-          Positioned.fill(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _goBack(context),
-                const Expanded(child: SizedBox()),
-                Container(
-                  decoration: _decoration(context),
-                  padding: EdgeInsets.all(XLayout.paddingL),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      // Adds extra room for the background gradient to be displayed.
-                      XLayout.verticalL,
-                      XLayout.verticalL,
-
-                      // Title block
-                      Text(
-                        media.name,
-                        style: context.textTheme.titleLarge,
-                      ),
-                      XLayout.verticalS, // Tags block.
-                      Wrap(
-                        spacing: XLayout.paddingXS,
-                        runSpacing: XLayout.paddingXS,
-                        children: media.tags
-                            .map((tag) => FittedBox(
-                                  fit: BoxFit.scaleDown,
-                                  child: XContainer(
-                                    padding: EdgeInsets.all(XLayout.paddingXS),
-                                    child: Text(
-                                      tag,
-                                      style: context.textTheme.labelSmall,
-                                    ),
-                                  ),
-                                ))
-                            .toList(),
-                      ),
-
-                      XLayout.verticalM,
-
-                      AutoColorText(media.summary),
-
-                      XLayout.verticalL,
-
-                      _seeMore(context),
-                    ],
-                  ),
+    return Column(
+      children: [
+        SizedBox(
+          width: Get.width,
+          height: Get.height,
+          child: Stack(
+            children: [
+              // BACKGROUND --------------------------------------------------------
+              Positioned.fill(
+                child: CoveringNetworkImage(
+                  media.preview,
+                  errorBuilder: (_, __, ___) => const XeppelinLogo(),
+                  fit: BoxFit.cover,
                 ),
-              ],
+              ),
+
+              // TEXT
+              Positioned.fill(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Expanded(child: SizedBox()),
+                    Container(
+                      decoration: _decoration(context),
+                      padding: EdgeInsets.all(XLayout.paddingL),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          // Adds extra room for the background gradient to be displayed.
+                          XLayout.verticalL,
+                          XLayout.verticalL,
+
+                          // Title block
+                          Text(
+                            media.name,
+                            style: context.textTheme.titleLarge!
+                                .copyWith(color: context.colors.secondary),
+                          ),
+                          XLayout.verticalS, // Tags block.
+                          Wrap(
+                            spacing: XLayout.paddingXS,
+                            runSpacing: XLayout.paddingXS,
+                            children: media.tags
+                                .map((tag) => FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      child: XContainer.text(
+                                        tag,
+                                        textStyle: context.textTheme.labelSmall,
+                                        padding:
+                                            EdgeInsets.all(XLayout.paddingXS),
+                                      ),
+                                    ))
+                                .toList(),
+                          ),
+
+                          XLayout.verticalM,
+
+                          AutoColorText(
+                            media.summary,
+                            color: context.colors.onSurface,
+                          ),
+
+                          XLayout.verticalL,
+
+                          _seeMore(context),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+        Container(
+          height: XLayout.paddingL,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter,
+              colors: _gradientColors,
+              stops: _gradientStops,
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
@@ -109,50 +127,8 @@ class MediaMobileHeader<T extends Media> extends StatelessWidget {
         gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [
-              Colors.transparent,
-              context.theme.colorScheme.surface.withValues(alpha: 0.6),
-              context.theme.colorScheme.surface.withValues(alpha: 0.9),
-              context.theme.colorScheme.surface.withValues(alpha: 0.95),
-              context.theme.colorScheme.surface,
-            ],
-            stops: const [
-              0,
-              0.25,
-              0.6,
-              0.8,
-              0.95,
-            ]),
-      );
-
-  Widget _goBack(BuildContext context) => FittedBox(
-        child: XButton(
-          onTap: () {
-            final type = MediaType.fromType(T);
-            if (type == MediaType.project) router.selectProject(null);
-            if (type == MediaType.blog) router.selectBlog(null);
-          },
-          margin: XLayout.edgeInsetsAllM,
-          padding: EdgeInsets.only(
-            top: XLayout.paddingS,
-            bottom: XLayout.paddingS,
-            left: XLayout.paddingS,
-            right: XLayout.paddingM,
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(
-                Icons.keyboard_arrow_left,
-                size: XLayout.paddingM,
-              ),
-              Text(
-                "button_back".tr,
-                style: context.textTheme.labelSmall,
-              ),
-            ],
-          ),
-        ),
+            colors: _gradientColors,
+            stops: _gradientStops),
       );
 
   Widget _seeMore(BuildContext context) => GetBuilder(
@@ -186,4 +162,19 @@ class MediaMobileHeader<T extends Media> extends StatelessWidget {
               : const SizedBox(),
         ),
       );
+
+  List<Color> get _gradientColors => [
+        Get.theme.colorScheme.surface.withValues(alpha: 0),
+        Get.theme.colorScheme.surface.withValues(alpha: 0.6),
+        Get.theme.colorScheme.surface.withValues(alpha: 0.9),
+        Get.theme.colorScheme.surface.withValues(alpha: 0.95),
+        Get.theme.colorScheme.surface,
+      ];
+  List<double> get _gradientStops => const [
+        0,
+        0.25,
+        0.6,
+        0.8,
+        0.95,
+      ];
 }

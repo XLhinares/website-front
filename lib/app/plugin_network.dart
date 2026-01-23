@@ -53,7 +53,7 @@ class NetworkPlugin extends AppManagerPlugin {
         () async {
           assert(url != null, "URL cannot be [null].");
 
-          dlog("Fetching JSON resource from: '$url'");
+          dlog("Fetching JSON from: [$url]");
           final http.Response response = await http.get(url!);
 
           if (response.statusCode < 200 || response.statusCode >= 400) {
@@ -179,7 +179,7 @@ class NetworkPlugin extends AppManagerPlugin {
               ..addCustomParameter("sorter", sorter.name))
             .cleanUri);
 
-        dlog(response[0].toString());
+        // dlog(response[0].toString());
 
         return response.map((e) => Media.fromJson(e) as T).toList();
       });

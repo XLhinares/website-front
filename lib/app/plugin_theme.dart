@@ -1,3 +1,5 @@
+import "package:flutter_markdown_plus/flutter_markdown_plus.dart";
+
 import "../globals.dart";
 import "../utils/themes.dart";
 import "app_manager_plugin.dart";
@@ -35,14 +37,32 @@ class ThemePlugin extends AppManagerPlugin {
         fontSize: 26,
         fontWeight: FontWeight.bold),
     // TITLE
-    titleLarge: TextStyle(fontFamily: defaultFontFamily, fontSize: 30),
-    titleMedium: TextStyle(fontFamily: defaultFontFamily, fontSize: 26),
-    titleSmall: TextStyle(fontFamily: defaultFontFamily),
+    titleLarge: TextStyle(
+      fontFamily: defaultFontFamily,
+      fontSize: 30,
+    ),
+    titleMedium: TextStyle(
+      fontFamily: defaultFontFamily,
+      fontSize: 26,
+    ),
+    titleSmall: TextStyle(
+      fontFamily: defaultFontFamily,
+    ),
     // BODY
-    bodyLarge: TextStyle(fontFamily: defaultFontFamily, fontSize: 24),
-    bodyMedium:
-        TextStyle(fontFamily: defaultFontFamily, fontSize: 18, height: 1.2),
-    bodySmall: TextStyle(fontFamily: defaultFontFamily),
+    bodyLarge: TextStyle(
+      fontFamily: defaultFontFamily,
+      fontSize: 24,
+    ),
+    bodyMedium: TextStyle(
+      fontFamily: defaultFontFamily,
+      fontSize: 18,
+      height: 1.2,
+    ),
+    bodySmall: TextStyle(
+      fontFamily: defaultFontFamily,
+      fontSize: 14,
+      height: 1,
+    ),
     // LABEL
     labelMedium: TextStyle(
       fontFamily: codeFontFamily,
@@ -70,6 +90,113 @@ class ThemePlugin extends AppManagerPlugin {
 
   /// The preset dark theme.
   ThemeData get dark => all["dark"]!;
+
+  /// Returns the current theme.
+  ThemeData get current => Get.theme;
+
+  /// A [MarkdownStyleSheet] based on the current theme.
+  MarkdownStyleSheet get markdownStyle {
+    final ThemeData currentTheme = current;
+    final TextTheme currentTextTheme = currentTheme.textTheme;
+    return MarkdownStyleSheet(
+      // TITLES
+      h1: currentTextTheme.titleMedium!.copyWith(
+        color: currentTheme.colorScheme.onPrimary,
+        fontFamily: app.themes.codeFontFamily,
+      ),
+      h2: TextStyle(
+        color: currentTheme.colorScheme.onPrimary,
+        fontFamily: app.themes.codeFontFamily,
+      ),
+      h3: TextStyle(
+        color: currentTheme.colorScheme.onPrimary,
+        fontFamily: app.themes.codeFontFamily,
+      ),
+      h4: TextStyle(
+        color: currentTheme.colorScheme.onPrimary,
+        fontFamily: app.themes.codeFontFamily,
+      ),
+      h5: TextStyle(
+        color: currentTheme.colorScheme.onPrimary,
+        fontFamily: app.themes.codeFontFamily,
+      ),
+      h6: TextStyle(
+        color: currentTheme.colorScheme.onPrimary,
+        fontFamily: app.themes.codeFontFamily,
+      ),
+
+      // BLOCKS
+      code: currentTextTheme.bodySmall!.copyWith(
+        color: currentTheme.colorScheme.onPrimary,
+        fontFamily: app.themes.codeFontFamily,
+      ),
+      del: currentTextTheme.bodySmall!.copyWith(
+        color: currentTheme.colorScheme.onPrimary,
+        fontFamily: app.themes.codeFontFamily,
+      ),
+      em: currentTextTheme.bodySmall!.copyWith(
+        color: currentTheme.colorScheme.onPrimary,
+        fontFamily: app.themes.codeFontFamily,
+      ),
+      blockquote: currentTextTheme.bodySmall!.copyWith(
+        color: currentTheme.colorScheme.onSurface,
+        fontFamily: app.themes.codeFontFamily,
+      ),
+
+      // TEXT
+      a: currentTextTheme.bodySmall!.copyWith(
+        color: currentTheme.colorScheme.secondary,
+        fontFamily: app.themes.codeFontFamily,
+      ),
+      p: currentTextTheme.bodySmall!.copyWith(
+        color: currentTheme.colorScheme.onPrimary,
+        fontFamily: app.themes.codeFontFamily,
+      ),
+      listBullet: currentTextTheme.bodySmall!.copyWith(
+        color: currentTheme.colorScheme.onPrimary,
+        fontFamily: app.themes.codeFontFamily,
+      ),
+      strong: TextStyle(
+        color: currentTheme.colorScheme.secondary,
+        fontFamily: app.themes.codeFontFamily,
+      ),
+      tableBody: currentTextTheme.bodySmall!.copyWith(
+        color: currentTheme.colorScheme.onPrimary,
+        fontFamily: app.themes.codeFontFamily,
+      ),
+      tableHead: currentTextTheme.titleMedium!.copyWith(
+        color: currentTheme.colorScheme.onPrimary,
+        fontFamily: app.themes.codeFontFamily,
+      ),
+
+      // BLOCK DECORATIONS
+      codeblockDecoration: BoxDecoration(
+        color: currentTheme.colorScheme.primary,
+        borderRadius: XLayout.brcXS,
+      ),
+      blockquoteDecoration: BoxDecoration(
+        color: currentTheme.colorScheme.surface.withAlpha(200),
+        borderRadius: XLayout.brcXS,
+      ),
+      horizontalRuleDecoration: BoxDecoration(
+        color: currentTheme.colorScheme.primary,
+      ),
+
+      // PADDING
+      h1Padding: EdgeInsets.only(
+        top: XLayout.paddingL,
+        bottom: XLayout.paddingM,
+      ),
+      h2Padding: EdgeInsets.only(
+        top: XLayout.paddingM,
+        bottom: XLayout.paddingS,
+      ),
+      pPadding: EdgeInsets.zero,
+      blockquotePadding: XLayout.edgeInsetsAllM,
+      codeblockPadding: XLayout.edgeInsetsAllM,
+      listIndent: XLayout.paddingL,
+    );
+  }
 
   // CONSTRUCTOR ===============================================================
 

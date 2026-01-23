@@ -48,9 +48,10 @@ class MobileOverlay extends StatelessWidget {
                     width: 2,
                   ),
                   color: context.theme.colorScheme.surface,
-                  onTap: () => router.pop(),
+                  onTap: () => router.goBack(soft: true),
                   child: Icon(
                     Icons.arrow_back,
+                    color: context.colors.onSurface,
                   ),
                 )
               : SizedBox(),

@@ -1,19 +1,32 @@
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:get_storage/get_storage.dart";
 import "package:x_containers/x_containers.dart";
 
 import "classes/dataclass/route.dart";
 import "globals.dart";
-import "tabs/responsive_home.dart";
+import "pages/responsive_home.dart";
 import "utils/themes.dart";
 
 void main() async {
   // Utils ---------------------------------------------------------------------
 
-  await GetStorage.init();
   WidgetsFlutterBinding.ensureInitialized();
+
+  /// Set up the debug prints in order to have access to log using `flutter run`
+  Get.config(
+    enableLog: true,
+    logWriterCallback: (String text, {bool isError = false}) {
+      // This forces GetX logs into the standard print stream
+      if (kDebugMode) {
+        if (isError) {
+          print("[E] $text");
+        } else {
+          print("[D] $text");
+        }
+      }
+    },
+  );
 
   // Memory --------------------------------------------------------------------
 
@@ -45,7 +58,7 @@ void main() async {
 
     // Run
     initialRoute: "/main",
-    getPages: router.allRoutes.map((e) => e.page).toList(),
+    getPages: router.routes.map((e) => e.page).toList(),
 
     onGenerateRoute: (RouteSettings routeSettings) {
       if (kDebugMode) {
@@ -59,7 +72,7 @@ void main() async {
         builder: (context) => ResponsiveHome(
           postInit: (_) {
             if (routeSettings.name == null) return;
-            router.push(path: routeSettings.name);
+            router.goTo(AppRoute.parse(routeSettings.name));
           },
         ),
       );

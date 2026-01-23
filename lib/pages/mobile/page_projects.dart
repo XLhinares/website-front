@@ -37,7 +37,7 @@ class MobilePageProjects extends RouteTab {
         background: _responsiveBackground(context),
         drawer: CustomDrawer(),
         overlay: MobileOverlay(
-          showBackButton: router.project == null,
+          showBackButton: true,
         ),
         body: IfAppIsReady(
           child: router.project == null

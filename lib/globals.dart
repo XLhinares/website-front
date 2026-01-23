@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:x_containers/x_containers.dart";
 
 import "app/app_manager.dart";
 import "app/routing_service.dart";
@@ -9,7 +8,7 @@ import "classes/controllers/project_loader_controller.dart";
 import "utils/translations.dart";
 
 /// The version of the app.
-const String versionNumber = "v2.4.3";
+const String versionNumber = "v3.1.0";
 
 // SERVICES ====================================================================
 
@@ -20,7 +19,7 @@ final RxBool appIsReady = false.obs;
 final AppManager app = AppManager();
 
 /// A service that manages the different elements of the app.
-final RoutingService router = RoutingService();
+final XRouter router = XRouter();
 
 /// A controller that handles loading projects from the API.
 final ProjectLoaderController projectLoaderController =
@@ -45,9 +44,6 @@ const double frameRatioMobile = 1 / 2;
 
 /// The maximum horizontal extent of snack-bars appearing on the screen.
 const double maxSnackbarLength = 600;
-
-/// The vertical extent of the [BottomNavigationBar] used on the mobile display.
-double get navigationBarHeight => XLayout.paddingS * 6;
 
 /// The size of the pages loaded on the API.
 const int pageSize = 20;

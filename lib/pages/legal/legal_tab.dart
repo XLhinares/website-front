@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
+import "package:flutter_markdown_plus/flutter_markdown_plus.dart";
 import "package:get/get.dart";
-import "package:gpt_markdown/gpt_markdown.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../components/misc/if_app_is_ready.dart";
@@ -50,7 +50,7 @@ class TabLegal extends StatelessWidget {
                 child: Row(
                   children: [
                     IconButton(
-                      onPressed: () => router.pop(),
+                      onPressed: () => router.goBack(),
                       icon: const Icon(Icons.arrow_back),
                     ),
                     Expanded(
@@ -80,39 +80,9 @@ class TabLegal extends StatelessWidget {
                         return Text("legal_content_error".tr);
                       }
 
-                      return GptMarkdown(
-                        snapshot.data!.withXeppelinMD,
-
-                        style: context.textTheme.bodyMedium!.copyWith(
-                            fontFamily: app.themes.codeFontFamily,
-                            fontSize:
-                                context.textTheme.bodyMedium!.fontSize! - 2),
-                        // physics: const NeverScrollableScrollPhysics(),
-                        // padding: EdgeInsets.all(XLayout.paddingL),
-                        // selectable: true,
-                        // shrinkWrap: true,
-                        // softLineBreak: false,
-                        // styleSheetTheme: MarkdownStyleSheetBaseTheme.material,
-                        // styleSheet: MarkdownStyleSheet(
-                        //   blockSpacing: XLayout.paddingM,
-                        //   h2: context.textTheme.titleLarge,
-                        // ),
-                        // onTapLink: (text, href, title) async {
-                        //   if (href == null) return;
-                        //   final link = Uri.parse(href);
-
-                        //   if (link.host == "xeppelin.org") {
-                        //     // The link matches a route.
-                        //     router.push(path: link.path.replaceAll("/#", ""));
-                        //   } else {
-                        //     // The link redirects to another website.
-                        //     if (await canLaunchUrl(link)) {
-                        //       await launchUrl(link);
-                        //     } else {
-                        //       throw "Could not launch $link";
-                        //     }
-                        //   }
-                        // },
+                      return MarkdownBody(
+                        data: snapshot.data!.withXeppelinMD,
+                        styleSheet: app.themes.markdownStyle,
                       );
                     }),
               ),

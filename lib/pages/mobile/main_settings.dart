@@ -27,15 +27,14 @@ class MobileMainSettings extends RouteTab {
     return MobileTab(
       route: route,
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           SettingsLocaleCompact(),
           XLayout.verticalM,
           const SettingsThemesCompact(),
           XLayout.verticalM,
           const SettingsLegalCompact(),
-          Expanded(
-            child: SizedBox(),
-          ),
+          SizedBox(),
         ],
       ),
     );

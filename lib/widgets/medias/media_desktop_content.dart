@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
+import "package:flutter_markdown_plus/flutter_markdown_plus.dart";
 import "package:get/utils.dart";
-import "package:gpt_markdown/gpt_markdown.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/medias.dart";
@@ -43,7 +43,10 @@ class MediaDesktopContent extends StatelessWidget {
       case MediaContentType.text:
         return XContainer(
           padding: EdgeInsets.all(XLayout.paddingM),
-          child: GptMarkdown(entry.content),
+          child: MarkdownBody(
+            data: entry.content,
+            styleSheet: app.themes.markdownStyle,
+          ),
         );
 
       // Image entry
@@ -52,15 +55,17 @@ class MediaDesktopContent extends StatelessWidget {
 
       // Github entry
       case MediaContentType.github:
-        return XContainer(
-          padding: EdgeInsets.all(XLayout.paddingM),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              GptMarkdown(
-                  "From the project's github [README.md](${entry.content}):"),
-              XLayout.verticalM,
-              FutureBuilder<String>(
+        return Column(
+          children: [
+            XContainer(
+              child: MarkdownBody(
+                  data:
+                      "From the project's github [README.md](${entry.content}):"),
+            ),
+            XLayout.verticalM,
+            XContainer(
+              padding: XLayout.edgeInsetsAllM,
+              child: FutureBuilder<String>(
                 future: app.network.fetchFile(
                   Uri.parse(entry.content),
                 ),
@@ -71,27 +76,15 @@ class MediaDesktopContent extends StatelessWidget {
                   if (!snapshot.hasData) {
                     return Text("media_content_github_no_data".tr);
                   }
-                  return XContainer(
-                    color: context.theme.canvasColor,
-                    enableShadow: false,
-                    padding: EdgeInsets.all(XLayout.paddingM),
-                    child: GptMarkdownTheme(
-                      gptThemeData: GptMarkdownThemeData(
-                        brightness: context.theme.brightness,
-                      ),
-                      child: GptMarkdown(
-                        snapshot.data!,
-                        style: context.textTheme.bodyMedium!.copyWith(
-                            fontFamily: app.themes.codeFontFamily,
-                            fontSize:
-                                context.textTheme.bodyMedium!.fontSize! - 2),
-                      ),
-                    ),
+                  return MarkdownBody(
+                    shrinkWrap: true,
+                    data: snapshot.data!,
+                    styleSheet: app.themes.markdownStyle,
                   );
                 },
               ),
-            ],
-          ),
+            ),
+          ],
         );
 
       // Default entry (empty)

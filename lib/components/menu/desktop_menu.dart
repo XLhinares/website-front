@@ -34,7 +34,7 @@ class BodyMenu extends StatelessWidget {
           children: [
             // LINKS -----------------------------------------------------------
             XContainer(
-              padding: EdgeInsets.all(XLayout.paddingM),
+              padding: EdgeInsets.zero,
               child: MenuList(),
             ),
 

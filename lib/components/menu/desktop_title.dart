@@ -20,7 +20,7 @@ class BodyTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => router.pop(),
+      onTap: () => router.goBack(),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: [

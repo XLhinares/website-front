@@ -3,6 +3,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:url_launcher/url_launcher.dart";
 
+import "../../classes/dataclass/route.dart";
 import "../../globals.dart";
 
 /// A custom String class carrying style codes that can be used for display.
@@ -192,7 +193,7 @@ class AutoColorText extends StatelessWidget {
       final GestureRecognizer? gestureRecognizer = part.isRoute || part.isLink
           ? (TapGestureRecognizer()
             ..onTap = () async {
-              if (part.isRoute) router.push(path: part.extra);
+              if (part.isRoute) router.goTo(AppRoute.parse(part.extra));
               if (part.isLink) {
                 final uri = Uri.parse(part.extra);
                 if (await canLaunchUrl(uri)) {

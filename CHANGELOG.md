@@ -1,3 +1,13 @@
+## 3.1.0
+
+- :bug: Fixed the routing issues.
+- :lipstick: Removed the moving box on the desktop main page's menu.
+- :lipstick: Fixed some colors following the new theme system.
+
+- :truck: Renamed `lib/tabs` to `libs/pages`
+- :recycle: Changed [RouterService] to [XRouter] since all the "service" classes were deleted.
+- :heavy_plus_sign: Replaced `gpt_markdown` with `flutter_markdown_plus`.
+
 ## 3.0.0
 
 - :sparkles: Switched to plugin based app management.

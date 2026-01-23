@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/dataclass/route.dart";
-import "../../components/contact/contact_column_expanded.dart";
+import "../../components/contact/contact_column.dart";
 import "../../widgets/body/mobile_tab.dart";
 import "../../widgets/body/tab.dart";
 
@@ -28,7 +28,7 @@ class MobileMainContact extends RouteTab {
       route: route,
       child: XContainer(
         padding: EdgeInsets.all(XLayout.paddingM),
-        child: ContactColumnExpanded(),
+        child: ContactColumn(),
       ),
     );
   }

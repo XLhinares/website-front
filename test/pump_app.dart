@@ -2,8 +2,8 @@ import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:get/get.dart";
 import "package:website_front/globals.dart";
-import "package:website_front/tabs/meta/splash.dart";
-import "package:website_front/tabs/responsive_home.dart";
+import "package:website_front/pages/meta/splash.dart";
+import "package:website_front/pages/responsive_home.dart";
 import "package:website_front/utils/themes.dart";
 import "package:website_front/utils/translations.dart";
 

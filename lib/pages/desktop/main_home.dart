@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../components/home/home_description.dart";
+import "../../components/home/desktop_home_description.dart";
 import "../../widgets/images/xeppelin_logo.dart";
 
 /// The content of the body in the "Home" mode.
@@ -53,7 +53,7 @@ class DesktopMainHome extends StatelessWidget {
                 const Expanded(child: SizedBox()),
                 SizedBox(
                   height: Get.height * .7,
-                  child: const HomeDescription(useMobileSize: false),
+                  child: const DesktopHomeDescription(),
                 ),
               ],
             ),

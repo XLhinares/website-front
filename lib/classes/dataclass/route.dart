@@ -4,11 +4,11 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../tabs/legal/cookie_policy.dart";
-import "../../tabs/legal/legal_mentions.dart";
-import "../../tabs/legal/privacy_policy.dart";
-import "../../tabs/responsive_home.dart";
-import "../../tabs/responsive_projects.dart";
+import "../../pages/legal/cookie_policy.dart";
+import "../../pages/legal/legal_mentions.dart";
+import "../../pages/legal/privacy_policy.dart";
+import "../../pages/responsive_home.dart";
+import "../../pages/responsive_projects.dart";
 import "../../globals.dart";
 
 /// A custom route data-class.
@@ -43,6 +43,7 @@ class AppRoute {
     "/$ROOT_MAIN",
     name: "home",
     icon: Icons.home,
+    builder: () => ResponsiveHome(),
   );
 
   /// Route to the blog tab of the app.
@@ -50,6 +51,7 @@ class AppRoute {
     "/$ROOT_MAIN/blogs",
     name: "blogs",
     icon: Icons.dashboard,
+    builder: () => ResponsiveHome(),
   );
 
   /// Route to the projects tab of the app.
@@ -57,6 +59,7 @@ class AppRoute {
     "/$ROOT_MAIN/projects",
     name: "projects",
     icon: Icons.gesture,
+    builder: () => ResponsiveHome(),
   );
 
   /// Route to the contacts tab of the app.
@@ -64,6 +67,7 @@ class AppRoute {
     "/$ROOT_MAIN/contact",
     name: "contact",
     icon: Icons.contact_mail,
+    builder: () => ResponsiveHome(),
   );
 
   /// Route to the settings tab of the app.
@@ -71,6 +75,7 @@ class AppRoute {
     "/$ROOT_MAIN/settings",
     name: "settings",
     icon: Icons.settings,
+    builder: () => ResponsiveHome(),
   );
 
   /// Route to the projects tab of the app.
@@ -154,7 +159,7 @@ class AppRoute {
     MAIN_SETTINGS,
   ];
 
-  // PSEUDO-GETTERS ============================================================
+  // GETTERS ===================================================================
 
   /// Whether this route is accessible to the current user.
   bool get isAccessibleToUser => true;
@@ -169,12 +174,12 @@ class AppRoute {
   String get root => parts[1];
 
   /// Whether this route is part of the main page.
-  bool get isMainRoute => root == ROOT_MAIN;
+  bool get isPartOfMain => root == ROOT_MAIN;
 
   /// Whether this route is part of the projects page.
   ///
   /// !WARNING! Do not confuse with [AppRoute.hasProject]
-  bool get isProjectsRoute => root == ROOT_PROJECTS;
+  bool get isPartOfProjects => root == ROOT_PROJECTS;
 
   /// An icon matching the mode.
   IconData get icon => _icon ?? Icons.not_interested;
@@ -226,7 +231,7 @@ class AppRoute {
     parts = path.split("/");
     this.builder = builder ??
         () => ResponsiveHome(
-              postInit: (context) => router.push(path: path),
+              postInit: (context) => router.goTo(AppRoute.parse(path)),
             );
     // mode = AppMode.parse(parts.isEmpty ? "" : parts[1]);
   }
@@ -234,7 +239,7 @@ class AppRoute {
   /// Tries to match a default route to the given parameters and return it.
   ///
   /// If there are no match, creates and return a new route.
-  factory AppRoute.parse({String? path}) {
+  factory AppRoute.parse(String? path) {
     assert(path != null, "[path] cannot both be null.");
 
     final newRoute = values.firstWhereOrNull((r) => r.path == path);
@@ -244,26 +249,26 @@ class AppRoute {
   }
 
   /// Returns a [AppRoute] linking to the given project.
-  factory AppRoute.previewFromProject(int? id) => id == null
+  factory AppRoute.parseMainProject(int? id) => id == null
       ? AppRoute.MAIN_PROJECTS
       : AppRoute(
           "/$ROOT_MAIN/projects/$id",
           builder: () => ResponsiveHome(
             postInit: (_) {
-              router.push(path: "/$ROOT_MAIN/projects/$id");
+              router.goTo(AppRoute.parse("/$ROOT_MAIN/projects/$id"));
               // router.selectProject(id);
             },
           ),
         );
 
   /// Returns a [AppRoute] linking to the given project.
-  factory AppRoute.pageFromProject(int? id) => id == null
+  factory AppRoute.parsePageProject(int? id) => id == null
       ? AppRoute.PAGE_PROJECTS
       : AppRoute(
           "/$ROOT_PROJECTS/$id",
           builder: () => ResponsiveProject(
             postInit: (_) {
-              router.push(path: "/$ROOT_PROJECTS/$id");
+              router.goTo(AppRoute.parse("/$ROOT_PROJECTS/$id"));
               // router.selectProject(id);
             },
           ),
@@ -281,4 +286,12 @@ class AppRoute {
           //   },
           // ),
         );
+
+  // METHODS ===================================================================
+
+  /// Whether this route shares its root with the route given as argument.
+  bool shareRootWith(AppRoute other) => root == other.root;
+
+  @override
+  String toString() => path;
 }

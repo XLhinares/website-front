@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:scroll_to_index/scroll_to_index.dart";
 
 import "../../classes/dataclass/route.dart";
 import "../../components/misc/if_app_is_ready.dart";
@@ -33,14 +34,18 @@ class MobilePageHome extends StatelessWidget {
       overlay: MobileOverlay(),
       frameRatio: frameRatioMobile,
       body: IfAppIsReady(
-        child: PageView(
+        child: ListView.builder(
           clipBehavior: Clip.none,
           scrollDirection: Axis.vertical,
           physics: const AlwaysScrollableScrollPhysics(),
           controller: router.newPageController,
-          pageSnapping: false,
-          onPageChanged: (index) => router.set(route: _tabs[index].route),
-          children: _tabs,
+          itemCount: _tabs.length,
+          itemBuilder: (context, index) => AutoScrollTag(
+            key: ValueKey(index),
+            controller: router.autoScrollController,
+            index: index,
+            child: _tabs[index],
+          ),
         ),
       ),
     );

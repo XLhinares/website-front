@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
+import "package:flutter_markdown_plus/flutter_markdown_plus.dart";
 import "package:get/get.dart";
-import "package:gpt_markdown/gpt_markdown.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/medias.dart";
@@ -43,8 +43,12 @@ class MediaMobileContent extends StatelessWidget {
       // Text entry
       case MediaContentType.text:
         return XContainer(
-          padding: EdgeInsets.all(XLayout.paddingM),
-          child: GptMarkdown(entry.content),
+          margin: XLayout.edgeInsetsAllM,
+          padding: XLayout.edgeInsetsAllM,
+          child: MarkdownBody(
+            data: entry.content,
+            styleSheet: app.themes.markdownStyle,
+          ),
         );
 
       // Image entry
@@ -53,43 +57,36 @@ class MediaMobileContent extends StatelessWidget {
 
       // Github entry
       case MediaContentType.github:
-        return XContainer(
-          padding: EdgeInsets.all(XLayout.paddingM),
+        return Padding(
+          padding: XLayout.edgeInsetsAllM,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              GptMarkdown(
-                  "From the project's github [README.md](${entry.content}):"),
+              XContainer(
+                child: MarkdownBody(
+                    data:
+                        "From the project's github [README.md](${entry.content}):"),
+              ),
               XLayout.verticalM,
-              FutureBuilder<String>(
-                future: app.network.fetchFile(
-                  Uri.parse(entry.content),
+              XContainer(
+                padding: XLayout.edgeInsetsAllM,
+                child: FutureBuilder<String>(
+                  future: app.network.fetchFile(
+                    Uri.parse(entry.content),
+                  ),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasError) {
+                      return Text("media_content_github_error".tr);
+                    }
+                    if (!snapshot.hasData) {
+                      return Text("media_content_github_no_data".tr);
+                    }
+                    return MarkdownBody(
+                      shrinkWrap: true,
+                      data: snapshot.data!,
+                      styleSheet: app.themes.markdownStyle,
+                    );
+                  },
                 ),
-                builder: (context, snapshot) {
-                  if (snapshot.hasError) {
-                    return Text("media_content_github_error".tr);
-                  }
-                  if (!snapshot.hasData) {
-                    return Text("media_content_github_no_data".tr);
-                  }
-                  return XContainer(
-                    color: context.theme.canvasColor,
-                    enableShadow: false,
-                    padding: EdgeInsets.all(XLayout.paddingM),
-                    child: GptMarkdownTheme(
-                      gptThemeData: GptMarkdownThemeData(
-                        brightness: context.theme.brightness,
-                      ),
-                      child: GptMarkdown(
-                        snapshot.data!,
-                        style: context.textTheme.bodyMedium!.copyWith(
-                            fontFamily: app.themes.codeFontFamily,
-                            fontSize:
-                                context.textTheme.bodyMedium!.fontSize! - 2),
-                      ),
-                    ),
-                  );
-                },
               ),
             ],
           ),

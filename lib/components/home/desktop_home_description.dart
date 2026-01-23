@@ -7,29 +7,20 @@ import "../../widgets/text/auto_color_text.dart";
 import "social_media_links.dart";
 
 /// A widget describing what the site is about.
-class HomeDescription extends StatelessWidget {
+class DesktopHomeDescription extends StatelessWidget {
   // VARIABLES =================================================================
-
-  /// Whether to use the regular version or a smaller version to fit in smaller screen.
-  ///
-  /// This affects the text font size and the icon size.
-  final bool useMobileSize;
 
   // CONSTRUCTOR ===============================================================
 
-  /// Returns an instance of [HomeDescription] matching the given parameters.
-  const HomeDescription({super.key, this.useMobileSize = false});
+  /// Returns an instance of [DesktopHomeDescription] matching the given parameters.
+  const DesktopHomeDescription({
+    super.key,
+  });
 
   // BUILD =====================================================================
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle? textStyle = useMobileSize
-        ? context.textTheme.bodyMedium
-        : context.textTheme.titleMedium;
-    final double iconSize =
-        useMobileSize ? XLayout.paddingL * 0.8 : XLayout.paddingL;
-
     return XContainer(
       padding: EdgeInsets.all(XLayout.paddingL),
       child: Column(
@@ -38,15 +29,16 @@ class HomeDescription extends StatelessWidget {
             child: Center(
               child: ListView(
                 shrinkWrap: true,
+                padding: XLayout.edgeInsetsAllM,
                 children: [
                   AutoColorText(
                     "home_description_title".tr,
-                    style: textStyle,
+                    style: context.textTheme.titleMedium,
                   ),
                   XLayout.verticalM,
                   AutoColorText(
                     "home_description_content".tr,
-                    style: textStyle,
+                    style: context.textTheme.titleMedium,
                     textAlign: TextAlign.justify,
                   ),
                 ],
@@ -55,7 +47,7 @@ class HomeDescription extends StatelessWidget {
           ),
           XLayout.verticalM,
           SocialMediaLinks(
-            iconSize: iconSize,
+            iconSize: XLayout.paddingL,
           ),
           // XLayout.verticalM,
         ],

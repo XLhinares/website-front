@@ -32,14 +32,15 @@ class MobileTab extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(XLayout.paddingM),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           MobileTabTitle(title: "${route.name}_title".tr),
           XLayout.verticalM,
           MobileTabDescription(description: "${route.name}_description".tr),
           XLayout.verticalL,
-          Expanded(
-            child: child,
-          ),
+          child,
+          XLayout.verticalL,
+          XLayout.verticalL,
         ],
       ),
     );

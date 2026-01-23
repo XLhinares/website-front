@@ -23,12 +23,10 @@ class MobileTabTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return XContainer(
+    return XContainer.text(
+      title.tr,
+      textStyle: context.titleMediumOnSecondary,
       color: context.theme.colorScheme.secondary,
-      child: Text(
-        title.tr,
-        style: context.titleMediumOnSecondary,
-      ),
     );
   }
 

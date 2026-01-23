@@ -117,6 +117,7 @@ class CookiePlugin extends AppManagerPlugin {
       theme,
       locale,
       allowCookies,
+      cookieBannerDismissed
     ];
 
     // Instantiating variables. ------------------------------------------------

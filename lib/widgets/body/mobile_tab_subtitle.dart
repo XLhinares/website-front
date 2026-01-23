@@ -21,12 +21,10 @@ class MobileTabDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return XContainer(
+    return XContainer.text(
+      description.tr,
+      textStyle: context.textTheme.bodyMedium,
       color: context.theme.colorScheme.primary,
-      child: Text(
-        description.tr,
-        style: context.textTheme.bodyMedium,
-      ),
     );
   }
 

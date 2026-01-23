@@ -19,7 +19,12 @@ class ProjectsListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PagewiseListView<Project>(
       physics: const BouncingScrollPhysics(),
-      padding: EdgeInsets.all(XLayout.paddingM),
+      padding: EdgeInsets.only(
+        top: XLayout.paddingL * 1.5 + XLayout.paddingM * 2,
+        bottom: XLayout.paddingM,
+        left: XLayout.paddingM,
+        right: XLayout.paddingM,
+      ),
       pageLoadController: projectLoaderController.controller,
       itemBuilder: (context, entry, index) => MediaWidePreview(
         media: entry,

@@ -54,8 +54,7 @@ class ProjectPreviewer extends StatelessWidget {
                 children: [
                   const Expanded(child: SizedBox()),
                   Container(
-                    color: context.theme.colorScheme.surface
-                        .withValues(alpha: 0.5),
+                    color: context.theme.colorScheme.surface.withAlpha(150),
                     padding: EdgeInsets.all(XLayout.paddingM),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -75,6 +74,7 @@ class ProjectPreviewer extends StatelessWidget {
                         AutoColorText(
                           project.summary,
                           style: context.bodyMediumOnSurface,
+                          color: context.colors.onSurface,
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,
                         ),

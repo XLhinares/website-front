@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 /// A go-to widget to display when some content was not found.
@@ -14,10 +15,8 @@ class NotFound extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: XContainer(
-        child: Text("misc_content_not_found"),
-      ),
+    return Center(
+      child: XContainer.text("misc_content_not_found".tr),
     );
   }
 

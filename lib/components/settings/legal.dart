@@ -31,7 +31,7 @@ class SettingsLegal extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Xeppelin $versionNumber © 2025, All rights reserved.".tr,
+            "Xeppelin $versionNumber © 2026, All rights reserved.".tr,
           ),
           XLayout.verticalXS,
           AutoColorText("settings_legal".tr),

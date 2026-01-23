@@ -3,7 +3,6 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../globals.dart";
 import "../../utils/tools.dart";
 
 /// A widget that lets the user select a value through "left/right" interactions.
@@ -62,7 +61,7 @@ class LRSelector extends StatelessWidget {
               child: Center(
                 child: Obx(
                   () => AutoSizeText(
-                    app.cookies.theme.value.capitalizeFirst!,
+                    controller.value.toString().capitalizeFirst!,
                     minFontSize: 8,
                     maxLines: 1,
                     style: context.bodyMediumOnSurface,

@@ -2,6 +2,9 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
+import "../../globals.dart";
+import "../../utils/tools.dart";
+
 /// A detailed view of a project.
 class NoProjectSelected extends StatelessWidget {
   // CONSTRUCTOR ===============================================================
@@ -18,15 +21,24 @@ class NoProjectSelected extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        FittedBox(
-          child: XContainer(
-            child: Text("no_project_selected_title".tr),
+        XContainer(
+          padding: XLayout.edgeInsetsAllM,
+          child: Column(
+            children: [
+              Text("no_project_selected_title".tr),
+              XLayout.verticalM,
+              Text("no_project_selected_content".tr),
+            ],
           ),
         ),
         XLayout.verticalS,
-        XContainer(
-          child: Text("no_project_selected_content".tr),
-        ),
+        FittedBox(
+          child: XButton.text(
+            "back".tr,
+            color: context.colors.secondary,
+            onTap: () => router.goBack(),
+          ),
+        )
       ],
     );
   }

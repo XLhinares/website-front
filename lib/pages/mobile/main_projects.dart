@@ -36,13 +36,14 @@ class MobileMainProjects extends RouteTab {
         builder: (context, snapshot) {
           return ListView(
             physics: const BouncingScrollPhysics(),
+            shrinkWrap: true,
             children: [
               _projectBuilder(context, snapshot![0]),
               _projectBuilder(context, snapshot[1]),
               _projectBuilder(context, snapshot[2]),
               XButton.text(
                 "display_more".tr,
-                onTap: () => router.push(route: AppRoute.PAGE_PROJECTS),
+                onTap: () => router.goTo(AppRoute.PAGE_PROJECTS),
               ),
             ],
           );
@@ -57,12 +58,13 @@ class MobileMainProjects extends RouteTab {
         height: XLayout.paddingM * 8,
         child: MediaWidePreview(
           media: project,
-          onTap: () => router.push(route: AppRoute.pageFromProject(project.id)),
+          onTap: () => router.goTo(AppRoute.parsePageProject(project.id)),
         ),
       );
 
   Widget get _loadingWidget => ListView(
         physics: const BouncingScrollPhysics(),
+        shrinkWrap: true,
         children: [
           XContainer(
             height: XLayout.paddingM * 7,
@@ -78,7 +80,7 @@ class MobileMainProjects extends RouteTab {
           XLayout.verticalM,
           XButton.text(
             "display_more".tr,
-            onTap: () => router.push(route: AppRoute.PAGE_PROJECTS),
+            onTap: () => router.goTo(AppRoute.PAGE_PROJECTS),
           )
         ],
       );

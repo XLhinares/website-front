@@ -53,6 +53,10 @@ elif [[ $1 == "web" ]]; then
     setup_flutter_if_needed
     flutter run -d web-server --web-port "$WEB_SERVER_PORT" | filter_flutter_logs
 
+elif [[ $1 == "chrome" ]]; then
+    setup_flutter_if_needed
+    flutter run -d chrome | filter_flutter_logs
+
 elif [[ $1 == "linux" ]]; then
     setup_flutter_if_needed
     flutter run -d linux | filter_flutter_logs
@@ -68,6 +72,7 @@ else
     echo -e "Arguments:"
     echo -e "  $Y[auto]$R       Detects device and run flutter project"
     echo -e "  $Y[web]$R        Runs the project on a web server"
+    echo -e "  $Y[chrome]$R     Runs the project on chrome"
     echo -e "  $Y[linux]$R      Runs the project on linux"
     echo -e "  $Y[android]$R    Runs the project on android"
 fi

@@ -1,46 +1,41 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:x_containers/x_containers.dart";
 
-import "../../globals.dart";
 import "../../utils/extensions.dart";
 
-/// A detailed view of a project.
+/// A small piece of text to display when no project is selected on the desktop projects page.
 class NoProjectSelected extends StatelessWidget {
   // CONSTRUCTOR ===============================================================
 
+  /// The number of time that this widget was displayed.
+  static int _count = 0;
+
   /// Returns an instance of [MediaFocus] matching the given parameters.
-  const NoProjectSelected({
+  NoProjectSelected({
     super.key,
-  });
+  }) {
+    NoProjectSelected._count++;
+  }
+
+  // GETTERS ===================================================================
+
+  String get _message {
+    if (NoProjectSelected._count < 2) return "project_no_selected_default";
+    if (NoProjectSelected._count < 5) return "project_no_selected_count_low";
+    if (NoProjectSelected._count < 10) {
+      return "project_no_selected_count_medium";
+    }
+    if (NoProjectSelected._count < 15) return "project_no_selected_count_high";
+    return "project_no_selected_count_extreme";
+  }
 
   // BUILD =====================================================================
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        XContainer(
-          padding: XLayout.edgeInsetsAllM,
-          child: Column(
-            children: [
-              Text("no_project_selected_title".tr),
-              XLayout.verticalM,
-              Text("no_project_selected_content".tr),
-            ],
-          ),
-        ),
-        XLayout.verticalS,
-        FittedBox(
-          child: XButton.text(
-            "button_back".tr,
-            textStyle: context.bodyMediumOnSecondary,
-            color: context.colors.secondary,
-            onTap: () => router.goBack(),
-          ),
-        )
-      ],
+    return Text(
+      _message.tr,
+      style: context.labelMediumOnSurface.asHint,
     );
   }
 

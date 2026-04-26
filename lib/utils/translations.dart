@@ -37,6 +37,15 @@ class CustomTranslations extends Translations {
       "media_no_summary": "No summary given.",
       "media_website_button_visit": "website",
       "project_website_button_tooltip": "Go to the project's website.",
+      "project_no_selected_default":
+          "Kinda empty here...\nClick on a project to start :)",
+      "project_no_selected_count_low":
+          "Thank you for checking out my projects! Feel free to have a look at the others :)",
+      "project_no_selected_count_medium":
+          "Have you checked the projects with a website icon?",
+      "project_no_selected_count_high": "Do I even have that many projects?",
+      "project_no_selected_count_extreme":
+          "Just how many times did you check my projects??\n\nFeel free to use the contact form if you wanna reach out ;)",
 
       // CONTACT ---------------------------------------------------------------
       "contact_title": "Contact form",
@@ -166,6 +175,15 @@ class CustomTranslations extends Translations {
       "media_no_summary": "Pas de description.",
       "media_website_button_visit": "site web",
       "project_website_button_tooltip": "Aller sur le site du projet.",
+      "project_no_selected_default":
+          "C'est bien vide ici...\nClique sur un projet pour commencer :)",
+      "project_no_selected_count_low":
+          "Merci de regarder mes projets! Prends ton temps :)",
+      "project_no_selected__count_medium":
+          "Certains projets sont disponibles sur leurs propres sites, n'hésite pas à aller les voir!",
+      "project_no_selected_count_high": "J'ai tant de projets que ca?",
+      "project_no_selected_count_extreme":
+          "Merci infinement pour le temps que tu consacres à mes projets!!\n\nSi tu le souhaites, il est possible de prendre contact via le formulaire sur la page principale ;)",
 
       // CONTACT ---------------------------------------------------------------
       "contact_title": "Formulaire de contact",

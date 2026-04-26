@@ -3,7 +3,9 @@ import "package:flutter_markdown_plus/flutter_markdown_plus.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../classes/medias/medias.dart";
+import "../../classes/medias/media_content.dart";
+import "../../classes/medias/media_content_type.dart";
+import "../../classes/medias/media_entry.dart";
 import "../../globals.dart";
 import "../images/covering_network_image.dart";
 

@@ -3,7 +3,7 @@ import "package:flutter_pagewise/flutter_pagewise.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../classes/medias/medias.dart";
+import "../../classes/medias/blog.dart";
 import "../../components/medias/media_focus.dart";
 import "../../components/medias/project_wide_preview.dart";
 import "../../globals.dart";

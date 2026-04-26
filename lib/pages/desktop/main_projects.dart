@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../classes/medias/medias.dart";
+import "../../classes/medias/project.dart";
 import "../../components/medias/media_focus.dart";
 import "../../components/projects/projects_grid.dart";
 import "../../globals.dart";

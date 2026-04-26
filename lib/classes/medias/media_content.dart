@@ -1,4 +1,4 @@
-import "medias.dart";
+import "media_entry.dart";
 
 /// In-app representation of the different parts of a given media.
 ///

@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../classes/medias/medias.dart";
+import "../../classes/medias/media.dart";
 import "../../widgets/images/covering_network_image.dart";
 import "../../widgets/text/auto_color_text.dart";
 

@@ -3,7 +3,7 @@ import "package:get/get.dart";
 
 import "../../globals.dart";
 import "../../utils/tools_api.dart";
-import "../medias/medias.dart";
+import "../medias/media.dart";
 
 /// A controller that handles loading projects from the API.
 abstract class MediaLoaderController<T extends Media> extends GetxController {

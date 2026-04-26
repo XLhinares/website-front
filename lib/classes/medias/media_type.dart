@@ -1,4 +1,5 @@
-import "medias.dart";
+import "blog.dart";
+import "project.dart";
 
 /// Representation of a "mode" (pretty much the top-level state of the app).
 class MediaType {

@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 
 import "../../classes/dataclass/route.dart";
-import "../../classes/medias/medias.dart";
+import "../../classes/medias/project.dart";
 import "../../components/medias/media_focus.dart";
 import "../../components/misc/if_app_is_ready.dart";
 import "../../components/projects/projects_list.dart";

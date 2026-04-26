@@ -1,4 +1,4 @@
-import "../medias/medias.dart";
+import "../medias/project.dart";
 import "media_loader_controller.dart";
 
 /// A controller that handles loading projects from the API.

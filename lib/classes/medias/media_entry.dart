@@ -1,4 +1,4 @@
-import "medias.dart";
+import "media_content_type.dart";
 
 /// A single entry from a [MediaContent] object.
 ///

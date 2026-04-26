@@ -19,6 +19,9 @@ class BodyTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    dlog(
+        "current route: ${router.currentRoute} (pom: ${router.currentRoute.isPartOfMain})");
+
     return GestureDetector(
       onTap: () => router.goBack(),
       child: LayoutBuilder(
@@ -36,11 +39,20 @@ class BodyTitle extends StatelessWidget {
                   child: router.atHome
                       ? const SizedBox()
                       : Padding(
-                          padding: EdgeInsets.only(right: XLayout.paddingXS),
-                          child: XeppelinLogo(
-                            size: constraints.maxWidth * .25,
-                            color: context.colors.secondary,
-                          )),
+                          padding: EdgeInsets.only(
+                            right: XLayout.paddingXS,
+                          ),
+                          child: router.currentRoute.isPartOfMain
+                              ? XeppelinLogo(
+                                  size: constraints.maxWidth * .25,
+                                  color: context.colors.secondary,
+                                )
+                              : Icon(
+                                  Icons.arrow_back,
+                                  size: constraints.maxWidth * .25,
+                                  color: context.colors.secondary,
+                                ),
+                        ),
                 ),
               ),
             ),

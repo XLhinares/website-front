@@ -32,8 +32,6 @@ class ProjectPreviewer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    dlog("project ${project.name} has website: ${project.website}");
-
     return XButton(
       height: Get.height * 0.25,
       padding: EdgeInsets.zero,

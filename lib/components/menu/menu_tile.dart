@@ -13,7 +13,7 @@ class MenuTile extends StatelessWidget {
   /// The route this [MenuTile] is about.
   final AppRoute route;
 
-  bool get _isSelected => route == router.mainTab;
+  bool get _isSelected => route == router.currentRoute;
 
   // CONSTRUCTOR ===============================================================
 

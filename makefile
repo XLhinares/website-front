@@ -69,20 +69,6 @@ server_publish:
 
 ## Runs the flutter app and only shows the [DEBUG] and [ERROR] logs
 run:
-	@flutter run | awk -F': ' '{ \
-		# Strip the "flutter (pid): " prefix \
-		msg = gensub(/.*flutter \( *[0-9]+\): /, "", "g", $$0); \
-		# Highlight brackets in yellow \
-		msg = gensub(/\[([^\]]+)\]/, "\033[33m[\\1]\033[0m", "g", msg); \
-		if ($$0 ~ /E\/flutter/) { \
-			print "\033[31m[ERROR]\033[0m " msg; \
-		} else if ($$0 ~ /I\/flutter/) { \
-			print "\033[32m[INFO]\033[0m  " msg; \
-		} else if ($$0 ~ /^[IWDE]\//) { \
-        	# Drops lines starting with I/, W/, D/, or E/ that arent flutter-specific \
-		} else { \
-			print "\033[35m[OTHER]\033[0m  " msg; \
-		} \
-	}'
+	@./scripts/run.sh auto
 
 

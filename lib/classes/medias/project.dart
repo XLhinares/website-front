@@ -12,6 +12,7 @@ class Project extends Media {
     super.tags,
     super.previewPath,
     super.summary,
+    super.website,
   }) : super(
           type: MediaType.project,
         );
@@ -29,5 +30,6 @@ class Project extends Media {
             : <String>[],
         previewPath: json["preview"],
         summary: json["summary"],
+        website: json["website"],
       );
 }

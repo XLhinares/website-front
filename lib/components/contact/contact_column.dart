@@ -3,6 +3,7 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../globals.dart";
+import "../../utils/extensions.dart";
 import "../../utils/tools.dart";
 import "contact_field.dart";
 

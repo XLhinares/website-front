@@ -5,7 +5,7 @@ import "package:x_containers/x_containers.dart";
 import "../../classes/medias/media.dart";
 import "../../classes/medias/media_content.dart";
 import "../../globals.dart";
-import "../../utils/tools.dart";
+import "../../utils/extensions.dart";
 
 /// A detailed view of a project.
 class MediaFocus<T extends Media> extends StatelessWidget {
@@ -79,7 +79,7 @@ class MediaFocus<T extends Media> extends StatelessWidget {
   Widget _loadingWidget(BuildContext context) {
     app.medias.loadMediaContent(media.id);
     return LinearProgressIndicator(
-      color: context.theme.colorScheme.secondary,
+      color: context.colors.secondary,
       backgroundColor: context.colors.surface,
     );
   }

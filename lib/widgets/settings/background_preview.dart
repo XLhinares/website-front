@@ -5,7 +5,7 @@ import "package:x_containers/x_containers.dart";
 
 import "../../classes/dataclass/background_data.dart";
 import "../../globals.dart";
-import "../../utils/tools.dart";
+import "../../utils/extensions.dart";
 
 /// A widget allowing the user to preview a theme.
 class BackgroundPreview extends StatelessWidget {

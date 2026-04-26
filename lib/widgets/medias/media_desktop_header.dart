@@ -3,11 +3,12 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/media.dart";
-import "../../classes/medias/media_type.dart";
 import "../../globals.dart";
 import "../../utils/tools.dart";
 import "../images/covering_network_image.dart";
 import "../text/auto_color_text.dart";
+import "button_go_back.dart";
+import "button_visit_website.dart";
 import "media_tag.dart";
 
 /// A widget displaying the metadata of the given media on desktop.
@@ -45,7 +46,15 @@ class MediaDesktopHeader<T extends Media> extends StatelessWidget {
                 padding: EdgeInsets.all(XLayout.paddingM),
                 child: Column(
                   children: [
-                    _goBack(context),
+                    Row(
+                      children: [
+                        MediaButtonGoBack(),
+                        Expanded(child: SizedBox()),
+                        // Website
+                        MediaButtonVisitWebsite(media: media),
+                      ],
+                    ),
+
                     // Spacing
                     XLayout.verticalL,
                     const Expanded(child: SizedBox()),
@@ -63,9 +72,10 @@ class MediaDesktopHeader<T extends Media> extends StatelessWidget {
                           media.tags.map((tag) => MediaTag(tag: tag)).toList(),
                     ),
                     XLayout.verticalL,
-                    // Summary
 
+                    // Summary
                     AutoColorText(media.summary),
+                    XLayout.verticalL,
 
                     // Spacing
                     const Expanded(child: SizedBox()),
@@ -89,34 +99,6 @@ class MediaDesktopHeader<T extends Media> extends StatelessWidget {
   }
 
   // WIDGETS ===================================================================
-
-  Widget _goBack(BuildContext context) => Align(
-        alignment: Alignment.topLeft,
-        child: FittedBox(
-          fit: BoxFit.scaleDown,
-          child: XButton(
-            enableShadow: false,
-            onTap: () {
-              final type = MediaType.fromType(T);
-              if (type == MediaType.project) router.selectProject(null);
-              if (type == MediaType.blog) router.selectBlog(null);
-            },
-            child: Row(
-              children: [
-                Icon(
-                  Icons.keyboard_arrow_left,
-                  size: XLayout.paddingM,
-                ),
-                Text(
-                  "button_back".tr,
-                  style: context.textTheme.labelSmall,
-                ),
-                XLayout.horizontalXS,
-              ],
-            ),
-          ),
-        ),
-      );
 
   Widget _seeMore(BuildContext context) => GetBuilder(
         init: app.medias,

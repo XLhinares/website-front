@@ -2,9 +2,9 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../globals.dart";
 import "../../classes/dataclass/route.dart";
-import "../../utils/tools.dart";
+import "../../globals.dart";
+import "../../utils/extensions.dart";
 
 /// A tile displaying one menu element.
 class MenuTile extends StatelessWidget {

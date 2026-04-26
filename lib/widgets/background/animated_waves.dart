@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:simple_animations/simple_animations.dart";
 
-import "../../utils/tools.dart";
+import "../../utils/extensions.dart";
 import "curve_painter.dart";
 
 /// A custom wave widget.

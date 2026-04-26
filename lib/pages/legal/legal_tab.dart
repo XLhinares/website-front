@@ -5,7 +5,7 @@ import "package:x_containers/x_containers.dart";
 
 import "../../components/misc/if_app_is_ready.dart";
 import "../../globals.dart";
-import "../../utils/tools.dart";
+import "../../utils/extensions.dart";
 import "../../widgets/animations/loading_indicator.dart";
 import "../../widgets/layout/scaffold_fit.dart";
 

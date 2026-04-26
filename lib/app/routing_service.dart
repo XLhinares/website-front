@@ -2,9 +2,9 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:scroll_to_index/scroll_to_index.dart";
 
-import "../globals.dart";
 import "../classes/dataclass/route.dart";
-import "../utils/tools.dart";
+import "../globals.dart";
+import "../utils/extensions.dart";
 
 /// A service managing the state of the app.
 ///

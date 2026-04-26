@@ -3,7 +3,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../utils/tools.dart";
+import "../../utils/extensions.dart";
 
 /// A widget that lets the user select a value through "left/right" interactions.
 class LRSelector<T> extends StatelessWidget {

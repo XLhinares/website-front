@@ -38,11 +38,37 @@ Future<T> tryWrapper<T>(
   return res;
 }
 
-/// A extension on all objects to give them an easy logging method.
-extension DebugLog on Object {
-  /// Use [Get.log] to log and display information.
-  void dlog(String text, {bool isError = false}) {
-    Get.log("[$runtimeType] $text", isError: isError);
+/// Prints the given text with ANSI color highlights.
+///
+/// !WARNING!
+/// Don't use it in regular code and use [Object.dlog] instead.
+/// This is meant to be used in the git config only!
+void colorLog(String text, {bool isError = false}) {
+  // This forces GetX logs into the standard print stream
+  if (!kDebugMode) return;
+
+  const String reset = "\x1b[0m";
+  const String white = "\x1b[37m";
+  const String red = "\x1b[31m";
+  const String green = "\x1b[32m";
+  const String grey = "\x1b[90m";
+  const String yellow = "\x1b[33m";
+
+  final String coloredText = text
+      .replaceAll("[", "$yellow[") // Yellow for subsequent [
+      .replaceAll("] $yellow[", "] $grey[") // Yellow for subsequent [
+      .replaceFirstMapped(
+        RegExp(r"^\x1b\[33m\["),
+        (m) => "$grey[",
+      ) // Grey for first [
+      .replaceAll("]", "]$white"); // Reset
+
+  if (isError) {
+    // ignore: avoid_print
+    print("$red[E]$white $coloredText$reset");
+  } else {
+    // ignore: avoid_print
+    print("$green[D]$white $coloredText$reset");
   }
 }
 
@@ -111,48 +137,10 @@ extension LegibleDates on DateTime {
 Color hexColorParser(String hex) =>
     Color(int.parse(hex.substring(1, 7), radix: 16) + 0xFF000000);
 
-/// An extension on [BuildContext] to access the theme's color scheme more conveniently.
-extension ContextColor on BuildContext {
-  /// Shortcut for [context.theme.colorScheme].
-  ColorScheme get colors => theme.colorScheme;
-
-  /// Return the [bodyMedium] text style with the color set to [onSurface]
-  TextStyle get bodyMediumOnSurface =>
-      textTheme.bodyMedium!.copyWith(color: colors.onSurface);
-
-  /// Return the [bodyMedium] text style with the color set to [onSecondary]
-  TextStyle get bodyMediumOnSecondary =>
-      textTheme.bodyMedium!.copyWith(color: colors.onSecondary);
-
-  /// Return the [titleMedium] text style with the color set to [onSurface]
-  TextStyle get titleMediumOnSurface =>
-      textTheme.titleMedium!.copyWith(color: colors.onSurface);
-
-  /// Return the [titleMedium] text style with the color set to [onSecondary]
-  TextStyle get titleMediumOnSecondary =>
-      textTheme.titleMedium!.copyWith(color: colors.onSecondary);
-}
-
 /// A small helper function that returns a human legible duration string, from a number of seconds.
 String intToMinSec(int duration) {
   final min = duration ~/ 60;
   final sec = duration % 60;
 
   return min == 0 ? "${sec}s" : "${min}m ${sec}s";
-}
-
-/// An extension on [String] to automatically fill in some frequently used information.
-extension XeppelinMD on String {
-  /// The string with some website-specific modifications.
-  ///
-  /// The list of modifications is:
-  /// - "$xeppelinMD" => "[xeppelin.org](www.xeppelin.org)"
-  /// - "$xeppelinURL" => "www.xeppelin.org"
-  String get withXeppelinMD {
-    final String result = replaceAllMapped(
-        "\$xeppelinMD", (match) => "[xeppelin.org](www.xeppelin.org)")
-      ..replaceAllMapped("\$xeppelinURL", (match) => "www.xeppelin.org");
-
-    return result;
-  }
 }

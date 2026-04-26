@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 // MODE MANAGEMENT =============================================================
@@ -11,18 +10,6 @@ ThemeData defaultTheme = getTheme(
   secondary: const Color(0xFFAF3131),
   surface: const Color(0xFF282627),
 );
-
-// FONTS =======================================================================
-
-/// Experimental font for medium labels
-TextStyle? getFontLabelMedium(BuildContext context) =>
-    context.textTheme.labelMedium
-        ?.copyWith(fontSize: 14, fontWeight: FontWeight.w200);
-
-/// Experimental font for small labels
-TextStyle? getFontLabelSmall(BuildContext context) =>
-    context.textTheme.labelMedium
-        ?.copyWith(fontSize: 12, fontWeight: FontWeight.w200);
 
 // SPECIAL COLORS ==============================================================
 

@@ -4,7 +4,7 @@ import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/media.dart";
 import "../../globals.dart";
-import "../../utils/tools.dart";
+import "../../utils/extensions.dart";
 import "../images/covering_network_image.dart";
 import "../images/xeppelin_logo.dart";
 import "../text/auto_color_text.dart";

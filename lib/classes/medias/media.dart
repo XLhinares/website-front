@@ -33,10 +33,16 @@ class Media {
   /// A short description of the media.
   final String summary;
 
+  /// An optional website matching this media.
+  final String? website;
+
   // GETTERS ===================================================================
 
   /// A preview image of the media.
   String get preview => "${app.network.assets}$_preview";
+
+  /// Whether the media doesn't have a website (or has an empty website)
+  bool get hasNoWebsite => website?.isEmpty ?? true;
 
   // CONSTRUCTOR ===============================================================
 
@@ -50,9 +56,10 @@ class Media {
     List<String>? tags,
     String? previewPath,
     String? summary,
+    this.website,
   })  : _preview = previewPath ?? "medias/default.webp",
         tags = tags ?? const [],
-        summary = summary ?? "No summary given.";
+        summary = summary ?? "media_no_summary";
 
   /// Returns a [Media] matching the given json element.
   factory Media.fromJson(Map<String, dynamic> json) {
@@ -75,7 +82,16 @@ class Media {
               : <String>[],
           previewPath: json["preview"],
           summary: json["summary"],
+          website: json["website"],
         );
     }
+  }
+
+  // METHODS ==================================================================
+
+  /// Tries to launch the media's website, if it's provided.
+  void launchWebsite() async {
+    if (hasNoWebsite) return;
+    await app.network.launch(website!);
   }
 }

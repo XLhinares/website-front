@@ -5,7 +5,7 @@ import "package:font_awesome_flutter/font_awesome_flutter.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../globals.dart";
-import "../../utils/tools.dart";
+import "../../utils/extensions.dart";
 
 /// A widget describing what the site is about.
 class SocialMediaLinks extends StatelessWidget {

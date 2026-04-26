@@ -34,6 +34,9 @@ class CustomTranslations extends Translations {
       "no_project_selected_title": "No project is currently selected.",
       "no_project_selected_content":
           "You can find out about a project by clicking on it in the left menu or go back to the main page by clicking on the Xeppelin logo.",
+      "media_no_summary": "No summary given.",
+      "media_website_button_visit": "website",
+      "project_website_button_tooltip": "Go to the project's website.",
 
       // CONTACT ---------------------------------------------------------------
       "contact_title": "Contact form",
@@ -160,6 +163,9 @@ class CustomTranslations extends Translations {
           "Aucun projet n'est sélectionné pour le moment.",
       "no_project_selected_content":
           "Vous pouvez découvrir les détails d'un projet en cliquant dessus dans le menu de gauche ou revenir au menu principal en cliquant sur le logo \"Xeppelin\".",
+      "media_no_summary": "Pas de description.",
+      "media_website_button_visit": "site web",
+      "project_website_button_tooltip": "Aller sur le site du projet.",
 
       // CONTACT ---------------------------------------------------------------
       "contact_title": "Formulaire de contact",

@@ -1,14 +1,14 @@
-import "package:flutter_markdown_plus/flutter_markdown_plus.dart";
-
-import "../globals.dart";
-import "../utils/themes.dart";
-import "app_manager_plugin.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
+import "package:flutter_markdown_plus/flutter_markdown_plus.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../utils/tools.dart";
+import "../globals.dart";
+import "../utils/extensions.dart";
+import "../utils/themes.dart";
+import "app_manager_plugin.dart";
 
 /// A class defining a few preset themes.
 class ThemePlugin extends AppManagerPlugin {

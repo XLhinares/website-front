@@ -1,12 +1,13 @@
 import "package:get/get.dart";
 
 import "../../utils/tools.dart";
+import "../utils/extensions.dart";
 import "app_manager_plugin.dart";
-import "plugin_cookies.dart";
-import "plugin_network.dart";
-import "plugin_medias.dart";
-import "plugin_theme.dart";
 import "plugin_authentication.dart";
+import "plugin_cookies.dart";
+import "plugin_medias.dart";
+import "plugin_network.dart";
+import "plugin_theme.dart";
 
 /// The core of the AppManager class.
 ///

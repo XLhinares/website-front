@@ -4,7 +4,7 @@ import "package:get/get.dart";
 import "package:get_storage/get_storage.dart";
 
 import "../../globals.dart";
-import "../../utils/tools.dart";
+import "../../utils/extensions.dart";
 
 /// Represents a single cookie.
 ///

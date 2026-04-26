@@ -10,6 +10,7 @@ import "../classes/medias/media.dart";
 import "../classes/medias/media_content.dart";
 import "../classes/medias/media_type.dart";
 import "../globals.dart";
+import "../utils/extensions.dart";
 import "../utils/tools_api.dart";
 import "app_manager_plugin.dart";
 

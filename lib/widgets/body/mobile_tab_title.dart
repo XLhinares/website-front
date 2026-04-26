@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../utils/tools.dart";
+import "../../utils/extensions.dart";
 
 /// A title card for the tabs as seen on mobile.
 class MobileTabTitle extends StatelessWidget {

@@ -3,9 +3,10 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/project.dart";
-import "../../utils/tools.dart";
+import "../../utils/extensions.dart";
 import "../../widgets/images/covering_network_image.dart";
 import "../../widgets/images/xeppelin_logo.dart";
+import "../../widgets/medias/button_visit_website.dart";
 import "../../widgets/text/auto_color_text.dart";
 
 /// A preview of a project.
@@ -31,6 +32,8 @@ class ProjectPreviewer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    dlog("project ${project.name} has website: ${project.website}");
+
     return XButton(
       height: Get.height * 0.25,
       padding: EdgeInsets.zero,
@@ -40,7 +43,7 @@ class ProjectPreviewer extends StatelessWidget {
         borderRadius: XLayout.brcXS,
         child: Stack(
           children: [
-            // IMAGE -------------------------------------------------------------
+            // IMAGE ----------------------------------------------------------
             Positioned.fill(
               child: CoveringNetworkImage(
                 project.preview,
@@ -48,43 +51,48 @@ class ProjectPreviewer extends StatelessWidget {
               ),
             ),
 
-            Positioned.fill(
-              child: Column(
-                children: [
-                  const Expanded(child: SizedBox()),
-                  Container(
-                    color: context.theme.colorScheme.surface.withAlpha(150),
-                    padding: EdgeInsets.all(XLayout.paddingM),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
+            // DESCRIPTION ----------------------------------------------------
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: 0,
+              child: Container(
+                color: context.theme.colorScheme.surface.withAlpha(150),
+                padding: EdgeInsets.all(XLayout.paddingM),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    // NAME
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        // NAME ------------------------------------------------------
                         Text(
                           project.name,
                           style: context.titleMediumOnSurface,
                         ),
-
-                        XLayout.verticalXS,
-                        const Divider(),
-                        XLayout.verticalXS,
-
-                        // SUMMARY ---------------------------------------------------
-                        AutoColorText(
-                          project.summary,
-                          style: context.bodyMediumOnSurface,
-                          color: context.colors.onSurface,
-                          maxLines: 3,
-                          overflow: TextOverflow.ellipsis,
-                        ),
+                        MediaButtonVisitWebsite(media: project)
                       ],
                     ),
-                  )
-                  // .asGlass(tintColor: context.theme.colorScheme.background,)
-                  ,
-                ],
+
+                    XLayout.verticalXS,
+                    const Divider(),
+                    XLayout.verticalXS,
+
+                    // SUMMARY
+                    AutoColorText(
+                      project.summary,
+                      style: context.bodyMediumOnSurface,
+                      color: context.colors.onSurface,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                ),
               ),
             ),
+
+            // WEBSITE --------------------------------------------------------
           ],
         ),
       ),

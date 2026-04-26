@@ -1,6 +1,6 @@
 import "package:get/get.dart";
 
-import "../../utils/tools.dart";
+import "../../utils/extensions.dart";
 
 /// A custom controller for animations.
 ///

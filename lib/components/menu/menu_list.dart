@@ -4,7 +4,7 @@ import "package:x_containers/x_containers.dart";
 
 import "../../classes/dataclass/route.dart";
 import "../../globals.dart";
-import "../../utils/tools.dart";
+import "../../utils/extensions.dart";
 import "menu_tile.dart";
 
 /// The list view containing the menu items.

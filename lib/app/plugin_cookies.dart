@@ -6,6 +6,7 @@ import "package:get_storage/get_storage.dart";
 
 import "../classes/dataclass/cookie.dart";
 import "../globals.dart";
+import "../utils/extensions.dart";
 import "../utils/tools.dart";
 import "app_manager_plugin.dart";
 

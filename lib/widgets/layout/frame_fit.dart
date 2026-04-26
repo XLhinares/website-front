@@ -51,7 +51,7 @@ class FrameFit extends StatelessWidget {
         padding: padding ?? EdgeInsets.zero,
         child: ConstrainedBox(
           constraints: BoxConstraints(
-            maxWidth: Get.height * frameRatio,
+            maxWidth: context.height * frameRatio,
           ),
           child: child,
         ),

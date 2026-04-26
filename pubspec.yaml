@@ -36,14 +36,16 @@ dependencies:
   responsive_framework: ^1.1.1
 
   # Memory
-  get_storage: ^2.1.1
+  get_storage: 
+    git:
+      url: https://github.com/MasoudJabbarian/get_storage.git
+      ref: change-dart-html-to-dart-web
 
   # Widgets
   flutter_svg: ^2.0.7
   auto_size_text: ^3.0.0
   x_containers: ^1.2.4
   http: ^1.1.0
-#  glass: ^1.0.1+1
   url_launcher: ^6.1.14
   flutter_typeahead: ^6.0.0
   flutter_pagewise: ^2.0.4

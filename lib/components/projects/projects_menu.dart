@@ -21,22 +21,6 @@ class ProjectsMenu extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: XLayout.paddingL),
       child: Column(
         children: [
-          // TITLE ---------------------------------------------------------------
-          // XInkContainer(
-          //   child: Row(
-          //     children: [
-          //       XeppelinLogo(
-          //         size: 2 * XLayout.paddingL,
-          //       ),
-          //       XLayout.horizontalXS,
-          //       Text(
-          //         "Xeppelin",
-          //         style: context.textTheme.displayLarge,
-          //       ),
-          //     ],
-          //   ),
-          //   onTap: () => router.pop(),
-          // ),
           const BodyTitle(),
 
           // SEPARATOR

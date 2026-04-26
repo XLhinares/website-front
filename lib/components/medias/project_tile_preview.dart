@@ -4,6 +4,7 @@ import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/media.dart";
 import "../../widgets/images/covering_network_image.dart";
+import "../../widgets/medias/button_visit_website.dart";
 import "../../widgets/text/auto_color_text.dart";
 
 /// A preview of a project.
@@ -49,9 +50,18 @@ class MediaTilePreview extends StatelessWidget {
             ),
           ),
         ),
-        title: Text(
-          media.name,
-          style: context.textTheme.titleMedium,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              media.name,
+              style: context.textTheme.titleMedium,
+            ),
+            MediaButtonVisitWebsite(
+              media: media,
+              iconOnly: true,
+            )
+          ],
         ),
         content: AutoColorText(
           media.summary,

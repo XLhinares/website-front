@@ -21,11 +21,11 @@ class NoProjectSelected extends StatelessWidget {
 
   String get _message {
     if (NoProjectSelected._count < 2) return "project_no_selected_default";
-    if (NoProjectSelected._count < 5) return "project_no_selected_count_low";
-    if (NoProjectSelected._count < 10) {
+    if (NoProjectSelected._count < 7) return "project_no_selected_count_low";
+    if (NoProjectSelected._count < 15) {
       return "project_no_selected_count_medium";
     }
-    if (NoProjectSelected._count < 15) return "project_no_selected_count_high";
+    if (NoProjectSelected._count < 25) return "project_no_selected_count_high";
     return "project_no_selected_count_extreme";
   }
 

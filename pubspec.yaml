@@ -45,10 +45,10 @@ dependencies:
   http: ^1.1.0
 #  glass: ^1.0.1+1
   url_launcher: ^6.1.14
-  flutter_typeahead: ^5.2.0
+  flutter_typeahead: ^6.0.0
   flutter_pagewise: ^2.0.4
-  google_fonts: ^7.1.0
-  font_awesome_flutter: ^10.12.0
+  google_fonts: ^8.0.2
+  font_awesome_flutter: ^11.0.0
   intl: ^0.20.2
   scroll_to_index: ^3.0.1
   flutter_markdown_plus: ^1.0.7
@@ -113,8 +113,18 @@ flutter:
 # dart run package_rename
 package_rename_config:
   android:
-    app_name: "DrawFive"
+    app_name: "Xeppelin"
     package_name: "org.xeppelin.xeppelin"
+  
+  linux:
+    app_name: "Xeppelin" # Window title
+    package_name: "org.xeppelin.xeppelin" # Application ID
+    exe_name: "xeppelin" # Executable name (binary)
+
+  web:
+    app_name: "Xeppelin" # App title & PWA name
+    short_app_name: "Xeppelin" # PWA short name (defaults to app_name)
+    description: "Xeppelin lifts your projects. Our goal is to create unique and interesting projects with you. Contact us so we may work together to bring your website or mobile app ideas into fruition." # Web app description
   
 # dart run flutter_launcher_icons
 flutter_launcher_icons:

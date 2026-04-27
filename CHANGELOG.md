@@ -1,3 +1,19 @@
+## 3.2.0
+
+- projects: add website button to mobile display
+- mobile: fix broken obx widget
+- projects: added website buttons to the desktop project page
+- projects: fix the count of [NoProjectSelected] to show the different messages
+- meta: use fork of get_storage to allow wasm build
+- projects: better message when no project is selected in the desktop project page
+- script: added chrome argument to run script
+- router: turn current route into getter based on history
+- media: add optional external website
+- layout: make framefit rely on context
+- meta: update packages and improve package config
+- refactor: remove exports files
+- scripts: added run.sh script
+
 ## 3.1.2
 
 - :bug: Fixed bug where project headers didn't display the "scroll to see more" button.

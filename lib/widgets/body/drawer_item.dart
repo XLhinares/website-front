@@ -3,8 +3,8 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/dataclass/route.dart";
-import "../../pages/mobile/drawer.dart";
 import "../../globals.dart";
+import "../../pages/mobile/drawer.dart";
 
 /// An item for the [CustomDrawer], it represents an [AppMode] that the user can access.
 ///
@@ -42,22 +42,26 @@ class DrawerItem extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         physics: const NeverScrollableScrollPhysics(),
         children: [
-          Obx(() => XButton(
-                color: router.currentRoute == route
-                    ? context.theme.colorScheme.secondary
-                    : context.theme.colorScheme.surface,
-                width: minWidth - 2 * XLayout.paddingS,
-                margin: XLayout.edgeInsetsAllXS,
-                onTap: goToMode,
-                child: Icon(
-                  route.icon,
+          GetBuilder(
+              init: router,
+              builder: (_) {
+                return XButton(
                   color: router.currentRoute == route
-                      ? context.theme.colorScheme.onSecondary
-                      : context.theme.colorScheme.onSurface,
-                  // width: XLayout.paddingL * 0.75,
-                  // height: XLayout.paddingL * .75,
-                ),
-              )),
+                      ? context.theme.colorScheme.secondary
+                      : context.theme.colorScheme.surface,
+                  width: minWidth - 2 * XLayout.paddingS,
+                  margin: XLayout.edgeInsetsAllXS,
+                  onTap: goToMode,
+                  child: Icon(
+                    route.icon,
+                    color: router.currentRoute == route
+                        ? context.theme.colorScheme.onSecondary
+                        : context.theme.colorScheme.onSurface,
+                    // width: XLayout.paddingL * 0.75,
+                    // height: XLayout.paddingL * .75,
+                  ),
+                );
+              }),
           XButton.text(
             route.name.tr.capitalizeFirst!,
             margin: XLayout.edgeInsetsAllXS,

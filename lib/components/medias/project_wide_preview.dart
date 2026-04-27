@@ -4,6 +4,7 @@ import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/media.dart";
 import "../../widgets/images/covering_network_image.dart";
+import "../../widgets/medias/button_visit_website.dart";
 import "../../widgets/text/auto_color_text.dart";
 
 /// A preview of a project.
@@ -34,31 +35,62 @@ class MediaWidePreview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
-      builder: (context, constraints) => XCard(
+      builder: (context, constraints) => XButton(
         onTap: onTap,
-        padding: EdgeInsets.only(right: XLayout.paddingM),
         margin: margin ?? EdgeInsets.only(bottom: XLayout.paddingM),
-        internalHorizontalPadding: XLayout.paddingM,
-        leading: SizedBox(
-          width: constraints.maxWidth * 0.3,
-          child: CoveringNetworkImage(
-            media.preview,
-            fit: BoxFit.fitWidth,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(XLayout.paddingXS),
-              bottomLeft: Radius.circular(XLayout.paddingXS),
+        padding: EdgeInsets.zero,
+        child: Row(
+          children: [
+            // IMAGE
+            SizedBox(
+              width: constraints.maxWidth * 0.3,
+              child: CoveringNetworkImage(
+                media.preview,
+                fit: BoxFit.fitWidth,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(XLayout.paddingXS),
+                  bottomLeft: Radius.circular(XLayout.paddingXS),
+                ),
+              ),
             ),
-          ),
-        ),
-        title: Text(
-          media.name,
-          style: context.textTheme.titleMedium,
-        ),
-        content: AutoColorText(
-          media.summary,
-          maxLines: 3,
-          overflow: TextOverflow.ellipsis,
-          style: context.textTheme.bodyMedium,
+            XLayout.horizontalS,
+            Expanded(
+              child: Column(
+                children: [
+                  XLayout.verticalS,
+                  // TITLE ROW
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        media.name,
+                        style: context.textTheme.titleMedium,
+                      ),
+                      MediaButtonVisitWebsite(
+                        media: media,
+                      ),
+                    ],
+                  ),
+                  XLayout.verticalS,
+
+                  // DESCRIPTION
+                  Expanded(
+                    child: Align(
+                      alignment: AlignmentGeometry.centerLeft,
+                      child: AutoColorText(
+                        media.summary,
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                        style: context.textTheme.bodyMedium,
+                      ),
+                    ),
+                  ),
+                  XLayout.verticalS,
+                ],
+              ),
+            ),
+            XLayout.horizontalS,
+          ],
         ),
       ),
     );

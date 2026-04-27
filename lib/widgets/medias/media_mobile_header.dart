@@ -8,6 +8,7 @@ import "../../utils/extensions.dart";
 import "../images/covering_network_image.dart";
 import "../images/xeppelin_logo.dart";
 import "../text/auto_color_text.dart";
+import "button_visit_website.dart";
 
 /// A widget displaying all the top-level info on the given project.
 class MediaMobileHeader<T extends Media> extends StatelessWidget {
@@ -66,10 +67,17 @@ class MediaMobileHeader<T extends Media> extends StatelessWidget {
                           XLayout.verticalL,
 
                           // Title block
-                          Text(
-                            media.name,
-                            style: context.textTheme.titleLarge!
-                                .copyWith(color: context.colors.secondary),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              MediaButtonVisitWebsite(media: media),
+                              XLayout.horizontalS,
+                              Text(
+                                media.name,
+                                style: context.textTheme.titleLarge!
+                                    .copyWith(color: context.colors.secondary),
+                              ),
+                            ],
                           ),
                           XLayout.verticalS, // Tags block.
                           Wrap(

@@ -56,10 +56,12 @@ class MediaTilePreview extends StatelessWidget {
             Text(
               media.name,
               style: context.textTheme.titleMedium,
+              overflow: TextOverflow.ellipsis,
             ),
             MediaButtonVisitWebsite(
               media: media,
               iconOnly: true,
+              margin: EdgeInsets.only(left: XLayout.paddingM),
             )
           ],
         ),

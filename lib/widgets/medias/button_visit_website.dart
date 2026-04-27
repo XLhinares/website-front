@@ -20,12 +20,16 @@ class MediaButtonVisitWebsite extends StatelessWidget {
   /// Whether to show only the button icon (and NOT the button box)
   final bool iconOnly;
 
+  /// An optional margin to put around the button.
+  final EdgeInsets? margin;
+
   // CONSTRUCTOR ===============================================================
 
   /// Returns a [MediaButtonVisitWebsite] instance.
   const MediaButtonVisitWebsite({
     super.key,
     required this.media,
+    this.margin,
     this.hideIfNoWebsite = true,
     this.iconOnly = false,
   });
@@ -46,7 +50,7 @@ class MediaButtonVisitWebsite extends StatelessWidget {
               ),
             )
           : XButton(
-              margin: EdgeInsets.only(left: XLayout.paddingS),
+              margin: margin,
               padding: XLayout.edgeInsetsAllXS,
               width: XLayout.paddingL,
               height: XLayout.paddingL,

@@ -7,7 +7,7 @@ import "../../classes/medias/media.dart";
 import "../../globals.dart";
 import "../../widgets/body/mobile_tab.dart";
 import "../../widgets/body/tab.dart";
-import "../../widgets/medias/project_wide_preview.dart";
+import "../../widgets/medias/preview_wide_box.dart";
 import "../../widgets/utils/preset_future_builder.dart";
 
 /// The "project" tab adapted for mobile.

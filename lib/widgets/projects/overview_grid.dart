@@ -2,9 +2,9 @@ import "package:flutter/material.dart";
 import "package:flutter_pagewise/flutter_pagewise.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../classes/medias/project.dart";
+import "../../classes/medias/media.dart";
 import "../../globals.dart";
-import "../medias/project_previewer.dart";
+import "../medias/preview_tile.dart";
 
 /// A [PagewiseGridView] loading and displaying the list of projects.
 class ProjectsGridView extends StatelessWidget {
@@ -13,7 +13,7 @@ class ProjectsGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PagewiseGridView<Project>.count(
+    return PagewiseGridView<Media>.count(
       crossAxisCount: 3,
       mainAxisSpacing: XLayout.paddingM,
       crossAxisSpacing: XLayout.paddingM,
@@ -22,7 +22,7 @@ class ProjectsGridView extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       pageLoadController: projectLoaderController.controller,
       itemBuilder: (context, entry, index) => ProjectPreviewer(
-        project: entry,
+        media: entry,
         onTap: () => router.selectProject(entry.id),
       ),
     );

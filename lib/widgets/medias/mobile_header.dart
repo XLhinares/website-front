@@ -11,12 +11,12 @@ import "../text/auto_color_text.dart";
 import "button_visit_github.dart";
 import "button_visit_website.dart";
 
-/// A widget displaying all the top-level info on the given project.
-class MediaMobileHeader<T extends Media> extends StatelessWidget {
+/// A widget displaying all the top-level info on the given media.
+class MediaMobileHeader extends StatelessWidget {
   // VARIABLES =================================================================
 
-  /// The metadata of the project.
-  final T media;
+  /// The metadata of the media.
+  final Media media;
 
   /// An optional [ScrollController] to handle special scroll animation.
   final ScrollController? scrollController;

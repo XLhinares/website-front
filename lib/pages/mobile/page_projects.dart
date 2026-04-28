@@ -1,16 +1,16 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:x_containers/x_containers.dart";
 
 import "../../classes/dataclass/route.dart";
-import "../../classes/medias/project.dart";
 import "../../globals.dart";
 import "../../widgets/background/animated_background_wave.dart";
 import "../../widgets/body/tab.dart";
 import "../../widgets/layout/scaffold_fit.dart";
+import "../../widgets/medias/media_content.dart";
 import "../../widgets/medias/media_focus.dart";
-import "../../widgets/medias/mobile_content.dart";
 import "../../widgets/medias/mobile_header.dart";
-import "../../widgets/projects/projects_list.dart";
+import "../../widgets/projects/overview_list.dart";
 import "../meta/if_app_is_ready.dart";
 import "drawer.dart";
 import "overlay.dart";
@@ -42,14 +42,16 @@ class MobilePageProjects extends RouteTab {
         body: IfAppIsReady(
           child: router.project == null
               ? ProjectsListView()
-              : MediaFocus<Project>(
+              : MediaFocus(
                   media: app.medias.getProject(router.project!),
                   headerBuilder: (media, scrollController) => MediaMobileHeader(
                     media: media,
                     scrollController: scrollController,
                   ),
-                  partsBuilder: (content) =>
-                      MediaMobileContent(content: content),
+                  partsBuilder: (content) => MediaContentWidget(
+                    content: content,
+                    padding: EdgeInsets.all(XLayout.paddingM),
+                  ),
                 ),
         ),
       ),

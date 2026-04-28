@@ -3,8 +3,8 @@ import "package:get/get.dart";
 
 import "app/app_manager.dart";
 import "app/routing_service.dart";
-import "classes/controllers/blog_loader_controller.dart";
-import "classes/controllers/project_loader_controller.dart";
+import "classes/controllers/media_loader_controller.dart";
+import "classes/medias/media_type.dart";
 import "utils/translations.dart";
 
 /// The version of the app.
@@ -22,11 +22,8 @@ final AppManager app = AppManager();
 final XRouter router = XRouter();
 
 /// A controller that handles loading projects from the API.
-final ProjectLoaderController projectLoaderController =
-    ProjectLoaderController();
-
-/// A controller that handles loading blogs from the API.
-final BlogLoaderController blogLoaderController = BlogLoaderController();
+final MediaLoaderController projectLoaderController =
+    MediaLoaderController(type: MediaType.project);
 
 // CONSTANTS ===================================================================
 

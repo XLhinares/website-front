@@ -8,16 +8,15 @@ import "../../utils/tools.dart";
 import "../images/covering_network_image.dart";
 import "../text/auto_color_text.dart";
 import "button_go_back.dart";
-import "button_visit_github.dart";
-import "button_visit_website.dart";
+import "buttons_row.dart";
 import "media_tag.dart";
 
 /// A widget displaying the metadata of the given media on desktop.
-class MediaDesktopHeader<T extends Media> extends StatelessWidget {
+class MediaDesktopHeader extends StatelessWidget {
   // VARIABLES =================================================================
 
-  /// The project in question.
-  final T media;
+  /// The media in question.
+  final Media media;
 
   /// An optional [ScrollController] to handle special scroll animation.
   final ScrollController? scrollController;
@@ -49,11 +48,10 @@ class MediaDesktopHeader<T extends Media> extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        MediaButtonGoBack(),
+                        MediaButtonGoBack(type: media.type),
                         Expanded(child: SizedBox()),
                         // Website
-                        MediaButtonVisitGithub(media: media),
-                        MediaButtonVisitWebsite(media: media),
+                        MediaButtonRow(media: media),
                       ],
                     ),
 

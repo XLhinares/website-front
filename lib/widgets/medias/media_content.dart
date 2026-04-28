@@ -5,18 +5,22 @@ import "../../classes/medias/media_content.dart";
 import "media_entry_widget.dart";
 
 /// A widget displaying the parts of the given media on desktop.
-class MediaMobileContent extends StatelessWidget {
+class MediaContentWidget extends StatelessWidget {
   // VARIABLES =================================================================
 
   /// The parts of the media.
   final MediaContent content;
 
+  /// An optionnal padding around the list view.
+  final EdgeInsets? padding;
+
   // CONSTRUCTOR ===============================================================
 
-  /// Returns a [MediaMobileContent] matching the given parameters.
-  const MediaMobileContent({
+  /// Returns a [MediaContentWidget] matching the given parameters.
+  const MediaContentWidget({
     super.key,
     required this.content,
+    this.padding,
   });
 
   // BUILD =====================================================================
@@ -27,7 +31,7 @@ class MediaMobileContent extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: content.entries.length,
-      padding: EdgeInsets.all(XLayout.paddingM),
+      padding: padding ?? EdgeInsets.zero,
       itemBuilder: (context, index) => MediaEntryWidget(content.entries[index]),
       separatorBuilder: (context, index) => XLayout.verticalM,
     );

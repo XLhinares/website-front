@@ -2,19 +2,19 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../classes/medias/project.dart";
+import "../../classes/medias/media.dart";
 import "../../utils/extensions.dart";
 import "../images/covering_network_image.dart";
 import "../images/xeppelin_logo.dart";
 import "../text/auto_color_text.dart";
 import "button_visit_website.dart";
 
-/// A preview of a project.
+/// A preview of a media.
 class ProjectPreviewer extends StatelessWidget {
   // VARIABLES =================================================================
 
-  /// The project being previewed.
-  final Project project;
+  /// The media being previewed.
+  final Media media;
 
   /// The behavior when the box is tapped.
   final void Function()? onTap;
@@ -24,7 +24,7 @@ class ProjectPreviewer extends StatelessWidget {
   /// Returns an instance of [ProjectPreviewer] matching the given parameters.
   const ProjectPreviewer({
     super.key,
-    required this.project,
+    required this.media,
     this.onTap,
   });
 
@@ -44,7 +44,7 @@ class ProjectPreviewer extends StatelessWidget {
             // IMAGE ----------------------------------------------------------
             Positioned.fill(
               child: CoveringNetworkImage(
-                project.preview,
+                media.preview,
                 errorBuilder: (context, object, trace) => const XeppelinLogo(),
               ),
             ),
@@ -66,10 +66,10 @@ class ProjectPreviewer extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          project.name,
+                          media.name,
                           style: context.titleMediumOnSurface,
                         ),
-                        MediaButtonVisitWebsite(media: project)
+                        MediaButtonVisitWebsite(media: media)
                       ],
                     ),
 
@@ -79,7 +79,7 @@ class ProjectPreviewer extends StatelessWidget {
 
                     // SUMMARY
                     AutoColorText(
-                      project.summary,
+                      media.summary,
                       style: context.bodyMediumOnSurface,
                       color: context.colors.onSurface,
                       maxLines: 3,

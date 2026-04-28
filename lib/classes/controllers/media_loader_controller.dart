@@ -4,13 +4,17 @@ import "package:get/get.dart";
 import "../../globals.dart";
 import "../../utils/tools_api.dart";
 import "../medias/media.dart";
+import "../medias/media_type.dart";
 
 /// A controller that handles loading projects from the API.
-abstract class MediaLoaderController<T extends Media> extends GetxController {
+class MediaLoaderController extends GetxController {
   // VARIABLES =================================================================
 
+  /// The type of media that should be handled by this controller.
+  final MediaType type;
+
   /// A controller handling the paginated loading of the projects.
-  late final PagewiseLoadController<T> controller;
+  late final PagewiseLoadController<Media> controller;
 
   /// The selected sorting option for the project loader.
   late APISorter sorter;
@@ -18,18 +22,17 @@ abstract class MediaLoaderController<T extends Media> extends GetxController {
   // CONSTRUCTOR ===============================================================
 
   /// Returns an instance of [MediaLoaderController]
-  MediaLoaderController() {
+  MediaLoaderController({
+    required this.type,
+  }) {
     sorter = APISorter.relevance;
 
-    controller = PagewiseLoadController<T>(
-      pageFuture: (pageIndex) async {
-        final res = await app.medias.loadMedias<T>(
-          page: pageIndex ?? 0,
-          sorter: sorter,
-        );
-
-        return List<T>.from(res);
-      },
+    controller = PagewiseLoadController<Media>(
+      pageFuture: (pageIndex) async => await app.medias.loadMedias(
+        type: type,
+        page: pageIndex ?? 0,
+        sorter: sorter,
+      ),
       pageSize: pageSize,
     );
   }

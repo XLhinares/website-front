@@ -38,6 +38,7 @@ class CustomTranslations extends Translations {
       "media_website_button_visit": "website",
       "project_website_button_tooltip": "Go to the project's website.",
       "project_github_button_tooltip": "Go to the project's code repository.",
+      "project_status_contributor_tooltip": "Contributor",
       "project_no_selected_default":
           "Kinda empty here...\nClick on a project to start :)",
       "project_no_selected_count_low":
@@ -176,6 +177,7 @@ class CustomTranslations extends Translations {
       "media_no_summary": "Pas de description.",
       "media_website_button_visit": "site web",
       "project_website_button_tooltip": "Aller sur le site du projet.",
+      "project_status_contributor_tooltip": "Contributeur",
       "project_github_button_tooltip": "Aller sur le github du projet.",
       "project_no_selected_default":
           "C'est bien vide ici...\nClique sur un projet pour commencer :)",

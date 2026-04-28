@@ -1,6 +1,3 @@
-import "blog.dart";
-import "project.dart";
-
 /// Representation of a "mode" (pretty much the top-level state of the app).
 class MediaType {
   // CONSTANTS =================================================================
@@ -40,12 +37,5 @@ class MediaType {
       default:
         return MediaType.other;
     }
-  }
-
-  /// Returns an [MediaType] instance matching the requested type.
-  factory MediaType.fromType(Type t) {
-    if (t == Project) return MediaType.project;
-    if (t == Blog) return MediaType.blog;
-    return other;
   }
 }

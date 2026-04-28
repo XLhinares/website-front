@@ -2,17 +2,17 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../classes/medias/blog.dart";
+import "../../classes/medias/media.dart";
 import "../images/covering_network_image.dart";
 import "../images/xeppelin_logo.dart";
 import "../text/auto_color_text.dart";
 
-/// A preview of a blog.
+/// A preview of a media.
 class BlogPreviewer extends StatelessWidget {
   // VARIABLES =================================================================
 
-  /// The blog being previewed.
-  final Blog blog;
+  /// The media being previewed.
+  final Media media;
 
   /// The behavior when the box is tapped.
   final void Function()? onTap;
@@ -22,7 +22,7 @@ class BlogPreviewer extends StatelessWidget {
   /// Returns an instance of [BlogPreviewer] matching the given parameters.
   const BlogPreviewer({
     super.key,
-    required this.blog,
+    required this.media,
     this.onTap,
   });
 
@@ -42,7 +42,7 @@ class BlogPreviewer extends StatelessWidget {
             // IMAGE -------------------------------------------------------------
             Positioned.fill(
               child: CoveringNetworkImage(
-                blog.preview,
+                media.preview,
                 errorBuilder: (context, object, trace) => const XeppelinLogo(),
               ),
             ),
@@ -61,7 +61,7 @@ class BlogPreviewer extends StatelessWidget {
                       children: [
                         // NAME ------------------------------------------------------
                         Text(
-                          blog.name,
+                          media.name,
                           style: context.textTheme.titleMedium,
                         ),
 
@@ -71,7 +71,7 @@ class BlogPreviewer extends StatelessWidget {
 
                         // SUMMARY ---------------------------------------------------
                         AutoColorText(
-                          blog.summary,
+                          media.summary,
                           style: context.textTheme.bodyMedium,
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,

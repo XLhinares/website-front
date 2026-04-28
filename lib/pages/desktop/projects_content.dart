@@ -2,12 +2,11 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../classes/medias/project.dart";
 import "../../globals.dart";
-import "../../widgets/medias/desktop_content.dart";
 import "../../widgets/medias/desktop_header.dart";
+import "../../widgets/medias/media_content.dart";
 import "../../widgets/medias/media_focus.dart";
-import "../../widgets/medias/no_project_selected.dart";
+import "../../widgets/projects/no_project_selected.dart";
 
 /// The content of the project page or desktop.
 class DesktopProjectsContent extends StatelessWidget {
@@ -24,15 +23,15 @@ class DesktopProjectsContent extends StatelessWidget {
           duration: animDurationShort,
           child: router.project == null
               ? NoProjectSelected()
-              : MediaFocus<Project>(
+              : MediaFocus(
                   media: app.medias.getProject(router.project!),
                   headerBuilder: (media, scrollController) =>
-                      MediaDesktopHeader<Project>(
+                      MediaDesktopHeader(
                     media: media,
                     scrollController: scrollController,
                   ),
                   partsBuilder: (content) =>
-                      MediaDesktopContent(content: content),
+                      MediaContentWidget(content: content),
                   listViewVerticalPadding: XLayout.paddingL,
                   onBack: () => router.selectProject(null),
                 ),

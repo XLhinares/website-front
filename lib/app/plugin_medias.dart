@@ -1,10 +1,8 @@
 import "dart:collection";
 
-import "../classes/medias/blog.dart";
 import "../classes/medias/media.dart";
 import "../classes/medias/media_content.dart";
 import "../classes/medias/media_type.dart";
-import "../classes/medias/project.dart";
 import "../globals.dart";
 import "../utils/tools.dart";
 import "../utils/tools_api.dart";
@@ -17,21 +15,21 @@ class MediaPlugin extends AppManagerPlugin {
 // VARIABLES =================================================================
 
   /// A list of the registered projects metadata.
-  late final Map<int, Project> _projects;
+  late final Map<int, Media> _projects;
 
   /// A list of the registered projects metadata.
-  late final Map<int, Blog> _blogs;
+  late final Map<int, Media> _blogs;
 
   late final Map<int, MediaContent> _mediaContent;
 
   // GETTERS ===================================================================
 
   /// A list of the registered projects partial metadata.
-  UnmodifiableListView<Project> get projects =>
+  UnmodifiableListView<Media> get projects =>
       UnmodifiableListView(_projects.values);
 
   /// A list of the registered blogs partial metadata.
-  UnmodifiableListView<Blog> get blogs => UnmodifiableListView(_blogs.values);
+  UnmodifiableListView<Media> get blogs => UnmodifiableListView(_blogs.values);
 
   // PSEUDO-GETTERS ============================================================
 
@@ -42,10 +40,10 @@ class MediaPlugin extends AppManagerPlugin {
   MediaContent? getContent(int id) => _mediaContent[id];
 
   /// The project matching the given id, if it is known.
-  Project getProject(int id) => _projects[id]!;
+  Media getProject(int id) => _projects[id]!;
 
   /// The blog matching the given id, if it is known.
-  Blog getBlog(int id) => _blogs[id]!;
+  Media getBlog(int id) => _blogs[id]!;
 
   // CONSTRUCTOR ===============================================================
 
@@ -61,27 +59,27 @@ class MediaPlugin extends AppManagerPlugin {
   // METHODS ===================================================================
 
   /// Loads the list of projects from the API.
-  Future<List<T>> loadMedias<T extends Media>({
+  Future<List<Media>> loadMedias({
+    required MediaType type,
     APISorter sorter = APISorter.relevance,
     int page = 0,
   }) async =>
       tryWrapper(() async {
-        final res = await app.network.getMedias<T>(
+        final res = await app.network.getMedias(
+          type: type,
           sorter: sorter,
           page: page,
         );
 
-        final type = MediaType.fromType(T);
-
         if (type == MediaType.project) {
           _projects.clear();
           for (final element in res) {
-            _projects[element.id] = element as Project;
+            _projects[element.id] = element;
           }
         } else if (type == MediaType.blog) {
           _blogs.clear();
           for (final element in res) {
-            _blogs[element.id] = element as Blog;
+            _blogs[element.id] = element;
           }
         }
 

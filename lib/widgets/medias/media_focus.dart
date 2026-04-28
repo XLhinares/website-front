@@ -8,14 +8,14 @@ import "../../globals.dart";
 import "../../utils/extensions.dart";
 
 /// A detailed view of a project.
-class MediaFocus<T extends Media> extends StatelessWidget {
+class MediaFocus extends StatelessWidget {
   // VARIABLES =================================================================
 
   /// The project in question.
-  final T media;
+  final Media media;
 
   /// The building strategy to display the header.
-  final Widget Function(T media, ScrollController) headerBuilder;
+  final Widget Function(Media media, ScrollController) headerBuilder;
 
   /// The building strategy to display the parts.
   final Widget Function(MediaContent content) partsBuilder;

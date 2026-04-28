@@ -2,9 +2,9 @@ import "package:flutter/material.dart";
 import "package:flutter_pagewise/flutter_pagewise.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../classes/medias/project.dart";
+import "../../classes/medias/media.dart";
 import "../../globals.dart";
-import "../medias/project_wide_preview.dart";
+import "../medias/preview_wide_box.dart";
 
 /// A list of the projects.
 ///
@@ -17,7 +17,7 @@ class ProjectsListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PagewiseListView<Project>(
+    return PagewiseListView<Media>(
       physics: const BouncingScrollPhysics(),
       padding: EdgeInsets.only(
         top: XLayout.paddingL * 1.5 + XLayout.paddingM * 2,

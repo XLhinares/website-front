@@ -1,7 +1,5 @@
 import "../../globals.dart";
-import "blog.dart";
 import "media_type.dart";
-import "project.dart";
 
 /// A dataclass containing the metadata of a media.
 class Media {
@@ -41,10 +39,16 @@ class Media {
   /// An optional website matching this media.
   final String? website;
 
+  /// The status of Xeppelin concerning this project (owner, contributor, reviewer, etc.).
+  final String? status;
+
   // GETTERS ===================================================================
 
   /// A preview image of the media.
   String get preview => "${app.network.assets}$_preview";
+
+  /// Whether I own the project related to this media.
+  bool get isOwner => (status ?? "owner") == "owner";
 
   /// Whether the media has a github repo.
   bool get hasGithub => github?.isNotEmpty ?? false;
@@ -66,47 +70,39 @@ class Media {
     String? summary,
     this.github,
     this.website,
+    this.status,
   })  : _preview = previewPath ?? "medias/default.webp",
         tags = tags ?? const [],
         summary = summary ?? "media_no_summary";
 
   /// Returns a [Media] matching the given json element.
   factory Media.fromJson(Map<String, dynamic> json) {
-    final MediaType type = MediaType.parse(json["type"]);
-    switch (type) {
-      case MediaType.project:
-        return Project.fromJson(json);
-      case MediaType.blog:
-        return Blog.fromJson(json);
-
-      default:
-        return Media(
-          id: json["id"],
-          name: json["name"],
-          type: type,
-          relevance: double.parse(json["relevance"].toString()),
-          date: DateTime.parse(json["date"]),
-          tags: json.containsKey("tags")
-              ? List<String>.from(json["tags"])
-              : <String>[],
-          previewPath: json["preview"],
-          summary: json["summary"],
-          github: json["github"],
-          website: json["website"],
-        );
-    }
+    return Media(
+      id: json["id"],
+      name: json["name"],
+      type: MediaType.parse(json["type"]),
+      relevance: double.parse(json["relevance"].toString()),
+      date: DateTime.parse(json["date"]),
+      tags: json.containsKey("tags")
+          ? List<String>.from(json["tags"])
+          : <String>[],
+      previewPath: json["preview"],
+      summary: json["summary"],
+      github: json["github"],
+      website: json["website"],
+    );
   }
 
   // METHODS ==================================================================
 
   /// Tries to launch the media's website, if it's provided.
-  void launchWebsite() async {
+  void launchGithub() async {
     if (!hasGithub) return;
     await app.network.launch(github!);
   }
 
   /// Tries to launch the media's github repo, if it's provided.
-  void launchGithub() async {
+  void launchWebsite() async {
     if (!hasWebsite) return;
     await app.network.launch(website!);
   }

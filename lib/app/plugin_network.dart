@@ -167,22 +167,23 @@ class NetworkPlugin extends AppManagerPlugin {
       });
 
   /// Retrieves a list of medias from the api.
-  Future<List<T>> getMedias<T extends Media>({
+  Future<List<Media>> getMedias({
+    required MediaType type,
     int page = 0,
     APISorter sorter = APISorter.relevance,
   }) async =>
-      tryWrapper<List<T>>(() async {
+      tryWrapper<List<Media>>(() async {
         final response = await fetchJson((CustomURL(initialText: api)
               ..addPath("media")
               ..addFile("all")
-              ..addCustomParameter("type", MediaType.fromType(T).name)
+              ..addCustomParameter("type", type.name)
               ..addCustomParameter("page", page)
               ..addCustomParameter("sorter", sorter.name))
             .cleanUri);
 
         // dlog(response[0].toString());
 
-        return response.map((e) => Media.fromJson(e) as T).toList();
+        return response.map((e) => Media.fromJson(e)).toList();
       });
 
   /// Retrieves the full information on the project matching the given name.

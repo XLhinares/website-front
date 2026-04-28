@@ -2,11 +2,11 @@ import "package:flutter/material.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/dataclass/route.dart";
-import "../../components/settings/legal_compact.dart";
-import "../../components/settings/locale_compact.dart";
-import "../../components/settings/theme_compact.dart";
 import "../../widgets/body/mobile_tab.dart";
 import "../../widgets/body/tab.dart";
+import "../../widgets/settings/legal_compact.dart";
+import "../../widgets/settings/locale_compact.dart";
+import "../../widgets/settings/theme_compact.dart";
 
 /// A tab where the user can configure the website on mobile.
 class MobileMainSettings extends RouteTab {

@@ -4,10 +4,10 @@ import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/project.dart";
 import "../../utils/extensions.dart";
-import "../../widgets/images/covering_network_image.dart";
-import "../../widgets/images/xeppelin_logo.dart";
-import "../../widgets/medias/button_visit_website.dart";
-import "../../widgets/text/auto_color_text.dart";
+import "../images/covering_network_image.dart";
+import "../images/xeppelin_logo.dart";
+import "../text/auto_color_text.dart";
+import "button_visit_website.dart";
 
 /// A preview of a project.
 class ProjectPreviewer extends StatelessWidget {

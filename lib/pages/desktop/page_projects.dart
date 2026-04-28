@@ -1,9 +1,9 @@
 import "package:flutter/material.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../components/misc/if_app_is_ready.dart";
-import "../../components/projects/projects_menu.dart";
 import "../../widgets/layout/scaffold_fit.dart";
+import "../../widgets/projects/projects_menu.dart";
+import "../meta/if_app_is_ready.dart";
 import "projects_content.dart";
 
 /// The

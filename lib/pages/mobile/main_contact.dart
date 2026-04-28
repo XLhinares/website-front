@@ -2,9 +2,9 @@ import "package:flutter/material.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/dataclass/route.dart";
-import "../../components/contact/contact_column.dart";
 import "../../widgets/body/mobile_tab.dart";
 import "../../widgets/body/tab.dart";
+import "../../widgets/contact/contact_column.dart";
 
 /// The content of the body in the "Contact" mode.
 class MobileMainContact extends RouteTab {

@@ -3,15 +3,15 @@ import "package:get/get.dart";
 
 import "../../classes/dataclass/route.dart";
 import "../../classes/medias/project.dart";
-import "../../components/medias/media_focus.dart";
-import "../../components/misc/if_app_is_ready.dart";
-import "../../components/projects/projects_list.dart";
 import "../../globals.dart";
 import "../../widgets/background/animated_background_wave.dart";
 import "../../widgets/body/tab.dart";
 import "../../widgets/layout/scaffold_fit.dart";
-import "../../widgets/medias/media_mobile_content.dart";
-import "../../widgets/medias/media_mobile_header.dart";
+import "../../widgets/medias/media_focus.dart";
+import "../../widgets/medias/mobile_content.dart";
+import "../../widgets/medias/mobile_header.dart";
+import "../../widgets/projects/projects_list.dart";
+import "../meta/if_app_is_ready.dart";
 import "drawer.dart";
 import "overlay.dart";
 

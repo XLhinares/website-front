@@ -3,7 +3,7 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../globals.dart";
-import "../../widgets/settings/theme_preview.dart";
+import "theme_preview.dart";
 
 /// The widget in which the user can select a theme for the app.
 class SettingsThemesCompact extends StatelessWidget {

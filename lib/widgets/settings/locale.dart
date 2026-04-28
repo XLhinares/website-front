@@ -3,7 +3,7 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../globals.dart";
-import "../../widgets/interactables/lr_selector.dart";
+import "../interactables/lr_selector.dart";
 
 /// The row settings allowing the user to set the locale of the app.
 class SettingsLocale extends StatelessWidget {

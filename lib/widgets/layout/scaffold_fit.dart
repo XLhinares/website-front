@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 
-import "../../components/misc/background.dart";
 import "../../globals.dart";
+import "background.dart";
 import "frame_fit.dart";
 
 /// A Scaffold that fits its body within a central column if needed.

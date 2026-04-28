@@ -3,8 +3,8 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../globals.dart";
-import "../../widgets/settings/disable_cookies_button.dart";
-import "../../widgets/text/auto_color_text.dart";
+import "../text/auto_color_text.dart";
+import "disable_cookies_button.dart";
 
 /// A setting where you can control your cookie consent and check out the legal stuff.
 class SettingsLegal extends StatelessWidget {

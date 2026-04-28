@@ -3,11 +3,11 @@ import "package:get/get.dart";
 import "package:scroll_to_index/scroll_to_index.dart";
 
 import "../../classes/dataclass/route.dart";
-import "../../components/misc/if_app_is_ready.dart";
 import "../../globals.dart";
 import "../../widgets/background/animated_background_wave.dart";
 import "../../widgets/body/tab.dart";
 import "../../widgets/layout/scaffold_fit.dart";
+import "../meta/if_app_is_ready.dart";
 import "drawer.dart";
 import "main_contact.dart";
 import "main_home.dart";

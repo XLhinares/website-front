@@ -5,12 +5,12 @@ import "package:x_containers/x_containers.dart";
 
 import "../../classes/dataclass/route.dart";
 import "../../classes/medias/blog.dart";
-import "../../components/medias/media_focus.dart";
-import "../../components/medias/project_wide_preview.dart";
 import "../../globals.dart";
 import "../../widgets/body/tab.dart";
-import "../../widgets/medias/media_mobile_content.dart";
-import "../../widgets/medias/media_mobile_header.dart";
+import "../../widgets/medias/media_focus.dart";
+import "../../widgets/medias/mobile_content.dart";
+import "../../widgets/medias/mobile_header.dart";
+import "../../widgets/medias/project_wide_preview.dart";
 
 /// The "project" tab adapted for mobile.
 class MobileMainBlogs extends RouteTab {

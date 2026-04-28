@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/media_content.dart";
-import "media_desktop_entry.dart";
+import "desktop_entry.dart";
 
 /// A widget displaying the parts of the given media on desktop.
 class MediaDesktopContent extends StatelessWidget {

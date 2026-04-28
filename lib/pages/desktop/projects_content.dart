@@ -3,11 +3,11 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/project.dart";
-import "../../components/medias/media_focus.dart";
-import "../../components/medias/no_project_selected.dart";
 import "../../globals.dart";
-import "../../widgets/medias/media_desktop_content.dart";
-import "../../widgets/medias/media_desktop_header.dart";
+import "../../widgets/medias/desktop_content.dart";
+import "../../widgets/medias/desktop_header.dart";
+import "../../widgets/medias/media_focus.dart";
+import "../../widgets/medias/no_project_selected.dart";
 
 /// The content of the project page or desktop.
 class DesktopProjectsContent extends StatelessWidget {

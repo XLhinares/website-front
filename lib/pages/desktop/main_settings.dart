@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../components/settings/header.dart";
-import "../../components/settings/legal.dart";
-import "../../components/settings/locale.dart";
-import "../../components/settings/theme.dart";
+import "../../widgets/settings/header.dart";
+import "../../widgets/settings/legal.dart";
+import "../../widgets/settings/locale.dart";
+import "../../widgets/settings/theme.dart";
 
 /// The content of the body in the "Settings" mode.
 class DesktopMainSettings extends StatelessWidget {

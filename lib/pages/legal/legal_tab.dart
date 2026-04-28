@@ -3,11 +3,11 @@ import "package:flutter_markdown_plus/flutter_markdown_plus.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../components/misc/if_app_is_ready.dart";
 import "../../globals.dart";
 import "../../utils/extensions.dart";
 import "../../widgets/animations/loading_indicator.dart";
 import "../../widgets/layout/scaffold_fit.dart";
+import "../meta/if_app_is_ready.dart";
 
 /// A template tab to display the required legal mentions of the website.
 class TabLegal extends StatelessWidget {

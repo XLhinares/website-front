@@ -4,7 +4,7 @@ import "package:x_containers/x_containers.dart";
 
 import "../../globals.dart";
 import "../../utils/extensions.dart";
-import "../../widgets/images/xeppelin_logo.dart";
+import "../images/xeppelin_logo.dart";
 
 /// An animated title for the body.
 class BodyTitle extends StatelessWidget {

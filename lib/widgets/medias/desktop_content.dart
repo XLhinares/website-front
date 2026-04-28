@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/media_content.dart";
-import "desktop_entry.dart";
+import "media_entry_widget.dart";
 
 /// A widget displaying the parts of the given media on desktop.
 class MediaDesktopContent extends StatelessWidget {
@@ -27,8 +27,7 @@ class MediaDesktopContent extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: content.entries.length,
-      itemBuilder: (context, index) =>
-          MediaDesktopEntry(content.entries[index]),
+      itemBuilder: (context, index) => MediaEntryWidget(content.entries[index]),
       separatorBuilder: (context, index) => XLayout.verticalL,
     );
   }

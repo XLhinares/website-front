@@ -9,7 +9,7 @@ import "../../globals.dart";
 import "../images/covering_network_image.dart";
 
 /// A widget displaying a single media entry
-class MediaDesktopEntry extends StatelessWidget {
+class MediaEntryWidget extends StatelessWidget {
   // VARIABLES =================================================================
 
   /// The entry being displayed.
@@ -17,8 +17,8 @@ class MediaDesktopEntry extends StatelessWidget {
 
   // CONSTRUCTOR ===============================================================
 
-  /// Returns a [MediaDesktopEntry] instance.
-  const MediaDesktopEntry(this.entry, {super.key});
+  /// Returns a [MediaEntryWidget] instance.
+  const MediaEntryWidget(this.entry, {super.key});
 
   // BUILD =====================================================================
   @override
@@ -44,8 +44,10 @@ class MediaDesktopEntry extends StatelessWidget {
           children: [
             XContainer(
               child: MarkdownBody(
-                  data:
-                      "From the project's github [README.md](${entry.content}):"),
+                data:
+                    "From the project's github [README.md](${entry.content}):",
+                styleSheet: app.themes.markdownStyle,
+              ),
             ),
             XLayout.verticalM,
             XContainer(

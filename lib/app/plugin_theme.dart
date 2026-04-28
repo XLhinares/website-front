@@ -98,102 +98,135 @@ class ThemePlugin extends AppManagerPlugin {
   MarkdownStyleSheet get markdownStyle {
     final ThemeData currentTheme = current;
     final TextTheme currentTextTheme = currentTheme.textTheme;
+    const double lineHeight = 1.4;
     return MarkdownStyleSheet(
       // TITLES
       h1: currentTextTheme.titleMedium!.copyWith(
         color: currentTheme.colorScheme.onPrimary,
-        fontFamily: app.themes.codeFontFamily,
+        fontFamily: app.themes.defaultFontFamily,
+        height: lineHeight,
       ),
       h2: TextStyle(
         color: currentTheme.colorScheme.onPrimary,
-        fontFamily: app.themes.codeFontFamily,
+        fontFamily: app.themes.defaultFontFamily,
+        height: lineHeight,
       ),
       h3: TextStyle(
         color: currentTheme.colorScheme.onPrimary,
-        fontFamily: app.themes.codeFontFamily,
+        fontFamily: app.themes.defaultFontFamily,
+        height: lineHeight,
       ),
       h4: TextStyle(
         color: currentTheme.colorScheme.onPrimary,
-        fontFamily: app.themes.codeFontFamily,
+        fontFamily: app.themes.defaultFontFamily,
+        height: lineHeight,
       ),
       h5: TextStyle(
         color: currentTheme.colorScheme.onPrimary,
-        fontFamily: app.themes.codeFontFamily,
+        fontFamily: app.themes.defaultFontFamily,
+        height: lineHeight,
       ),
       h6: TextStyle(
         color: currentTheme.colorScheme.onPrimary,
-        fontFamily: app.themes.codeFontFamily,
+        fontFamily: app.themes.defaultFontFamily,
+        height: lineHeight,
       ),
 
       // BLOCKS
       code: currentTextTheme.bodySmall!.copyWith(
-        color: currentTheme.colorScheme.onPrimary,
+        color: currentTheme.colorScheme.onSurface,
+        backgroundColor: currentTheme.colorScheme.surface,
         fontFamily: app.themes.codeFontFamily,
+        height: lineHeight,
       ),
       del: currentTextTheme.bodySmall!.copyWith(
         color: currentTheme.colorScheme.onPrimary,
         fontFamily: app.themes.codeFontFamily,
+        height: lineHeight,
       ),
-      em: currentTextTheme.bodySmall!.copyWith(
+      em: currentTextTheme.bodyMedium!.copyWith(
         color: currentTheme.colorScheme.onPrimary,
-        fontFamily: app.themes.codeFontFamily,
+        fontFamily: app.themes.defaultFontFamily,
+        fontStyle: FontStyle.italic,
+        height: lineHeight,
       ),
       blockquote: currentTextTheme.bodySmall!.copyWith(
-        color: currentTheme.colorScheme.onSurface,
+        color: currentTheme.colorScheme.onPrimary,
         fontFamily: app.themes.codeFontFamily,
+        height: lineHeight,
       ),
 
       // TEXT
-      a: currentTextTheme.bodySmall!.copyWith(
+      a: currentTextTheme.bodyMedium!.copyWith(
         color: currentTheme.colorScheme.secondary,
-        fontFamily: app.themes.codeFontFamily,
+        fontFamily: app.themes.defaultFontFamily,
+        height: lineHeight,
       ),
-      p: currentTextTheme.bodySmall!.copyWith(
-        color: currentTheme.colorScheme.onPrimary,
-        fontFamily: app.themes.codeFontFamily,
-      ),
+      p: currentTextTheme.bodyMedium!
+          .copyWith(
+            color: currentTheme.colorScheme.onPrimary,
+            fontFamily: app.themes.defaultFontFamily,
+            // height: lineHeight,
+          )
+          .withAlpha(220),
       listBullet: currentTextTheme.bodySmall!.copyWith(
         color: currentTheme.colorScheme.onPrimary,
-        fontFamily: app.themes.codeFontFamily,
+        fontFamily: app.themes.defaultFontFamily,
+        height: lineHeight,
       ),
       strong: TextStyle(
         color: currentTheme.colorScheme.secondary,
-        fontFamily: app.themes.codeFontFamily,
+        fontFamily: app.themes.defaultFontFamily,
+        height: lineHeight,
       ),
       tableBody: currentTextTheme.bodySmall!.copyWith(
         color: currentTheme.colorScheme.onPrimary,
         fontFamily: app.themes.codeFontFamily,
+        height: lineHeight,
       ),
       tableHead: currentTextTheme.titleMedium!.copyWith(
         color: currentTheme.colorScheme.onPrimary,
         fontFamily: app.themes.codeFontFamily,
+        height: lineHeight,
       ),
 
       // BLOCK DECORATIONS
       codeblockDecoration: BoxDecoration(
-        color: currentTheme.colorScheme.primary,
+        color: currentTheme.colorScheme.surface,
         borderRadius: XLayout.brcXS,
       ),
       blockquoteDecoration: BoxDecoration(
-        color: currentTheme.colorScheme.surface.withAlpha(200),
+        color: currentTheme.colorScheme.surface.withAlpha(50),
         borderRadius: XLayout.brcXS,
       ),
       horizontalRuleDecoration: BoxDecoration(
-        color: currentTheme.colorScheme.primary,
+        color: currentTheme.colorScheme.surface,
       ),
 
       // PADDING
       h1Padding: EdgeInsets.only(
         top: XLayout.paddingL,
-        bottom: XLayout.paddingM,
+        bottom: XLayout.paddingS,
       ),
       h2Padding: EdgeInsets.only(
         top: XLayout.paddingM,
         bottom: XLayout.paddingS,
       ),
-      pPadding: EdgeInsets.zero,
+      h3Padding: EdgeInsets.only(
+        top: XLayout.paddingM,
+        bottom: XLayout.paddingS,
+      ),
+      h4Padding: EdgeInsets.only(
+        top: XLayout.paddingM,
+        bottom: XLayout.paddingS,
+      ),
+      pPadding: EdgeInsets.only(
+        top: XLayout.paddingS,
+      ),
+      listBulletPadding: EdgeInsets.zero,
       blockquotePadding: XLayout.edgeInsetsAllM,
       codeblockPadding: XLayout.edgeInsetsAllM,
+      tablePadding: XLayout.edgeInsetsAllM,
       listIndent: XLayout.paddingL,
     );
   }

@@ -90,6 +90,7 @@ class Media {
       summary: json["summary"],
       github: json["github"],
       website: json["website"],
+      status: json["status"],
     );
   }
 

@@ -1,3 +1,10 @@
+## 3.2.1
+
+- script: added automated new version script
+- media: better entry display with improved handling of markdown code
+- refactor: moved the contents of component folder to the widget folder to simplify project's structure
+- project: added optional github repo link
+
 ## 3.2.0
 
 - projects: add website button to mobile display

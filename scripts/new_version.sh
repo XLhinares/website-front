@@ -28,7 +28,16 @@ if ! [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
     exit 1
 fi
 
-# --- 3. Check for Flutter warnings ---
+# --- 3. Verify we're on the dev branch ---
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+if [ "$CURRENT_BRANCH" != "dev" ]; then
+    echo "❌ This script must be run from the 'dev' branch (current: $CURRENT_BRANCH)"
+    exit 1
+fi
+
+echo "✅ On the [dev] branch"
+
+# --- 4. Check for Flutter warnings ---
 echo "🔍 Running Flutter analysis..."
 flutter analyze > flutter_analysis.log 2>&1 || true
 
@@ -43,18 +52,7 @@ fi
 echo "✅ No Flutter warnings or errors found"
 rm -f flutter_analysis.log
 
-# --- 4. Verify we're on the dev branch ---
-CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
-if [ "$CURRENT_BRANCH" != "dev" ]; then
-    echo "Error: This script must be run from the 'dev' branch. Current branch: $CURRENT_BRANCH"
-    exit 1
-fi
-
-echo "✅ On the [dev] branch"
-
 # --- 5. Get commits since last version ---
-
-# Get commits since the last version was added
 if [ -n "$LAST_VERSION" ]; then
     # Find the commit that added the last version to CHANGELOG.md
     LAST_VERSION_COMMIT=$(git log --all --oneline --grep="version: $LAST_VERSION" -- CHANGELOG.md | head -1 | awk '{print $1}')
@@ -69,7 +67,6 @@ fi
 
 # Default if no commits found
 [ -z "$COMMITS" ] && COMMITS="- No changes"
-
 
 echo "✅ Parsed commits since last version"
 

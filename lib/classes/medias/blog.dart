@@ -12,6 +12,7 @@ class Blog extends Media {
     super.tags,
     super.previewPath,
     super.summary,
+    super.github,
     super.website,
   }) : super(
           type: MediaType.blog,
@@ -30,6 +31,7 @@ class Blog extends Media {
             : <String>[],
         previewPath: json["preview"],
         summary: json["summary"],
+        github: json["github"],
         website: json["website"],
       );
 }

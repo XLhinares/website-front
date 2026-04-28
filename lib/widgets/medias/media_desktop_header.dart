@@ -8,6 +8,7 @@ import "../../utils/tools.dart";
 import "../images/covering_network_image.dart";
 import "../text/auto_color_text.dart";
 import "button_go_back.dart";
+import "button_visit_github.dart";
 import "button_visit_website.dart";
 import "media_tag.dart";
 
@@ -51,6 +52,7 @@ class MediaDesktopHeader<T extends Media> extends StatelessWidget {
                         MediaButtonGoBack(),
                         Expanded(child: SizedBox()),
                         // Website
+                        MediaButtonVisitGithub(media: media),
                         MediaButtonVisitWebsite(media: media),
                       ],
                     ),

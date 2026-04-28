@@ -33,6 +33,11 @@ class Media {
   /// A short description of the media.
   final String summary;
 
+  /// An optional repo hosting this media.
+  ///
+  /// Usually using github but any website will work.
+  final String? github;
+
   /// An optional website matching this media.
   final String? website;
 
@@ -41,8 +46,11 @@ class Media {
   /// A preview image of the media.
   String get preview => "${app.network.assets}$_preview";
 
-  /// Whether the media doesn't have a website (or has an empty website)
-  bool get hasNoWebsite => website?.isEmpty ?? true;
+  /// Whether the media has a github repo.
+  bool get hasGithub => github?.isNotEmpty ?? false;
+
+  /// Whether the media has a website
+  bool get hasWebsite => website?.isNotEmpty ?? false;
 
   // CONSTRUCTOR ===============================================================
 
@@ -56,6 +64,7 @@ class Media {
     List<String>? tags,
     String? previewPath,
     String? summary,
+    this.github,
     this.website,
   })  : _preview = previewPath ?? "medias/default.webp",
         tags = tags ?? const [],
@@ -82,6 +91,7 @@ class Media {
               : <String>[],
           previewPath: json["preview"],
           summary: json["summary"],
+          github: json["github"],
           website: json["website"],
         );
     }
@@ -91,7 +101,13 @@ class Media {
 
   /// Tries to launch the media's website, if it's provided.
   void launchWebsite() async {
-    if (hasNoWebsite) return;
+    if (!hasGithub) return;
+    await app.network.launch(github!);
+  }
+
+  /// Tries to launch the media's github repo, if it's provided.
+  void launchGithub() async {
+    if (!hasWebsite) return;
     await app.network.launch(website!);
   }
 }

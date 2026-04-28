@@ -1,3 +1,17 @@
+## 3.3.0
+
+- media: better status and preview tile
+- media: fix missing status
+- refactor: get rid of Project and Blog classes since there are no difference at the moment, and use MediaType field instead
+- readme: add more information
+- script: better makefile initialisation and compilation tasks
+- script: small improvement to new_version.sh
+- version: 3.2.1
+- script: added automated new version script
+- media: better entry display with improved handling of markdown code
+- refactor: moved the contents of component folder to the widget folder to simplify project's structure
+- project: added optional github repo link
+
 ## 3.2.1
 
 - script: added automated new version script

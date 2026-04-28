@@ -1,7 +1,7 @@
 import "package:flutter/widgets.dart";
 
 import "../../classes/medias/media.dart";
-import "../projects/status_tile.dart";
+import "button_status.dart";
 import "button_visit_github.dart";
 import "button_visit_website.dart";
 
@@ -9,7 +9,11 @@ import "button_visit_website.dart";
 class MediaButtonRow extends StatelessWidget {
   // VARIABLES =================================================================
 
+  /// The media whose details are being displayed.
   final Media media;
+
+  /// Whether to only show icons (ie. without boxes)
+  final bool iconOnly;
 
   // CONSTRUCTOR ===============================================================
 
@@ -17,6 +21,7 @@ class MediaButtonRow extends StatelessWidget {
   const MediaButtonRow({
     super.key,
     required this.media,
+    this.iconOnly = false,
   });
 
   // BUILD =====================================================================
@@ -24,9 +29,18 @@ class MediaButtonRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        MediaStatusWidget(media: media),
-        MediaButtonVisitGithub(media: media),
-        MediaButtonVisitWebsite(media: media),
+        MediaButtonStatus(
+          media: media,
+          iconOnly: iconOnly,
+        ),
+        MediaButtonVisitGithub(
+          media: media,
+          iconOnly: iconOnly,
+        ),
+        MediaButtonVisitWebsite(
+          media: media,
+          iconOnly: iconOnly,
+        ),
       ],
     );
   }

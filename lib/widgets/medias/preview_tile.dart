@@ -6,6 +6,7 @@ import "../../classes/medias/media.dart";
 import "../../utils/extensions.dart";
 import "../images/covering_network_image.dart";
 import "../images/xeppelin_logo.dart";
+import "button_status.dart";
 import "../text/auto_color_text.dart";
 import "button_visit_website.dart";
 
@@ -55,21 +56,24 @@ class ProjectPreviewer extends StatelessWidget {
               right: 0,
               bottom: 0,
               child: Container(
-                color: context.theme.colorScheme.surface.withAlpha(150),
-                padding: EdgeInsets.all(XLayout.paddingM),
+                color: context.theme.colorScheme.surface.withAlpha(175),
+                padding: EdgeInsets.all(XLayout.paddingS),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     // NAME
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           media.name,
                           style: context.titleMediumOnSurface,
                         ),
-                        MediaButtonVisitWebsite(media: media)
+                        Expanded(
+                          child: SizedBox(),
+                        ),
+                        MediaButtonStatus(media: media),
+                        MediaButtonVisitWebsite(media: media),
                       ],
                     ),
 

@@ -5,7 +5,7 @@ import "package:x_containers/x_containers.dart";
 import "../../classes/medias/media.dart";
 import "../images/covering_network_image.dart";
 import "../text/auto_color_text.dart";
-import "button_visit_website.dart";
+import "buttons_row.dart";
 
 /// A preview of a project.
 class MediaWidePreview extends StatelessWidget {
@@ -60,13 +60,13 @@ class MediaWidePreview extends StatelessWidget {
                   XLayout.verticalS,
                   // TITLE ROW
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         media.name,
                         style: context.textTheme.titleMedium,
                       ),
-                      MediaButtonVisitWebsite(
+                      Expanded(child: SizedBox()),
+                      MediaButtonRow(
                         media: media,
                       ),
                     ],

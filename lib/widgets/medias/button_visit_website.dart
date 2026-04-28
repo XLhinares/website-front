@@ -1,9 +1,9 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/media.dart";
 import "../../utils/extensions.dart";
+import "button.dart";
 
 /// A button that launches a website's media.
 ///
@@ -37,30 +37,16 @@ class MediaButtonVisitWebsite extends StatelessWidget {
   // BUILD =====================================================================
   @override
   Widget build(BuildContext context) {
-    if (hideIfNoWebsite && !media.hasWebsite) return SizedBox();
-
-    return Tooltip(
-      message: "project_website_button_tooltip".tr,
-      child: iconOnly
-          ? GestureDetector(
-              onTap: media.launchWebsite,
-              child: Icon(
-                Icons.open_in_new,
-                color: context.colors.secondary,
-              ),
-            )
-          : XButton(
-              margin: margin ?? EdgeInsets.only(left: XLayout.paddingS),
-              padding: XLayout.edgeInsetsAllXS,
-              width: XLayout.paddingL,
-              height: XLayout.paddingL,
-              color: context.colors.secondary,
-              onTap: media.launchWebsite,
-              child: Icon(
-                Icons.open_in_new,
-                color: context.colors.onSecondary,
-              ),
-            ),
+    return MediaButton(
+      icon: Icon(
+        Icons.open_in_new,
+        color: iconOnly ? context.colors.secondary : context.colors.onSecondary,
+      ),
+      tooltipMessage: "project_website_button_tooltip".tr,
+      hideCondition: () => hideIfNoWebsite && !media.hasWebsite,
+      iconOnly: iconOnly,
+      margin: margin,
+      onTap: media.launchWebsite,
     );
   }
 

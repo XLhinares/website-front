@@ -1,14 +1,14 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/media.dart";
 import "../../utils/extensions.dart";
+import "button.dart";
 
 /// A button that shows a media's ownership status.
 ///
-/// It is useless if the media doesn't have a website.
-class MediaStatusWidget extends StatelessWidget {
+/// It is isn't actually tapable but share all the other characteristics of media buttons.
+class MediaButtonStatus extends StatelessWidget {
   // VARIABLES =================================================================
 
   /// The matching media.
@@ -25,8 +25,8 @@ class MediaStatusWidget extends StatelessWidget {
 
   // CONSTRUCTOR ===============================================================
 
-  /// Returns a [MediaStatusWidget] instance.
-  const MediaStatusWidget({
+  /// Returns a [MediaButtonStatus] instance.
+  const MediaButtonStatus({
     super.key,
     required this.media,
     this.margin,
@@ -37,26 +37,15 @@ class MediaStatusWidget extends StatelessWidget {
   // BUILD =====================================================================
   @override
   Widget build(BuildContext context) {
-    if (hideIfOwner && !media.isOwner) return SizedBox();
-
-    return Tooltip(
-      message: "project_status_${media.status}_tooltip".tr,
-      child: iconOnly
-          ? Icon(
-              Icons.group,
-              color: context.colors.secondary,
-            )
-          : XButton(
-              margin: margin ?? EdgeInsets.only(left: XLayout.paddingS),
-              padding: XLayout.edgeInsetsAllXS,
-              width: XLayout.paddingL,
-              height: XLayout.paddingL,
-              color: context.colors.secondary,
-              child: Icon(
-                Icons.group,
-                color: context.colors.onSecondary,
-              ),
-            ),
+    return MediaButton(
+      icon: Icon(
+        Icons.group,
+        color: iconOnly ? context.colors.secondary : context.colors.onSecondary,
+      ),
+      tooltipMessage: "project_status_${media.status}_tooltip".tr,
+      hideCondition: () => hideIfOwner && media.isOwner,
+      iconOnly: iconOnly,
+      margin: margin,
     );
   }
 

@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
 import "package:font_awesome_flutter/font_awesome_flutter.dart";
 import "package:get/get.dart";
-import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/media.dart";
 import "../../utils/extensions.dart";
+import "button.dart";
 
 /// A button that launches a media's github.
 ///
@@ -38,30 +38,16 @@ class MediaButtonVisitGithub extends StatelessWidget {
   // BUILD =====================================================================
   @override
   Widget build(BuildContext context) {
-    if (hideIfNoGithub && !media.hasGithub) return SizedBox();
-
-    return Tooltip(
-      message: "project_github_button_tooltip".tr,
-      child: iconOnly
-          ? GestureDetector(
-              onTap: media.launchGithub,
-              child: FaIcon(
-                FontAwesomeIcons.github,
-                color: context.colors.secondary,
-              ),
-            )
-          : XButton(
-              margin: margin ?? EdgeInsets.only(left: XLayout.paddingS),
-              padding: XLayout.edgeInsetsAllXS,
-              width: XLayout.paddingL,
-              height: XLayout.paddingL,
-              color: context.colors.secondary,
-              onTap: media.launchGithub,
-              child: FaIcon(
-                FontAwesomeIcons.github,
-                color: context.colors.onSecondary,
-              ),
-            ),
+    return MediaButton(
+      icon: FaIcon(
+        FontAwesomeIcons.github,
+        color: iconOnly ? context.colors.secondary : context.colors.onSecondary,
+      ),
+      tooltipMessage: "project_github_button_tooltip".tr,
+      hideCondition: () => hideIfNoGithub && !media.hasGithub,
+      iconOnly: iconOnly,
+      margin: margin,
+      onTap: media.launchGithub,
     );
   }
 

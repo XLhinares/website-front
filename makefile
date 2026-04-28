@@ -46,6 +46,9 @@ pre-commit:
 
 ## Runs the dev packages to make sure the platforms are properly set up. (useful when cloning the project from scratch)
 initialize:
+	@flutter create --platforms=linux .
+	@flutter create --platforms=android .
+	@flutter create --platforms=web .
 	@dart run package_rename
 	@dart run flutter_launcher_icons
 	@dart run flutter_native_splash:create
@@ -57,7 +60,7 @@ compile:
 	@flutter clean
 	@flutter pub get
 	@make initialize
-	@flutter build web
+	@flutter build web --release --wasm
 
 ## Re-initializes git in the build repository, connects it to the remote and publishes the current build.
 server_connect:

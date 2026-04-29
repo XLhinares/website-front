@@ -45,7 +45,7 @@ class ThemePreview extends StatelessWidget {
           // end: Alignment.bottomRight,
         ),
         borderDecoration: app.cookies.theme.value == name
-            ? Border.all(width: 2, color: Colors.black45)
+            ? Border.all(width: 2, color: context.colors.secondary)
             : null,
         onTap: () => app.cookies.theme.value = name,
         child: Column(

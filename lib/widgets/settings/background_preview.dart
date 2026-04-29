@@ -32,7 +32,7 @@ class BackgroundPreview extends StatelessWidget {
             margin: EdgeInsets.zero,
             padding: EdgeInsets.zero,
             borderDecoration: app.cookies.background.value == data.name
-                ? Border.all(width: 2, color: Colors.black45)
+                ? Border.all(width: 2, color: context.colors.secondary)
                 : null,
             onTap: () => app.cookies.background.value = data.name,
             child: Stack(

@@ -10,8 +10,19 @@ import "../../globals.dart";
 class SoundPainter extends CustomPainter {
   // VARIABLES =================================================================
 
+  /// Where to put the wave, given as a fraction of the viewport height.
+  ///
+  /// (The offset is computed from the top, so 0.4 means it'll put at 40% of the viewport height from the top).
+  final double verticalOffset;
+
+  /// The amplitude of the wave, given as a fraction of the viewport height.
+  final double amplitude;
+
   /// A scale factor that allows to modulate the size of everything.
   final double scale;
+
+  /// The multiplier definying the speed of the modulate wave (not the carry-ing wave)
+  final double modulationFactor = 33;
 
   /// How far along the animation it is.
   final double progress;
@@ -23,8 +34,10 @@ class SoundPainter extends CustomPainter {
 
   /// Returns an instance of [SoundPainter] matching the given parameters.
   SoundPainter({
-    this.scale = 1,
     required this.progress,
+    this.verticalOffset = 0.6,
+    this.amplitude = 0.4,
+    this.scale = 1,
     this.color,
   });
 
@@ -34,21 +47,29 @@ class SoundPainter extends CustomPainter {
   /// Uses harmonics (fundamental + 2nd, 3rd, 4th) for a richer waveform.
   double _getWaveY(double x, Size size, double sinfuzz) {
     final double normalizedX = x / size.width - 0.5;
+    final double aspectRatio = size.width / size.height;
 
-    // Slow wave for the shape and fast wave for the modulation
+    // Slow wave for the shape
     double y = cos(2 * normalizedX * sinfuzz);
-    y *= cos(33 * normalizedX * sinfuzz + 2 * pi * progress * 20);
+    // Fast wave for modulation
+    // - modulation factor is the key factor
+    // - aspect ratio helps boost the density and speed on very wide screens (but there's a power function so it's not too strong)
+    // - (normalizedX * sinfux) decides the number of oscillation within a wavelength
+    // - (2 * pi * progress) makes the modulated wave travel through the slow wave
+    y *= cos(modulationFactor *
+        pow(aspectRatio, .2) *
+        (normalizedX * sinfuzz + 2 * pi * progress));
 
     // Scale and center with pulsing amplitude
-    final double centerY = size.height * (1 - scale);
+    final double centerY = size.height * verticalOffset;
     // A pulse to apply to the amplitude
     final double pulse = .7 + 0.3 * sin(2 * pi * progress);
-    final double amplitude = size.height *
-        (scale * .5) *
+    final double modulatedAmplitude = size.height *
+        (amplitude * .5) *
         pulse *
         (.1 + cos(normalizedX * pi * 1.5) * 1.5);
 
-    return centerY + y * amplitude;
+    return centerY + y * modulatedAmplitude;
   }
 
   /// Paints the sound wave as a continuous line with harmonics.
@@ -75,7 +96,7 @@ class SoundPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final Paint grad = Paint()
       ..shader = ui.Gradient.radial(
-        Offset(size.width / 2, size.height * (1 - scale)),
+        Offset(size.width / 2, size.height * verticalOffset),
         size.width / 2,
         <Color>[
           (color ?? Colors.grey).withAlpha(170),
@@ -87,7 +108,8 @@ class SoundPainter extends CustomPainter {
       // The power function further controls the influence of the aspect ratio
       ..strokeWidth = XLayout.paddingM /
           pow(size.height / size.width, .6) /
-          frameRatioDesktop
+          frameRatioDesktop *
+          scale
       ..strokeCap = StrokeCap.round
       ..strokeJoin = StrokeJoin.bevel
       ..style = PaintingStyle.stroke;

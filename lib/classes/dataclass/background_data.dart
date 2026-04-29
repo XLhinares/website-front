@@ -26,8 +26,8 @@ class BackgroundData {
   /// An animated wave moving in the background.
   static BackgroundData sound = BackgroundData._internal(
     name: "sound",
-    builder: (context) => const AnimatedSound(scale: 0.33),
-    preview: (context) => const AnimatedSound(scale: 0.5),
+    builder: (context) => const AnimatedSound(scale: 1),
+    preview: (context) => const AnimatedSound(scale: 0.2),
   );
 
   /// All the know [BackgroundData] values.

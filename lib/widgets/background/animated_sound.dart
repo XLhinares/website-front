@@ -33,8 +33,8 @@ class AnimatedSound extends StatelessWidget {
             tween: Tween<double>(begin: 0, end: 1),
             builder: (context, progress, child) => CustomPaint(
               painter: SoundPainter(
-                scale: scale,
                 progress: progress,
+                scale: scale,
                 color: context.colors.primary,
               ),
             ),

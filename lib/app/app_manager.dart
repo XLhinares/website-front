@@ -3,7 +3,6 @@ import "package:get/get.dart";
 import "../../utils/tools.dart";
 import "../utils/extensions.dart";
 import "app_manager_plugin.dart";
-import "plugin_authentication.dart";
 import "plugin_cookies.dart";
 import "plugin_medias.dart";
 import "plugin_network.dart";
@@ -32,9 +31,6 @@ class AppManager extends GetxController {
   /// The plugin handling the word decks.
   late final medias = MediaPlugin();
 
-  /// The plugin handling device vibrations.
-  late final authentication = AuthenticationPlugin();
-
   /// The list of plugins added to the app manager.
   ///
   /// !WARNING! The order matters if the plugins communicate.
@@ -46,7 +42,6 @@ class AppManager extends GetxController {
     themes,
     cookies,
     medias,
-    authentication,
   ];
 
   // GETTERS ===================================================================

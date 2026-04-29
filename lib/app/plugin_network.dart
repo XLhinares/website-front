@@ -143,29 +143,6 @@ class NetworkPlugin extends AppManagerPlugin {
         return "There was an error, please try again later.";
       });
 
-  /// Attempts to refresh the token from the API.
-  Future<UserData> refreshToken({
-    required String email,
-    required String token,
-  }) async =>
-      tryWrapper(() async {
-        final response = await http.post(
-          (CustomURL(initialText: api)
-                ..addPath("account")
-                ..addFile("refresh"))
-              .cleanUri,
-          body: {
-            "email": email,
-            "token": token,
-          },
-          headers: {"Authorization": "Bearer ${app.authentication.data.token}"},
-        );
-
-        dlog(response.body.toString());
-
-        return UserData.fromJson(jsonDecode(response.body));
-      });
-
   /// Retrieves a list of medias from the api.
   Future<List<Media>> getMedias({
     required MediaType type,

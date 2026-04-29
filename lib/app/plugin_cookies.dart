@@ -41,20 +41,6 @@ class CookiePlugin extends AppManagerPlugin {
     onSave: (value) => app.themes.changeTheme(value),
   );
 
-  /// The email of the user.
-  ///
-  /// Used for authentication.
-  late final Cookie<String> email = Cookie(
-    "email",
-    defaultValue: "",
-  );
-
-  /// The authentication token of the user.
-  late final Cookie<String> token = Cookie(
-    "token",
-    defaultValue: "",
-  );
-
   /// The identifier of the current background of the app.
   late final Cookie<String> background = Cookie(
     "background",
@@ -111,15 +97,7 @@ class CookiePlugin extends AppManagerPlugin {
 
     await GetStorage.init();
     _storage = GetStorage();
-    cookies = [
-      email,
-      token,
-      background,
-      theme,
-      locale,
-      allowCookies,
-      cookieBannerDismissed
-    ];
+    cookies = [background, theme, locale, allowCookies, cookieBannerDismissed];
 
     // Instantiating variables. ------------------------------------------------
     // _deleteAllCookies();

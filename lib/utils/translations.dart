@@ -73,7 +73,7 @@ class CustomTranslations extends Translations {
           "Here you can configure the website to match your preferences.",
       "settings_locale": "Locale",
       "settings_locale_description":
-          "The language used on this site (this setting has no impact on projects and blogs).",
+          "The language used on this site.\nProjects are not affected by the language setting.",
       "settings_theme_selection": "Theme selection",
       "settings_background_selection": "Background selection",
       "settings_theme_light": "Light",
@@ -213,7 +213,7 @@ class CustomTranslations extends Translations {
           "Dans cet onglet, vous pouvez configuer le site pour correspondre plus précisément à vos préférences.",
       "settings_locale": "Langage",
       "settings_locale_description":
-          "La langue utilisée sur ce site (cela n'affecte pas les projets).",
+          "La langue utilisée sur ce site.\nLes projets sont disponible uniquement en anglais.",
       "settings_theme_selection": "Choix du thème",
       "settings_background_selection": "Choix du fond",
       "settings_theme_light": "Clair",

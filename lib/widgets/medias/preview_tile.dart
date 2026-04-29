@@ -6,12 +6,14 @@ import "../../classes/medias/media.dart";
 import "../../utils/extensions.dart";
 import "../images/covering_network_image.dart";
 import "../images/xeppelin_logo.dart";
-import "button_status.dart";
 import "../text/auto_color_text.dart";
+import "button_status.dart";
 import "button_visit_website.dart";
 
-/// A preview of a media.
-class ProjectPreviewer extends StatelessWidget {
+/// A tile showing the preview of a media.
+///
+/// Used on the desktop main page.
+class MediaPreviewTile extends StatelessWidget {
   // VARIABLES =================================================================
 
   /// The media being previewed.
@@ -22,8 +24,8 @@ class ProjectPreviewer extends StatelessWidget {
 
   // CONSTRUCTOR ===============================================================
 
-  /// Returns an instance of [ProjectPreviewer] matching the given parameters.
-  const ProjectPreviewer({
+  /// Returns an instance of [MediaPreviewTile] matching the given parameters.
+  const MediaPreviewTile({
     super.key,
     required this.media,
     this.onTap,
@@ -82,8 +84,9 @@ class ProjectPreviewer extends StatelessWidget {
                     XLayout.verticalXS,
 
                     // SUMMARY
+                    // The blank lines force all summaries to be exactly 3 lines so they can have the same size when displayed.
                     AutoColorText(
-                      media.summary,
+                      "${media.summary}\n\n",
                       style: context.bodyMediumOnSurface,
                       color: context.colors.onSurface,
                       maxLines: 3,

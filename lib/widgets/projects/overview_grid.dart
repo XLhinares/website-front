@@ -21,7 +21,7 @@ class ProjectsGridView extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: XLayout.paddingL),
       physics: const BouncingScrollPhysics(),
       pageLoadController: projectLoaderController.controller,
-      itemBuilder: (context, entry, index) => ProjectPreviewer(
+      itemBuilder: (context, entry, index) => MediaPreviewTile(
         media: entry,
         onTap: () => router.selectProject(entry.id),
       ),

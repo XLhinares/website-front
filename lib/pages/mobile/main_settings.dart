@@ -4,6 +4,7 @@ import "package:x_containers/x_containers.dart";
 import "../../classes/dataclass/route.dart";
 import "../../widgets/body/mobile_tab.dart";
 import "../../widgets/body/tab.dart";
+import "../../widgets/settings/background_compact.dart";
 import "../../widgets/settings/legal_compact.dart";
 import "../../widgets/settings/locale_compact.dart";
 import "../../widgets/settings/theme_compact.dart";
@@ -28,13 +29,12 @@ class MobileMainSettings extends RouteTab {
       route: route,
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        spacing: XLayout.paddingM,
         children: [
           SettingsLocaleCompact(),
-          XLayout.verticalM,
           const SettingsThemesCompact(),
-          XLayout.verticalM,
+          const SettingsBackgroundsCompact(),
           const SettingsLegalCompact(),
-          SizedBox(),
         ],
       ),
     );

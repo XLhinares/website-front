@@ -2,10 +2,10 @@ import "package:flutter/material.dart";
 import "package:simple_animations/simple_animations.dart";
 
 import "../../utils/extensions.dart";
-import "wave_painter.dart";
+import "sound_painter.dart";
 
-/// A custom wave widget.
-class AnimatedWave extends StatelessWidget {
+/// An animated widget that looks like a sound wave.
+class AnimatedSound extends StatelessWidget {
   // VARIABLES =================================================================
 
   /// A scale factor that allows to modulate the size of everything.
@@ -13,8 +13,8 @@ class AnimatedWave extends StatelessWidget {
 
   // CONSTRUCTOR ===============================================================
 
-  /// Returns an instance of [AnimatedWave] matching the given parameters.
-  const AnimatedWave({
+  /// Returns an instance of [AnimatedSound] matching the given parameters.
+  const AnimatedSound({
     super.key,
     this.scale = 1,
   });
@@ -32,11 +32,10 @@ class AnimatedWave extends StatelessWidget {
             duration: const Duration(seconds: 60),
             tween: Tween<double>(begin: 0, end: 1),
             builder: (context, progress, child) => CustomPaint(
-              painter: WavePainter(
+              painter: SoundPainter(
                 scale: scale,
                 progress: progress,
-                colorBack: context.colors.primary,
-                colorFront: context.colors.primary,
+                color: context.colors.primary,
               ),
             ),
           ),

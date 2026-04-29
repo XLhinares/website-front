@@ -1,9 +1,10 @@
 import "dart:math";
 import "dart:ui" as ui;
+
 import "package:flutter/material.dart";
 
 /// An implementation of [CustomPainter] to paint the wave animation.
-class CurvePainter extends CustomPainter {
+class WavePainter extends CustomPainter {
   // VARIABLES =================================================================
 
   /// A scale factor that allows to modulate the size of everything.
@@ -20,8 +21,8 @@ class CurvePainter extends CustomPainter {
 
   // CONSTRUCTOR ===============================================================
 
-  /// Returns an instance of [CurvePainter] matching the given parameters.
-  CurvePainter({
+  /// Returns an instance of [WavePainter] matching the given parameters.
+  WavePainter({
     this.scale = 1,
     required this.progress,
     this.colorBack,

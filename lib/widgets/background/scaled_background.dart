@@ -2,17 +2,17 @@ import "package:flutter/material.dart";
 
 import "animated_waves.dart";
 
-/// The main background of the Swallo app.
-class AnimatedBackgroundWave extends StatelessWidget {
+/// A wrapper that handled scale changes for a background animation widget.
+class ScaledBackground extends StatelessWidget {
   // VARIABLES =================================================================
 
-  /// The fraction of the screen taken by the wave in the background.
+  /// The fraction of the screen taken by the animated part of the background.
   final double scale;
 
   // CONSTRUCTOR ===============================================================
 
-  /// Returns an instance of [AnimatedBackgroundWave] matching the given parameters.
-  const AnimatedBackgroundWave({
+  /// Returns an instance of [ScaledBackground] matching the given parameters.
+  const ScaledBackground({
     super.key,
     this.scale = 1,
   });

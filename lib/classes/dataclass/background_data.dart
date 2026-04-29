@@ -2,7 +2,8 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 
 import "../../globals.dart";
-import "../../widgets/background/animated_background_wave.dart";
+import "../../widgets/background/animated_sound.dart";
+import "../../widgets/background/animated_waves.dart";
 
 /// A dataclass with the information required to display a background.
 class BackgroundData {
@@ -18,14 +19,21 @@ class BackgroundData {
   /// An animated wave moving in the background.
   static BackgroundData wave = BackgroundData._internal(
     name: "wave",
-    builder: (context) => const AnimatedBackgroundWave(scale: 0.3),
-    preview: (context) => const AnimatedBackgroundWave(scale: 0.6),
+    builder: (context) => const AnimatedWave(scale: 0.3),
+    preview: (context) => const AnimatedWave(scale: 0.6),
+  );
+
+  /// An animated wave moving in the background.
+  static BackgroundData sound = BackgroundData._internal(
+    name: "sound",
+    builder: (context) => const AnimatedSound(scale: 0.33),
+    preview: (context) => const AnimatedSound(scale: 0.5),
   );
 
   /// All the know [BackgroundData] values.
   ///
   /// Used to display the list of possible backgrounds in the settings menu.
-  static List<BackgroundData> values = [none, wave];
+  static List<BackgroundData> values = [none, wave, sound];
 
   // VARIABLES =================================================================
 

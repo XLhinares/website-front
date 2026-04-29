@@ -1,3 +1,11 @@
+## 3.3.1
+
+- background: improved the sound wave background via better variables
+- background: added new sound wave background
+- settings: use secondary color to highlight selected theme and background
+- background: added background customization on mobile
+- media preview: set min lines of summary to 3 and renamed the [MediaPreviewTile] class
+
 ## 3.3.0
 
 - media: better status and preview tile

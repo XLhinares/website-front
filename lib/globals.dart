@@ -8,7 +8,7 @@ import "classes/medias/media_type.dart";
 import "utils/translations.dart";
 
 /// The version of the app.
-const String versionNumber = "v3.3.0";
+const String versionNumber = "v3.3.1";
 
 // SERVICES ====================================================================
 

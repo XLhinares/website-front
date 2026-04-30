@@ -50,7 +50,7 @@ class BackgroundPreview extends StatelessWidget {
                     padding: EdgeInsets.all(XLayout.paddingXS),
                     child: Center(
                         child: AutoSizeText(
-                      data.name.capitalizeFirst!.tr,
+                      "settings_background_${data.name}".tr,
                       style: context.bodyMediumOnSurface,
                       maxLines: 1,
                     )),

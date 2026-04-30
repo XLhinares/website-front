@@ -42,7 +42,7 @@ class SettingsLocale extends StatelessWidget {
       // who might not be familiar with the currently selected language.
       title:
           "${"settings_locale".tr}${app.cookies.locale.value == "en" ? "" : " (Locale)"}",
-      content: "settings_locale_description".tr,
+      content: "settings_locale_desc".tr,
       internalVerticalPadding: XLayout.paddingS,
       trailing: LRSelector(
         leftBehavior: app.cookies.rotateLocaleL,

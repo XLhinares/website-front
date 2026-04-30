@@ -74,6 +74,8 @@ class CustomTranslations extends Translations {
       // PREFERENCES
       "settings_preferences": "Preferences",
       "settings_theme_selection": "Theme selection",
+      "settings_background_selection": "Background Selection",
+      "settings_locale": "Locale",
       "settings_locale_rotator": "Locale: @value",
       "settings_locale_desc": "The language used in the app.",
       "settings_theme_rotator": "Theme: @value",
@@ -219,6 +221,8 @@ class CustomTranslations extends Translations {
       // PREFERENCES
       "settings_preferences": "Préférences",
       "settings_theme_selection": "Choix du thème",
+      "settings_background_selection": "Choix du fond",
+      "settings_locale": "Language",
       "settings_locale_rotator": "Langage : @value",
       "settings_locale_desc": "Le langage utilisé dans l'appli.",
       "settings_theme_rotator": "Thème : @value",

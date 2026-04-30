@@ -54,7 +54,7 @@ class MediaTilePreview extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              media.name,
+              media.title,
               style: context.textTheme.titleMedium,
               overflow: TextOverflow.ellipsis,
             ),

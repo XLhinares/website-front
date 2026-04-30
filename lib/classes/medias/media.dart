@@ -9,7 +9,10 @@ class Media {
   final int id;
 
   /// The name of the media.
-  final String name;
+  final String title;
+
+  /// The name of the media.
+  final String? subtitle;
 
   /// A metric describing how much I want to put this media forward.
   final double relevance;
@@ -47,6 +50,9 @@ class Media {
   /// A preview image of the media.
   String get preview => "${app.network.assets}$_preview";
 
+  /// Whether the media has a valid subtitle.
+  bool get hasSubtitle => subtitle?.isNotEmpty ?? false;
+
   /// Whether I own the project related to this media.
   bool get isOwner => (status ?? "owner") == "owner";
 
@@ -61,7 +67,8 @@ class Media {
   /// Returns a [Media] matching the given parameters.
   const Media({
     required this.id,
-    required this.name,
+    required this.title,
+    this.subtitle,
     this.type = MediaType.other,
     this.relevance = 0,
     required this.date,
@@ -79,7 +86,8 @@ class Media {
   factory Media.fromJson(Map<String, dynamic> json) {
     return Media(
       id: json["id"],
-      name: json["name"],
+      title: json["title"] ?? json["name"],
+      subtitle: json["subtitle"],
       type: MediaType.parse(json["type"]),
       relevance: double.parse(json["relevance"].toString()),
       date: DateTime.parse(json["date"]),

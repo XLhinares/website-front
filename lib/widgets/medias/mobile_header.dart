@@ -72,7 +72,7 @@ class MediaMobileHeader extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
-                                media.name,
+                                media.title,
                                 style: context.textTheme.titleLarge!
                                     .copyWith(color: context.colors.secondary),
                               ),

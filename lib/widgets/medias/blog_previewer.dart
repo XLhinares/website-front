@@ -61,7 +61,7 @@ class BlogPreviewer extends StatelessWidget {
                       children: [
                         // NAME ------------------------------------------------------
                         Text(
-                          media.name,
+                          media.title,
                           style: context.textTheme.titleMedium,
                         ),
 

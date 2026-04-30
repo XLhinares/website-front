@@ -58,7 +58,7 @@ class MediaPreviewTile extends StatelessWidget {
               right: 0,
               bottom: 0,
               child: Container(
-                color: context.theme.colorScheme.surface.withAlpha(175),
+                color: context.theme.colorScheme.surface.withAlpha(190),
                 padding: EdgeInsets.all(XLayout.paddingS),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -67,9 +67,21 @@ class MediaPreviewTile extends StatelessWidget {
                     // NAME
                     Row(
                       children: [
-                        Text(
-                          media.name,
-                          style: context.titleMediumOnSurface,
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              media.title,
+                              style: context.titleMediumOnSurface
+                                  .copyWith(height: 1.25),
+                            ),
+                            if (media.hasSubtitle)
+                              Text(
+                                media.subtitle!,
+                                style: context.labelSmallOnSurface,
+                              ),
+                          ],
                         ),
                         Expanded(
                           child: SizedBox(),

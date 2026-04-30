@@ -60,7 +60,7 @@ class MediaDesktopHeader extends StatelessWidget {
                     const Expanded(child: SizedBox()),
 
                     // Name & date
-                    AutoColorText("\\title{${media.name}}",
+                    AutoColorText("\\title{${media.title}}",
                         style: context.textTheme.titleLarge),
                     XLayout.verticalXS,
                     Text(media.date.legibleMY),

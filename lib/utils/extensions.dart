@@ -24,7 +24,7 @@ extension ContextColor on BuildContext {
   /// Shortcut for [context.theme.colorScheme].
   ColorScheme get colors => theme.colorScheme;
 
-  /// Return the [bodyMedium] text style with the color set to [onSurface]
+  /// Return the [bodySmall] text style with the color set to [onSurface]
   TextStyle get bodyMediumOnSurface =>
       textTheme.bodyMedium!.copyWith(color: colors.onSurface);
 
@@ -47,6 +47,14 @@ extension ContextColor on BuildContext {
   /// Return the [labelMedium] text style with the color set to [onSecondary]
   TextStyle get labelMediumOnSecondary =>
       textTheme.labelMedium!.copyWith(color: colors.onSecondary);
+
+  /// Return the [labelSmall] text style with the color set to [onSurface]
+  TextStyle get labelSmallOnSurface =>
+      textTheme.labelSmall!.copyWith(color: colors.onSurface);
+
+  /// Return the [labelSmall] text style with the color set to [onSecondary]
+  TextStyle get labelSmallOnSecondary =>
+      textTheme.labelSmall!.copyWith(color: colors.onSecondary);
 
   /// Return the [labelSmall] text style with the color set to [error]
   TextStyle get labelError =>

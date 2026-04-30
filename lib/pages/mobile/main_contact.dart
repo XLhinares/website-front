@@ -26,9 +26,14 @@ class MobileMainContact extends RouteTab {
   Widget build(BuildContext context) {
     return MobileTab(
       route: route,
-      child: XContainer(
-        padding: EdgeInsets.all(XLayout.paddingM),
-        child: ContactColumn(),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          XContainer(
+            padding: EdgeInsets.all(XLayout.paddingM),
+            child: ContactColumn(),
+          ),
+        ],
       ),
     );
   }

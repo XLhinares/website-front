@@ -29,8 +29,9 @@ class MobileTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
       padding: EdgeInsets.all(XLayout.paddingM),
+      height: context.height,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -38,8 +39,7 @@ class MobileTab extends StatelessWidget {
           XLayout.verticalM,
           MobileTabDescription(description: "${route.name}_description".tr),
           XLayout.verticalL,
-          child,
-          XLayout.verticalL,
+          Expanded(child: child),
           XLayout.verticalL,
         ],
       ),

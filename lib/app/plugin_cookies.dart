@@ -4,6 +4,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:get_storage/get_storage.dart";
 
+import "../classes/dataclass/background_data.dart";
 import "../classes/dataclass/cookie.dart";
 import "../globals.dart";
 import "../utils/extensions.dart";
@@ -131,12 +132,18 @@ class CookiePlugin extends AppManagerPlugin {
   // METHODS ===================================================================
 
   /// Rotates between the different supported locales.
-  Future<void> rotateLocale({bool reverse = false}) async {
+  Future<void> _rotateLocale({bool reverse = false}) async {
     final int index = supportedLocales.indexOf(locale.value);
     final String newLocale = supportedLocales[
         (index + (reverse ? -1 : 1)) % supportedLocales.length];
     locale.value = newLocale;
   }
+
+  /// Left-side rotation of the locale value.
+  Future<void> rotateLocaleL() async => _rotateLocale(reverse: true);
+
+  /// Right-side rotation of the locale value.
+  Future<void> rotateLocaleR() async => _rotateLocale();
 
   /// Toggles the app between light and dark theme.
   Future<void> rotateTheme({bool reverse = false}) async {
@@ -145,4 +152,34 @@ class CookiePlugin extends AppManagerPlugin {
     theme.value =
         app.themes.handledThemes[(index + (reverse ? -1 : 1)) % length];
   }
+
+  /// Toggles the app between light and dark theme.
+  void _rotateTheme({bool reverse = false}) {
+    final int index = app.themes.handledThemes.indexOf(theme.value);
+    final int length = app.themes.handledThemes.length;
+    theme.value =
+        app.themes.handledThemes[(index + (reverse ? -1 : 1)) % length];
+  }
+
+  /// Left-side rotation of the theme value.
+  Future<void> rotateThemeL() async => _rotateTheme(reverse: true);
+
+  /// Right-side rotation of the theme value.
+  Future<void> rotateThemeR() async => _rotateTheme();
+
+  /// Toggles the app between light and dark theme.
+  void _rotateBackground({bool reverse = false}) {
+    final currentBackground = BackgroundData.parse(background.value);
+    final int index = BackgroundData.values.indexOf(currentBackground);
+    final int length = BackgroundData.values.length;
+    final String newBackgroundName =
+        BackgroundData.values[(index + (reverse ? -1 : 1)) % length].name;
+    background.value = newBackgroundName;
+  }
+
+  /// Left-side rotation of the theme value.
+  Future<void> rotateBackgroundL() async => _rotateBackground(reverse: true);
+
+  /// Right-side rotation of the theme value.
+  Future<void> rotateBackgroundR() async => _rotateBackground();
 }

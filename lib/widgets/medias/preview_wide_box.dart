@@ -3,7 +3,6 @@ import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/medias/media.dart";
-import "../../utils/extensions.dart";
 import "../images/covering_network_image.dart";
 import "../text/auto_color_text.dart";
 import "buttons_row.dart";
@@ -97,13 +96,13 @@ class _MediaWidePreviewState extends State<MediaWidePreview> {
                             XLayout.verticalXS,
                             Text(
                               widget.media.title,
-                              style: context.titleMediumOnSurface
-                                  .copyWith(height: 1.1),
+                              style: context.textTheme.titleMedium
+                                  ?.copyWith(height: 1.1),
                             ),
                             if (widget.media.hasSubtitle)
                               Text(
                                 widget.media.subtitle!,
-                                style: context.labelSmallOnSurface,
+                                style: context.textTheme.labelSmall,
                               ),
                           ],
                         ),

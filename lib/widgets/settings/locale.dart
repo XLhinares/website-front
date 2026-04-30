@@ -45,8 +45,8 @@ class SettingsLocale extends StatelessWidget {
       content: "settings_locale_description".tr,
       internalVerticalPadding: XLayout.paddingS,
       trailing: LRSelector(
-        leftBehavior: () => app.cookies.rotateLocale(reverse: true),
-        rightBehavior: () => app.cookies.rotateLocale(reverse: false),
+        leftBehavior: app.cookies.rotateLocaleL,
+        rightBehavior: app.cookies.rotateLocaleR,
         width: width ?? XLayout.paddingL * 4,
         controller: app.cookies.locale.rx,
         textBuilder: (value) => "language_$value".tr,

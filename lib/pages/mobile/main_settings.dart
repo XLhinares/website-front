@@ -4,10 +4,10 @@ import "package:x_containers/x_containers.dart";
 import "../../classes/dataclass/route.dart";
 import "../../widgets/body/mobile_tab.dart";
 import "../../widgets/body/tab.dart";
-import "../../widgets/settings/background_compact.dart";
 import "../../widgets/settings/legal_compact.dart";
-import "../../widgets/settings/locale_compact.dart";
-import "../../widgets/settings/theme_compact.dart";
+import "../../widgets/settings/mobile_background_rotator.dart";
+import "../../widgets/settings/mobile_locale_rotator.dart";
+import "../../widgets/settings/mobile_theme_rotator.dart";
 
 /// A tab where the user can configure the website on mobile.
 class MobileMainSettings extends RouteTab {
@@ -31,10 +31,10 @@ class MobileMainSettings extends RouteTab {
         mainAxisSize: MainAxisSize.min,
         spacing: XLayout.paddingM,
         children: [
-          SettingsLocaleCompact(),
-          const SettingsThemesCompact(),
-          const SettingsBackgroundsCompact(),
-          const SettingsLegalCompact(),
+          MobileLocaleRotator(),
+          const MobileThemeRotator(),
+          const MobileBackgroundRotator(),
+          SettingsLegalCompact(),
         ],
       ),
     );

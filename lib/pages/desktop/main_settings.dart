@@ -4,7 +4,7 @@ import "package:x_containers/x_containers.dart";
 import "../../widgets/settings/header.dart";
 import "../../widgets/settings/legal.dart";
 import "../../widgets/settings/locale.dart";
-import "../../widgets/settings/theme.dart";
+import "../../widgets/settings/preferences.dart";
 
 /// The content of the body in the "Settings" mode.
 class DesktopMainSettings extends StatelessWidget {

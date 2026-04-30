@@ -71,11 +71,15 @@ class CustomTranslations extends Translations {
       "settings_title": "Settings",
       "settings_description":
           "Here you can configure the website to match your preferences.",
-      "settings_locale": "Locale",
-      "settings_locale_description":
-          "The language used on this site.\nProjects are not affected by the language setting.",
+      // PREFERENCES
+      "settings_preferences": "Preferences",
       "settings_theme_selection": "Theme selection",
-      "settings_background_selection": "Background selection",
+      "settings_locale_rotator": "Locale: @value",
+      "settings_locale_desc": "The language used in the app.",
+      "settings_theme_rotator": "Theme: @value",
+      "settings_theme_desc": "The color scheme of the app.",
+      "settings_background_rotator": "Background: @value",
+      "settings_background_desc": "The background animation of the app.",
       "settings_theme_light": "Light",
       "settings_theme_dark": "Dark",
       "settings_theme_pastel": "Pastel",
@@ -87,6 +91,7 @@ class CustomTranslations extends Translations {
       "settings_theme_oled": "OLED",
       "settings_background_none": "None",
       "settings_background_wave": "Wave",
+      "settings_background_sound": "Sound",
       "settings_legal":
           "Please check our \\route{/legal/legal_mentions}{Legal mentions}, "
               "\\route{/legal/privacy_policy}{Data policy} and "
@@ -211,11 +216,15 @@ class CustomTranslations extends Translations {
       "settings_title": "Paramètres",
       "settings_description":
           "Dans cet onglet, vous pouvez configuer le site pour correspondre plus précisément à vos préférences.",
-      "settings_locale": "Langage",
-      "settings_locale_description":
-          "La langue utilisée sur ce site.\nLes projets sont disponible uniquement en anglais.",
+      // PREFERENCES
+      "settings_preferences": "Préférences",
       "settings_theme_selection": "Choix du thème",
-      "settings_background_selection": "Choix du fond",
+      "settings_locale_rotator": "Langage : @value",
+      "settings_locale_desc": "Le langage utilisé dans l'appli.",
+      "settings_theme_rotator": "Thème : @value",
+      "settings_theme_desc": "Le thème de couleur de l'appli.",
+      "settings_background_rotator": "Fond : @value",
+      "settings_background_desc": "L'animation qui joue en fond de l'appli.",
       "settings_theme_light": "Clair",
       "settings_theme_dark": "Sombre",
       "settings_theme_pastel": "Pastel",
@@ -227,6 +236,7 @@ class CustomTranslations extends Translations {
       "settings_theme_oled": "OLED",
       "settings_background_none": "Aucun",
       "settings_background_wave": "Vague",
+      "settings_background_sound": "Onde",
       "settings_legal":
           "Vous pouvez consulter nos \\route{/legal/legal_mentions}{Mentions légales}, "
               "\\route{/legal/privacy_policy}{Politique de confidentialité} et "

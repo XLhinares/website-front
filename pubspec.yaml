@@ -57,6 +57,7 @@ dependencies:
   flutter_launcher_icons: ^0.14.4
   package_rename: ^1.10.1
   flutter_native_splash: ^2.4.7
+  expandable: ^5.0.1
 
 dev_dependencies:
   flutter_test:

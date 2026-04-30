@@ -6,40 +6,48 @@ import "../../classes/dataclass/background_data.dart";
 import "background_preview.dart";
 
 /// The widget in which the user can select a theme for the app.
-class SettingsBackgroundsCompact extends StatelessWidget {
+class SettingsBackgroundCompact extends StatelessWidget {
   // VARIABLES =================================================================
 
   // CONSTRUCTOR ===============================================================
 
-  /// Returns a [SettingsBackgroundsCompact] matching the given parameters.
-  const SettingsBackgroundsCompact({super.key});
+  /// Returns a [SettingsBackgroundCompact] matching the given parameters.
+  const SettingsBackgroundCompact({super.key});
 
   // BUILD =====================================================================
 
   @override
   Widget build(BuildContext context) {
-    return XCard(
-      margin: EdgeInsets.zero,
-      padding: XLayout.edgeInsetsAllM,
-      internalVerticalPadding: XLayout.paddingM,
-      title: Text("settings_background_selection".tr),
-      content: GridView.builder(
-        padding: EdgeInsets.zero,
-        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: XLayout.paddingL * 2.5,
-          mainAxisSpacing: XLayout.paddingS,
-          crossAxisSpacing: XLayout.paddingS,
-          childAspectRatio: 1,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        XLayout.verticalM,
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: XLayout.paddingM),
+          child: Text(
+            "settings_background_selection".tr,
+            style: context.textTheme.titleMedium,
+          ),
         ),
-        physics: const NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        itemCount: BackgroundData.values.length,
-        itemBuilder: (_, index) {
-          return BackgroundPreview(BackgroundData.values[index]);
-        },
-      ),
+        XLayout.verticalS,
+        SizedBox(
+          height: XLayout.paddingL * 2.5,
+          child: ListView.separated(
+            padding: EdgeInsets.symmetric(horizontal: XLayout.paddingM),
+            scrollDirection: Axis.horizontal,
+            shrinkWrap: true,
+            itemCount: BackgroundData.values.length,
+            itemBuilder: (_, index) {
+              return SizedBox(
+                width: XLayout.paddingL * 2.5,
+                child: BackgroundPreview(BackgroundData.values[index]),
+              );
+            },
+            separatorBuilder: (context, index) => XLayout.horizontalS,
+          ),
+        ),
+        XLayout.verticalM,
+      ],
     );
   }
-
-// WIDGETS ===================================================================
 }

@@ -1,8 +1,11 @@
+import "dart:math";
+
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../classes/dataclass/route.dart";
+import "../../globals.dart";
 import "../../widgets/body/mobile_tab_subtitle.dart";
 import "../../widgets/body/mobile_tab_title.dart";
 
@@ -31,7 +34,7 @@ class MobileTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(XLayout.paddingM),
-      height: context.height,
+      height: max(context.height, minViewportHeight),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

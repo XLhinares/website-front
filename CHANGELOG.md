@@ -1,3 +1,12 @@
+## 3.3.2
+
+- mobile: set min viewport height and rework of the settings
+- mobile: improve project overview layout
+- media: added subtitle field
+- refactor: remove unused authentication plugin
+- translations: remove blog reference
+- flutter: upgrade flutter version
+
 ## 3.3.1
 
 - background: improved the sound wave background via better variables

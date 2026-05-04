@@ -42,7 +42,7 @@ const double frameRatioMobile = 1 / 2;
 /// The minimum accepted viewport height.
 ///
 /// Used in mobile tabs to avoid overflow while keeping a consistent tab height.
-const double minViewportHeight = 720;
+const double minViewportHeight = 960;
 
 /// The maximum horizontal extent of snack-bars appearing on the screen.
 const double maxSnackbarLength = 600;

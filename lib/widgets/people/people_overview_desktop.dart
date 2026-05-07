@@ -4,16 +4,16 @@ import "package:x_containers/x_containers.dart";
 
 import "../../globals.dart";
 import "../contact/contact_title.dart";
-import "person_overview_list.dart";
+import "people_overview_list.dart";
 
 ///
-class PersonOverviewPage extends StatelessWidget {
+class PersonOverviewDesktop extends StatelessWidget {
   // VARIABLES =================================================================
 
   // CONSTRUCTOR ===============================================================
 
-  /// Returns a [PersonOverview] instance.
-  const PersonOverviewPage({
+  /// Returns a [PersonOverviewList] instance.
+  const PersonOverviewDesktop({
     super.key,
   });
 
@@ -36,12 +36,12 @@ class PersonOverviewPage extends StatelessWidget {
               XLayout.verticalL,
 
               // FORM ----------------------------------------------------------------
-              PersonOverview(
+              PersonOverviewList(
                 title: "people_recommenders".tr,
                 persons: app.medias.recommenders,
               ),
               XLayout.verticalM,
-              PersonOverview(
+              PersonOverviewList(
                 title: "people_recommendeds".tr,
                 persons: app.medias.recommendeds,
               ),

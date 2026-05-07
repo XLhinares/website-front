@@ -1,8 +1,10 @@
 import "package:flutter/material.dart";
 import "package:scroll_to_index/scroll_to_index.dart";
+import "package:x_containers/x_containers.dart";
 
 import "../../globals.dart";
 import "../../widgets/body/tab.dart";
+import "../../widgets/interactables/button_menu.dart";
 import "../../widgets/layout/scaffold_fit.dart";
 import "../meta/if_app_is_ready.dart";
 import "drawer.dart";
@@ -10,7 +12,6 @@ import "main_people.dart";
 import "main_home.dart";
 import "main_projects.dart";
 import "main_settings.dart";
-import "overlay.dart";
 
 /// The app body as it should
 class MobilePageHome extends StatelessWidget {
@@ -27,7 +28,13 @@ class MobilePageHome extends StatelessWidget {
 
     return ScaffoldFit(
       drawer: CustomDrawer(),
-      overlay: MobileOverlay(),
+      overlay: Positioned(
+        right: XLayout.paddingM,
+        top: XLayout.paddingM,
+        height: XLayout.paddingL * 1.5,
+        width: XLayout.paddingL * 1.5,
+        child: ButtonMenu(),
+      ),
       frameRatio: frameRatioMobile,
       body: IfAppIsReady(
         child: ListView.builder(

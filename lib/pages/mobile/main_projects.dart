@@ -3,9 +3,10 @@ import "package:get/get.dart";
 
 import "../../classes/dataclass/app_route.dart";
 import "../../globals.dart";
+import "../../utils/extensions.dart";
 import "../../widgets/body/mobile_tab.dart";
 import "../../widgets/body/tab.dart";
-import "../../widgets/medias/overview_list_excerpt.dart";
+import "../../widgets/medias/overview_list.dart";
 
 /// The "project" tab adapted for mobile.
 class MobileMainProjects extends RouteTab {
@@ -29,8 +30,10 @@ class MobileMainProjects extends RouteTab {
       route: route,
       child: GetBuilder(
           init: app.medias,
-          builder: (context) {
-            return MediaListViewExcerpt(
+          tag: "home_project_mobile",
+          builder: (_) {
+            dlog("RRRRRRRRRRRRRRRRRRRRR");
+            return MediaListView(
               medias: app.medias.projects,
               onTapMedia: (media) {
                 router.goTo(AppRoute.PAGE_PROJECTS);

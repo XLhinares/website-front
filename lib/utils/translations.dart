@@ -39,6 +39,8 @@ class CustomTranslations extends Translations {
       "projects_title": "Projects",
       "projects_description":
           "A list of projects demonstrating various skills.",
+      "projects_description_mobile":
+          "A list of projects demonstrating various skills.",
       "display_more": "Display more...",
       "no_project_selected_title": "No project is currently selected.",
       "no_project_selected_content":
@@ -58,6 +60,8 @@ class CustomTranslations extends Translations {
       "people_title": "People",
       "people_description":
           "This tab is for introducing some people who either think I am a cool enough person to write me a recommandation letter, or whom I think are cool and might interest you! Of course, if you want to judge for yourself, or contact me with any inquiry, feel free to \\route{/contact}{contact me directly} :)",
+      "people_description_mobile":
+          "You can contact me via the \\route{/contact}{contact form}, or take a break and have a look at these other cool people :)",
       "people_recommenders": "They recommend me:",
       "people_recommendeds": "I recommend them:",
       "people_card_your_name_here": "Want to be the next person on this list?",
@@ -86,7 +90,9 @@ class CustomTranslations extends Translations {
 
       "settings_title": "Settings",
       "settings_description":
-          "Here you can configure the website to match your preferences.",
+          "Here, you can configure the website to match your preferences.",
+      "settings_description_mobile":
+          "Here, you can configure the website to match your preferences.",
       // PREFERENCES
       "settings_preferences": "Preferences",
       "settings_theme_selection": "Theme selection",
@@ -201,6 +207,8 @@ class CustomTranslations extends Translations {
       "projects_title": "Projets",
       "projects_description":
           "Une liste de projets illustrant différentes compétences.",
+      "projects_description_mobile":
+          "Une liste de projets illustrant différentes compétences.",
       "display_more": "Afficher plus...",
       "no_project_selected_title":
           "Aucun projet n'est sélectionné pour le moment.",
@@ -220,6 +228,9 @@ class CustomTranslations extends Translations {
       "people_title": "Personnes",
       "people_description":
           "Dans cet onglet, je présente des gens qui, soit pensent que je vaux le coup d'écrire une lettre de recommandation, soit sont selon moi susceptible de vous intéresser! Bien sûr, si vous souhaitez juger par vous même, ou me contacter à n'importe quel sujet, vous pouvez le faire via le \\route{/contact}{formulaire de contact} :)",
+
+      "people_description_mobile":
+          "Vous pouvez me contacter via le \\route{/contact}{formulaire de contact}, ou prendre une pause et aller voir ces autres individus notables :)",
       "people_recommenders": "Ils me recommandent:",
       "people_recommendeds": "Je les recommande:",
       "people_card_your_name_here": "[votre nom ici]",
@@ -248,6 +259,8 @@ class CustomTranslations extends Translations {
 
       "settings_title": "Paramètres",
       "settings_description":
+          "Dans cet onglet, vous pouvez configuer le site pour correspondre plus précisément à vos préférences.",
+      "settings_description_mobile":
           "Dans cet onglet, vous pouvez configuer le site pour correspondre plus précisément à vos préférences.",
       // PREFERENCES
       "settings_preferences": "Préférences",

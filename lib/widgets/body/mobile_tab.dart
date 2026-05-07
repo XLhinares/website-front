@@ -45,7 +45,7 @@ class MobileTab extends StatelessWidget {
           ),
           XLayout.verticalM,
           XContainer(
-            child: AutoColorText("${route.name}_description".tr),
+            child: AutoColorText("${route.name}_description_mobile".tr),
           ),
           XLayout.verticalL,
           Expanded(child: child),

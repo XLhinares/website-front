@@ -9,7 +9,7 @@ import "../../utils/extensions.dart";
 import "../medias/preview_tile.dart";
 
 ///
-class PersonOverview extends StatelessWidget {
+class PersonOverviewList extends StatelessWidget {
   // VARIABLES =================================================================
 
   /// A controller for the listview
@@ -25,8 +25,8 @@ class PersonOverview extends StatelessWidget {
 
   // CONSTRUCTOR ===============================================================
 
-  /// Returns a [PersonOverview] instance.
-  PersonOverview({
+  /// Returns a [PersonOverviewList] instance.
+  PersonOverviewList({
     super.key,
     required this.title,
     required this.persons,

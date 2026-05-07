@@ -6,7 +6,7 @@ import "../../globals.dart";
 import "../../widgets/medias/desktop_header.dart";
 import "../../widgets/medias/media_content.dart";
 import "../../widgets/medias/media_focus.dart";
-import "../../widgets/people/person_overview_page.dart";
+import "../../widgets/people/people_overview_desktop.dart";
 
 /// The content of the body in the "Projects" mode.
 class DesktopMainPeople extends StatelessWidget {
@@ -26,7 +26,7 @@ class DesktopMainPeople extends StatelessWidget {
       builder: (context) => AnimatedSwitcher(
         duration: animDurationShort,
         child: router.person == null
-            ? PersonOverviewPage()
+            ? PersonOverviewDesktop()
             : MediaFocus(
                 media: app.medias.fetchByID(router.person!),
                 headerBuilder: (media, scrollController) => MediaDesktopHeader(

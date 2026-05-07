@@ -32,8 +32,10 @@ class MobileMainProjects extends RouteTab {
           builder: (context) {
             return MediaListViewExcerpt(
               medias: app.medias.projects,
-              onTapMedia: (media) =>
-                  router.goTo(AppRoute.parsePageProject(media.id)),
+              onTapMedia: (media) {
+                router.goTo(AppRoute.PAGE_PROJECTS);
+                router.selectProject(media.id);
+              },
               onTapSeeMore: () => router.goTo(AppRoute.PAGE_PROJECTS),
             );
           }),

@@ -6,7 +6,7 @@ import "app/router.dart";
 import "utils/translations.dart";
 
 /// The version of the app.
-const String versionNumber = "v3.4.0";
+const String versionNumber = "v3.4.1";
 
 // SERVICES ====================================================================
 

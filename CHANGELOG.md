@@ -1,3 +1,9 @@
+## 3.4.1
+
+    - project: clicking on preview tile on mobile now opens the focus view directly
+- script: make new version script fail when code has info warnings
+- documentation: add missing variable documentation
+
 ## 3.4.0
 
 - people: turn contact tab into full-fledged people tab

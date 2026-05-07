@@ -8,6 +8,9 @@ class MediaType {
   /// The unique [MediaType.project].
   static const MediaType project = MediaType._internal("project");
 
+  /// The unique [MediaType.person].
+  static const MediaType person = MediaType._internal("person");
+
   /// The unique [MediaType.other].
   static const MediaType other = MediaType._internal("other");
 
@@ -15,6 +18,7 @@ class MediaType {
   static const values = [
     blog,
     project,
+    person,
     other,
   ];
 
@@ -34,6 +38,8 @@ class MediaType {
         return MediaType.blog;
       case "project":
         return MediaType.project;
+      case "person":
+        return MediaType.person;
       default:
         return MediaType.other;
     }

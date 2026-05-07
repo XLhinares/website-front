@@ -19,8 +19,11 @@ class MediaPreviewTile extends StatelessWidget {
   /// The media being previewed.
   final Media media;
 
+  /// An optional horizontal extent.
+  final double? width;
+
   /// The behavior when the box is tapped.
-  final void Function()? onTap;
+  final void Function(Media media)? onTap;
 
   // CONSTRUCTOR ===============================================================
 
@@ -28,6 +31,7 @@ class MediaPreviewTile extends StatelessWidget {
   const MediaPreviewTile({
     super.key,
     required this.media,
+    this.width,
     this.onTap,
   });
 
@@ -36,9 +40,9 @@ class MediaPreviewTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return XButton(
-      height: Get.height * 0.25,
+      width: width,
       padding: EdgeInsets.zero,
-      onTap: onTap,
+      onTap: () => onTap?.call(media),
       child: ClipRRect(
         clipBehavior: Clip.hardEdge,
         borderRadius: XLayout.brcXS,

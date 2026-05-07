@@ -4,12 +4,14 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
+import "../../globals.dart";
 import "../../pages/legal/cookie_policy.dart";
 import "../../pages/legal/legal_mentions.dart";
 import "../../pages/legal/privacy_policy.dart";
+import "../../pages/page_contact.dart";
 import "../../pages/responsive_home.dart";
+import "../../pages/responsive_people.dart";
 import "../../pages/responsive_projects.dart";
-import "../../globals.dart";
 
 /// A custom route data-class.
 class AppRoute {
@@ -38,19 +40,29 @@ class AppRoute {
   /// Route to the root tab of the app.
   static final ROOT = AppRoute("/", builder: () => const ResponsiveHome());
 
+  /// The root of the routes that are part of the main page.
+  static const String ROOT_MAIN = "main";
+
+  /// The root of the routes that are part of the "Projects" page.
+  static const String ROOT_PROJECTS = "projects";
+
+  /// The root of the routes that are part of the "People" page.
+  static const String ROOT_PEOPLE = "people";
+
+  /// The root of the routes that are part of the "Contact" page.
+  static const String ROOT_CONTACT = "contact";
+
+  /// The root of the routes that are part of the "Legal" pages.
+  static const String ROOT_LEGAL = "legal";
+
+  /// The root of the routes that not part of any page.
+  static const String ROOT_OTHER = "other";
+
   /// Route to the home tab of the app.
   static final MAIN_HOME = AppRoute(
     "/$ROOT_MAIN",
     name: "home",
     icon: Icons.home,
-    builder: () => ResponsiveHome(),
-  );
-
-  /// Route to the blog tab of the app.
-  static final MAIN_BLOGS = AppRoute(
-    "/$ROOT_MAIN/blogs",
-    name: "blogs",
-    icon: Icons.dashboard,
     builder: () => ResponsiveHome(),
   );
 
@@ -63,10 +75,10 @@ class AppRoute {
   );
 
   /// Route to the contacts tab of the app.
-  static final MAIN_CONTACT = AppRoute(
-    "/$ROOT_MAIN/contact",
-    name: "contact",
-    icon: Icons.contact_mail,
+  static final MAIN_PEOPLE = AppRoute(
+    "/$ROOT_MAIN/people",
+    name: "people",
+    icon: Icons.people,
     builder: () => ResponsiveHome(),
   );
 
@@ -78,12 +90,28 @@ class AppRoute {
     builder: () => ResponsiveHome(),
   );
 
-  /// Route to the projects tab of the app.
+  /// Route to the projects page of the app.
   static final PAGE_PROJECTS = AppRoute(
     "/$ROOT_PROJECTS",
     name: "projects",
     icon: Icons.gesture,
     builder: () => ResponsiveProject(),
+  );
+
+  /// Route to the people page of the app.
+  static final PAGE_PEOPLE = AppRoute(
+    "/$ROOT_PEOPLE",
+    name: "people",
+    icon: Icons.gesture,
+    builder: () => PagePeople(),
+  );
+
+  /// Route to the contact page of the app.
+  static final PAGE_CONTACT = AppRoute(
+    "/$ROOT_CONTACT",
+    name: "contact",
+    icon: Icons.gesture,
+    builder: () => PageContact(),
   );
 
   /// Route to the cookie legal page of the app.
@@ -121,29 +149,18 @@ class AppRoute {
     ),
   );
 
-  /// The root of the routes that are part of the main page.
-  static const String ROOT_MAIN = "main";
-
-  /// The root of the routes that are part of the "Projects" page.
-  static const String ROOT_PROJECTS = "projects";
-
-  /// The root of the routes that are part of the "Legal" pages.
-  static const String ROOT_LEGAL = "legal";
-
-  /// The root of the routes that not part of any page.
-  static const String ROOT_OTHER = "other";
-
   /// All the handled [CustomRoutes].
   ///
   /// These values are used to make the [Get] package create the routes.
   static final values = [
     AppRoute.ROOT,
     AppRoute.MAIN_HOME,
-    AppRoute.MAIN_BLOGS,
     AppRoute.MAIN_PROJECTS,
-    AppRoute.MAIN_CONTACT,
+    AppRoute.MAIN_PEOPLE,
     AppRoute.MAIN_SETTINGS,
     AppRoute.PAGE_PROJECTS,
+    AppRoute.PAGE_PEOPLE,
+    AppRoute.PAGE_CONTACT,
     AppRoute.LEGAL_COOKIES,
     AppRoute.LEGAL_PRIVACY,
     AppRoute.LEGAL_MENTIONS,
@@ -153,9 +170,8 @@ class AppRoute {
   /// The routes belonging to the main page of the website.
   static final mainRoutes = [
     MAIN_HOME,
-    // MAIN_BLOGS,
     MAIN_PROJECTS,
-    MAIN_CONTACT,
+    MAIN_PEOPLE,
     MAIN_SETTINGS,
   ];
 
@@ -177,9 +193,10 @@ class AppRoute {
   bool get isPartOfMain => root == ROOT_MAIN;
 
   /// Whether this route is part of the projects page.
-  ///
-  /// !WARNING! Do not confuse with [AppRoute.hasProject]
   bool get isPartOfProjects => root == ROOT_PROJECTS;
+
+  /// Whether this route is part of the people page.
+  bool get isPartOfPeople => root == ROOT_PEOPLE;
 
   /// An icon matching the mode.
   IconData get icon => _icon ?? Icons.not_interested;
@@ -192,9 +209,6 @@ class AppRoute {
         page: builder ?? () => const ResponsiveHome(),
       );
 
-  /// Whether the route is used for a project.
-  bool get hasProject => parts.contains("projects");
-
   /// Returns the ID of the project in the route.
   ///
   /// Returns [null] if there are no projects in the route.
@@ -202,19 +216,6 @@ class AppRoute {
     final int indexBefore = parts.indexOf("projects");
     if (indexBefore == -1) return null;
     if (parts.length == indexBefore + 1) return null;
-    return int.tryParse(parts[indexBefore + 1]);
-  }
-
-  /// Whether the route is used for a blog.
-  bool get isBlog => parts.contains("blogs");
-
-  /// Returns the ID of the blog in the route.
-  ///
-  /// Returns [null] if there are no blogs in the route.
-  int? get blogID {
-    final int indexBefore = parts.indexOf("blogs");
-    if (indexBefore == -1) return null;
-    if (parts.length == indexBefore) return null;
     return int.tryParse(parts[indexBefore + 1]);
   }
 
@@ -274,23 +275,10 @@ class AppRoute {
           ),
         );
 
-  /// Returns a [AppRoute] linking to the given blog.
-  factory AppRoute.fromBlog(int? id) => id == null
-      ? AppRoute.MAIN_BLOGS
-      : AppRoute(
-          "/blogs/$id",
-          // builder: () => ResponsiveBlog(
-          //   postInit: (_) {
-          //     router.push(path: "/blogs/$id");
-          //     router.selectMedia(id);
-          //   },
-          // ),
-        );
-
   // METHODS ===================================================================
 
   /// Whether this route shares its root with the route given as argument.
-  bool shareRootWith(AppRoute other) => root == other.root;
+  bool sharesRootWith(AppRoute other) => root == other.root;
 
   @override
   String toString() => path;

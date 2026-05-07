@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../classes/dataclass/route.dart";
+import "../../classes/dataclass/app_route.dart";
 import "../../globals.dart";
 import "../../utils/extensions.dart";
 import "menu_tile.dart";

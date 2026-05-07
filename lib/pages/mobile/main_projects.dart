@@ -1,9 +1,11 @@
 import "package:flutter/material.dart";
+import "package:get/get.dart";
 
-import "../../classes/dataclass/route.dart";
+import "../../classes/dataclass/app_route.dart";
+import "../../globals.dart";
 import "../../widgets/body/mobile_tab.dart";
 import "../../widgets/body/tab.dart";
-import "../../widgets/projects/overview_list.dart";
+import "../../widgets/medias/overview_list_excerpt.dart";
 
 /// The "project" tab adapted for mobile.
 class MobileMainProjects extends RouteTab {
@@ -25,11 +27,16 @@ class MobileMainProjects extends RouteTab {
   Widget build(BuildContext context) {
     return MobileTab(
       route: route,
-      child: LayoutBuilder(
-        builder: (context, constraints) => ProjectsListView(
-          maxHeight: constraints.maxHeight,
-        ),
-      ),
+      child: GetBuilder(
+          init: app.medias,
+          builder: (context) {
+            return MediaListViewExcerpt(
+              medias: app.medias.projects,
+              onTapMedia: (media) =>
+                  router.goTo(AppRoute.parsePageProject(media.id)),
+              onTapSeeMore: () => router.goTo(AppRoute.PAGE_PROJECTS),
+            );
+          }),
     );
   }
 }

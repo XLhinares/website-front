@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 
 import "../../classes/medias/media.dart";
+import "../../classes/medias/media_type.dart";
 import "../../utils/extensions.dart";
 import "button.dart";
 
@@ -17,6 +18,8 @@ class MediaButtonStatus extends StatelessWidget {
   /// Whether the button should be replaced by an empty `SizedBox` when the website is null.
   final bool hideIfOwner;
 
+  final bool hideIfNotProject;
+
   /// Whether to show only the button icon (and NOT the button box)
   final bool iconOnly;
 
@@ -31,6 +34,7 @@ class MediaButtonStatus extends StatelessWidget {
     required this.media,
     this.margin,
     this.hideIfOwner = true,
+    this.hideIfNotProject = true,
     this.iconOnly = false,
   });
 
@@ -42,8 +46,10 @@ class MediaButtonStatus extends StatelessWidget {
         Icons.group,
         color: iconOnly ? context.colors.secondary : context.colors.onSecondary,
       ),
-      tooltipMessage: "project_status_${media.status}_tooltip".tr,
-      hideCondition: () => hideIfOwner && media.isOwner,
+      tooltipMessage: "${media.type.name}_status_${media.status}_tooltip".tr,
+      hideCondition: () =>
+          hideIfOwner && media.isOwner ||
+          hideIfNotProject && media.type != MediaType.project,
       iconOnly: iconOnly,
       margin: margin,
     );

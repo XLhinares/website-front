@@ -17,14 +17,23 @@ class CustomTranslations extends Translations {
       "tab_home": "Home",
       "tab_projects": "Projects",
       "tab_blogs": "Blogs",
-      "tab_contact": "Contact",
+      "tab_people": "People",
       "tab_settings": "Settings",
       "tab_splash": "Loading the site...",
       "tab_home_description": "What this is about.",
       "tab_blogs_description": "My coding stories.",
       "tab_projects_description": "My coding projects.",
-      "tab_contact_description": "How to contact me.",
+      "tab_people_description": "Contacts & recommandations",
       "tab_settings_description": "Customize the site.",
+
+      // MEDIA ----------------------------------------------------------------
+      "media_no_summary": "No summary given.",
+      "media_website_button_visit": "website",
+      "project_website_button_tooltip": "Go to the project's website.",
+      "project_github_button_tooltip": "Go to the project's code repository.",
+      "project_status_contributor_tooltip": "Contributor",
+      "person_website_button_tooltip": "Visit their website.",
+      "person_github_button_tooltip": "Visit their github page.",
 
       // PROJECTS --------------------------------------------------------------
       "projects_title": "Projects",
@@ -34,11 +43,7 @@ class CustomTranslations extends Translations {
       "no_project_selected_title": "No project is currently selected.",
       "no_project_selected_content":
           "You can find out about a project by clicking on it in the left menu or go back to the main page by clicking on the Xeppelin logo.",
-      "media_no_summary": "No summary given.",
-      "media_website_button_visit": "website",
-      "project_website_button_tooltip": "Go to the project's website.",
-      "project_github_button_tooltip": "Go to the project's code repository.",
-      "project_status_contributor_tooltip": "Contributor",
+
       "project_no_selected_default":
           "Kinda empty here...\nClick on a project to start :)",
       "project_no_selected_count_low":
@@ -47,11 +52,22 @@ class CustomTranslations extends Translations {
           "Have you checked the projects with a website icon?",
       "project_no_selected_count_high": "Do I even have that many projects?",
       "project_no_selected_count_extreme":
-          "Just how many times did you check my projects??\n\nFeel free to use the contact form if you wanna reach out ;)",
+          "Just how many times did you check my projects??\n\nFeel free to use the \\route{/contact}{contact form} if you wanna reach out ;)",
+
+      // PEOPLE ----------------------------------------------------------------
+      "people_title": "People",
+      "people_description":
+          "This tab is for introducing some people who either think I am a cool enough person to write me a recommandation letter, or whom I think are cool and might interest you! Of course, if you want to judge for yourself, or contact me with any inquiry, feel free to \\route{/contact}{contact me directly} :)",
+      "people_recommenders": "They recommend me:",
+      "people_recommendeds": "I recommend them:",
+      "people_card_your_name_here": "Want to be the next person on this list?",
+      "no_person_selected":
+          "Click on a person to display more information about them.\nIf you want more information about me, you can \\route{/contact}{contact me directly}.",
 
       // CONTACT ---------------------------------------------------------------
-      "contact_title": "Contact form",
-      "contact_description":
+      "contact_me": "Contact me!",
+      "contact_form_title": "Contact form",
+      "contact_form_description":
           "If you have a project or an idea, an inquiry, or just want my resume, feel free to contact me via the form below!",
       "contact_name": "Name",
       "contact_email": "E-mail address",
@@ -163,14 +179,23 @@ class CustomTranslations extends Translations {
       "tab_home": "Accueil",
       "tab_projects": "Projets",
       "tab_blogs": "Blogs",
-      "tab_contact": "Contact",
+      "tab_people": "Personnes",
       "tab_settings": "Paramètres",
       "tab_splash": "Site en cours de chargement...",
       "tab_home_description": "Qui je suis.",
       "tab_blogs_description": "Mes histoires de code.",
       "tab_projects_description": "Mes projets.",
-      "tab_contact_description": "Comment me contacter.",
+      "tab_people_description": "Contacts & recommandations.",
       "tab_settings_description": "Configurer le site.",
+
+      // MEDIA ----------------------------------------------------------------
+      "media_no_summary": "Pas de description.",
+      "media_website_button_visit": "site web",
+      "project_website_button_tooltip": "Aller sur le site du projet.",
+      "project_status_contributor_tooltip": "Contributeur",
+      "project_github_button_tooltip": "Aller sur le github du projet.",
+      "person_website_button_tooltip": "Aller sur son site.",
+      "person_github_button_tooltip": "Aller sur sa page GitHub.",
 
       // PROJECTS --------------------------------------------------------------
       "projects_title": "Projets",
@@ -181,11 +206,6 @@ class CustomTranslations extends Translations {
           "Aucun projet n'est sélectionné pour le moment.",
       "no_project_selected_content":
           "Vous pouvez découvrir les détails d'un projet en cliquant dessus dans le menu de gauche ou revenir au menu principal en cliquant sur le logo \"Xeppelin\".",
-      "media_no_summary": "Pas de description.",
-      "media_website_button_visit": "site web",
-      "project_website_button_tooltip": "Aller sur le site du projet.",
-      "project_status_contributor_tooltip": "Contributeur",
-      "project_github_button_tooltip": "Aller sur le github du projet.",
       "project_no_selected_default":
           "C'est bien vide ici...\nClique sur un projet pour commencer :)",
       "project_no_selected_count_low":
@@ -196,9 +216,20 @@ class CustomTranslations extends Translations {
       "project_no_selected_count_extreme":
           "Merci infinement pour le temps que tu consacres à mes projets!!\n\nSi tu le souhaites, il est possible de prendre contact via le formulaire sur la page principale ;)",
 
+      // PEOPLE ----------------------------------------------------------------
+      "people_title": "Personnes",
+      "people_description":
+          "Dans cet onglet, je présente des gens qui, soit pensent que je vaux le coup d'écrire une lettre de recommandation, soit sont selon moi susceptible de vous intéresser! Bien sûr, si vous souhaitez juger par vous même, ou me contacter à n'importe quel sujet, vous pouvez le faire via le \\route{/contact}{formulaire de contact} :)",
+      "people_recommenders": "Ils me recommandent:",
+      "people_recommendeds": "Je les recommande:",
+      "people_card_your_name_here": "[votre nom ici]",
+      "no_person_selected":
+          "Cliquez sur une personne pour afficher plus de détails à leur propos.\nSi vous souhaitez plutôt plus de détails sur moi, vous pouvez me \\route{/contact}{me contacter directement}.",
+
       // CONTACT ---------------------------------------------------------------
-      "contact_title": "Formulaire de contact",
-      "contact_description":
+      "contact_me": "Me contacter!",
+      "contact_form_title": "Formulaire de contact",
+      "contact_form_description":
           "Si vous avez un projet ou une idée, une question, ou que vous voulez simplement voir mon CV, n'hésitez pas à prendre contact avec moi via le formulaire ci-dessous.",
       "contact_name": "Nom",
       "contact_email": "Adresse mail",

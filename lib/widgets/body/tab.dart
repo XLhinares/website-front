@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 
-import "../../classes/dataclass/route.dart";
+import "../../classes/dataclass/app_route.dart";
 
 /// An common mother-class for all tabs in the app.
 ///

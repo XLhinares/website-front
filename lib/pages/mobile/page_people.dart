@@ -9,23 +9,22 @@ import "../../widgets/layout/scaffold_fit.dart";
 import "../../widgets/medias/media_content.dart";
 import "../../widgets/medias/media_focus.dart";
 import "../../widgets/medias/mobile_header.dart";
-
 import "../../widgets/medias/overview_list.dart";
 import "../meta/if_app_is_ready.dart";
 import "drawer.dart";
 import "overlay.dart";
 
-/// The full "project" tab adapted for mobile.
-class MobilePageProjects extends RouteTab {
+/// The full "people" tab adapted for mobile.
+class MobilePagePeople extends RouteTab {
   // VARIABLES =================================================================
 
   @override
-  final AppRoute route = AppRoute.PAGE_PROJECTS;
+  final AppRoute route = AppRoute.PAGE_PEOPLE;
 
   // CONSTRUCTOR ===============================================================
 
-  /// Returns a [MobilePageProjects] matching the given parameters.
-  MobilePageProjects({super.key});
+  /// Returns a [MobilePagePeople] matching the given parameters.
+  MobilePagePeople({super.key});
 
   // BUILD =====================================================================
 
@@ -42,13 +41,13 @@ class MobilePageProjects extends RouteTab {
           child: GetBuilder(
               init: app.medias,
               builder: (_) {
-                return router.project == null
+                return router.person == null
                     ? MediaListView(
-                        medias: app.medias.projects,
-                        onTapMedia: (media) => router.selectProject(media.id),
+                        medias: app.medias.persons,
+                        onTapMedia: (media) => router.selectPerson(media.id),
                       )
                     : MediaFocus(
-                        media: app.medias.fetchByID(router.project!),
+                        media: app.medias.fetchByID(router.person!),
                         headerBuilder: (media, scrollController) =>
                             MediaMobileHeader(
                           media: media,

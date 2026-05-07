@@ -29,7 +29,7 @@ class MediaButtonGoBack extends StatelessWidget {
         onTap: () {
           final type = this.type;
           if (type == MediaType.project) return router.selectProject(null);
-          if (type == MediaType.blog) return router.selectBlog(null);
+          if (type == MediaType.person) return router.selectPerson(null);
           return router.goBack(soft: true);
         },
         child: Row(

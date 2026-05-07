@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../classes/dataclass/route.dart";
+import "../../classes/dataclass/app_route.dart";
 import "../../widgets/body/tab.dart";
 import "../../widgets/home/mobile_home_description.dart";
 import "../../widgets/images/xeppelin_logo.dart";

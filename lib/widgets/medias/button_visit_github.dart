@@ -43,7 +43,7 @@ class MediaButtonVisitGithub extends StatelessWidget {
         FontAwesomeIcons.github,
         color: iconOnly ? context.colors.secondary : context.colors.onSecondary,
       ),
-      tooltipMessage: "project_github_button_tooltip".tr,
+      tooltipMessage: "${media.type.name}_github_button_tooltip".tr,
       hideCondition: () => hideIfNoGithub && !media.hasGithub,
       iconOnly: iconOnly,
       margin: margin,

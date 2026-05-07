@@ -77,6 +77,15 @@ extension ExtTextStyle on TextStyle {
   TextStyle get asHint => withAlpha(150);
 }
 
+/// An extension on [Color] to add the following features:
+/// - standardized [asHint] transparency.
+extension ExtColor on Color {
+  /// This color but slightly transparent.
+  ///
+  /// Used to uniformize dimming throughout the app.
+  Color get asHint => withAlpha(150);
+}
+
 // DATETIME ====================================================================
 
 /// An extension to help print dates legibly.

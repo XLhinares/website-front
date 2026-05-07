@@ -2,14 +2,16 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
+import "../text/auto_color_text.dart";
+
 /// The title widget for the contact form.
-class ContactTitle extends StatelessWidget {
+class PeopleTitle extends StatelessWidget {
   // VARIABLES =================================================================
 
   // CONSTRUCTOR ===============================================================
 
-  /// Returns an instance of [ContactTitle] matching the given parameters.
-  const ContactTitle({
+  /// Returns an instance of [PeopleTitle] matching the given parameters.
+  const PeopleTitle({
     super.key,
   });
 
@@ -20,11 +22,11 @@ class ContactTitle extends StatelessWidget {
     return XCard(
       padding: EdgeInsets.all(XLayout.paddingM),
       title: Text(
-        "contact_title".tr,
+        "people_title".tr,
         style: context.textTheme.titleMedium,
       ),
-      content: Text(
-        "contact_description".tr,
+      content: AutoColorText(
+        "people_description".tr,
         style: context.textTheme.bodyMedium,
       ),
     );

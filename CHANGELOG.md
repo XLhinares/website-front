@@ -1,6 +1,14 @@
+## 3.4.2
+
+- fix: removed unused import
+- fix: removed infinite loop and debug log
+- mobile: reworked the menu button on the home page
+- mobile: replaced the overlay with a pseudo appbar on non-home pages media: improved the [MediaListView] to be more all-purpose dependencies: run `flutter pub upgrade`
+- appearance: changed some widget colors to fit mixed themes
+
 ## 3.4.1
 
-    - project: clicking on preview tile on mobile now opens the focus view directly
+- project: clicking on preview tile on mobile now opens the focus view directly
 - script: make new version script fail when code has info warnings
 - documentation: add missing variable documentation
 

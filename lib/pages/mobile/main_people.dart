@@ -52,6 +52,9 @@ class MobileMainPeople extends RouteTab {
                   child: Obx(
                     () => XButton.text(
                       "people_recommenders".tr,
+                      textStyle: _currentPage.value == 0
+                          ? context.bodyMediumOnSurface
+                          : context.textTheme.bodyMedium,
                       color: _currentPage.value == 0
                           ? context.colors.surface
                           : Colors.transparent,
@@ -63,6 +66,9 @@ class MobileMainPeople extends RouteTab {
                 Expanded(
                   child: Obx(() => XButton.text(
                         "people_recommendeds".tr,
+                        textStyle: _currentPage.value == 1
+                            ? context.bodyMediumOnSurface
+                            : context.textTheme.bodyMedium,
                         color: _currentPage.value == 1
                             ? context.colors.surface
                             : Colors.transparent,

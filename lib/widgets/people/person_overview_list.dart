@@ -79,7 +79,10 @@ class PersonOverview extends StatelessWidget {
                         curve: Curves.bounceIn),
                     color: context.colors.surface,
                     enableShadow: false,
-                    child: Icon(Icons.chevron_left),
+                    child: Icon(
+                      Icons.chevron_left,
+                      color: context.colors.onSurface,
+                    ),
                   ),
                 ),
                 XLayout.horizontalS,
@@ -94,7 +97,10 @@ class PersonOverview extends StatelessWidget {
                         curve: Curves.bounceIn),
                     color: context.colors.surface,
                     enableShadow: false,
-                    child: Icon(Icons.chevron_right),
+                    child: Icon(
+                      Icons.chevron_right,
+                      color: context.colors.onSurface,
+                    ),
                   ),
                 ),
               ],

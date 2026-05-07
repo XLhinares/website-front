@@ -3,8 +3,8 @@ import "package:scroll_to_index/scroll_to_index.dart";
 import "package:x_containers/x_containers.dart";
 
 import "../../globals.dart";
+import "../../utils/extensions.dart";
 import "../../widgets/body/tab.dart";
-import "../../widgets/interactables/button_menu.dart";
 import "../../widgets/layout/scaffold_fit.dart";
 import "../meta/if_app_is_ready.dart";
 import "drawer.dart";
@@ -33,7 +33,18 @@ class MobilePageHome extends StatelessWidget {
         top: XLayout.paddingM,
         height: XLayout.paddingL * 1.5,
         width: XLayout.paddingL * 1.5,
-        child: ButtonMenu(),
+        child: Builder(builder: (context) {
+          return XButton(
+            color: Colors.transparent,
+            enableShadow: false,
+            onTap: () => Scaffold.of(context).openDrawer(),
+            child: Icon(
+              Icons.menu_rounded,
+              color: context.colors.onSurface,
+              size: XLayout.paddingL,
+            ),
+          );
+        }),
       ),
       frameRatio: frameRatioMobile,
       body: IfAppIsReady(

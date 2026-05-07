@@ -15,9 +15,14 @@ class MediaButtonStatus extends StatelessWidget {
   /// The matching media.
   final Media media;
 
-  /// Whether the button should be replaced by an empty `SizedBox` when the website is null.
+  /// Whether the button should be invisible when I'm the owner of the media.
+  ///
+  /// The goal is to avoid cluttering as I am owner of most projects.
   final bool hideIfOwner;
 
+  /// Whether the button should be invisible if the media is not a project.
+  ///
+  /// The goal is to avoid cluttering as every person on the people page would end up having a button.
   final bool hideIfNotProject;
 
   /// Whether to show only the button icon (and NOT the button box)

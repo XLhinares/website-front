@@ -15,6 +15,7 @@ class MediaListViewExcerpt extends StatefulWidget {
   /// The list of medias being displayed.
   final List<Media> medias;
 
+  /// Behavior when a media tile is tapped.
   final void Function(Media media) onTapMedia;
 
   /// Optional behavior when the "see more" button is clicked.

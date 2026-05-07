@@ -5,6 +5,7 @@ import "package:x_containers/x_containers.dart";
 import "../../classes/dataclass/app_route.dart";
 import "../../globals.dart";
 import "../../pages/mobile/drawer.dart";
+import "../../utils/extensions.dart";
 
 /// An item for the [CustomDrawer], it represents an [AppMode] that the user can access.
 ///
@@ -64,6 +65,7 @@ class DrawerItem extends StatelessWidget {
               }),
           XButton.text(
             route.name.tr.capitalizeFirst!,
+            textStyle: context.bodyMediumOnSurface,
             margin: XLayout.edgeInsetsAllXS,
             width: maxWidth - minWidth - XLayout.paddingS,
             color: context.theme.colorScheme.surface,

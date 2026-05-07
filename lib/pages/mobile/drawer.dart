@@ -4,6 +4,7 @@ import "package:x_containers/x_containers.dart";
 
 import "../../classes/dataclass/app_route.dart";
 import "../../globals.dart";
+import "../../utils/extensions.dart";
 import "../../widgets/animations/rotating_icon.dart";
 import "../../widgets/body/drawer_item.dart";
 import "../../widgets/images/xeppelin_logo.dart";
@@ -72,17 +73,25 @@ class CustomDrawer extends StatelessWidget {
                       child: ListView(
                         shrinkWrap: true,
                         children: [
-                          getItem(
-                            AppRoute.MAIN_HOME,
+                          DrawerItem(
+                            route: AppRoute.MAIN_HOME,
+                            minWidth: _minWidth,
+                            maxWidth: _maxWidth,
                           ),
-                          getItem(
-                            AppRoute.MAIN_PROJECTS,
+                          DrawerItem(
+                            route: AppRoute.MAIN_PROJECTS,
+                            minWidth: _minWidth,
+                            maxWidth: _maxWidth,
                           ),
-                          getItem(
-                            AppRoute.MAIN_PEOPLE,
+                          DrawerItem(
+                            route: AppRoute.MAIN_PEOPLE,
+                            minWidth: _minWidth,
+                            maxWidth: _maxWidth,
                           ),
-                          getItem(
-                            AppRoute.MAIN_SETTINGS,
+                          DrawerItem(
+                            route: AppRoute.MAIN_SETTINGS,
+                            minWidth: _minWidth,
+                            maxWidth: _maxWidth,
                           ),
                           XButton(
                             color: context.theme.colorScheme.surface,
@@ -96,8 +105,10 @@ class CustomDrawer extends StatelessWidget {
                               duration: animDurationShort,
                               step: 0.5,
                               alternateRotation: true,
-                              builder: (context) =>
-                                  const Icon(Icons.double_arrow_rounded),
+                              builder: (context) => Icon(
+                                Icons.double_arrow_rounded,
+                                color: context.colors.onSurface,
+                              ),
                             ),
                           )
                         ],
@@ -172,13 +183,4 @@ class CustomDrawer extends StatelessWidget {
       isMaximized.value = false;
     }
   }
-
-  // WIDGETS ===================================================================
-
-  /// Returns a [DrawerItem] matching the given mode.
-  Widget getItem(AppRoute route) => DrawerItem(
-        route: route,
-        minWidth: _minWidth,
-        maxWidth: _maxWidth,
-      );
 }

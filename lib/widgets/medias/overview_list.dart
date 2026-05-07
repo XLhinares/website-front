@@ -57,8 +57,10 @@ class _MediaListViewState extends State<MediaListView> {
         builder: (_) {
           _computeItemCountCallback();
           return widget.medias.isEmpty
-              ? CircularProgressIndicator(
-                  color: context.colors.secondary,
+              ? Center(
+                  child: CircularProgressIndicator(
+                    color: context.colors.secondary,
+                  ),
                 )
               : LayoutBuilder(builder: (context, constraints) {
                   maxHeight = constraints.maxHeight;

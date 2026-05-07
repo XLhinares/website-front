@@ -3,7 +3,6 @@ import "package:get/get.dart";
 
 import "../../classes/dataclass/app_route.dart";
 import "../../globals.dart";
-import "../../utils/extensions.dart";
 import "../../widgets/body/mobile_tab.dart";
 import "../../widgets/body/tab.dart";
 import "../../widgets/medias/overview_list.dart";

@@ -1,3 +1,13 @@
+## 3.4.0
+
+- people: turn contact tab into full-fledged people tab
+- router: renamed file to `router.dart` and made changes to fit the people tab and page
+- media: reworked menu and preview tiles
+- blog: entirely drop blog support
+- mobile: better mobile tab min height
+- translation: fix broken settings translations
+- script: improved new version script to allow partial use
+
 ## 3.3.2
 
 - mobile: set min viewport height and rework of the settings
@@ -65,7 +75,7 @@
 
 - :bug: Fixed bug where the xeppelin logo wasn't appearing in desktop [MenuTitle].
 - :bug: Fixed a bug where the media contents was rebuilded upon being loaded.
-- :bug: Fixed a bad 
+- :bug: Fixed a bad
 
 ## 3.1.0
 
@@ -87,7 +97,6 @@
 - :lipstick: Greatly improved the theming system and made corresponding changes.
 - :lipstick: Added new themes.
 - :lipstick: The Xeppelin logo can now be any color!
-
 
 - :bug: Fix UI error of main page.
 - :fire: Removed unused code (button overlay for settings)
@@ -136,7 +145,7 @@
 
 ## 2.3.1
 
-- :art: Added a [NoProjectSelected] widget to display on the desktop project page. 
+- :art: Added a [NoProjectSelected] widget to display on the desktop project page.
 - :bug: Fixed a bug where the contact form wasn't displayed on desktop.
 - :globe_with_meridians: Added missing translations.
 
@@ -150,7 +159,7 @@
 - :sparkles: New projects page on desktop.
 - :sparkles: Doubling clicking on the projects tab redirects to projects page.
 
-- :art: Made the router use a new [PageController] whenever reloading the main page to avoid errors. 
+- :art: Made the router use a new [PageController] whenever reloading the main page to avoid errors.
 
 - :recycle: Renamed many files with "main" if they belong to the main page, or "page" if they have their own page.
 
@@ -198,7 +207,7 @@
 - :construction_worker: Modified scripts to fit the new host.
 - :heavy_plus_sign: Upgraded the dependencies.
 - :bug: Solved the bug where a blog could not be focused/unfocused on mobile.
-- :bug: Text media content on mobile is now displayed as markdown. 
+- :bug: Text media content on mobile is now displayed as markdown.
 
 ## 2.0.0
 
@@ -220,7 +229,7 @@
 
 - :sparkles: Disabled the whitespace below a project focus when the project has no parts.
 - :sparkles: Improved `MediaMobileHeader`.
-- :sparkles: Added basic `MediaMobileParts`. 
+- :sparkles: Added basic `MediaMobileParts`.
 - :sparkles: Added a settings tab.
 
 - :recycle: Moved the theme settings to the settings tab.
@@ -323,32 +332,32 @@
 - :iphone: Better handling of mobile resolutions.
 - :construction_worker: Publishing scripts.
 
-## 1.2.2 
+## 1.2.2
 
 - :truck: Split widgets and components folders.
 - :globe_with_meridians: the mobile handling of the contact section.
 
-## 1.2.1 
+## 1.2.1
 
 - :art: the contact form behaves better on user input.
 - :art: the localisation to cover the existing content.
 - :truck: the linting used for imports.
 
-## 1.2.0 
+## 1.2.0
 
 - :art: The way text styles were handled.
 - :iphone: The responsivity of the app.
 - :sparkles: A display strategy for mobile devices.
 
-## 1.1.2 
+## 1.1.2
 
 - :sparkles: The base structure for API requests.
 
-## 1.1.1 
+## 1.1.1
 
 - :heavy_plus_sign: Migrated from `SharedPreferences` to `GetStorage`.
 
-## 1.1.0 
+## 1.1.0
 
 - :sparkles: A menu tile animation.
 - :sparkles: A content cover animation.

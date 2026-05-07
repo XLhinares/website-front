@@ -6,7 +6,7 @@ import "../../widgets/body/tab.dart";
 import "../../widgets/layout/scaffold_fit.dart";
 import "../meta/if_app_is_ready.dart";
 import "drawer.dart";
-import "main_contact.dart";
+import "main_people.dart";
 import "main_home.dart";
 import "main_projects.dart";
 import "main_settings.dart";
@@ -53,7 +53,7 @@ class MobilePageHome extends StatelessWidget {
         MobileMainHome(),
         // MobileBlogs(),
         MobileMainProjects(),
-        MobileMainContact(),
+        MobileMainPeople(),
         MobileMainSettings(),
       ];
 }

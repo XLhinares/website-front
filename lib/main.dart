@@ -1,9 +1,10 @@
 import "package:flutter/foundation.dart";
+import "package:flutter/gestures.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "classes/dataclass/route.dart";
+import "classes/dataclass/app_route.dart";
 import "globals.dart";
 import "pages/responsive_home.dart";
 import "utils/themes.dart";
@@ -51,12 +52,11 @@ void main() async {
     locale: Get.deviceLocale,
     fallbackLocale: const Locale("en"),
 
-    // Theme
-    // THEME =================================================================
+    // THEME
     theme: defaultTheme,
     themeMode: ThemeMode.light,
 
-    // Run
+    // ROUTES
     initialRoute: "/main",
     getPages: router.routes.map((e) => e.page).toList(),
 
@@ -77,7 +77,14 @@ void main() async {
         ),
       );
     },
-
     unknownRoute: AppRoute.NOT_FOUND.page,
+
+    // BEHAVIOR
+    scrollBehavior: const MaterialScrollBehavior().copyWith(
+      dragDevices: {
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+      },
+    ),
   ));
 }

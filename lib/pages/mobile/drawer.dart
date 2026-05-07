@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../classes/dataclass/route.dart";
+import "../../classes/dataclass/app_route.dart";
 import "../../globals.dart";
 import "../../widgets/animations/rotating_icon.dart";
 import "../../widgets/body/drawer_item.dart";
@@ -79,7 +79,7 @@ class CustomDrawer extends StatelessWidget {
                             AppRoute.MAIN_PROJECTS,
                           ),
                           getItem(
-                            AppRoute.MAIN_CONTACT,
+                            AppRoute.MAIN_PEOPLE,
                           ),
                           getItem(
                             AppRoute.MAIN_SETTINGS,

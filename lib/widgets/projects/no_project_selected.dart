@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 
 import "../../utils/extensions.dart";
+import "../text/auto_color_text.dart";
 
 /// A small piece of text to display when no project is selected on the desktop projects page.
 class NoProjectSelected extends StatelessWidget {
@@ -33,8 +34,9 @@ class NoProjectSelected extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return AutoColorText(
       _message.tr,
+      color: context.labelMediumOnSurface.asHint.color,
       style: context.labelMediumOnSurface.asHint,
     );
   }

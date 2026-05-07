@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:scroll_to_index/scroll_to_index.dart";
 
-import "../classes/dataclass/route.dart";
+import "../classes/dataclass/app_route.dart";
 import "../globals.dart";
 import "../utils/extensions.dart";
 
@@ -24,11 +24,11 @@ import "../utils/extensions.dart";
 class XRouter extends GetxController {
   // VARIABLES =================================================================
 
-  /// The name of the media currently selected by the app.
+  /// The name of the project currently selected by the app.
   late final Rx<int?> _selectedProject;
 
-  /// The name of the media currently selected by the app.
-  late final Rx<int?> _selectedBlog;
+  /// The name of the person currently selected by the app.
+  late final Rx<int?> _selectedPerson;
 
   /// A controller handling the main [ListView] on the main mobile and desktop pages.
   final AutoScrollController autoScrollController = AutoScrollController();
@@ -51,8 +51,8 @@ class XRouter extends GetxController {
   /// The currently selected project if it exists.
   int? get project => _selectedProject.value;
 
-  /// The currently selected project if it exists.
-  int? get blog => _selectedBlog.value;
+  /// The currently selected person if it exists.
+  int? get person => _selectedPerson.value;
 
   /// Whether the app is at home.
   bool get atHome => currentRoute == AppRoute.MAIN_HOME;
@@ -101,7 +101,7 @@ class XRouter extends GetxController {
   XRouter._internal() {
     // INITIAL VALUES ----------------------------------------------------------
     _selectedProject = Rx<int?>(null);
-    _selectedBlog = Rx<int?>(null);
+    _selectedPerson = Rx<int?>(null);
     _history = [AppRoute.MAIN_HOME];
 
     // TAB / PAGE VIEW
@@ -135,19 +135,15 @@ class XRouter extends GetxController {
     update();
   }
 
-  /// Select a blog to be displayed by the router.
-  void selectBlog(int? id) {
-    dlog("Selecting blog: $id");
-    // if (id == _selectedBlog.value) {
-    //   _selectedBlog.value = null;
-    // } else {
-    //   _selectedBlog.value = id;
-    //   if (currentRoute.isMainRoute) {
-    //     _history.add(AppRoute.previewFromBlog(id));
-    //   } else {
-    //     _history.add(AppRoute.pageFromBlog(id));
-    //   }
-    // }
+  /// Select a person to be displayed by the router.
+  void selectPerson(int? id) {
+    dlog("Selecting person: $id");
+
+    if (id == _selectedPerson.value) {
+      _selectedPerson.value = null;
+    } else {
+      _selectedPerson.value = id;
+    }
     update();
   }
 
@@ -167,7 +163,7 @@ class XRouter extends GetxController {
       _forceGoTo(newRoute);
 
       // SHARED ROOT -------------------------------------------------------------
-    } else if (newRoute.root == _history.last.root) {
+    } else if (newRoute.root == currentRoute.root) {
       // If going to a route on the same root, applies special behavior.
       // No history is recorded.
       _goWithinRoute(newRoute);
@@ -211,6 +207,8 @@ class XRouter extends GetxController {
       // WITHIN PROJECTS PAGE --------------------------------------------------
     } else if (newRoute.isPartOfProjects) {
       // No need for specific animation.
+    } else if (newRoute.isPartOfPeople) {
+      // No need for specific animation.
     }
 
     // Rewrite the history.
@@ -230,6 +228,15 @@ class XRouter extends GetxController {
       }
       return;
     }
+    // MAIN PEOPLE PAGE -------------------------------------------------------
+    else if (newRoute == AppRoute.MAIN_PEOPLE) {
+      if (person == null) {
+        goTo(AppRoute.PAGE_PEOPLE);
+      } else {
+        _selectedPerson.value = null;
+      }
+      return;
+    }
   }
 
   void _forceGoTo(AppRoute newRoute) {
@@ -244,9 +251,9 @@ class XRouter extends GetxController {
     dlog("[IMPORTANT] GOING BACK !!!");
     dlog("${_history.length} Items in history: $_history");
 
-    if (soft && project != null) {
-      selectProject(null);
-      return;
+    if (soft) {
+      if (project != null) return selectProject(null);
+      if (person != null) return selectPerson(null);
     }
 
     if (_history.length < 2) {

@@ -48,7 +48,8 @@ class Media {
   // GETTERS ===================================================================
 
   /// A preview image of the media.
-  String get preview => "${app.network.assets}$_preview";
+  String get preview =>
+      _preview.contains("http") ? _preview : "${app.network.assets}$_preview";
 
   /// Whether the media has a valid subtitle.
   bool get hasSubtitle => subtitle?.isNotEmpty ?? false;

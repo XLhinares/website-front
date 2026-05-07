@@ -42,7 +42,7 @@ class MediaButtonVisitWebsite extends StatelessWidget {
         Icons.open_in_new,
         color: iconOnly ? context.colors.secondary : context.colors.onSecondary,
       ),
-      tooltipMessage: "project_website_button_tooltip".tr,
+      tooltipMessage: "${media.type.name}_website_button_tooltip".tr,
       hideCondition: () => hideIfNoWebsite && !media.hasWebsite,
       iconOnly: iconOnly,
       margin: margin,

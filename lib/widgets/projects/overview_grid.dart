@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
 import "package:flutter_pagewise/flutter_pagewise.dart";
+import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../classes/medias/media.dart";
 import "../../globals.dart";
 import "../medias/preview_tile.dart";
 
@@ -13,17 +13,22 @@ class ProjectsGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PagewiseGridView<Media>.count(
-      crossAxisCount: 3,
-      mainAxisSpacing: XLayout.paddingM,
-      crossAxisSpacing: XLayout.paddingM,
-      childAspectRatio: 3 / 4,
-      padding: EdgeInsets.symmetric(vertical: XLayout.paddingL),
-      physics: const BouncingScrollPhysics(),
-      pageLoadController: projectLoaderController.controller,
-      itemBuilder: (context, entry, index) => MediaPreviewTile(
-        media: entry,
-        onTap: () => router.selectProject(entry.id),
+    return GetBuilder(
+      init: app.medias,
+      builder: (_) => GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            mainAxisSpacing: XLayout.paddingM,
+            crossAxisSpacing: XLayout.paddingM,
+            childAspectRatio: 3 / 4,
+            mainAxisExtent: context.height * .25),
+        padding: EdgeInsets.symmetric(vertical: XLayout.paddingL),
+        physics: const BouncingScrollPhysics(),
+        itemCount: app.medias.projects.length,
+        itemBuilder: (context, index) => MediaPreviewTile(
+          media: app.medias.projects[index],
+          onTap: (media) => router.selectProject(media.id),
+        ),
       ),
     );
   }

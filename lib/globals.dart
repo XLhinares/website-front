@@ -2,9 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 
 import "app/app_manager.dart";
-import "app/routing_service.dart";
-import "classes/controllers/media_loader_controller.dart";
-import "classes/medias/media_type.dart";
+import "app/router.dart";
 import "utils/translations.dart";
 
 /// The version of the app.
@@ -20,10 +18,6 @@ final AppManager app = AppManager();
 
 /// A service that manages the different elements of the app.
 final XRouter router = XRouter();
-
-/// A controller that handles loading projects from the API.
-final MediaLoaderController projectLoaderController =
-    MediaLoaderController(type: MediaType.project);
 
 // CONSTANTS ===================================================================
 
@@ -62,6 +56,11 @@ const Duration animDurationShort = Duration(milliseconds: 200);
 ///
 /// It is typically used by the sps mode switching animations.
 const Duration animDurationLong = Duration(milliseconds: 750);
+
+/// Default animation curve in the app.
+///
+/// Pretty much there so I don't have to guess each time and end up with 100000 different curves everywhere
+const Curve animCurve = Curves.bounceInOut;
 
 // UTILS -----------------------------------------------------------------------
 

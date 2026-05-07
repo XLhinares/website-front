@@ -6,14 +6,14 @@ import "../../globals.dart";
 import "../../widgets/medias/desktop_header.dart";
 import "../../widgets/medias/media_content.dart";
 import "../../widgets/medias/media_focus.dart";
-import "../../widgets/projects/overview_grid.dart";
+import "../../widgets/people/person_overview_page.dart";
 
-/// The content of the body in the "ProjectPreviews" mode.
-class DesktopMainProjects extends StatelessWidget {
+/// The content of the body in the "Projects" mode.
+class DesktopMainPeople extends StatelessWidget {
   // CONSTRUCTOR ===============================================================
 
-  /// Returns a [DesktopMainProjects] matching the given parameters.
-  const DesktopMainProjects({
+  /// Returns a [DesktopMainPeople] matching the given parameters.
+  const DesktopMainPeople({
     super.key,
   });
 
@@ -25,21 +25,21 @@ class DesktopMainProjects extends StatelessWidget {
       init: router,
       builder: (context) => AnimatedSwitcher(
         duration: animDurationShort,
-        child: router.project == null
-            ? ProjectsGridView()
+        child: router.person == null
+            ? PersonOverviewPage()
             : MediaFocus(
-                media: app.medias.fetchByID(router.project!),
+                media: app.medias.fetchByID(router.person!),
                 headerBuilder: (media, scrollController) => MediaDesktopHeader(
                   media: media,
                   scrollController: scrollController,
                 ),
                 partsBuilder: (content) => MediaContentWidget(content: content),
                 listViewVerticalPadding: XLayout.paddingL,
-                onBack: () => router.selectProject(null),
+                onBack: () => router.selectPerson(null),
               ),
       ),
     );
   }
 
-  // METHODS ===================================================================
+// METHODS ===================================================================
 }

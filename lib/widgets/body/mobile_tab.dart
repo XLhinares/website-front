@@ -4,10 +4,10 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:x_containers/x_containers.dart";
 
-import "../../classes/dataclass/route.dart";
+import "../../classes/dataclass/app_route.dart";
 import "../../globals.dart";
-import "../../widgets/body/mobile_tab_subtitle.dart";
-import "../../widgets/body/mobile_tab_title.dart";
+import "../../utils/extensions.dart";
+import "../text/auto_color_text.dart";
 
 /// A preset for tabs displayed on mobile.
 class MobileTab extends StatelessWidget {
@@ -38,9 +38,15 @@ class MobileTab extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          MobileTabTitle(title: "${route.name}_title".tr),
+          XContainer.text(
+            "${route.name}_title".tr,
+            textStyle: context.titleMediumOnSecondary,
+            color: context.theme.colorScheme.secondary,
+          ),
           XLayout.verticalM,
-          MobileTabDescription(description: "${route.name}_description".tr),
+          XContainer(
+            child: AutoColorText("${route.name}_description".tr),
+          ),
           XLayout.verticalL,
           Expanded(child: child),
           XLayout.verticalL,

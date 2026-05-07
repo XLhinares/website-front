@@ -1,36 +1,46 @@
-import "dart:collection";
+import "dart:async";
 
 import "../classes/medias/media.dart";
 import "../classes/medias/media_content.dart";
 import "../classes/medias/media_type.dart";
 import "../globals.dart";
 import "../utils/tools.dart";
-import "../utils/tools_api.dart";
 import "app_manager_plugin.dart";
 
-/// A plugin that handles the word decks.
+/// A plugin that handles loading and storing the medias.
 class MediaPlugin extends AppManagerPlugin {
   @override
   bool get blocking => true;
 // VARIABLES =================================================================
 
   /// A list of the registered projects metadata.
-  late final Map<int, Media> _projects;
-
-  /// A list of the registered projects metadata.
-  late final Map<int, Media> _blogs;
+  late final Map<int, Media> _all;
 
   late final Map<int, MediaContent> _mediaContent;
 
   // GETTERS ===================================================================
 
-  /// A list of the registered projects partial metadata.
-  UnmodifiableListView<Media> get projects =>
-      UnmodifiableListView(_projects.values);
+  /// A list of the registered projects.
+  List<Media> get projects =>
+      _all.values.where((e) => e.type == MediaType.project).toList();
 
-  /// A list of the registered blogs partial metadata.
-  UnmodifiableListView<Media> get blogs => UnmodifiableListView(_blogs.values);
+  /// A list of the registered blogs.
+  List<Media> get blogs =>
+      _all.values.where((e) => e.type == MediaType.blog).toList();
 
+  /// A list of the registered persons.
+  List<Media> get persons =>
+      _all.values.where((e) => e.type == MediaType.person).toList();
+
+  /// A list of the persons who recommend me.
+  List<Media> get recommenders => _all.values
+      .where((e) => e.type == MediaType.person && e.status == "recommender")
+      .toList();
+
+  /// A list of the persons who recommend me.
+  List<Media> get recommendeds => _all.values
+      .where((e) => e.type == MediaType.person && e.status == "recommended")
+      .toList();
   // PSEUDO-GETTERS ============================================================
 
   /// Whether the user has the parts of the media matching the given id.
@@ -40,49 +50,44 @@ class MediaPlugin extends AppManagerPlugin {
   MediaContent? getContent(int id) => _mediaContent[id];
 
   /// The project matching the given id, if it is known.
-  Media getProject(int id) => _projects[id]!;
-
-  /// The blog matching the given id, if it is known.
-  Media getBlog(int id) => _blogs[id]!;
+  Media fetchByID(int id) => _all[id]!;
 
   // CONSTRUCTOR ===============================================================
 
   @override
   Future<void> load({SuccessCallback? then}) async {
-    _projects = {};
-    _blogs = {};
+    _all = {};
     _mediaContent = {};
+
+    // Asynchronously load the medias.
+    reloadProjects();
+    reloadPersons();
 
     return super.load(then: then);
   }
 
   // METHODS ===================================================================
 
-  /// Loads the list of projects from the API.
-  Future<List<Media>> loadMedias({
-    required MediaType type,
-    APISorter sorter = APISorter.relevance,
-    int page = 0,
-  }) async =>
-      tryWrapper(() async {
-        final res = await app.network.getMedias(
-          type: type,
-          sorter: sorter,
-          page: page,
-        );
+  /// Loads and return the list of projects from the API.
+  ///
+  /// The list of known media is also updated with these projects.
+  /// Upon completion, this [MediaPlugin] instance is reloaded.
+  Future<List<Media>> reloadProjects() async => tryWrapper(() async {
+        final res = await app.network.getMedias(type: MediaType.project);
+        _all.removeWhere((k, v) => v.type == MediaType.project);
+        _all.addEntries(res.map((e) => MapEntry(e.id, e)));
+        update();
+        return res;
+      });
 
-        if (type == MediaType.project) {
-          _projects.clear();
-          for (final element in res) {
-            _projects[element.id] = element;
-          }
-        } else if (type == MediaType.blog) {
-          _blogs.clear();
-          for (final element in res) {
-            _blogs[element.id] = element;
-          }
-        }
-
+  /// Loads and return the list of persons from the API.
+  ///
+  /// The list of known media is also updated with these persons.
+  /// Upon completion, this [MediaPlugin] instance is reloaded.
+  Future<List<Media>> reloadPersons() async => tryWrapper(() async {
+        final res = await app.network.getMedias(type: MediaType.person);
+        _all.removeWhere((k, v) => v.type == MediaType.person);
+        _all.addEntries(res.map((e) => MapEntry(e.id, e)));
         update();
         return res;
       });

@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 
 import "../../globals.dart";
-import "main_contact.dart";
+import "main_people.dart";
 import "main_home.dart";
 import "main_projects.dart";
 import "main_settings.dart";
@@ -35,7 +35,7 @@ class DesktopMainContents extends StatelessWidget {
         DesktopMainHome(),
         // DesktopBlogs(),
         DesktopMainProjects(),
-        DesktopMainContact(),
+        DesktopMainPeople(),
         DesktopMainSettings(),
       ];
 }

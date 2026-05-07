@@ -26,7 +26,7 @@ class MediaFocus extends StatelessWidget {
   /// The behavior when the "back" button is tapped.
   final void Function()? onBack;
 
-  late final ScrollController _controller;
+  late final ScrollController _scrollController;
 
   // GETTERS ===================================================================
 
@@ -41,7 +41,7 @@ class MediaFocus extends StatelessWidget {
     this.listViewVerticalPadding = 0,
     this.onBack,
   }) {
-    _controller = ScrollController();
+    _scrollController = ScrollController();
   }
 
   // BUILD =====================================================================
@@ -53,10 +53,10 @@ class MediaFocus extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.symmetric(vertical: listViewVerticalPadding),
         physics: const BouncingScrollPhysics(),
-        controller: _controller,
+        controller: _scrollController,
         children: [
           // Header
-          headerBuilder(media, _controller),
+          headerBuilder(media, _scrollController),
 
           XLayout.verticalL,
 

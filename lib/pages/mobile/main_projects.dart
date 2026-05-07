@@ -32,7 +32,6 @@ class MobileMainProjects extends RouteTab {
           init: app.medias,
           tag: "home_project_mobile",
           builder: (_) {
-            dlog("RRRRRRRRRRRRRRRRRRRRR");
             return MediaListView(
               medias: app.medias.projects,
               onTapMedia: (media) {

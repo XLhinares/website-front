@@ -93,6 +93,7 @@ class _MediaListViewState extends State<MediaListView> {
   }
 
   void _computeItemCountCallback() {
+    if (_itemCount > _minItemCount) return;
     if (maxHeight == double.infinity) {
       dlog("Infinite vertical space provided, "
           "no need to compute item count.");
